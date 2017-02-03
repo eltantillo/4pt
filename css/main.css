@@ -1,0 +1,16 @@
+body {
+	padding-top: 60px;
+}
+.starter-template {
+	padding: 40px 15px;
+	text-align: center;
+}
+.invisible {
+	display: hidden;
+}
+span.required {
+	color: red;
+}
+.operations li{
+	display: inline-block;
+}
