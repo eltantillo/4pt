@@ -255,7 +255,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `4pt`.`minutes` ;
 
 CREATE TABLE IF NOT EXISTS `4pt`.`minutes` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL ,
   `project_plan_id` INT NOT NULL,
   `purpose` TEXT NULL,
   `assistants` TEXT NULL,

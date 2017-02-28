@@ -34,8 +34,8 @@ class work_statement extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('id, process_id', 'required'),
-			array('id, process_id, sent, project_manager_validated, technical_leader_validated, change_request', 'numerical', 'integerOnly'=>true),
+			array('process_id', 'required'),
+			array('process_id, sent, project_manager_validated, technical_leader_validated, change_request', 'numerical', 'integerOnly'=>true),
 			array('product_description, scope, objectives, deliverables, change_request_details', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.

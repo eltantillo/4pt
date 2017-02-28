@@ -37,7 +37,7 @@
 							else{
 								echo '<li><a href="' . Yii::app()->baseUrl . '/people"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> '     . Language::$people    . '</a></li>';
 								echo '<li><a href="' . Yii::app()->baseUrl . '/projects"><span class="glyphicon glyphicon-book" aria-hidden="true"></span> '   . Language::$projects  . '</a></li>';
-								echo '<li><a href="' . Yii::app()->baseUrl . '/process"><span class="glyphicon glyphicon-random" aria-hidden="true"></span> '    . Language::$processes . '</a></li>';
+								echo '<li><a href="' . Yii::app()->baseUrl . '/processes"><span class="glyphicon glyphicon-random" aria-hidden="true"></span> '    . Language::$processes . '</a></li>';
 								echo '<li><a href="' . Yii::app()->baseUrl . '/products"><span class="glyphicon glyphicon-cd" aria-hidden="true"></span> '   . Language::$products  . '</a></li>';
 								echo '<li><a href="' . Yii::app()->baseUrl .'/site/logout"><span class="glyphicon glyphicon-off" aria-hidden="true"></span> ' . Language::$logout    . '(' . Yii::app()->user->name . ')</a></li>';
 							}

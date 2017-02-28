@@ -646,3 +646,421 @@ Stack trace:
 REQUEST_URI=/4pt/process
 HTTP_REFERER=http://localhost/4pt/projects/index
 ---
+2017/02/28 17:33:33 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "process".' in C:\wamp64\www\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp64\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('process')
+#1 C:\wamp64\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 C:\wamp64\www\4pt\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/4pt/process
+HTTP_REFERER=http://localhost/4pt/
+---
+2017/02/28 17:33:53 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "process".' in C:\wamp64\www\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp64\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('process')
+#1 C:\wamp64\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 C:\wamp64\www\4pt\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/4pt/process
+HTTP_REFERER=http://localhost/4pt/
+---
+2017/02/28 17:36:38 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "process".' in C:\wamp64\www\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp64\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('process')
+#1 C:\wamp64\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 C:\wamp64\www\4pt\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/4pt/process
+HTTP_REFERER=http://localhost/4pt/
+---
+2017/02/28 19:52:18 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "workstatement".' in C:\wamp64\www\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp64\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('workstatement')
+#1 C:\wamp64\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 C:\wamp64\www\4pt\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/4pt/workstatement
+HTTP_REFERER=http://localhost/4pt/processes
+---
+2017/02/28 19:52:40 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "workstatement".' in C:\wamp64\www\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp64\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('workstatement')
+#1 C:\wamp64\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 C:\wamp64\www\4pt\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/4pt/workstatement
+HTTP_REFERER=http://localhost/4pt/processes
+---
+2017/02/28 19:52:43 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "workstatement".' in C:\wamp64\www\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp64\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('workstatement')
+#1 C:\wamp64\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 C:\wamp64\www\4pt\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/4pt/workstatement
+HTTP_REFERER=http://localhost/4pt/processes
+---
+2017/02/28 19:52:57 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "workstatement".' in C:\wamp64\www\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp64\www\yii\framework\web\CController.php(270): CController->missingAction('workstatement')
+#1 C:\wamp64\www\yii\framework\web\CWebApplication.php(282): CController->run('workstatement')
+#2 C:\wamp64\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('processes/works...')
+#3 C:\wamp64\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 C:\wamp64\www\4pt\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/4pt/processes/workstatement
+HTTP_REFERER=http://localhost/4pt/processes
+---
+2017/02/28 19:55:22 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "workstatement".' in C:\wamp64\www\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp64\www\yii\framework\web\CController.php(270): CController->missingAction('workstatement')
+#1 C:\wamp64\www\yii\framework\web\CWebApplication.php(282): CController->run('workstatement')
+#2 C:\wamp64\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('processes/works...')
+#3 C:\wamp64\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 C:\wamp64\www\4pt\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/4pt/processes/workstatement
+HTTP_REFERER=http://localhost/4pt/processes
+---
+2017/02/28 19:55:33 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "workStatement".' in C:\wamp64\www\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp64\www\yii\framework\web\CController.php(270): CController->missingAction('workStatement')
+#1 C:\wamp64\www\yii\framework\web\CWebApplication.php(282): CController->run('workStatement')
+#2 C:\wamp64\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('processes/workS...')
+#3 C:\wamp64\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 C:\wamp64\www\4pt\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/4pt/processes/workStatement
+---
+2017/02/28 19:55:39 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\wamp64\www\yii\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 C:\wamp64\www\yii\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\wamp64\www\yii\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\wamp64\www\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\wamp64\www\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\wamp64\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\wamp64\www\yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\wamp64\www\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\wamp64\www\yii\framework\web\CWebApplication.php(282): CController->run('workstatement')
+#8 C:\wamp64\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('processes/works...')
+#9 C:\wamp64\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#10 C:\wamp64\www\4pt\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/4pt/processes/workstatement
+HTTP_REFERER=http://localhost/4pt/processes
+---
+2017/02/28 20:06:46 [error] [php] Trying to get property of non-object (C:\wamp64\www\4pt\protected\views\processes\index.php:11)
+Stack trace:
+#0 C:\wamp64\www\yii\framework\web\CController.php(869): ProcessesController->renderFile()
+#1 C:\wamp64\www\yii\framework\web\CController.php(782): ProcessesController->renderPartial()
+#2 C:\wamp64\www\4pt\protected\controllers\ProcessesController.php(137): ProcessesController->render()
+#3 C:\wamp64\www\yii\framework\web\actions\CInlineAction.php(49): ProcessesController->actionIndex()
+#4 C:\wamp64\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 C:\wamp64\www\yii\framework\web\filters\CFilterChain.php(133): ProcessesController->runAction()
+#6 C:\wamp64\www\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\wamp64\www\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#8 C:\wamp64\www\yii\framework\web\filters\CInlineFilter.php(58): ProcessesController->filterAccessControl()
+#9 C:\wamp64\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#10 C:\wamp64\www\yii\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\wamp64\www\yii\framework\web\CController.php(265): ProcessesController->runActionWithFilters()
+#12 C:\wamp64\www\yii\framework\web\CWebApplication.php(282): ProcessesController->run()
+#13 C:\wamp64\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#14 C:\wamp64\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#15 C:\wamp64\www\4pt\index.php(13): CWebApplication->run()
+REQUEST_URI=/4pt/processes
+in C:\wamp64\www\4pt\protected\views\processes\index.php (11)
+in C:\wamp64\www\4pt\protected\controllers\ProcessesController.php (137)
+in C:\wamp64\www\4pt\index.php (13)
+2017/02/28 20:29:19 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in C:\wamp64\www\4pt\protected\controllers\ProcessesController.php:173
+Stack trace:
+#0 C:\wamp64\www\4pt\protected\controllers\ProcessesController.php(58): ProcessesController->loadModel()
+#1 C:\wamp64\www\yii\framework\web\actions\CInlineAction.php(49): ProcessesController->actionView()
+#2 C:\wamp64\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#3 C:\wamp64\www\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#4 C:\wamp64\www\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#5 C:\wamp64\www\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#6 C:\wamp64\www\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#7 C:\wamp64\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#8 C:\wamp64\www\yii\framework\web\CController.php(291): CFilterChain->run()
+#9 C:\wamp64\www\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#10 C:\wamp64\www\yii\framework\web\CWebApplication.php(282): CController->run('view')
+#11 C:\wamp64\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('processes/view')
+#12 C:\wamp64\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#13 C:\wamp64\www\4pt\index.php(13): CApplication->run()
+#14 {main}
+REQUEST_URI=/4pt/processes/1
+---
+2017/02/28 20:30:48 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in C:\wamp64\www\4pt\protected\controllers\ProcessesController.php:173
+Stack trace:
+#0 C:\wamp64\www\4pt\protected\controllers\ProcessesController.php(58): ProcessesController->loadModel()
+#1 C:\wamp64\www\yii\framework\web\actions\CInlineAction.php(49): ProcessesController->actionView()
+#2 C:\wamp64\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#3 C:\wamp64\www\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#4 C:\wamp64\www\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#5 C:\wamp64\www\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#6 C:\wamp64\www\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#7 C:\wamp64\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#8 C:\wamp64\www\yii\framework\web\CController.php(291): CFilterChain->run()
+#9 C:\wamp64\www\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#10 C:\wamp64\www\yii\framework\web\CWebApplication.php(282): CController->run('view')
+#11 C:\wamp64\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('processes/view')
+#12 C:\wamp64\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#13 C:\wamp64\www\4pt\index.php(13): CApplication->run()
+#14 {main}
+REQUEST_URI=/4pt/processes/1
+---
+2017/02/28 20:33:38 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "processes".' in C:\wamp64\www\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp64\www\yii\framework\web\CController.php(270): CController->missingAction('processes')
+#1 C:\wamp64\www\yii\framework\web\CWebApplication.php(282): CController->run('processes')
+#2 C:\wamp64\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('processes/proce...')
+#3 C:\wamp64\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 C:\wamp64\www\4pt\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/4pt/processes/processes/2/workstatement
+HTTP_REFERER=http://localhost/4pt/processes/index
+---
+2017/02/28 20:33:44 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "processes".' in C:\wamp64\www\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp64\www\yii\framework\web\CController.php(270): CController->missingAction('processes')
+#1 C:\wamp64\www\yii\framework\web\CWebApplication.php(282): CController->run('processes')
+#2 C:\wamp64\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('processes/proce...')
+#3 C:\wamp64\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 C:\wamp64\www\4pt\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/4pt/processes/processes/2
+HTTP_REFERER=http://localhost/4pt/processes/index
+---
+2017/02/28 20:33:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "processes".' in C:\wamp64\www\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp64\www\yii\framework\web\CController.php(270): CController->missingAction('processes')
+#1 C:\wamp64\www\yii\framework\web\CWebApplication.php(282): CController->run('processes')
+#2 C:\wamp64\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('processes/proce...')
+#3 C:\wamp64\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 C:\wamp64\www\4pt\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/4pt/processes/processes/2
+HTTP_REFERER=http://localhost/4pt/processes/index
+---
+2017/02/28 20:33:53 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "processes".' in C:\wamp64\www\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp64\www\yii\framework\web\CController.php(270): CController->missingAction('processes')
+#1 C:\wamp64\www\yii\framework\web\CWebApplication.php(282): CController->run('processes')
+#2 C:\wamp64\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('processes/proce...')
+#3 C:\wamp64\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 C:\wamp64\www\4pt\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/4pt/processes/processes/2/workstatement
+HTTP_REFERER=http://localhost/4pt/processes/2
+---
+2017/02/28 20:34:06 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "2".' in C:\wamp64\www\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp64\www\yii\framework\web\CController.php(270): CController->missingAction('2')
+#1 C:\wamp64\www\yii\framework\web\CWebApplication.php(282): CController->run('2')
+#2 C:\wamp64\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('processes/2/wor...')
+#3 C:\wamp64\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 C:\wamp64\www\4pt\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/4pt/processes/2/workstatement
+HTTP_REFERER=http://localhost/4pt/processes/2
+---
+2017/02/28 20:34:09 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "2".' in C:\wamp64\www\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp64\www\yii\framework\web\CController.php(270): CController->missingAction('2')
+#1 C:\wamp64\www\yii\framework\web\CWebApplication.php(282): CController->run('2')
+#2 C:\wamp64\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('processes/2/wor...')
+#3 C:\wamp64\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 C:\wamp64\www\4pt\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/4pt/processes/2/workstatement
+HTTP_REFERER=http://localhost/4pt/processes/2
+---
+2017/02/28 20:34:27 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "2".' in C:\wamp64\www\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp64\www\yii\framework\web\CController.php(270): CController->missingAction('2')
+#1 C:\wamp64\www\yii\framework\web\CWebApplication.php(282): CController->run('2')
+#2 C:\wamp64\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('processes/2/wor...')
+#3 C:\wamp64\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 C:\wamp64\www\4pt\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/4pt/processes/2/workstatement
+HTTP_REFERER=http://localhost/4pt/processes/2
+---
+2017/02/28 20:39:28 [error] [php] Trying to get property of non-object (C:\wamp64\www\4pt\protected\controllers\ProcessesController.php:157)
+Stack trace:
+#0 C:\wamp64\www\yii\framework\web\filters\CFilterChain.php(133): ProcessesController->runAction()
+#1 C:\wamp64\www\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#2 C:\wamp64\www\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#3 C:\wamp64\www\yii\framework\web\filters\CInlineFilter.php(58): ProcessesController->filterAccessControl()
+#4 C:\wamp64\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#5 C:\wamp64\www\yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\wamp64\www\yii\framework\web\CController.php(265): ProcessesController->runActionWithFilters()
+#7 C:\wamp64\www\yii\framework\web\CWebApplication.php(282): ProcessesController->run()
+#8 C:\wamp64\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 C:\wamp64\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#10 C:\wamp64\www\4pt\index.php(13): CWebApplication->run()
+REQUEST_URI=/4pt/processes/workstatement/2
+in C:\wamp64\www\4pt\protected\controllers\ProcessesController.php (157)
+in C:\wamp64\www\4pt\index.php (13)
+2017/02/28 20:40:06 [error] [php] Trying to get property of non-object (C:\wamp64\www\4pt\protected\controllers\ProcessesController.php:157)
+Stack trace:
+#0 C:\wamp64\www\yii\framework\web\filters\CFilterChain.php(133): ProcessesController->runAction()
+#1 C:\wamp64\www\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#2 C:\wamp64\www\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#3 C:\wamp64\www\yii\framework\web\filters\CInlineFilter.php(58): ProcessesController->filterAccessControl()
+#4 C:\wamp64\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#5 C:\wamp64\www\yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\wamp64\www\yii\framework\web\CController.php(265): ProcessesController->runActionWithFilters()
+#7 C:\wamp64\www\yii\framework\web\CWebApplication.php(282): ProcessesController->run()
+#8 C:\wamp64\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 C:\wamp64\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#10 C:\wamp64\www\4pt\index.php(13): CWebApplication->run()
+REQUEST_URI=/4pt/processes/workstatement/2
+in C:\wamp64\www\4pt\protected\controllers\ProcessesController.php (157)
+in C:\wamp64\www\4pt\index.php (13)
+2017/02/28 20:40:09 [error] [php] Trying to get property of non-object (C:\wamp64\www\4pt\protected\controllers\ProcessesController.php:157)
+Stack trace:
+#0 C:\wamp64\www\yii\framework\web\filters\CFilterChain.php(133): ProcessesController->runAction()
+#1 C:\wamp64\www\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#2 C:\wamp64\www\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#3 C:\wamp64\www\yii\framework\web\filters\CInlineFilter.php(58): ProcessesController->filterAccessControl()
+#4 C:\wamp64\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#5 C:\wamp64\www\yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\wamp64\www\yii\framework\web\CController.php(265): ProcessesController->runActionWithFilters()
+#7 C:\wamp64\www\yii\framework\web\CWebApplication.php(282): ProcessesController->run()
+#8 C:\wamp64\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 C:\wamp64\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#10 C:\wamp64\www\4pt\index.php(13): CWebApplication->run()
+REQUEST_URI=/4pt/processes/workstatement/2
+in C:\wamp64\www\4pt\protected\controllers\ProcessesController.php (157)
+in C:\wamp64\www\4pt\index.php (13)
+2017/02/28 20:53:59 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "2".' in C:\wamp64\www\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp64\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('2')
+#1 C:\wamp64\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 C:\wamp64\www\4pt\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/4pt/2
+HTTP_REFERER=http://localhost/4pt/processes
+---
+2017/02/28 21:00:15 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "processes".' in C:\wamp64\www\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp64\www\yii\framework\web\CController.php(270): CController->missingAction('processes')
+#1 C:\wamp64\www\yii\framework\web\CWebApplication.php(282): CController->run('processes')
+#2 C:\wamp64\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('processes/proce...')
+#3 C:\wamp64\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 C:\wamp64\www\4pt\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/4pt/processes/processes/2
+HTTP_REFERER=http://localhost/4pt/processes/index
+---
+2017/02/28 21:04:07 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`4pt`.`work_statement`, CONSTRAINT `fk_work_statement_process1` FOREIGN KEY (`process_id`) REFERENCES `processes` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION). The SQL statement executed was: INSERT INTO `work_statement` (`process_id`, `product_description`, `scope`, `objectives`, `deliverables`, `sent`, `project_manager_validated`, `technical_leader_validated`, `change_request`, `change_request_details`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7, :yp8, :yp9).
+in C:\wamp64\www\4pt\protected\controllers\ProcessesController.php (167)
+in C:\wamp64\www\4pt\index.php (13)
+2017/02/28 21:04:07 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`4pt`.`work_statement`, CONSTRAINT `fk_work_statement_process1` FOREIGN KEY (`process_id`) REFERENCES `processes` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION). The SQL statement executed was: INSERT INTO `work_statement` (`process_id`, `product_description`, `scope`, `objectives`, `deliverables`, `sent`, `project_manager_validated`, `technical_leader_validated`, `change_request`, `change_request_details`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7, :yp8, :yp9)' in C:\wamp64\www\yii\framework\db\CDbCommand.php:358
+Stack trace:
+#0 C:\wamp64\www\yii\framework\db\ar\CActiveRecord.php(1080): CDbCommand->execute()
+#1 C:\wamp64\www\yii\framework\db\ar\CActiveRecord.php(809): CActiveRecord->insert(NULL)
+#2 C:\wamp64\www\4pt\protected\controllers\ProcessesController.php(167): CActiveRecord->save()
+#3 C:\wamp64\www\yii\framework\web\actions\CInlineAction.php(49): ProcessesController->actionWorkStatement()
+#4 C:\wamp64\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\wamp64\www\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 C:\wamp64\www\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\wamp64\www\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 C:\wamp64\www\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 C:\wamp64\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 C:\wamp64\www\yii\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\wamp64\www\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\wamp64\www\yii\framework\web\CWebApplication.php(282): CController->run('workstatement')
+#13 C:\wamp64\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('processes/works...')
+#14 C:\wamp64\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#15 C:\wamp64\www\4pt\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/4pt/processes/workstatement/2
+HTTP_REFERER=http://localhost/4pt/processes/workstatement/2
+---
+2017/02/28 21:04:35 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`4pt`.`work_statement`, CONSTRAINT `fk_work_statement_process1` FOREIGN KEY (`process_id`) REFERENCES `processes` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION). The SQL statement executed was: INSERT INTO `work_statement` (`process_id`, `product_description`, `scope`, `objectives`, `deliverables`, `sent`, `project_manager_validated`, `technical_leader_validated`, `change_request`, `change_request_details`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7, :yp8, :yp9).
+in C:\wamp64\www\4pt\protected\controllers\ProcessesController.php (167)
+in C:\wamp64\www\4pt\index.php (13)
+2017/02/28 21:04:35 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`4pt`.`work_statement`, CONSTRAINT `fk_work_statement_process1` FOREIGN KEY (`process_id`) REFERENCES `processes` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION). The SQL statement executed was: INSERT INTO `work_statement` (`process_id`, `product_description`, `scope`, `objectives`, `deliverables`, `sent`, `project_manager_validated`, `technical_leader_validated`, `change_request`, `change_request_details`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7, :yp8, :yp9)' in C:\wamp64\www\yii\framework\db\CDbCommand.php:358
+Stack trace:
+#0 C:\wamp64\www\yii\framework\db\ar\CActiveRecord.php(1080): CDbCommand->execute()
+#1 C:\wamp64\www\yii\framework\db\ar\CActiveRecord.php(809): CActiveRecord->insert(NULL)
+#2 C:\wamp64\www\4pt\protected\controllers\ProcessesController.php(167): CActiveRecord->save()
+#3 C:\wamp64\www\yii\framework\web\actions\CInlineAction.php(49): ProcessesController->actionWorkStatement()
+#4 C:\wamp64\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\wamp64\www\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 C:\wamp64\www\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\wamp64\www\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 C:\wamp64\www\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 C:\wamp64\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 C:\wamp64\www\yii\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\wamp64\www\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\wamp64\www\yii\framework\web\CWebApplication.php(282): CController->run('workstatement')
+#13 C:\wamp64\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('processes/works...')
+#14 C:\wamp64\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#15 C:\wamp64\www\4pt\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/4pt/processes/workstatement/2
+HTTP_REFERER=http://localhost/4pt/processes/workstatement/2
+---
+2017/02/28 21:08:07 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in C:\wamp64\www\4pt\protected\controllers\ProcessesController.php:188
+Stack trace:
+#0 C:\wamp64\www\4pt\protected\controllers\ProcessesController.php(58): ProcessesController->loadModel()
+#1 C:\wamp64\www\yii\framework\web\actions\CInlineAction.php(49): ProcessesController->actionView()
+#2 C:\wamp64\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#3 C:\wamp64\www\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#4 C:\wamp64\www\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#5 C:\wamp64\www\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#6 C:\wamp64\www\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#7 C:\wamp64\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#8 C:\wamp64\www\yii\framework\web\CController.php(291): CFilterChain->run()
+#9 C:\wamp64\www\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#10 C:\wamp64\www\yii\framework\web\CWebApplication.php(282): CController->run('view')
+#11 C:\wamp64\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('processes/view')
+#12 C:\wamp64\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#13 C:\wamp64\www\4pt\index.php(13): CApplication->run()
+#14 {main}
+REQUEST_URI=/4pt/processes/3
+HTTP_REFERER=http://localhost/4pt/processes/workstatement/2
+---
+2017/02/28 21:08:11 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in C:\wamp64\www\4pt\protected\controllers\ProcessesController.php:188
+Stack trace:
+#0 C:\wamp64\www\4pt\protected\controllers\ProcessesController.php(58): ProcessesController->loadModel()
+#1 C:\wamp64\www\yii\framework\web\actions\CInlineAction.php(49): ProcessesController->actionView()
+#2 C:\wamp64\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#3 C:\wamp64\www\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#4 C:\wamp64\www\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#5 C:\wamp64\www\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#6 C:\wamp64\www\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#7 C:\wamp64\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#8 C:\wamp64\www\yii\framework\web\CController.php(291): CFilterChain->run()
+#9 C:\wamp64\www\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#10 C:\wamp64\www\yii\framework\web\CWebApplication.php(282): CController->run('view')
+#11 C:\wamp64\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('processes/view')
+#12 C:\wamp64\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#13 C:\wamp64\www\4pt\index.php(13): CApplication->run()
+#14 {main}
+REQUEST_URI=/4pt/processes/3
+HTTP_REFERER=http://localhost/4pt/processes/workstatement/2
+---
+2017/02/28 21:08:13 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in C:\wamp64\www\4pt\protected\controllers\ProcessesController.php:188
+Stack trace:
+#0 C:\wamp64\www\4pt\protected\controllers\ProcessesController.php(58): ProcessesController->loadModel()
+#1 C:\wamp64\www\yii\framework\web\actions\CInlineAction.php(49): ProcessesController->actionView()
+#2 C:\wamp64\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#3 C:\wamp64\www\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#4 C:\wamp64\www\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#5 C:\wamp64\www\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#6 C:\wamp64\www\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#7 C:\wamp64\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#8 C:\wamp64\www\yii\framework\web\CController.php(291): CFilterChain->run()
+#9 C:\wamp64\www\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#10 C:\wamp64\www\yii\framework\web\CWebApplication.php(282): CController->run('view')
+#11 C:\wamp64\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('processes/view')
+#12 C:\wamp64\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#13 C:\wamp64\www\4pt\index.php(13): CApplication->run()
+#14 {main}
+REQUEST_URI=/4pt/processes/3
+HTTP_REFERER=http://localhost/4pt/processes/workstatement/2
+---

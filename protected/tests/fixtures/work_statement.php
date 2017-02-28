@@ -3,7 +3,6 @@
 return array(
 	/*
 	'sample1'=>array(
-		'id' => '',
 		'process_id' => '',
 		'product_description' => '',
 		'scope' => '',
@@ -16,7 +15,6 @@ return array(
 		'change_request_details' => '',
 	),
 	'sample2'=>array(
-		'id' => '',
 		'process_id' => '',
 		'product_description' => '',
 		'scope' => '',
