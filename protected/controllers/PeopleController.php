@@ -1,6 +1,6 @@
 <?php
 
-class PeopleController extends Controller
+class peopleController extends Controller
 {
 	/**
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
@@ -45,7 +45,7 @@ class PeopleController extends Controller
 	 */
 	public function actionView()
 	{
-		$sessionUser = People::model()->findByAttributes(array('id'=>Yii::app()->user->id));
+		$sessionUser = people::model()->findByAttributes(array('id'=>Yii::app()->user->id));
 		$user = $this->loadModel();
 
 		if ($user->company_id == $sessionUser->company_id){
@@ -61,14 +61,14 @@ class PeopleController extends Controller
 	 */
 	public function actionCreate()
 	{
-		$model = new People;
-		$user  = People::model()->findByAttributes(array('id'=>Yii::app()->user->id));
+		$model = new people;
+		$user  = people::model()->findByAttributes(array('id'=>Yii::app()->user->id));
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
-		if(isset($_POST['People']))
+		if(isset($_POST['people']))
 		{
-			$model->attributes=$_POST['People'];
+			$model->attributes=$_POST['people'];
 			$model->company_id = $user->company_id;
 			$model->password = md5($model->password);
 			try{
@@ -88,13 +88,13 @@ class PeopleController extends Controller
 
 	public function actionHabilities()
 	{
-		$model = People::model()->findByAttributes(array('id'=>$_GET['userId']));
+		$model = people::model()->findByAttributes(array('id'=>$_GET['userId']));
 
 		$habilities = "";
 
-		if(isset($_POST['People']))
+		if(isset($_POST['people']))
 		{
-			foreach($_POST['People'] as $checkbox_id){
+			foreach($_POST['people'] as $checkbox_id){
 				if ($checkbox_id != null){
 					$habilities = implode(',', $checkbox_id);
 				}
@@ -113,13 +113,13 @@ class PeopleController extends Controller
 
 	public function actionCapabilities()
 	{
-		$model = People::model()->findByAttributes(array('id'=>$_GET['userId']));
+		$model = people::model()->findByAttributes(array('id'=>$_GET['userId']));
 
 		$capabilities = "";
 
-		if(isset($_POST['People']))
+		if(isset($_POST['people']))
 		{
-			foreach($_POST['People'] as $checkbox_id){
+			foreach($_POST['people'] as $checkbox_id){
 				if ($checkbox_id != null){
 					$capabilities = implode(',', $checkbox_id);
 				}
@@ -140,13 +140,13 @@ class PeopleController extends Controller
 
 	public function actionRoles()
 	{
-		$model = People::model()->findByAttributes(array('id'=>$_GET['userId']));
+		$model = people::model()->findByAttributes(array('id'=>$_GET['userId']));
 
 		$roles = "";
 
-		if(isset($_POST['People']))
+		if(isset($_POST['people']))
 		{
-			foreach($_POST['People'] as $checkbox_id){
+			foreach($_POST['people'] as $checkbox_id){
 				if ($checkbox_id != null){
 					$roles = implode(',', $checkbox_id);
 				}
@@ -181,10 +181,10 @@ class PeopleController extends Controller
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['People']))
+		if(isset($_POST['people']))
 		{
-			$model->attributes=$_POST['People'];
-			$user = People::model()->findByAttributes(array('id'=>$model->id));
+			$model->attributes=$_POST['people'];
+			$user = people::model()->findByAttributes(array('id'=>$model->id));
 			if ($model->password == ''){
 				$model->password = $user->password;
 			}
@@ -229,9 +229,9 @@ class PeopleController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$user = People::model()->findByAttributes(array('id'=>Yii::app()->user->id));
+		$user = people::model()->findByAttributes(array('id'=>Yii::app()->user->id));
 
-		$dataProvider=new CActiveDataProvider('People', array(
+		$dataProvider=new CActiveDataProvider('people', array(
 		'criteria'=>array('condition'=>'company_id=' . $user->company_id),
 		));
 
@@ -245,10 +245,10 @@ class PeopleController extends Controller
 	 */
 	public function actionAdmin()
 	{
-		$model=new People('search');
+		$model=new people('search');
 		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['People']))
-			$model->attributes=$_GET['People'];
+		if(isset($_GET['people']))
+			$model->attributes=$_GET['people'];
 
 		$this->render('admin',array(
 			'model'=>$model,
@@ -264,7 +264,7 @@ class PeopleController extends Controller
 		if($this->_model===null)
 		{
 			if(isset($_GET['id']))
-				$this->_model=People::model()->findbyPk($_GET['id']);
+				$this->_model=people::model()->findbyPk($_GET['id']);
 			if($this->_model===null)
 				throw new CHttpException(404,Language::$pageNoExists);
 		}

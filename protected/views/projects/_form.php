@@ -7,8 +7,8 @@
 $templatesArray = array();
 $templatesArray[Language::$templates] = 'Ninguna';
 
-$user  = People::model()->findByAttributes(array('id'=>Yii::app()->user->id));
-$templates = Templates::model()->findAll('company_id=' . $user->company_id);
+$user  = people::model()->findByAttributes(array('id'=>Yii::app()->user->id));
+$templates = templates::model()->findAll('company_id=' . $user->company_id);
 
 foreach ($templates as $key) {
 	$templatesArray[$key->id] = $key->name;

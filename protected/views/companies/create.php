@@ -4,6 +4,6 @@ $this->breadcrumbs=array(
 );
 ?>
 
-<h1><?php echo Language::$registerCompany; ?></h1>
+<h1><?php echo Language::$registercompany; ?></h1>
 
 <?php echo $this->renderPartial('_registerForm', array('model'=>$model, 'user'=>$user)); ?>

@@ -1,9 +1,9 @@
 <?php
 
 /**
- * This is the model class for table "People".
+ * This is the model class for table "people".
  *
- * The followings are the available columns in table 'People':
+ * The followings are the available columns in table 'people':
  * @property string $id
  * @property string $company_id
  * @property string $first_name
@@ -16,7 +16,7 @@
  * @property string $capabilities
  * @property string $roles
  */
-class People extends CActiveRecord
+class people extends CActiveRecord
 {
 	public $habilitiesArray   = array();
 	public $capabilitiesArray = array();
@@ -60,7 +60,7 @@ class People extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'company' => array(self::BELONGS_TO, 'Companies', 'company_id'),
+			'company' => array(self::BELONGS_TO, 'companies', 'company_id'),
 		);
 	}
 
@@ -125,14 +125,14 @@ class People extends CActiveRecord
 
 		$criteria->compare('roles',$this->roles,true);
 
-		return new CActiveDataProvider('People', array(
+		return new CActiveDataProvider('people', array(
 			'criteria'=>$criteria,
 		));
 	}
 
 	/**
 	 * Returns the static model of the specified AR class.
-	 * @return People the static model class
+	 * @return people the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{

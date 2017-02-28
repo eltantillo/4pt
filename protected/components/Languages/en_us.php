@@ -1,6 +1,6 @@
 <?php
 Language::$project = 'Proyect';
-Language::$people  = 'People';
+Language::$people  = 'people';
 Language::$process = 'Process';
 Language::$product = 'Product';
 Language::$tools   = 'Tools';

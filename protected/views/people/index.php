@@ -11,7 +11,7 @@ $this->menu=array(
 		),
 	/*array(
 		'encodeLabel'=>false,
-		'label' => '<a class="btn btn-success btn-sm" href="' . Yii::app()->baseUrl . '/people/admin" role="button"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> ' . Language::$managePeople . '</a>',
+		'label' => '<a class="btn btn-success btn-sm" href="' . Yii::app()->baseUrl . '/people/admin" role="button"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> ' . Language::$managepeople . '</a>',
 		),*/
 );
 ?>

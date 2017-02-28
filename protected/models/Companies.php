@@ -1,16 +1,16 @@
 <?php
 
 /**
- * This is the model class for table "Companies".
+ * This is the model class for table "companies".
  *
- * The followings are the available columns in table 'Companies':
+ * The followings are the available columns in table 'companies':
  * @property string $id
  * @property string $name
  * @property string $address
  * @property string $phone
  * @property string $language
  */
-class Companies extends CActiveRecord
+class companies extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
@@ -47,9 +47,9 @@ class Companies extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'peoples' => array(self::HAS_MANY, 'People', 'company_id'),
-			'projects' => array(self::HAS_MANY, 'Projects', 'company_id'),
-			'templates' => array(self::HAS_MANY, 'Templates', 'company_id'),
+			'peoples' => array(self::HAS_MANY, 'people', 'company_id'),
+			'projects' => array(self::HAS_MANY, 'projects', 'company_id'),
+			'templates' => array(self::HAS_MANY, 'templates', 'company_id'),
 		);
 	}
 
@@ -95,14 +95,14 @@ class Companies extends CActiveRecord
 
 		$criteria->compare('language',$this->language,true);
 
-		return new CActiveDataProvider('Companies', array(
+		return new CActiveDataProvider('companies', array(
 			'criteria'=>$criteria,
 		));
 	}
 
 	/**
 	 * Returns the static model of the specified AR class.
-	 * @return Companies the static model class
+	 * @return companies the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{

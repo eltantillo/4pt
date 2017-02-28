@@ -103,10 +103,10 @@ class SiteController extends Controller
 	 */
 	public function actionRecover()
 	{
-		$model = new People;
+		$model = new people;
 		$id    = Yii::app()->request->getQuery('id');
 		$token = Yii::app()->request->getQuery('token');
-		$user  = People::model()->findByAttributes(array('id' => $id));
+		$user  = people::model()->findByAttributes(array('id' => $id));
 
 		if(isset($token)){
 			if($token == $user->password){

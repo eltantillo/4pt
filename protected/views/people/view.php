@@ -1,4 +1,4 @@
-<?php
+Compa<?php
 $this->pageTitle=Yii::app()->name . ' - ' . Language::$view . ' ' . $model->email;
 $this->breadcrumbs=array(
 	Language::$people=>array('index'),

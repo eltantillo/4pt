@@ -5,8 +5,8 @@
 	'enableAjaxValidation'=>false,
 ));
 
-$user   = People::model()->findByAttributes(array('id'=>Yii::app()->user->id));
-$people = People::model()->findAll('company_id=' . $user->company_id);
+$user   = people::model()->findByAttributes(array('id'=>Yii::app()->user->id));
+$people = people::model()->findAll('company_id=' . $user->company_id);
 
 ?>
 

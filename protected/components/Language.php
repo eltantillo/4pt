@@ -66,19 +66,19 @@ class Language extends Controller{
 		$products,
 		$tool,
 		$createPerson,
-		$managePeople,
+		$managepeople,
 		$operations,
 		$requiredFields,
 		$delete,
 		$generalInformation,
-		$registerCompany,
+		$registercompany,
 		$deleteConfirm,
 		$duplcateEmail,
 		$emptyValue,
 		$view,
 		$reset,
 		$createProject,
-		$manageProjects,
+		$manageprojects,
 		$level,
 		$template,
 		$basic,
@@ -89,7 +89,7 @@ class Language extends Controller{
 		$createTemplate,
 		$assignRoles,
 		$selectRoles,
-		$assignPeople,
+		$assignpeople,
 		$enterRolesNumbers,
 		$finish,
 		$service,
@@ -99,9 +99,9 @@ class Language extends Controller{
 		$invalidEmail
 		;
 }
-$user = People::model()->findByAttributes(array('id'=>Yii::app()->user->id));
+$user = people::model()->findByAttributes(array('id'=>Yii::app()->user->id));
 if ($user != null){
-	$company = Companies::model()->findByAttributes(array('id'=>$user->company_id));
+	$company = companies::model()->findByAttributes(array('id'=>$user->company_id));
 	Yii::app()->language = $company->language;
 }
 else{

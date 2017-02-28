@@ -1,6 +1,6 @@
 <?php
 
-class CompaniesController extends Controller
+class companiesController extends Controller
 {
 	/**
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
@@ -60,16 +60,16 @@ class CompaniesController extends Controller
 	 */
 	public function actionCreate()
 	{
-		$model = new Companies;
-		$user  = new People;
+		$model = new companies;
+		$user  = new people;
 
 		// Uncomment the following line if AJAX validation is needed
 		$this->performAjaxValidation($model);
 
-		if(isset($_POST['Companies']) && isset($_POST['People']))
+		if(isset($_POST['companies']) && isset($_POST['people']))
 		{
-			$model->attributes=$_POST['Companies'];
-			$user->attributes = $_POST['People'];
+			$model->attributes=$_POST['companies'];
+			$user->attributes = $_POST['people'];
 			$user->first_name = $model->name;
 			$user->password   = md5($user->password);
 			$user->password2  = md5($user->password2);
@@ -103,14 +103,14 @@ class CompaniesController extends Controller
 	/*public function actionUpdate()
 	{
 		$model=$this->loadModel();
-		$sessionUser = People::model()->findByAttributes(array('id'=>Yii::app()->user->id));
+		$sessionUser = people::model()->findByAttributes(array('id'=>Yii::app()->user->id));
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Companies']))
+		if(isset($_POST['companies']))
 		{
-			$model->attributes=$_POST['Companies'];
+			$model->attributes=$_POST['companies'];
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}
@@ -146,7 +146,7 @@ class CompaniesController extends Controller
 	 */
 	/*public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('Companies');
+		$dataProvider=new CActiveDataProvider('companies');
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));
@@ -157,10 +157,10 @@ class CompaniesController extends Controller
 	 */
 	/*public function actionAdmin()
 	{
-		$model=new Companies('search');
+		$model=new companies('search');
 		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['Companies']))
-			$model->attributes=$_GET['Companies'];
+		if(isset($_GET['companies']))
+			$model->attributes=$_GET['companies'];
 
 		$this->render('admin',array(
 			'model'=>$model,
@@ -176,7 +176,7 @@ class CompaniesController extends Controller
 		if($this->_model===null)
 		{
 			if(isset($_GET['id']))
-				$this->_model=Companies::model()->findbyPk($_GET['id']);
+				$this->_model=companies::model()->findbyPk($_GET['id']);
 			if($this->_model===null)
 				throw new CHttpException(404,Language::$pageNoExists);
 		}

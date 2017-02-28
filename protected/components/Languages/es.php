@@ -3,7 +3,7 @@
 Language::$person          = 'Persona';
 Language::$people          = 'Personas';
 Language::$createPerson    = 'Crear Persona';
-Language::$managePeople    = 'Administrar Personas';
+Language::$managepeople    = 'Administrar Personas';
 Language::$firstName       = 'Nombre(s)';
 Language::$middleName      = 'Apellido paterno';
 Language::$lastName        = 'Apellido materno';
@@ -67,12 +67,12 @@ Language::$rolesArray = array(
 Language::$project            = 'Proyecto';
 Language::$projects           = 'Proyectos';
 Language::$createProject      = 'Crear proyecto';
-Language::$manageProjects     = 'Administrar proyectos';
+Language::$manageprojects     = 'Administrar proyectos';
 Language::$updateProject      = 'Actualizar proyecto';
 Language::$enterRolesNumbers  = 'Ingrese la cantidad que necesita para cada uno de los roles de este proyecto.';
 Language::$selectRoles        = 'Seleccionar Roles';
 Language::$assignRoles        = 'Asignar Roles';
-Language::$assignPeople       = 'Asignar Personas';
+Language::$assignpeople       = 'Asignar Personas';
 Language::$title              = 'Título';
 Language::$level              = 'Nivel';
 Language::$template           = 'Plantilla';
@@ -144,7 +144,7 @@ Language::$delete     = 'Borrar';
 
 Language::$fillCredentials    = 'Por favor llene la siguiente forma con sus credenciales:';
 Language::$generalInformation = 'Información general';
-Language::$registerCompany    = 'Registrar compañía';
+Language::$registercompany    = 'Registrar compañía';
 Language::$requiredFields     = 'Los campos marcados con <span class="required">*</span> son obligatorios.';
 Language::$deleteConfirm      = '¿Está seguro que desea borrar este elemento?';
 

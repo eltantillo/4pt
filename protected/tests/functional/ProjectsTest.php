@@ -1,9 +1,9 @@
 <?php
 
-class ProjectsTest extends WebTestCase
+class projectsTest extends WebTestCase
 {
 	public $fixtures=array(
-		'projects'=>'Projects',
+		'projects'=>'projects',
 	);
 
 	public function testShow()

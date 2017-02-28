@@ -95,7 +95,7 @@ class Functions{
 				return Language::$none;
 				break;
 			default:
-				$template = Templates::model()->findByAttributes(array('id'=>$templateId));
+				$template = templates::model()->findByAttributes(array('id'=>$templateId));
 				return $template->name;
 				break;
 		}
@@ -106,8 +106,8 @@ class Functions{
 		$peopleNameAndRole = array();
 		$peoplePreString = array();
 
-		$user   = People::model()->findByAttributes(array('id'=>Yii::app()->user->id));
-		$people = People::model()->findAll('company_id=' . $user->company_id);
+		$user   = people::model()->findByAttributes(array('id'=>Yii::app()->user->id));
+		$people = people::model()->findAll('company_id=' . $user->company_id);
 
 		$rolesArray = explode(',', $rolesString);
 		$peopleArray = explode(',', $peopleString);

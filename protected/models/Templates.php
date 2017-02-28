@@ -1,9 +1,9 @@
 <?php
 
 /**
- * This is the model class for table "Templates".
+ * This is the model class for table "templates".
  *
- * The followings are the available columns in table 'Templates':
+ * The followings are the available columns in table 'templates':
  * @property string $id
  * @property string $company_id
  * @property string $used_times
@@ -23,7 +23,7 @@
  * @property integer $people
  * @property integer $timetable
  */
-class Templates extends CActiveRecord
+class templates extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
@@ -59,7 +59,7 @@ class Templates extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'company' => array(self::BELONGS_TO, 'Companies', 'company_id'),
+			'company' => array(self::BELONGS_TO, 'companies', 'company_id'),
 		);
 	}
 
@@ -144,14 +144,14 @@ class Templates extends CActiveRecord
 
 		$criteria->compare('timetable',$this->timetable);
 
-		return new CActiveDataProvider('Templates', array(
+		return new CActiveDataProvider('templates', array(
 			'criteria'=>$criteria,
 		));
 	}
 
 	/**
 	 * Returns the static model of the specified AR class.
-	 * @return Templates the static model class
+	 * @return templates the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{

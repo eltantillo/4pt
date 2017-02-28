@@ -1,9 +1,9 @@
 <?php
 
-class TemplatesTest extends CDbTestCase
+class templatesTest extends CDbTestCase
 {
 	public $fixtures=array(
-		'templates'=>'Templates',
+		'templates'=>'templates',
 	);
 
 	public function testCreate()

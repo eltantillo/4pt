@@ -1,9 +1,9 @@
 <?php
 
 /**
- * This is the model class for table "Projects".
+ * This is the model class for table "projects".
  *
- * The followings are the available columns in table 'Projects':
+ * The followings are the available columns in table 'projects':
  * @property string $id
  * @property string $company_id
  * @property string $title
@@ -14,7 +14,7 @@
  * @property string $roles
  * @property string $people
  */
-class Projects extends CActiveRecord
+class projects extends CActiveRecord
 {
 	public $rolesArray  = array();
 	public $peopleArray = array();
@@ -54,7 +54,7 @@ class Projects extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'company' => array(self::BELONGS_TO, 'Companies', 'company_id'),
+			'company' => array(self::BELONGS_TO, 'companies', 'company_id'),
 		);
 	}
 
@@ -110,14 +110,14 @@ class Projects extends CActiveRecord
 
 		$criteria->compare('people',$this->people,true);
 
-		return new CActiveDataProvider('Projects', array(
+		return new CActiveDataProvider('projects', array(
 			'criteria'=>$criteria,
 		));
 	}
 
 	/**
 	 * Returns the static model of the specified AR class.
-	 * @return Projects the static model class
+	 * @return projects the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{

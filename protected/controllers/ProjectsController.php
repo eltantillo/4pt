@@ -1,6 +1,6 @@
 <?php
 
-class ProjectsController extends Controller
+class projectsController extends Controller
 {
 	/**
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
@@ -56,15 +56,15 @@ class ProjectsController extends Controller
 	 */
 	public function actionCreate()
 	{
-		$model = new Projects;
-		$user  = People::model()->findByAttributes(array('id'=>Yii::app()->user->id));
+		$model = new projects;
+		$user  = people::model()->findByAttributes(array('id'=>Yii::app()->user->id));
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Projects']))
+		if(isset($_POST['projects']))
 		{
-			$model->attributes = $_POST['Projects'];
+			$model->attributes = $_POST['projects'];
 			$model->company_id = $user->company_id;
 			if($model->save())
 				$this->redirect(array('Roles','ProjectId'=>$model->id));
@@ -77,12 +77,12 @@ class ProjectsController extends Controller
 
 	public function actionRoles()
 	{
-		$model = Projects::model()->findByAttributes(array('id'=>$_GET['ProjectId']));
+		$model = projects::model()->findByAttributes(array('id'=>$_GET['ProjectId']));
 		$roles = "";
 
-		if(isset($_POST['Projects']))
+		if(isset($_POST['projects']))
 		{
-			foreach($_POST['Projects'] as $role_id){
+			foreach($_POST['projects'] as $role_id){
 				for ($i=0; $i < 8 ; $i++) { 
 					if ($role_id[$i] == null){
 						$role_id[$i] = 0;
@@ -93,7 +93,7 @@ class ProjectsController extends Controller
 			
 			$model->roles = $roles;
 			if($model->save())
-				$this->redirect(array('People','ProjectId'=>$model->id));
+				$this->redirect(array('people','ProjectId'=>$model->id));
 		}
 
 		$model->rolesArray = explode(',', $model->roles);
@@ -106,16 +106,16 @@ class ProjectsController extends Controller
 		));
 	}
 
-	public function actionPeople()
+	public function actionpeople()
 	{
-		$model  = Projects::model()->findByAttributes(array('id'=>$_GET['ProjectId']));
+		$model  = projects::model()->findByAttributes(array('id'=>$_GET['ProjectId']));
 		$people = array();
 		$model->rolesArray  = explode(',', $model->roles);
 		$model->peopleArray = explode(',', $model->people);
 
-		if(isset($_POST['Projects']))
+		if(isset($_POST['projects']))
 		{
-			foreach($_POST['Projects'] as $people_id){
+			foreach($_POST['projects'] as $people_id){
 				foreach ($people_id as $key) {
 					array_push($people, $key);
 				}
@@ -143,9 +143,9 @@ class ProjectsController extends Controller
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Projects']))
+		if(isset($_POST['projects']))
 		{
-			$model->attributes=$_POST['Projects'];
+			$model->attributes=$_POST['projects'];
 			if($model->save())
 				$this->redirect(array('Roles','ProjectId'=>$model->id));
 		}
@@ -179,7 +179,7 @@ class ProjectsController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('Projects');
+		$dataProvider=new CActiveDataProvider('projects');
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));
@@ -190,10 +190,10 @@ class ProjectsController extends Controller
 	 */
 	public function actionAdmin()
 	{
-		$model=new Projects('search');
+		$model=new projects('search');
 		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['Projects']))
-			$model->attributes=$_GET['Projects'];
+		if(isset($_GET['projects']))
+			$model->attributes=$_GET['projects'];
 
 		$this->render('admin',array(
 			'model'=>$model,
@@ -206,15 +206,15 @@ class ProjectsController extends Controller
 	 */
 	public function actionCreateTemplate()
 	{
-		$model=new Templates;
-		$user  = People::model()->findByAttributes(array('id'=>Yii::app()->user->id));
+		$model=new templates;
+		$user  = people::model()->findByAttributes(array('id'=>Yii::app()->user->id));
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Templates']))
+		if(isset($_POST['templates']))
 		{
-			$model->attributes=$_POST['Templates'];
+			$model->attributes=$_POST['templates'];
 			$model->company_id = $user->company_id;
 			if($model->save())
 				$this->redirect(array('index'));
@@ -233,7 +233,7 @@ class ProjectsController extends Controller
 		if($this->_model===null)
 		{
 			if(isset($_GET['id']))
-				$this->_model=Projects::model()->findbyPk($_GET['id']);
+				$this->_model=projects::model()->findbyPk($_GET['id']);
 			if($this->_model===null)
 				throw new CHttpException(404,'The requested page does not exist.');
 		}
