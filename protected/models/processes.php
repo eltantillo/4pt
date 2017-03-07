@@ -4,7 +4,7 @@
  * This is the model class for table "processes".
  *
  * The followings are the available columns in table 'processes':
- * @property integer $id
+ * @property string $id
  * @property string $project_id
  */
 class processes extends CActiveRecord
@@ -25,8 +25,7 @@ class processes extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('id, project_id', 'required'),
-			array('id', 'numerical', 'integerOnly'=>true),
+			array('project_id', 'required'),
 			array('project_id', 'length', 'max'=>10),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
@@ -42,18 +41,19 @@ class processes extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'corrective_actions' => array(self::HAS_MANY, 'CorrectiveActions', 'process_id'),
 			'maintenance_manuals' => array(self::HAS_MANY, 'MaintenanceManual', 'processes_id'),
 			'operation_manuals' => array(self::HAS_MANY, 'OperationManual', 'processes_id'),
-			'project' => array(self::BELONGS_TO, 'projects', 'project_id'),
+			'project' => array(self::BELONGS_TO, 'Projects', 'project_id'),
+			'progress_reports' => array(self::HAS_MANY, 'ProgressReport', 'process_id'),
 			'project_closures' => array(self::HAS_MANY, 'ProjectClosure', 'processes_id'),
-			'project_executions' => array(self::HAS_MANY, 'ProjectExecution', 'processes_id'),
 			'project_plans' => array(self::HAS_MANY, 'ProjectPlan', 'process_id'),
 			'software_components' => array(self::HAS_MANY, 'SoftwareComponent', 'processes_id'),
 			'software_designs' => array(self::HAS_MANY, 'SoftwareDesign', 'processes_id'),
 			'software_requirements' => array(self::HAS_MANY, 'SoftwareRequirements', 'processes_id'),
 			'test_reports' => array(self::HAS_MANY, 'TestReport', 'processes_id'),
 			'traceability_records' => array(self::HAS_MANY, 'TraceabilityRecord', 'processes_id'),
-			'user_manuals' => array(self::HAS_MANY, 'UserManual', 'processes_id'),
+			'user_manuals' => array(self::HAS_MANY, 'UserManual', 'process_id'),
 			'work_statements' => array(self::HAS_MANY, 'WorkStatement', 'process_id'),
 		);
 	}
@@ -87,7 +87,7 @@ class processes extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('id',$this->id);
+		$criteria->compare('id',$this->id,true);
 
 		$criteria->compare('project_id',$this->project_id,true);
 

@@ -4,13 +4,13 @@
  * This is the model class for table "minutes".
  *
  * The followings are the available columns in table 'minutes':
- * @property integer $id
- * @property integer $project_plan_id
+ * @property string $id
+ * @property string $project_plan_id
  * @property string $purpose
  * @property string $assistants
  * @property string $date
  * @property string $place
- * @property integer $previous_minute_id
+ * @property string $previous_minute_id
  * @property string $minutescol
  * @property string $issues_raised
  * @property string $open_issues
@@ -36,8 +36,9 @@ class minutes extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('id, project_plan_id, previous_minute_id', 'required'),
-			array('id, project_plan_id, previous_minute_id, client_validated', 'numerical', 'integerOnly'=>true),
+			array('project_plan_id', 'required'),
+			array('client_validated', 'numerical', 'integerOnly'=>true),
+			array('project_plan_id, previous_minute_id', 'length', 'max'=>10),
 			array('minutescol', 'length', 'max'=>45),
 			array('purpose, assistants, date, place, issues_raised, open_issues, agreements, next_meeting', 'safe'),
 			// The following rule is used by search().
@@ -100,9 +101,9 @@ class minutes extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('id',$this->id);
+		$criteria->compare('id',$this->id,true);
 
-		$criteria->compare('project_plan_id',$this->project_plan_id);
+		$criteria->compare('project_plan_id',$this->project_plan_id,true);
 
 		$criteria->compare('purpose',$this->purpose,true);
 
@@ -112,7 +113,7 @@ class minutes extends CActiveRecord
 
 		$criteria->compare('place',$this->place,true);
 
-		$criteria->compare('previous_minute_id',$this->previous_minute_id);
+		$criteria->compare('previous_minute_id',$this->previous_minute_id,true);
 
 		$criteria->compare('minutescol',$this->minutescol,true);
 

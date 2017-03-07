@@ -4,8 +4,8 @@
  * This is the model class for table "corrective_actions".
  *
  * The followings are the available columns in table 'corrective_actions':
- * @property integer $id
- * @property integer $project_execution_id
+ * @property string $id
+ * @property string $process_id
  * @property string $problem
  * @property string $solution
  * @property string $corrective_actions
@@ -32,13 +32,13 @@ class corrective_actions extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('id, project_execution_id, responsible_id', 'required'),
-			array('id, project_execution_id, complete', 'numerical', 'integerOnly'=>true),
-			array('responsible_id', 'length', 'max'=>10),
+			array('process_id, responsible_id', 'required'),
+			array('complete', 'numerical', 'integerOnly'=>true),
+			array('process_id, responsible_id', 'length', 'max'=>10),
 			array('problem, solution, corrective_actions, open_date, close_date', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, project_execution_id, problem, solution, corrective_actions, responsible_id, open_date, close_date, complete', 'safe', 'on'=>'search'),
+			array('id, process_id, problem, solution, corrective_actions, responsible_id, open_date, close_date, complete', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -50,8 +50,8 @@ class corrective_actions extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'responsible' => array(self::BELONGS_TO, 'people', 'responsible_id'),
-			'project_execution' => array(self::BELONGS_TO, 'ProjectExecution', 'project_execution_id'),
+			'responsible' => array(self::BELONGS_TO, 'People', 'responsible_id'),
+			'process' => array(self::BELONGS_TO, 'Processes', 'process_id'),
 		);
 	}
 
@@ -62,7 +62,7 @@ class corrective_actions extends CActiveRecord
 	{
 		return array(
 			'id' => 'Id',
-			'project_execution_id' => 'Project Execution',
+			'process_id' => 'Process',
 			'problem' => 'Problem',
 			'solution' => 'Solution',
 			'corrective_actions' => 'Corrective Actions',
@@ -91,9 +91,9 @@ class corrective_actions extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('id',$this->id);
+		$criteria->compare('id',$this->id,true);
 
-		$criteria->compare('project_execution_id',$this->project_execution_id);
+		$criteria->compare('process_id',$this->process_id,true);
 
 		$criteria->compare('problem',$this->problem,true);
 

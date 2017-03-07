@@ -5,7 +5,7 @@ return array(
 	'sample1'=>array(
 		'company_id' => '',
 		'used_times' => '',
-		'title' => '',
+		'name' => '',
 		'scope' => '',
 		'communication_plan' => '',
 		'general_purpose' => '',
@@ -24,7 +24,7 @@ return array(
 	'sample2'=>array(
 		'company_id' => '',
 		'used_times' => '',
-		'title' => '',
+		'name' => '',
 		'scope' => '',
 		'communication_plan' => '',
 		'general_purpose' => '',

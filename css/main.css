@@ -14,3 +14,8 @@ span.required {
 .operations li{
 	display: inline-block;
 }
+
+.gi {
+    font-size: 50px;
+    padding-top: 25px;
+}

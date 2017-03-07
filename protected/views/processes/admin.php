@@ -1,6 +1,7 @@
 <?php
 $this->breadcrumbs=array(
 	'Processes'=>array('index'),
+	'Project'=>array($_GET['id']),
 	'Manage',
 );
 

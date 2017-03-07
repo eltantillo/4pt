@@ -4,8 +4,8 @@
  * This is the model class for table "project_plan".
  *
  * The followings are the available columns in table 'project_plan':
- * @property integer $id
- * @property integer $process_id
+ * @property string $id
+ * @property string $process_id
  * @property integer $project_manager_validated
  * @property integer $technical_leader_validated
  */
@@ -27,8 +27,9 @@ class project_plan extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('id, process_id', 'required'),
-			array('id, process_id, project_manager_validated, technical_leader_validated', 'numerical', 'integerOnly'=>true),
+			array('process_id', 'required'),
+			array('project_manager_validated, technical_leader_validated', 'numerical', 'integerOnly'=>true),
+			array('process_id', 'length', 'max'=>10),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('id, process_id, project_manager_validated, technical_leader_validated', 'safe', 'on'=>'search'),
@@ -82,9 +83,9 @@ class project_plan extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('id',$this->id);
+		$criteria->compare('id',$this->id,true);
 
-		$criteria->compare('process_id',$this->process_id);
+		$criteria->compare('process_id',$this->process_id,true);
 
 		$criteria->compare('project_manager_validated',$this->project_manager_validated);
 

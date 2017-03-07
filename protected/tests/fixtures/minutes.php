@@ -3,7 +3,6 @@
 return array(
 	/*
 	'sample1'=>array(
-		'id' => '',
 		'project_plan_id' => '',
 		'purpose' => '',
 		'assistants' => '',
@@ -18,7 +17,6 @@ return array(
 		'client_validated' => '',
 	),
 	'sample2'=>array(
-		'id' => '',
 		'project_plan_id' => '',
 		'purpose' => '',
 		'assistants' => '',

@@ -9,26 +9,20 @@
 
 	<?php echo $form->errorSummary($model); ?>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'project_plan_id'); ?>
-		<?php echo $form->textField($model,'project_plan_id'); ?>
-		<?php echo $form->error($model,'project_plan_id'); ?>
-	</div>
-
-	<div class="row">
+	<div class="form-group">
 		<?php echo $form->labelEx($model,'risk'); ?>
-		<?php echo $form->textArea($model,'risk',array('rows'=>6, 'cols'=>50)); ?>
+		<?php echo $form->textArea($model,'risk',array('rows'=>6, 'cols'=>50, 'class'=>'form-control')); ?>
 		<?php echo $form->error($model,'risk'); ?>
 	</div>
 
-	<div class="row">
+	<div class="form-group">
 		<?php echo $form->labelEx($model,'cost'); ?>
-		<?php echo $form->textField($model,'cost'); ?>
+		<?php echo $form->textField($model,'cost', array('class'=>'form-control')); ?>
 		<?php echo $form->error($model,'cost'); ?>
 	</div>
 
-	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
+	<div class="form-group buttons">
+		<?php echo CHtml::submitButton($model->isNewRecord ? Language::$create : Language::$update, array('type'=>'submit', 'class'=>'btn btn-success')); ?>
 	</div>
 
 <?php $this->endWidget(); ?>

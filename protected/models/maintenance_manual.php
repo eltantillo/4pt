@@ -4,8 +4,8 @@
  * This is the model class for table "maintenance_manual".
  *
  * The followings are the available columns in table 'maintenance_manual':
- * @property integer $id
- * @property integer $processes_id
+ * @property string $id
+ * @property string $process_id
  * @property string $enviroment
  */
 class maintenance_manual extends CActiveRecord
@@ -26,12 +26,12 @@ class maintenance_manual extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('id, processes_id', 'required'),
-			array('id, processes_id', 'numerical', 'integerOnly'=>true),
+			array('process_id', 'required'),
+			array('process_id', 'length', 'max'=>10),
 			array('enviroment', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, processes_id, enviroment', 'safe', 'on'=>'search'),
+			array('id, process_id, enviroment', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -43,7 +43,7 @@ class maintenance_manual extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'processes' => array(self::BELONGS_TO, 'Processes', 'processes_id'),
+			'process' => array(self::BELONGS_TO, 'Processes', 'process_id'),
 		);
 	}
 
@@ -54,7 +54,7 @@ class maintenance_manual extends CActiveRecord
 	{
 		return array(
 			'id' => 'Id',
-			'processes_id' => 'Processes',
+			'process_id' => 'Process',
 			'enviroment' => 'Enviroment',
 		);
 	}
@@ -77,9 +77,9 @@ class maintenance_manual extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('id',$this->id);
+		$criteria->compare('id',$this->id,true);
 
-		$criteria->compare('processes_id',$this->processes_id);
+		$criteria->compare('process_id',$this->process_id,true);
 
 		$criteria->compare('enviroment',$this->enviroment,true);
 

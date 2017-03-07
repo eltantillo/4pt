@@ -3,7 +3,6 @@
 return array(
 	/*
 	'sample1'=>array(
-		'id' => '',
 		'processes_id' => '',
 		'user_procedure' => '',
 		'installation_procedure' => '',
@@ -15,7 +14,6 @@ return array(
 		'messages' => '',
 	),
 	'sample2'=>array(
-		'id' => '',
 		'processes_id' => '',
 		'user_procedure' => '',
 		'installation_procedure' => '',

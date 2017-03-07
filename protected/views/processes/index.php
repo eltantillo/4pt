@@ -8,9 +8,9 @@ $this->breadcrumbs=array(
 
 <?php 
 foreach ($projects as $project) {
-	echo '<a href="processes/' . $project->id . '">';
+	echo '<a href="' . Yii::app()->request->baseUrl . '/processes/' . $project->id . '">';
 	echo $project->title;
-	echo ' (' . $project->acronym . ')</a>';
+	echo ' (' . $project->acronym . ')</a><br>';
 }
 ?>
 

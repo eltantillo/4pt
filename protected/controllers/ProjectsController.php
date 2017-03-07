@@ -66,7 +66,16 @@ class projectsController extends Controller
 		{
 			$model->attributes = $_POST['projects'];
 			$model->company_id = $user->company_id;
+			if ($model->template == 0){
+				$model->template = null;
+			}
 			if($model->save())
+				$process = new processes;
+				$process->project_id = $model->id;
+				$process->save();
+				$project = new project_plan;
+				$project->process_id = $process->id;
+				$project->save();
 				$this->redirect(array('Roles','ProjectId'=>$model->id));
 		}
 

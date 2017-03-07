@@ -4,8 +4,8 @@
  * This is the model class for table "delivery_instructions".
  *
  * The followings are the available columns in table 'delivery_instructions':
- * @property integer $id
- * @property integer $project_plan_id
+ * @property string $id
+ * @property string $project_plan_id
  * @property string $release_requirements
  * @property string $delivery_requirements
  */
@@ -27,8 +27,8 @@ class delivery_instructions extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('id, project_plan_id', 'required'),
-			array('id, project_plan_id', 'numerical', 'integerOnly'=>true),
+			array('project_plan_id', 'required'),
+			array('project_plan_id', 'length', 'max'=>10),
 			array('release_requirements, delivery_requirements', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
@@ -79,9 +79,9 @@ class delivery_instructions extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('id',$this->id);
+		$criteria->compare('id',$this->id,true);
 
-		$criteria->compare('project_plan_id',$this->project_plan_id);
+		$criteria->compare('project_plan_id',$this->project_plan_id,true);
 
 		$criteria->compare('release_requirements',$this->release_requirements,true);
 

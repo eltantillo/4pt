@@ -7,9 +7,22 @@
 		<meta name="language" content="en">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 
+		<!-- CSS
+		================================================== -->
 		<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/bootstrap.min.css">
 		<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/bootstrap-theme.min.css">
+		<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/bootstrap-datetimepicker.css">
 		<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/main.css">
+
+		<!-- JavaScript
+		================================================== -->
+		<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery.min.js"></script>
+		<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/moment.min.js"></script>
+		<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/transition.js"></script>
+		<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/collapse.js"></script>
+		<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/bootstrap.min.js"></script>
+		<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/bootstrap-datetimepicker.min.js"></script>
+		<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/main.js"></script>
 
 		<title><?php echo CHtml::encode($this->pageTitle); ?></title>
 	</head>
@@ -58,13 +71,5 @@
 			<?php echo $content; ?>
 
 		</div><!-- /.container -->
-
-
-		<!-- Bootstrap core JavaScript
-		================================================== -->
-		<!-- Placed at the end of the document so the pages load faster -->
-		<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery.min.js"></script>
-		<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/bootstrap.min.js"></script>
-		<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/main.js"></script>
 	</body>
 </html>

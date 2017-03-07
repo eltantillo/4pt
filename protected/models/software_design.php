@@ -4,8 +4,8 @@
  * This is the model class for table "software_design".
  *
  * The followings are the available columns in table 'software_design':
- * @property integer $id
- * @property integer $processes_id
+ * @property string $id
+ * @property string $process_id
  * @property string $high_lvl_design
  * @property string $low_lvl_design
  */
@@ -27,12 +27,12 @@ class software_design extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('id, processes_id', 'required'),
-			array('id, processes_id', 'numerical', 'integerOnly'=>true),
+			array('process_id', 'required'),
+			array('process_id', 'length', 'max'=>10),
 			array('high_lvl_design, low_lvl_design', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, processes_id, high_lvl_design, low_lvl_design', 'safe', 'on'=>'search'),
+			array('id, process_id, high_lvl_design, low_lvl_design', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -44,7 +44,7 @@ class software_design extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'processes' => array(self::BELONGS_TO, 'Processes', 'processes_id'),
+			'process' => array(self::BELONGS_TO, 'Processes', 'process_id'),
 		);
 	}
 
@@ -55,7 +55,7 @@ class software_design extends CActiveRecord
 	{
 		return array(
 			'id' => 'Id',
-			'processes_id' => 'Processes',
+			'process_id' => 'Process',
 			'high_lvl_design' => 'High Lvl Design',
 			'low_lvl_design' => 'Low Lvl Design',
 		);
@@ -79,9 +79,9 @@ class software_design extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('id',$this->id);
+		$criteria->compare('id',$this->id,true);
 
-		$criteria->compare('processes_id',$this->processes_id);
+		$criteria->compare('process_id',$this->process_id,true);
 
 		$criteria->compare('high_lvl_design',$this->high_lvl_design,true);
 

@@ -4,8 +4,8 @@
  * This is the model class for table "tasks".
  *
  * The followings are the available columns in table 'tasks':
- * @property integer $id
- * @property integer $project_plan_id
+ * @property string $id
+ * @property string $project_plan_id
  * @property string $task
  * @property double $duration
  * @property string $start_date
@@ -30,10 +30,9 @@ class tasks extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('id, project_plan_id, people_id', 'required'),
-			array('id, project_plan_id', 'numerical', 'integerOnly'=>true),
+			array('project_plan_id, people_id', 'required'),
 			array('duration, resources', 'numerical'),
-			array('people_id', 'length', 'max'=>10),
+			array('project_plan_id, people_id', 'length', 'max'=>10),
 			array('task, start_date', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
@@ -49,7 +48,7 @@ class tasks extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'people' => array(self::BELONGS_TO, 'people', 'people_id'),
+			'people' => array(self::BELONGS_TO, 'People', 'people_id'),
 			'project_plan' => array(self::BELONGS_TO, 'ProjectPlan', 'project_plan_id'),
 		);
 	}
@@ -66,7 +65,7 @@ class tasks extends CActiveRecord
 			'duration' => 'Duration',
 			'start_date' => 'Start Date',
 			'resources' => 'Resources',
-			'people_id' => 'people',
+			'people_id' => 'People',
 		);
 	}
 
@@ -88,9 +87,9 @@ class tasks extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('id',$this->id);
+		$criteria->compare('id',$this->id,true);
 
-		$criteria->compare('project_plan_id',$this->project_plan_id);
+		$criteria->compare('project_plan_id',$this->project_plan_id,true);
 
 		$criteria->compare('task',$this->task,true);
 

@@ -4,8 +4,8 @@
  * This is the model class for table "test_report".
  *
  * The followings are the available columns in table 'test_report':
- * @property integer $id
- * @property integer $processes_id
+ * @property string $id
+ * @property string $process_id
  * @property string $resume
  * @property string $test_case
  * @property string $tester_id
@@ -33,13 +33,12 @@ class test_report extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('id, processes_id, tester_id, solver_id', 'required'),
-			array('id, processes_id', 'numerical', 'integerOnly'=>true),
-			array('tester_id, solver_id', 'length', 'max'=>10),
+			array('process_id, tester_id, solver_id', 'required'),
+			array('process_id, tester_id, solver_id', 'length', 'max'=>10),
 			array('resume, test_case, defect_level, affected_functions, origin_date, resolution_date', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, processes_id, resume, test_case, tester_id, defect_level, affected_functions, origin_date, resolution_date, solver_id', 'safe', 'on'=>'search'),
+			array('id, process_id, resume, test_case, tester_id, defect_level, affected_functions, origin_date, resolution_date, solver_id', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -51,9 +50,9 @@ class test_report extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'tester' => array(self::BELONGS_TO, 'people', 'tester_id'),
-			'solver' => array(self::BELONGS_TO, 'people', 'solver_id'),
-			'processes' => array(self::BELONGS_TO, 'Processes', 'processes_id'),
+			'tester' => array(self::BELONGS_TO, 'People', 'tester_id'),
+			'solver' => array(self::BELONGS_TO, 'People', 'solver_id'),
+			'process' => array(self::BELONGS_TO, 'Processes', 'process_id'),
 		);
 	}
 
@@ -64,7 +63,7 @@ class test_report extends CActiveRecord
 	{
 		return array(
 			'id' => 'Id',
-			'processes_id' => 'Processes',
+			'process_id' => 'Process',
 			'resume' => 'Resume',
 			'test_case' => 'Test Case',
 			'tester_id' => 'Tester',
@@ -94,9 +93,9 @@ class test_report extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('id',$this->id);
+		$criteria->compare('id',$this->id,true);
 
-		$criteria->compare('processes_id',$this->processes_id);
+		$criteria->compare('process_id',$this->process_id,true);
 
 		$criteria->compare('resume',$this->resume,true);
 

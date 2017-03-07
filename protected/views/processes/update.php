@@ -1,6 +1,7 @@
 <?php
 $this->breadcrumbs=array(
 	'Processes'=>array('index'),
+	'Project'=>array($_GET['id']),
 	$model->id=>array('view','id'=>$model->id),
 	'Update',
 );

@@ -4,8 +4,8 @@
  * This is the model class for table "traceability_record".
  *
  * The followings are the available columns in table 'traceability_record':
- * @property integer $id
- * @property integer $processes_id
+ * @property string $id
+ * @property string $process_id
  * @property string $traceability_recordcol
  * @property string $traceability_recordcol1
  */
@@ -27,13 +27,13 @@ class traceability_record extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('id, processes_id', 'required'),
-			array('id, processes_id', 'numerical', 'integerOnly'=>true),
+			array('process_id', 'required'),
+			array('process_id', 'length', 'max'=>10),
 			array('traceability_recordcol1', 'length', 'max'=>45),
 			array('traceability_recordcol', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, processes_id, traceability_recordcol, traceability_recordcol1', 'safe', 'on'=>'search'),
+			array('id, process_id, traceability_recordcol, traceability_recordcol1', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -45,7 +45,7 @@ class traceability_record extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'processes' => array(self::BELONGS_TO, 'Processes', 'processes_id'),
+			'process' => array(self::BELONGS_TO, 'Processes', 'process_id'),
 		);
 	}
 
@@ -56,7 +56,7 @@ class traceability_record extends CActiveRecord
 	{
 		return array(
 			'id' => 'Id',
-			'processes_id' => 'Processes',
+			'process_id' => 'Process',
 			'traceability_recordcol' => 'Traceability Recordcol',
 			'traceability_recordcol1' => 'Traceability Recordcol1',
 		);
@@ -80,9 +80,9 @@ class traceability_record extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('id',$this->id);
+		$criteria->compare('id',$this->id,true);
 
-		$criteria->compare('processes_id',$this->processes_id);
+		$criteria->compare('process_id',$this->process_id,true);
 
 		$criteria->compare('traceability_recordcol',$this->traceability_recordcol,true);
 

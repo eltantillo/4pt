@@ -4,8 +4,8 @@
  * This is the model class for table "software_requirements".
  *
  * The followings are the available columns in table 'software_requirements':
- * @property integer $id
- * @property integer $processes_id
+ * @property string $id
+ * @property string $process_id
  * @property string $introduction
  * @property string $user_interface
  * @property string $external_interfaces
@@ -35,12 +35,12 @@ class software_requirements extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('id, processes_id', 'required'),
-			array('id, processes_id', 'numerical', 'integerOnly'=>true),
+			array('process_id', 'required'),
+			array('process_id', 'length', 'max'=>10),
 			array('introduction, user_interface, external_interfaces, reliability, efficiency, maintenance, portability, interoperability, reuse, legal', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, processes_id, introduction, user_interface, external_interfaces, reliability, efficiency, maintenance, portability, interoperability, reuse, legal', 'safe', 'on'=>'search'),
+			array('id, process_id, introduction, user_interface, external_interfaces, reliability, efficiency, maintenance, portability, interoperability, reuse, legal', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -54,7 +54,7 @@ class software_requirements extends CActiveRecord
 		return array(
 			'design_restrictions' => array(self::HAS_MANY, 'DesignRestrictions', 'software_requirements_id'),
 			'functionalities' => array(self::HAS_MANY, 'Functionality', 'software_requirements_id'),
-			'processes' => array(self::BELONGS_TO, 'Processes', 'processes_id'),
+			'process' => array(self::BELONGS_TO, 'Processes', 'process_id'),
 		);
 	}
 
@@ -65,7 +65,7 @@ class software_requirements extends CActiveRecord
 	{
 		return array(
 			'id' => 'Id',
-			'processes_id' => 'Processes',
+			'process_id' => 'Process',
 			'introduction' => 'Introduction',
 			'user_interface' => 'User Interface',
 			'external_interfaces' => 'External Interfaces',
@@ -97,9 +97,9 @@ class software_requirements extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('id',$this->id);
+		$criteria->compare('id',$this->id,true);
 
-		$criteria->compare('processes_id',$this->processes_id);
+		$criteria->compare('process_id',$this->process_id,true);
 
 		$criteria->compare('introduction',$this->introduction,true);
 

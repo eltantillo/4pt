@@ -3,8 +3,7 @@
 return array(
 	/*
 	'sample1'=>array(
-		'id' => '',
-		'processes_id' => '',
+		'process_id' => '',
 		'introduction' => '',
 		'user_interface' => '',
 		'external_interfaces' => '',
@@ -17,8 +16,7 @@ return array(
 		'legal' => '',
 	),
 	'sample2'=>array(
-		'id' => '',
-		'processes_id' => '',
+		'process_id' => '',
 		'introduction' => '',
 		'user_interface' => '',
 		'external_interfaces' => '',

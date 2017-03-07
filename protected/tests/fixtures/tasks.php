@@ -3,7 +3,6 @@
 return array(
 	/*
 	'sample1'=>array(
-		'id' => '',
 		'project_plan_id' => '',
 		'task' => '',
 		'duration' => '',
@@ -12,7 +11,6 @@ return array(
 		'people_id' => '',
 	),
 	'sample2'=>array(
-		'id' => '',
 		'project_plan_id' => '',
 		'task' => '',
 		'duration' => '',

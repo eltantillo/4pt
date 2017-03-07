@@ -3,8 +3,7 @@
 return array(
 	/*
 	'sample1'=>array(
-		'id' => '',
-		'project_execution_id' => '',
+		'process_id' => '',
 		'problem' => '',
 		'solution' => '',
 		'corrective_actions' => '',
@@ -14,8 +13,7 @@ return array(
 		'complete' => '',
 	),
 	'sample2'=>array(
-		'id' => '',
-		'project_execution_id' => '',
+		'process_id' => '',
 		'problem' => '',
 		'solution' => '',
 		'corrective_actions' => '',

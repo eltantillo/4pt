@@ -6,12 +6,13 @@
 )); ?>
 
 	<?php echo $form->errorSummary($model); ?>
-
-	<div class="form-group">
-		<?php echo $form->labelEx($model,'process_id'); ?>
-		<?php echo $form->textField($model,'process_id',array('class'=>'form-control')); ?>
-		<?php echo $form->error($model,'process_id'); ?>
-	</div>
+	
+	<?php
+		if ($model->change_request_details != null){
+			echo '<div class="alert alert-warning">' . $model->change_request_details . '</div>';
+		}
+	?>
+	
 
 	<div class="form-group">
 		<?php echo $form->labelEx($model,'product_description'); ?>
@@ -38,37 +39,12 @@
 	</div>
 
 	<div class="form-group">
+		<?php echo $form->checkBox($model,'sent'); ?>
 		<?php echo $form->labelEx($model,'sent'); ?>
-		<?php echo $form->textField($model,'sent',array('class'=>'form-control')); ?>
-		<?php echo $form->error($model,'sent'); ?>
-	</div>
-
-	<div class="form-group">
-		<?php echo $form->labelEx($model,'project_manager_validated'); ?>
-		<?php echo $form->textField($model,'project_manager_validated',array('class'=>'form-control')); ?>
-		<?php echo $form->error($model,'project_manager_validated'); ?>
-	</div>
-
-	<div class="form-group">
-		<?php echo $form->labelEx($model,'technical_leader_validated'); ?>
-		<?php echo $form->textField($model,'technical_leader_validated',array('class'=>'form-control')); ?>
-		<?php echo $form->error($model,'technical_leader_validated'); ?>
-	</div>
-
-	<div class="form-group">
-		<?php echo $form->labelEx($model,'change_request'); ?>
-		<?php echo $form->textField($model,'change_request',array('class'=>'form-control')); ?>
-		<?php echo $form->error($model,'change_request'); ?>
-	</div>
-
-	<div class="form-group">
-		<?php echo $form->labelEx($model,'change_request_details'); ?>
-		<?php echo $form->textArea($model,'change_request_details',array('rows'=>6, 'cols'=>50, 'class'=>'form-control')); ?>
-		<?php echo $form->error($model,'change_request_details'); ?>
 	</div>
 
 	<div class="form-group buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
+		<?php echo CHtml::submitButton($model->isNewRecord ? Language::$create : Language::$update, array('type'=>'submit', 'class'=>'btn btn-success')); ?>
 	</div>
 
 <?php $this->endWidget(); ?>

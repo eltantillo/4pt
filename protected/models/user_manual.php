@@ -4,8 +4,8 @@
  * This is the model class for table "user_manual".
  *
  * The followings are the available columns in table 'user_manual':
- * @property integer $id
- * @property integer $processes_id
+ * @property string $id
+ * @property string $processes_id
  * @property string $user_procedure
  * @property string $installation_procedure
  * @property string $product_description
@@ -33,8 +33,8 @@ class user_manual extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('id, processes_id', 'required'),
-			array('id, processes_id', 'numerical', 'integerOnly'=>true),
+			array('processes_id', 'required'),
+			array('processes_id', 'length', 'max'=>10),
 			array('user_procedure, installation_procedure, product_description, provided_resources, required_enviroment, problems_report, enter_procedure, messages', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
@@ -91,9 +91,9 @@ class user_manual extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('id',$this->id);
+		$criteria->compare('id',$this->id,true);
 
-		$criteria->compare('processes_id',$this->processes_id);
+		$criteria->compare('processes_id',$this->processes_id,true);
 
 		$criteria->compare('user_procedure',$this->user_procedure,true);
 

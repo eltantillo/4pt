@@ -4,8 +4,8 @@
  * This is the model class for table "work_statement".
  *
  * The followings are the available columns in table 'work_statement':
- * @property integer $id
- * @property integer $process_id
+ * @property string $id
+ * @property string $process_id
  * @property string $product_description
  * @property string $scope
  * @property string $objectives
@@ -35,7 +35,8 @@ class work_statement extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('process_id', 'required'),
-			array('process_id, sent, project_manager_validated, technical_leader_validated, change_request', 'numerical', 'integerOnly'=>true),
+			array('sent, project_manager_validated, technical_leader_validated, change_request', 'numerical', 'integerOnly'=>true),
+			array('process_id', 'length', 'max'=>10),
 			array('product_description, scope, objectives, deliverables, change_request_details', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
@@ -93,9 +94,9 @@ class work_statement extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('id',$this->id);
+		$criteria->compare('id',$this->id,true);
 
-		$criteria->compare('process_id',$this->process_id);
+		$criteria->compare('process_id',$this->process_id,true);
 
 		$criteria->compare('product_description',$this->product_description,true);
 

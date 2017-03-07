@@ -4,8 +4,8 @@
  * This is the model class for table "functionality".
  *
  * The followings are the available columns in table 'functionality':
- * @property integer $id
- * @property integer $software_requirements_id
+ * @property string $id
+ * @property string $software_requirements_id
  * @property string $description
  */
 class functionality extends CActiveRecord
@@ -26,8 +26,8 @@ class functionality extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('id, software_requirements_id', 'required'),
-			array('id, software_requirements_id', 'numerical', 'integerOnly'=>true),
+			array('software_requirements_id', 'required'),
+			array('software_requirements_id', 'length', 'max'=>10),
 			array('description', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
@@ -77,9 +77,9 @@ class functionality extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('id',$this->id);
+		$criteria->compare('id',$this->id,true);
 
-		$criteria->compare('software_requirements_id',$this->software_requirements_id);
+		$criteria->compare('software_requirements_id',$this->software_requirements_id,true);
 
 		$criteria->compare('description',$this->description,true);
 

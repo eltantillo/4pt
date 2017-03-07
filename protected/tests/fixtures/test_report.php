@@ -3,8 +3,7 @@
 return array(
 	/*
 	'sample1'=>array(
-		'id' => '',
-		'processes_id' => '',
+		'process_id' => '',
 		'resume' => '',
 		'test_case' => '',
 		'tester_id' => '',
@@ -15,8 +14,7 @@ return array(
 		'solver_id' => '',
 	),
 	'sample2'=>array(
-		'id' => '',
-		'processes_id' => '',
+		'process_id' => '',
 		'resume' => '',
 		'test_case' => '',
 		'tester_id' => '',
