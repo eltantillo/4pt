@@ -1,0 +1,22 @@
+tareas mostrar toda la informacion en la vista previa
+ABC tareas, riesgos y minutas
+
+en delibery instructions los delibery requirements son elementos en una checklist
+las minutas la crea el GP y la valida CL
+Todos pueden crear reporte de avance excepto el cliente
+
+Especificacion de requisitos (Analista y Cliente)
+Manual de Usuario (Analista)
+Diseño de software (Analista y diseñador)
+Registro de trazabilidad (Analista y diseñador)
+Manual de operacion (PROGRAMADOR)
+manual de mantenimiento (Programador)
+componente de software (Programador)
+Reporte de pruebas (Programador y cliente)
+
+(Lider técnico y Gestor de Proyecto validan todo!)
+
+agregar 2 campos :
+	archivo
+	titulo
+	descripción
