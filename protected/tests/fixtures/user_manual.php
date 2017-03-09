@@ -3,7 +3,7 @@
 return array(
 	/*
 	'sample1'=>array(
-		'processes_id' => '',
+		'process_id' => '',
 		'user_procedure' => '',
 		'installation_procedure' => '',
 		'product_description' => '',
@@ -12,9 +12,14 @@ return array(
 		'problems_report' => '',
 		'enter_procedure' => '',
 		'messages' => '',
+		'sent' => '',
+		'project_manager_validated' => '',
+		'technical_leader_validated' => '',
+		'change_request' => '',
+		'change_request_details' => '',
 	),
 	'sample2'=>array(
-		'processes_id' => '',
+		'process_id' => '',
 		'user_procedure' => '',
 		'installation_procedure' => '',
 		'product_description' => '',
@@ -23,6 +28,11 @@ return array(
 		'problems_report' => '',
 		'enter_procedure' => '',
 		'messages' => '',
+		'sent' => '',
+		'project_manager_validated' => '',
+		'technical_leader_validated' => '',
+		'change_request' => '',
+		'change_request_details' => '',
 	),
 	*/
 );

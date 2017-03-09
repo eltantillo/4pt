@@ -169,6 +169,7 @@ DROP TABLE IF EXISTS `4pt`.`project_plan` ;
 CREATE TABLE IF NOT EXISTS `4pt`.`project_plan` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `process_id` INT UNSIGNED NOT NULL,
+  `sent` TINYINT(1) NULL DEFAULT NULL,
   `project_manager_validated` TINYINT(1) NULL DEFAULT NULL,
   `technical_leader_validated` TINYINT(1) NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
@@ -266,11 +267,11 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `4pt`.`progress_report`
+-- Table `4pt`.`progress_reports`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `4pt`.`progress_report` ;
+DROP TABLE IF EXISTS `4pt`.`progress_reports` ;
 
-CREATE TABLE IF NOT EXISTS `4pt`.`progress_report` (
+CREATE TABLE IF NOT EXISTS `4pt`.`progress_reports` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `process_id` INT UNSIGNED NOT NULL,
   `task_status` TEXT NULL DEFAULT NULL,
@@ -281,8 +282,8 @@ CREATE TABLE IF NOT EXISTS `4pt`.`progress_report` (
   `risks_status` TEXT NULL DEFAULT NULL,
   `deviations_record` TEXT NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
-  INDEX `fk_progress_report_processes1_idx` (`process_id` ASC),
-  CONSTRAINT `fk_progress_report_processes1`
+  INDEX `fk_progress_reports_processes1_idx` (`process_id` ASC),
+  CONSTRAINT `fk_progress_reports_processes1`
     FOREIGN KEY (`process_id`)
     REFERENCES `4pt`.`processes` (`id`)
     ON DELETE NO ACTION
@@ -301,7 +302,7 @@ CREATE TABLE IF NOT EXISTS `4pt`.`corrective_actions` (
   `problem` TEXT NULL DEFAULT NULL,
   `solution` TEXT NULL DEFAULT NULL,
   `corrective_actions` TEXT NULL DEFAULT NULL,
-  `responsible_id` INT UNSIGNED NOT NULL,
+  `responsible_id` INT UNSIGNED NULL,
   `open_date` DATETIME NULL DEFAULT NULL,
   `close_date` DATETIME NULL DEFAULT NULL,
   `complete` TINYINT(1) NULL DEFAULT NULL,
@@ -363,6 +364,11 @@ CREATE TABLE IF NOT EXISTS `4pt`.`software_requirements` (
   `interoperability` TEXT NULL DEFAULT NULL,
   `reuse` TEXT NULL DEFAULT NULL,
   `legal` TEXT NULL DEFAULT NULL,
+  `sent` TINYINT(1) NULL DEFAULT NULL,
+  `project_manager_validated` TINYINT(1) NULL DEFAULT NULL,
+  `technical_leader_validated` TINYINT(1) NULL DEFAULT NULL,
+  `change_request` TINYINT(1) NULL DEFAULT NULL,
+  `change_request_details` TEXT NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_software_requirements_processes1_idx` (`process_id` ASC),
   CONSTRAINT `fk_software_requirements_processes1`
@@ -421,6 +427,11 @@ CREATE TABLE IF NOT EXISTS `4pt`.`software_design` (
   `process_id` INT UNSIGNED NOT NULL,
   `high_lvl_design` TEXT NULL DEFAULT NULL,
   `low_lvl_design` TEXT NULL DEFAULT NULL,
+  `sent` TINYINT(1) NULL DEFAULT NULL,
+  `project_manager_validated` TINYINT(1) NULL DEFAULT NULL,
+  `technical_leader_validated` TINYINT(1) NULL DEFAULT NULL,
+  `change_request` TINYINT(1) NULL DEFAULT NULL,
+  `change_request_details` TEXT NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_software_design_processes1_idx` (`process_id` ASC),
   CONSTRAINT `fk_software_design_processes1`
@@ -441,6 +452,11 @@ CREATE TABLE IF NOT EXISTS `4pt`.`traceability_record` (
   `process_id` INT UNSIGNED NOT NULL,
   `traceability_recordcol` TEXT NULL DEFAULT NULL,
   `traceability_recordcol1` VARCHAR(45) NULL DEFAULT NULL,
+  `sent` TINYINT(1) NULL DEFAULT NULL,
+  `project_manager_validated` TINYINT(1) NULL DEFAULT NULL,
+  `technical_leader_validated` TINYINT(1) NULL DEFAULT NULL,
+  `change_request` TINYINT(1) NULL DEFAULT NULL,
+  `change_request_details` TEXT NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_traceability_record_processes1_idx` (`process_id` ASC),
   CONSTRAINT `fk_traceability_record_processes1`
@@ -467,6 +483,11 @@ CREATE TABLE IF NOT EXISTS `4pt`.`operation_manual` (
   `aditional_sources` TEXT NULL DEFAULT NULL,
   `security_certification` TEXT NULL DEFAULT NULL,
   `guaranty` TEXT NULL DEFAULT NULL,
+  `sent` TINYINT(1) NULL DEFAULT NULL,
+  `project_manager_validated` TINYINT(1) NULL DEFAULT NULL,
+  `technical_leader_validated` TINYINT(1) NULL DEFAULT NULL,
+  `change_request` TINYINT(1) NULL DEFAULT NULL,
+  `change_request_details` TEXT NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_operation_manual_processes1_idx` (`process_id` ASC),
   CONSTRAINT `fk_operation_manual_processes1`
@@ -486,6 +507,11 @@ CREATE TABLE IF NOT EXISTS `4pt`.`maintenance_manual` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `process_id` INT UNSIGNED NOT NULL,
   `enviroment` TEXT NULL DEFAULT NULL,
+  `sent` TINYINT(1) NULL DEFAULT NULL,
+  `project_manager_validated` TINYINT(1) NULL DEFAULT NULL,
+  `technical_leader_validated` TINYINT(1) NULL DEFAULT NULL,
+  `change_request` TINYINT(1) NULL DEFAULT NULL,
+  `change_request_details` TEXT NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_maintenance_manual_processes1_idx` (`process_id` ASC),
   CONSTRAINT `fk_maintenance_manual_processes1`
@@ -504,7 +530,9 @@ DROP TABLE IF EXISTS `4pt`.`software_component` ;
 CREATE TABLE IF NOT EXISTS `4pt`.`software_component` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `process_id` INT UNSIGNED NOT NULL,
-  `related_code` TEXT NULL DEFAULT NULL,
+  `name` TEXT NULL DEFAULT NULL,
+  `description` TEXT NULL DEFAULT NULL,
+  `file` TEXT NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_software_component_processes1_idx` (`process_id` ASC),
   CONSTRAINT `fk_software_component_processes1`
@@ -525,12 +553,17 @@ CREATE TABLE IF NOT EXISTS `4pt`.`test_report` (
   `process_id` INT UNSIGNED NOT NULL,
   `resume` TEXT NULL DEFAULT NULL,
   `test_case` TEXT NULL DEFAULT NULL,
-  `tester_id` INT UNSIGNED NOT NULL,
+  `tester_id` INT UNSIGNED NULL,
   `defect_level` TEXT NULL DEFAULT NULL,
   `affected_functions` TEXT NULL DEFAULT NULL,
   `origin_date` DATETIME NULL DEFAULT NULL,
   `resolution_date` DATETIME NULL DEFAULT NULL,
-  `solver_id` INT UNSIGNED NOT NULL,
+  `solver_id` INT UNSIGNED NULL,
+  `sent` TINYINT(1) NULL DEFAULT NULL,
+  `project_manager_validated` TINYINT(1) NULL DEFAULT NULL,
+  `technical_leader_validated` TINYINT(1) NULL DEFAULT NULL,
+  `change_request` TINYINT(1) NULL DEFAULT NULL,
+  `change_request_details` TEXT NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_test_report_processes1_idx` (`process_id` ASC),
   INDEX `fk_test_report_people1_idx` (`tester_id` ASC),
@@ -589,6 +622,11 @@ CREATE TABLE IF NOT EXISTS `4pt`.`user_manual` (
   `problems_report` TEXT NULL,
   `enter_procedure` TEXT NULL,
   `messages` TEXT NULL,
+  `sent` TINYINT(1) NULL DEFAULT NULL,
+  `project_manager_validated` TINYINT(1) NULL DEFAULT NULL,
+  `technical_leader_validated` TINYINT(1) NULL DEFAULT NULL,
+  `change_request` TINYINT(1) NULL DEFAULT NULL,
+  `change_request_details` TEXT NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_user_manual_processes1_idx` (`process_id` ASC),
   CONSTRAINT `fk_user_manual_processes1`

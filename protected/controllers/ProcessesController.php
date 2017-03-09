@@ -36,7 +36,7 @@ class ProcessesController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update','workStatement','deliveryInstructions','tasks','taskadmin','risks','riskadmin','minutes','minuteadmin','softwarerequirements','usermanual','softwaredesign','traceabilityrecord','operationmanual','maintenancemanual','softwarecomponent','testreports','testreportadmin'),
+				'actions'=>array('create','update','workStatement','deliveryInstructions','tasks','taskadmin','risks','riskadmin','minutes','minuteadmin','projectplanvalidate','progressreports','progressreportadmin','correctiveactions','correctiveactionadmin','softwarerequirements','usermanual','softwaredesign','traceabilityrecord','operationmanual','maintenancemanual','softwarecomponents','softwarecomponentAdmin','testreports','testreportadmin'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -58,14 +58,51 @@ class ProcessesController extends Controller
 		$sessionUser->rolesArray = explode(',', $sessionUser->roles);
 		$project = $this->loadModel();
 		$process = processes::model()->findByAttributes(array('project_id'=>$project->id));
+		$projectPlan = project_plan::model()->findByAttributes(array('process_id'=>$process->id));
 		$workStatement = work_statement::model()->findByAttributes(
 			array('process_id'=>$process->id),
 			array('order'=>'id DESC')
 			);
+		$softwareRequirements = software_requirements::model()->findByAttributes(
+			array('process_id'=>$process->id),
+			array('order'=>'id DESC')
+			);
+		$userManual = user_manual::model()->findByAttributes(
+			array('process_id'=>$process->id),
+			array('order'=>'id DESC')
+			);
+		$softwareDesign = software_design::model()->findByAttributes(
+			array('process_id'=>$process->id),
+			array('order'=>'id DESC')
+			);
+		$traceabilityRecord = traceability_record::model()->findByAttributes(
+			array('process_id'=>$process->id),
+			array('order'=>'id DESC')
+			);
+		$operationManual = operation_manual::model()->findByAttributes(
+			array('process_id'=>$process->id),
+			array('order'=>'id DESC')
+			);
+		$maintenanceManual = maintenance_manual::model()->findByAttributes(
+			array('process_id'=>$process->id),
+			array('order'=>'id DESC')
+			);
+		$softwareComponent = software_component::model()->findByAttributes(
+			array('process_id'=>$process->id),
+			array('order'=>'id DESC')
+			);
 		$this->render('view',array(
-			'project'=>$project,
-			'workStatement'=>$workStatement,
-			'sessionUser'=>$sessionUser,
+			'project'             => $project,
+			'projectPlan'         => $projectPlan,
+			'workStatement'       => $workStatement,
+			'softwareRequirements'=> $softwareRequirements,
+			'userManual'          => $userManual,
+			'softwareDesign'      => $softwareDesign,
+			'traceabilityRecord'  => $traceabilityRecord,
+			'operationManual'     => $operationManual,
+			'maintenanceManual'   => $maintenanceManual,
+			'softwareComponent'   => $softwareComponent,
+			'sessionUser'         => $sessionUser,
 		));
 	}
 
@@ -110,7 +147,7 @@ class ProcessesController extends Controller
 		if(isset($_POST['work_statement']))
 		{
 			$model->attributes=$_POST['work_statement'];
-			if (in_array(1, $sessionUser->rolesArray) && $model->sent){
+			if (in_array(2, $sessionUser->rolesArray) && $model->sent){
 				$model->change_request_details = null;
 			}
 			if($model->save())
@@ -295,23 +332,168 @@ class ProcessesController extends Controller
 		));
 	}
 
+	public function actionProjectPlanValidate(){
+		$sessionUser = people::model()->findByAttributes(array('id'=>Yii::app()->user->id));
+		$sessionUser->rolesArray = explode(',', $sessionUser->roles);
+
+		$project     = $this->loadModel();
+		$process     = processes::model()->findByAttributes(array('project_id'=>$project->id));
+		$projectPlan = project_plan::model()->findByAttributes(array('process_id'=>$process->id));
+
+		if (isset($_GET['minuteID'])){
+			$model       = minutes::model()->findByAttributes(array('id'=>$_GET['minuteID']));
+		}
+		else{
+			$model                  = new minutes;
+			$model->project_plan_id = $projectPlan->id;
+		}
+
+		if(isset($_POST['project_plan']))
+		{
+			$projectPlan->attributes=$_POST['project_plan'];
+			if($projectPlan->save())
+				$this->redirect(array('view','id'=>$project->id));
+		}
+
+		$this->render('projectPlan',array(
+			'model'=>$projectPlan,
+			'sessionUser'=>$sessionUser,
+		));
+	}
+
+	public function actionProgressReports(){
+		$sessionUser = people::model()->findByAttributes(array('id'=>Yii::app()->user->id));
+		$sessionUser->rolesArray = explode(',', $sessionUser->roles);
+
+		$project     = $this->loadModel();
+		$process     = processes::model()->findByAttributes(array('project_id'=>$project->id));
+		$model       = progress_reports::model()->findAllByAttributes(
+			array('process_id'=>$process->id)
+			);
+
+		$this->render('progressReports',array(
+			'model'=>$model,
+			'sessionUser'=>$sessionUser,
+		));
+	}
+
+	public function actionProgressReportAdmin(){
+		$sessionUser = people::model()->findByAttributes(array('id'=>Yii::app()->user->id));
+		$sessionUser->rolesArray = explode(',', $sessionUser->roles);
+
+		$project     = $this->loadModel();
+		$process     = processes::model()->findByAttributes(array('project_id'=>$project->id));
+
+		if (isset($_GET['progressReportID'])){
+			$model       = progress_reports::model()->findByAttributes(array('id'=>$_GET['progressReportID']));
+		}
+		else{
+			$model                  = new progress_reports;
+			$model->process_id = $process->id;
+		}
+
+		if(isset($_POST['progress_reports']))
+		{
+			$model->attributes=$_POST['progress_reports'];
+			if($model->save())
+				$this->redirect(array('progressreports','id'=>$project->id));
+		}
+
+		$this->render('progressReportAdmin',array(
+			'model'=>$model,
+			'sessionUser'=>$sessionUser,
+		));
+	}
+
+	public function actionCorrectiveActions(){
+		$sessionUser = people::model()->findByAttributes(array('id'=>Yii::app()->user->id));
+		$sessionUser->rolesArray = explode(',', $sessionUser->roles);
+
+		$project     = $this->loadModel();
+		$process     = processes::model()->findByAttributes(array('project_id'=>$project->id));
+		$model       = corrective_actions::model()->findAllByAttributes(
+			array('process_id'=>$process->id)
+			);
+
+		$this->render('correctiveActions',array(
+			'model'=>$model,
+			'sessionUser'=>$sessionUser,
+		));
+	}
+
+	public function actionCorrectiveActionAdmin(){
+		$sessionUser = people::model()->findByAttributes(array('id'=>Yii::app()->user->id));
+		$sessionUser->rolesArray = explode(',', $sessionUser->roles);
+
+		$project     = $this->loadModel();
+		$process     = processes::model()->findByAttributes(array('project_id'=>$project->id));
+
+		if (isset($_GET['correctiveActionID'])){
+			$model       = corrective_actions::model()->findByAttributes(array('id'=>$_GET['correctiveActionID']));
+		}
+		else{
+			$model                  = new corrective_actions;
+			$model->process_id = $process->id;
+		}
+
+		if(isset($_POST['corrective_actions']))
+		{
+			$model->attributes=$_POST['corrective_actions'];
+			if ($model->responsible_id == ''){
+				$model->responsible_id = null;
+			}
+			if ($model->open_date == ''){
+				$model->open_date = null;
+			}
+			if ($model->close_date == ''){
+				$model->close_date = null;
+			}
+			if($model->save())
+				$this->redirect(array('correctiveactions','id'=>$project->id));
+		}
+
+		$this->render('correctiveActionAdmin',array(
+			'model'=>$model,
+			'sessionUser'=>$sessionUser,
+		));
+	}
+
 	public function actionSoftwareRequirements(){
 		$sessionUser = people::model()->findByAttributes(array('id'=>Yii::app()->user->id));
 		$sessionUser->rolesArray = explode(',', $sessionUser->roles);
 
 		$project     = $this->loadModel();
 		$process     = processes::model()->findByAttributes(array('project_id'=>$project->id));
-		$model       = software_requirements::model()->findByAttributes(array('process_id'=>$process->id));
-
-		if ($model === null){
+		$model   = software_requirements::model()->findByAttributes(
+			array('process_id'=>$process->id),
+			array('order'=>'id DESC')
+			);
+		
+		if ($model === null || $model->change_request){
 			$tempModel         = $model;
 			$model             = new software_requirements;
 			$model->process_id = $process->id;
+
+			if ($tempModel != null){
+				$model->change_request_details = $tempModel->change_request_details;
+				$model->introduction           = $tempModel->introduction;
+				$model->user_interface         = $tempModel->user_interface;
+				$model->external_interfaces    = $tempModel->external_interfaces;
+				$model->reliability            = $tempModel->reliability;
+				$model->efficiency             = $tempModel->efficiency;
+				$model->maintenance            = $tempModel->maintenance;
+				$model->portability            = $tempModel->portability;
+				$model->interoperability       = $tempModel->interoperability;
+				$model->reuse                  = $tempModel->reuse;
+			}
 		}
 
 		if(isset($_POST['software_requirements']))
 		{
 			$model->attributes=$_POST['software_requirements'];
+			if ((in_array(2, $sessionUser->rolesArray) || in_array(3, $sessionUser->rolesArray)) && $model->sent){
+				$model->change_request_details = null;
+			}
 			if($model->save())
 				$this->redirect(array('view','id'=>$project->id));
 		}
@@ -328,7 +510,10 @@ class ProcessesController extends Controller
 
 		$project     = $this->loadModel();
 		$process     = processes::model()->findByAttributes(array('project_id'=>$project->id));
-		$model       = user_manual::model()->findByAttributes(array('process_id'=>$process->id));
+		$model   = user_manual::model()->findByAttributes(
+			array('process_id'=>$process->id),
+			array('order'=>'id DESC')
+			);
 
 		if ($model === null){
 			$tempModel         = $model;
@@ -355,7 +540,10 @@ class ProcessesController extends Controller
 
 		$project     = $this->loadModel();
 		$process     = processes::model()->findByAttributes(array('project_id'=>$project->id));
-		$model       = software_design::model()->findByAttributes(array('process_id'=>$process->id));
+		$model   = software_design::model()->findByAttributes(
+			array('process_id'=>$process->id),
+			array('order'=>'id DESC')
+			);
 
 		if ($model === null){
 			$tempModel         = $model;
@@ -382,7 +570,10 @@ class ProcessesController extends Controller
 
 		$project     = $this->loadModel();
 		$process     = processes::model()->findByAttributes(array('project_id'=>$project->id));
-		$model       = traceability_record::model()->findByAttributes(array('process_id'=>$process->id));
+		$model   = traceability_record::model()->findByAttributes(
+			array('process_id'=>$process->id),
+			array('order'=>'id DESC')
+			);
 
 		if ($model === null){
 			$tempModel         = $model;
@@ -409,7 +600,10 @@ class ProcessesController extends Controller
 
 		$project     = $this->loadModel();
 		$process     = processes::model()->findByAttributes(array('project_id'=>$project->id));
-		$model       = operation_manual::model()->findByAttributes(array('process_id'=>$process->id));
+		$model   = operation_manual::model()->findByAttributes(
+			array('process_id'=>$process->id),
+			array('order'=>'id DESC')
+			);
 
 		if ($model === null){
 			$tempModel         = $model;
@@ -436,7 +630,10 @@ class ProcessesController extends Controller
 
 		$project     = $this->loadModel();
 		$process     = processes::model()->findByAttributes(array('project_id'=>$project->id));
-		$model       = maintenance_manual::model()->findByAttributes(array('process_id'=>$process->id));
+		$model   = maintenance_manual::model()->findByAttributes(
+			array('process_id'=>$process->id),
+			array('order'=>'id DESC')
+			);
 
 		if ($model === null){
 			$tempModel         = $model;
@@ -457,17 +654,34 @@ class ProcessesController extends Controller
 		));
 	}
 
-	public function actionSoftwareComponent(){
+	public function actionSoftwareComponents(){
 		$sessionUser = people::model()->findByAttributes(array('id'=>Yii::app()->user->id));
 		$sessionUser->rolesArray = explode(',', $sessionUser->roles);
 
 		$project     = $this->loadModel();
 		$process     = processes::model()->findByAttributes(array('project_id'=>$project->id));
-		$model       = software_component::model()->findByAttributes(array('process_id'=>$process->id));
+		$model       = software_component::model()->findAllByAttributes(
+			array('process_id'=>$process->id)
+			);
 
-		if ($model === null){
-			$tempModel         = $model;
-			$model             = new software_component;
+		$this->render('softwareComponents',array(
+			'model'=>$model,
+			'sessionUser'=>$sessionUser,
+		));
+	}
+
+	public function actionSoftwareComponentAdmin(){
+		$sessionUser = people::model()->findByAttributes(array('id'=>Yii::app()->user->id));
+		$sessionUser->rolesArray = explode(',', $sessionUser->roles);
+
+		$project     = $this->loadModel();
+		$process     = processes::model()->findByAttributes(array('project_id'=>$project->id));
+
+		if (isset($_GET['softwareComponentID'])){
+			$model       = software_component::model()->findByAttributes(array('id'=>$_GET['softwareComponentID']));
+		}
+		else{
+			$model                  = new software_component;
 			$model->process_id = $process->id;
 		}
 
@@ -475,10 +689,10 @@ class ProcessesController extends Controller
 		{
 			$model->attributes=$_POST['software_component'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$project->id));
+				$this->redirect(array('softwarecomponents','id'=>$project->id));
 		}
 
-		$this->render('softwareComponent',array(
+		$this->render('softwareComponentAdmin',array(
 			'model'=>$model,
 			'sessionUser'=>$sessionUser,
 		));
@@ -511,13 +725,33 @@ class ProcessesController extends Controller
 			$model       = test_report::model()->findByAttributes(array('id'=>$_GET['testReportID']));
 		}
 		else{
-			$model                  = new test_report;
+			$model             = new test_report;
 			$model->process_id = $process->id;
 		}
 
 		if(isset($_POST['test_report']))
 		{
 			$model->attributes=$_POST['test_report'];
+			if ($model->resolution_date != '') {
+				$model->solver_id = $sessionUser->id;
+			}
+			else{
+				$model->tester_id = $sessionUser->id;
+			}
+
+			if ($model->tester_id == ''){
+				$model->tester_id = null;
+			}
+			if ($model->solver_id == ''){
+				$model->solver_id = null;
+			}
+			if ($model->origin_date == ''){
+				$model->origin_date = null;
+			}
+			if ($model->resolution_date == ''){
+				$model->resolution_date = null;
+			}
+
 			if($model->save())
 				$this->redirect(array('testreports','id'=>$project->id));
 		}

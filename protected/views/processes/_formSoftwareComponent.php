@@ -10,9 +10,21 @@
 	<?php echo $form->errorSummary($model); ?>
 
 	<div class="form-group">
-		<?php echo $form->labelEx($model,'related_code'); ?>
-		<?php echo $form->textArea($model,'related_code',array('rows'=>6, 'cols'=>50, 'class'=>'form-control')); ?>
-		<?php echo $form->error($model,'related_code'); ?>
+		<?php echo $form->labelEx($model,'name'); ?>
+		<?php echo $form->textArea($model,'name',array('rows'=>6, 'cols'=>50, 'class'=>'form-control')); ?>
+		<?php echo $form->error($model,'name'); ?>
+	</div>
+
+	<div class="form-group">
+		<?php echo $form->labelEx($model,'description'); ?>
+		<?php echo $form->textArea($model,'description',array('rows'=>6, 'cols'=>50, 'class'=>'form-control')); ?>
+		<?php echo $form->error($model,'description'); ?>
+	</div>
+
+	<div class="form-group">
+		<?php echo $form->labelEx($model,'file'); ?>
+		<?php echo $form->textArea($model,'file',array('rows'=>6, 'cols'=>50, 'class'=>'form-control')); ?>
+		<?php echo $form->error($model,'file'); ?>
 	</div>
 
 	<div class="form-group buttons">

@@ -22,12 +22,6 @@
 	</div>
 
 	<div class="form-group">
-		<?php echo $form->labelEx($model,'tester_id'); ?>
-		<?php echo $form->textField($model,'tester_id',array('size'=>10,'maxlength'=>10, 'class'=>'form-control')); ?>
-		<?php echo $form->error($model,'tester_id'); ?>
-	</div>
-
-	<div class="form-group">
 		<?php echo $form->labelEx($model,'defect_level'); ?>
 		<?php echo $form->textArea($model,'defect_level',array('rows'=>6, 'cols'=>50, 'class'=>'form-control')); ?>
 		<?php echo $form->error($model,'defect_level'); ?>
@@ -53,12 +47,6 @@
 		<?php echo $form->textField($model,'resolution_date', array('class'=>'form-control', 'id'=>'datetimepicker2')); ?>
 		<?php echo $form->error($model,'resolution_date'); ?>
 	</div></div>
-	</div>
-
-	<div class="form-group">
-		<?php echo $form->labelEx($model,'solver_id'); ?>
-		<?php echo $form->textField($model,'solver_id',array('size'=>10,'maxlength'=>10, 'class'=>'form-control')); ?>
-		<?php echo $form->error($model,'solver_id'); ?>
 	</div>
 
 	<div class="form-group buttons">

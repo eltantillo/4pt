@@ -9,10 +9,10 @@ $this->breadcrumbs=array(
 <h1>Work Statement</h1>
 
 <?php
-if (in_array(1, $sessionUser->rolesArray)){
-	echo $this->renderPartial('_formWorkStatement', array('model'=>$model));
-}
-else if (in_array(5, $sessionUser->rolesArray) || in_array(7, $sessionUser->rolesArray)){
+if (in_array(0, $sessionUser->rolesArray) || in_array(1, $sessionUser->rolesArray)){
 	echo $this->renderPartial('_formWorkStatementValidate', array('model'=>$model, 'sessionUser'=>$sessionUser));
+}
+elseif (in_array(2, $sessionUser->rolesArray)){
+	echo $this->renderPartial('_formWorkStatement', array('model'=>$model));
 }
 ?>

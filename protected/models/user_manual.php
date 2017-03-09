@@ -5,7 +5,7 @@
  *
  * The followings are the available columns in table 'user_manual':
  * @property string $id
- * @property string $processes_id
+ * @property string $process_id
  * @property string $user_procedure
  * @property string $installation_procedure
  * @property string $product_description
@@ -14,6 +14,11 @@
  * @property string $problems_report
  * @property string $enter_procedure
  * @property string $messages
+ * @property integer $sent
+ * @property integer $project_manager_validated
+ * @property integer $technical_leader_validated
+ * @property integer $change_request
+ * @property string $change_request_details
  */
 class user_manual extends CActiveRecord
 {
@@ -33,12 +38,13 @@ class user_manual extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('processes_id', 'required'),
-			array('processes_id', 'length', 'max'=>10),
-			array('user_procedure, installation_procedure, product_description, provided_resources, required_enviroment, problems_report, enter_procedure, messages', 'safe'),
+			array('process_id', 'required'),
+			array('sent, project_manager_validated, technical_leader_validated, change_request', 'numerical', 'integerOnly'=>true),
+			array('process_id', 'length', 'max'=>10),
+			array('user_procedure, installation_procedure, product_description, provided_resources, required_enviroment, problems_report, enter_procedure, messages, change_request_details', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, processes_id, user_procedure, installation_procedure, product_description, provided_resources, required_enviroment, problems_report, enter_procedure, messages', 'safe', 'on'=>'search'),
+			array('id, process_id, user_procedure, installation_procedure, product_description, provided_resources, required_enviroment, problems_report, enter_procedure, messages, sent, project_manager_validated, technical_leader_validated, change_request, change_request_details', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -50,7 +56,7 @@ class user_manual extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'processes' => array(self::BELONGS_TO, 'Processes', 'processes_id'),
+			'process' => array(self::BELONGS_TO, 'Processes', 'process_id'),
 		);
 	}
 
@@ -61,7 +67,7 @@ class user_manual extends CActiveRecord
 	{
 		return array(
 			'id' => 'Id',
-			'processes_id' => 'Processes',
+			'process_id' => 'Process',
 			'user_procedure' => 'User Procedure',
 			'installation_procedure' => 'Installation Procedure',
 			'product_description' => 'Product Description',
@@ -70,6 +76,11 @@ class user_manual extends CActiveRecord
 			'problems_report' => 'Problems Report',
 			'enter_procedure' => 'Enter Procedure',
 			'messages' => 'Messages',
+			'sent' => 'Sent',
+			'project_manager_validated' => 'Project Manager Validated',
+			'technical_leader_validated' => 'Technical Leader Validated',
+			'change_request' => 'Change Request',
+			'change_request_details' => 'Change Request Details',
 		);
 	}
 
@@ -93,7 +104,7 @@ class user_manual extends CActiveRecord
 
 		$criteria->compare('id',$this->id,true);
 
-		$criteria->compare('processes_id',$this->processes_id,true);
+		$criteria->compare('process_id',$this->process_id,true);
 
 		$criteria->compare('user_procedure',$this->user_procedure,true);
 
@@ -110,6 +121,16 @@ class user_manual extends CActiveRecord
 		$criteria->compare('enter_procedure',$this->enter_procedure,true);
 
 		$criteria->compare('messages',$this->messages,true);
+
+		$criteria->compare('sent',$this->sent);
+
+		$criteria->compare('project_manager_validated',$this->project_manager_validated);
+
+		$criteria->compare('technical_leader_validated',$this->technical_leader_validated);
+
+		$criteria->compare('change_request',$this->change_request);
+
+		$criteria->compare('change_request_details',$this->change_request_details,true);
 
 		return new CActiveDataProvider('user_manual', array(
 			'criteria'=>$criteria,

@@ -17,8 +17,6 @@
 			3  => 0, '3Max'  => 2,
 			4  => 0, '4Max'  => 5,
 			5  => 0, '5Max'  => 7,
-			6  => 0, '6Max'  => 3,
-			7  => 0, '7Max'  => 4,
 			);
 		$roles = array();
 
@@ -41,15 +39,9 @@
 			if ($key == 1 || $key == 2 || $key == 6 || $key == 8 || $key == 11 || $key == 16 || $key == 17){
 				$rolesCounter[5]++;
 			}
-			if ($key == 9 || $key == 3 || $key == 2){
-				$rolesCounter[6]++;
-			}
-			if ($key == 9 || $key == 8 || $key == 3 || $key == 2){
-				$rolesCounter[7]++;
-			}
 		}
 
-		for ($i=0; $i < 8; $i++) {
+		for ($i=0; $i < 6; $i++) {
 			if (($rolesCounter[$i] / $rolesCounter[$i . 'Max']) * 100 > 75){
 				array_push($roles, $i);
 			}

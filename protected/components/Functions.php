@@ -60,8 +60,7 @@ class Functions{
 			$count++;
 		}
 		$rolesString = implode(',', $rolesPreString);
-		//return preg_replace($numbers, $roles, $rolesString);
-		return $rolesString;
+		return preg_replace($numbers, $roles, $rolesString);
 	}
 	
 	public static function levelFormat($level){

@@ -53,14 +53,12 @@ Language::$capabilitiesArray = array(
 );
 //Roles
 Language::$rolesArray = array(
-	0  => 'Analista',
-	1  => 'Cliente',
-	2  => 'Diseñador',
-	3  => 'Diseñador de interfaz de usuario',
-	4  => 'Programador',
-	5  => 'Gestor de proyecto',
-	6  => 'Equipo de trabajo',
-	7  => 'Lider técnico',
+	0  => 'Gestor de proyecto',
+	1  => 'Lider técnico',
+	2  => 'Cliente',
+	3  => 'Analista',
+	4  => 'Diseñador',
+	5  => 'Programador',
 );
 
 // Proyecto

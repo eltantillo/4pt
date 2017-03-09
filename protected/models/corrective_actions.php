@@ -32,7 +32,7 @@ class corrective_actions extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('process_id, responsible_id', 'required'),
+			array('process_id', 'required'),
 			array('complete', 'numerical', 'integerOnly'=>true),
 			array('process_id, responsible_id', 'length', 'max'=>10),
 			array('problem, solution, corrective_actions, open_date, close_date', 'safe'),

@@ -1,7 +1,7 @@
 <div class="form">
 
 <?php $form=$this->beginWidget('CActiveForm', array(
-	'id'=>'work-statement-form',
+	'id'=>'traceability-record-form',
 	'enableAjaxValidation'=>false,
 )); ?>
 
@@ -14,14 +14,14 @@
 	?>
 	
 
-	<?php if (in_array(0, $sessionUser->rolesArray)){ ?>
+	<?php if (in_array(5, $sessionUser->rolesArray)){ ?>
 	<div class="form-group">
 		<?php echo $form->checkBox($model,'project_manager_validated'); ?>
 		<?php echo $form->labelEx($model,'project_manager_validated'); ?>
 		<?php echo $form->error($model,'project_manager_validated'); ?>
 	</div>
+	<?php } elseif (in_array(7, $sessionUser->rolesArray)) { ?>
 
-	<?php } elseif (in_array(1, $sessionUser->rolesArray)) { ?>
 	<div class="form-group">
 		<?php echo $form->checkBox($model,'technical_leader_validated'); ?>
 		<?php echo $form->labelEx($model,'technical_leader_validated'); ?>

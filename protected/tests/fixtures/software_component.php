@@ -4,11 +4,15 @@ return array(
 	/*
 	'sample1'=>array(
 		'process_id' => '',
-		'related_code' => '',
+		'name' => '',
+		'description' => '',
+		'file' => '',
 	),
 	'sample2'=>array(
 		'process_id' => '',
-		'related_code' => '',
+		'name' => '',
+		'description' => '',
+		'file' => '',
 	),
 	*/
 );

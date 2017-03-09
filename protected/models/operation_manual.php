@@ -14,6 +14,11 @@
  * @property string $aditional_sources
  * @property string $security_certification
  * @property string $guaranty
+ * @property integer $sent
+ * @property integer $project_manager_validated
+ * @property integer $technical_leader_validated
+ * @property integer $change_request
+ * @property string $change_request_details
  */
 class operation_manual extends CActiveRecord
 {
@@ -34,11 +39,12 @@ class operation_manual extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('process_id', 'required'),
+			array('sent, project_manager_validated, technical_leader_validated, change_request', 'numerical', 'integerOnly'=>true),
 			array('process_id', 'length', 'max'=>10),
-			array('operation_criteria, operative_enviroment, security_alerts, deployment_sequence, faq, aditional_sources, security_certification, guaranty', 'safe'),
+			array('operation_criteria, operative_enviroment, security_alerts, deployment_sequence, faq, aditional_sources, security_certification, guaranty, change_request_details', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, process_id, operation_criteria, operative_enviroment, security_alerts, deployment_sequence, faq, aditional_sources, security_certification, guaranty', 'safe', 'on'=>'search'),
+			array('id, process_id, operation_criteria, operative_enviroment, security_alerts, deployment_sequence, faq, aditional_sources, security_certification, guaranty, sent, project_manager_validated, technical_leader_validated, change_request, change_request_details', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -70,6 +76,11 @@ class operation_manual extends CActiveRecord
 			'aditional_sources' => 'Aditional Sources',
 			'security_certification' => 'Security Certification',
 			'guaranty' => 'Guaranty',
+			'sent' => 'Sent',
+			'project_manager_validated' => 'Project Manager Validated',
+			'technical_leader_validated' => 'Technical Leader Validated',
+			'change_request' => 'Change Request',
+			'change_request_details' => 'Change Request Details',
 		);
 	}
 
@@ -110,6 +121,16 @@ class operation_manual extends CActiveRecord
 		$criteria->compare('security_certification',$this->security_certification,true);
 
 		$criteria->compare('guaranty',$this->guaranty,true);
+
+		$criteria->compare('sent',$this->sent);
+
+		$criteria->compare('project_manager_validated',$this->project_manager_validated);
+
+		$criteria->compare('technical_leader_validated',$this->technical_leader_validated);
+
+		$criteria->compare('change_request',$this->change_request);
+
+		$criteria->compare('change_request_details',$this->change_request_details,true);
 
 		return new CActiveDataProvider('operation_manual', array(
 			'criteria'=>$criteria,

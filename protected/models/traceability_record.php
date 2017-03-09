@@ -8,6 +8,11 @@
  * @property string $process_id
  * @property string $traceability_recordcol
  * @property string $traceability_recordcol1
+ * @property integer $sent
+ * @property integer $project_manager_validated
+ * @property integer $technical_leader_validated
+ * @property integer $change_request
+ * @property string $change_request_details
  */
 class traceability_record extends CActiveRecord
 {
@@ -28,12 +33,13 @@ class traceability_record extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('process_id', 'required'),
+			array('sent, project_manager_validated, technical_leader_validated, change_request', 'numerical', 'integerOnly'=>true),
 			array('process_id', 'length', 'max'=>10),
 			array('traceability_recordcol1', 'length', 'max'=>45),
-			array('traceability_recordcol', 'safe'),
+			array('traceability_recordcol, change_request_details', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, process_id, traceability_recordcol, traceability_recordcol1', 'safe', 'on'=>'search'),
+			array('id, process_id, traceability_recordcol, traceability_recordcol1, sent, project_manager_validated, technical_leader_validated, change_request, change_request_details', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -59,6 +65,11 @@ class traceability_record extends CActiveRecord
 			'process_id' => 'Process',
 			'traceability_recordcol' => 'Traceability Recordcol',
 			'traceability_recordcol1' => 'Traceability Recordcol1',
+			'sent' => 'Sent',
+			'project_manager_validated' => 'Project Manager Validated',
+			'technical_leader_validated' => 'Technical Leader Validated',
+			'change_request' => 'Change Request',
+			'change_request_details' => 'Change Request Details',
 		);
 	}
 
@@ -87,6 +98,16 @@ class traceability_record extends CActiveRecord
 		$criteria->compare('traceability_recordcol',$this->traceability_recordcol,true);
 
 		$criteria->compare('traceability_recordcol1',$this->traceability_recordcol1,true);
+
+		$criteria->compare('sent',$this->sent);
+
+		$criteria->compare('project_manager_validated',$this->project_manager_validated);
+
+		$criteria->compare('technical_leader_validated',$this->technical_leader_validated);
+
+		$criteria->compare('change_request',$this->change_request);
+
+		$criteria->compare('change_request_details',$this->change_request_details,true);
 
 		return new CActiveDataProvider('traceability_record', array(
 			'criteria'=>$criteria,

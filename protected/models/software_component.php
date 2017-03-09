@@ -6,7 +6,9 @@
  * The followings are the available columns in table 'software_component':
  * @property string $id
  * @property string $process_id
- * @property string $related_code
+ * @property string $name
+ * @property string $description
+ * @property string $file
  */
 class software_component extends CActiveRecord
 {
@@ -28,10 +30,10 @@ class software_component extends CActiveRecord
 		return array(
 			array('process_id', 'required'),
 			array('process_id', 'length', 'max'=>10),
-			array('related_code', 'safe'),
+			array('name, description, file', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, process_id, related_code', 'safe', 'on'=>'search'),
+			array('id, process_id, name, description, file', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -55,7 +57,9 @@ class software_component extends CActiveRecord
 		return array(
 			'id' => 'Id',
 			'process_id' => 'Process',
-			'related_code' => 'Related Code',
+			'name' => 'Name',
+			'description' => 'Description',
+			'file' => 'File',
 		);
 	}
 
@@ -81,7 +85,11 @@ class software_component extends CActiveRecord
 
 		$criteria->compare('process_id',$this->process_id,true);
 
-		$criteria->compare('related_code',$this->related_code,true);
+		$criteria->compare('name',$this->name,true);
+
+		$criteria->compare('description',$this->description,true);
+
+		$criteria->compare('file',$this->file,true);
 
 		return new CActiveDataProvider('software_component', array(
 			'criteria'=>$criteria,

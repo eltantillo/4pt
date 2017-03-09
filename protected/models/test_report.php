@@ -14,6 +14,11 @@
  * @property string $origin_date
  * @property string $resolution_date
  * @property string $solver_id
+ * @property integer $sent
+ * @property integer $project_manager_validated
+ * @property integer $technical_leader_validated
+ * @property integer $change_request
+ * @property string $change_request_details
  */
 class test_report extends CActiveRecord
 {
@@ -33,12 +38,13 @@ class test_report extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('process_id, tester_id, solver_id', 'required'),
+			array('process_id', 'required'),
+			array('sent, project_manager_validated, technical_leader_validated, change_request', 'numerical', 'integerOnly'=>true),
 			array('process_id, tester_id, solver_id', 'length', 'max'=>10),
-			array('resume, test_case, defect_level, affected_functions, origin_date, resolution_date', 'safe'),
+			array('resume, test_case, defect_level, affected_functions, origin_date, resolution_date, change_request_details', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, process_id, resume, test_case, tester_id, defect_level, affected_functions, origin_date, resolution_date, solver_id', 'safe', 'on'=>'search'),
+			array('id, process_id, resume, test_case, tester_id, defect_level, affected_functions, origin_date, resolution_date, solver_id, sent, project_manager_validated, technical_leader_validated, change_request, change_request_details', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -72,6 +78,11 @@ class test_report extends CActiveRecord
 			'origin_date' => 'Origin Date',
 			'resolution_date' => 'Resolution Date',
 			'solver_id' => 'Solver',
+			'sent' => 'Sent',
+			'project_manager_validated' => 'Project Manager Validated',
+			'technical_leader_validated' => 'Technical Leader Validated',
+			'change_request' => 'Change Request',
+			'change_request_details' => 'Change Request Details',
 		);
 	}
 
@@ -112,6 +123,16 @@ class test_report extends CActiveRecord
 		$criteria->compare('resolution_date',$this->resolution_date,true);
 
 		$criteria->compare('solver_id',$this->solver_id,true);
+
+		$criteria->compare('sent',$this->sent);
+
+		$criteria->compare('project_manager_validated',$this->project_manager_validated);
+
+		$criteria->compare('technical_leader_validated',$this->technical_leader_validated);
+
+		$criteria->compare('change_request',$this->change_request);
+
+		$criteria->compare('change_request_details',$this->change_request_details,true);
 
 		return new CActiveDataProvider('test_report', array(
 			'criteria'=>$criteria,

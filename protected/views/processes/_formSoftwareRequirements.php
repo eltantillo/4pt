@@ -8,6 +8,12 @@
 	<p class="note">Fields with <span class="required">*</span> are required.</p>
 
 	<?php echo $form->errorSummary($model); ?>
+	
+	<?php
+		if ($model->change_request_details != null){
+			echo '<div class="alert alert-warning">' . $model->change_request_details . '</div>';
+		}
+	?>
 
 	<div class="form-group">
 		<?php echo $form->labelEx($model,'introduction'); ?>
@@ -67,6 +73,11 @@
 		<?php echo $form->labelEx($model,'legal'); ?>
 		<?php echo $form->textArea($model,'legal',array('rows'=>6, 'cols'=>50, 'class'=>'form-control')); ?>
 		<?php echo $form->error($model,'legal'); ?>
+	</div>
+
+	<div class="form-group">
+		<?php echo $form->checkBox($model,'sent'); ?>
+		<?php echo $form->labelEx($model,'sent'); ?>
 	</div>
 
 	<div class="form-group buttons">

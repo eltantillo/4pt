@@ -9,7 +9,5 @@ $this->breadcrumbs=array(
 <h1>Test Reports</h1>
 
 <?php
-if (in_array(5, $sessionUser->rolesArray) || in_array(7, $sessionUser->rolesArray)){
 	echo $this->renderPartial('_formTestReport', array('model'=>$model));
-}
 ?>

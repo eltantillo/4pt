@@ -9,19 +9,19 @@ $this->breadcrumbs=array(
 <!--
 <h2>Project Plan</h2>
 <?php if (
-	((in_array(1, $sessionUser->rolesArray)) &&
-	($workStatement === null ||
-	!$workStatement->sent ||
-	$workStatement->change_request)) ||
+  ((in_array(1, $sessionUser->rolesArray)) &&
+  ($workStatement === null ||
+  !$workStatement->sent ||
+  $workStatement->change_request)) ||
 
-	((in_array(5, $sessionUser->rolesArray) || in_array(7, $sessionUser->rolesArray)) &&
-	$workStatement != null	&&
-	$workStatement->sent &&
-	!$workStatement->change_request) &&
-	((in_array(5, $sessionUser->rolesArray) && !$workStatement->project_manager_validated) ||
-	(in_array(7, $sessionUser->rolesArray)) && !$workStatement->technical_leader_validated)
-	){ ?>
-	<a href="<?php echo Yii::app()->request->baseUrl . '/processes/workstatement/' . $project->id; ?>">Work Statement</a><br>
+  ((in_array(5, $sessionUser->rolesArray) || in_array(7, $sessionUser->rolesArray)) &&
+  $workStatement != null  &&
+  $workStatement->sent &&
+  !$workStatement->change_request) &&
+  ((in_array(5, $sessionUser->rolesArray) && !$workStatement->project_manager_validated) ||
+  (in_array(7, $sessionUser->rolesArray)) && !$workStatement->technical_leader_validated)
+  ){ ?>
+  <a href="<?php echo Yii::app()->request->baseUrl . '/processes/workstatement/' . $project->id; ?>">Work Statement</a><br>
 
 <?php } if (in_array(1, $sessionUser->rolesArray) || in_array(7, $sessionUser->rolesArray)){ ?>
 <a href="<?php echo Yii::app()->request->baseUrl . '/processes/deliveryinstructions/' . $project->id; ?>">Delivery Instructions</a><br>
@@ -59,8 +59,23 @@ $this->breadcrumbs=array(
 </ul>
 -->
 
+<?php if(!$projectPlan->project_manager_validated || !$projectPlan->technical_leader_validated){ ?>
 <h2>Project Plan</h2>
 <div class="row">
+<?php 
+if (
+  (in_array(2, $sessionUser->rolesArray) &&
+  ($workStatement === null ||
+  !$workStatement->sent ||
+  $workStatement->change_request)) ||
+
+  ((in_array(0, $sessionUser->rolesArray) || in_array(1, $sessionUser->rolesArray)) &&
+  $workStatement != null  &&
+  $workStatement->sent &&
+  !$workStatement->change_request) &&
+  ((in_array(0, $sessionUser->rolesArray) && !$workStatement->project_manager_validated) ||
+  (in_array(1, $sessionUser->rolesArray)) && !$workStatement->technical_leader_validated)
+){ ?>
   <div class="col-md-3">
     <div class="thumbnail text-center">
       <span class="glyphicon glyphicon-book gi" aria-hidden="true"></span>
@@ -71,7 +86,7 @@ $this->breadcrumbs=array(
       </div>
     </div>
   </div>
-
+<?php }else if($workStatement != null && $workStatement->project_manager_validated && $workStatement->technical_leader_validated && ((in_array(0, $sessionUser->rolesArray) && !$projectPlan->project_manager_validated) || (in_array(1, $sessionUser->rolesArray) && !$projectPlan->technical_leader_validated))) { ?>
   <div class="col-md-3">
     <div class="thumbnail text-center">
       <span class="glyphicon glyphicon-list-alt gi" aria-hidden="true"></span>
@@ -105,6 +120,7 @@ $this->breadcrumbs=array(
     </div>
   </div>
 
+<?php if(in_array(0, $sessionUser->rolesArray)){ ?>
   <div class="col-md-3">
     <div class="thumbnail text-center">
       <span class="glyphicon glyphicon-time gi" aria-hidden="true"></span>
@@ -115,10 +131,22 @@ $this->breadcrumbs=array(
       </div>
     </div>
   </div>
+<?php } ?>
 
+  <div class="col-md-3">
+    <div class="thumbnail text-center">
+      <span class="glyphicon glyphicon-ok gi" aria-hidden="true"></span>
+      <div class="caption">
+        <h3>Validation</h3>
+        <p>The workstatement is the first step in the ISO-29110 Process execution</p>
+        <p><a href="<?php echo Yii::app()->request->baseUrl . '/processes/projectplanvalidate/' . $project->id; ?>" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+      </div>
+    </div>
+  </div>
+<?php } ?>
 </div>
 
-
+<?php }else{ ?>
 <h2>Project Execution</h2>
 <div class="row">
 
@@ -128,7 +156,7 @@ $this->breadcrumbs=array(
       <div class="caption">
         <h3>Progress Report</h3>
         <p>The workstatement is the first step in the ISO-29110 Process execution</p>
-        <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+        <p><a href="<?php echo Yii::app()->request->baseUrl . '/processes/progressreports/' . $project->id; ?>" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
       </div>
     </div>
   </div>
@@ -139,7 +167,7 @@ $this->breadcrumbs=array(
       <div class="caption">
         <h3>Corrective Actions</h3>
         <p>The workstatement is the first step in the ISO-29110 Process execution</p>
-        <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+        <p><a href="<?php echo Yii::app()->request->baseUrl . '/processes/correctiveactions/' . $project->id; ?>" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
       </div>
     </div>
   </div>
@@ -150,6 +178,20 @@ $this->breadcrumbs=array(
 <h2>Software Implementation</h2>
 <div class="row">
 
+<?php 
+if (
+  ((in_array(2, $sessionUser->rolesArray) || in_array(3, $sessionUser->rolesArray)) &&
+  ($softwareRequirements === null ||
+  !$softwareRequirements->sent ||
+  $softwareRequirements->change_request)) ||
+
+  ((in_array(0, $sessionUser->rolesArray) || in_array(1, $sessionUser->rolesArray)) &&
+  $softwareRequirements != null  &&
+  $softwareRequirements->sent &&
+  !$softwareRequirements->change_request) &&
+  ((in_array(0, $sessionUser->rolesArray) && !$softwareRequirements->project_manager_validated) ||
+  (in_array(1, $sessionUser->rolesArray)) && !$softwareRequirements->technical_leader_validated)
+){?>
   <div class="col-md-3">
     <div class="thumbnail text-center">
       <span class="glyphicon glyphicon-list gi" aria-hidden="true"></span>
@@ -161,6 +203,22 @@ $this->breadcrumbs=array(
     </div>
   </div>
 
+<?php }else if($softwareRequirements != null && $softwareRequirements->project_manager_validated && $softwareRequirements->technical_leader_validated) { ?>
+
+<?php 
+if (
+  (in_array(3, $sessionUser->rolesArray) &&
+  ($userManual === null ||
+  !$userManual->sent ||
+  $userManual->change_request)) ||
+
+  ((in_array(0, $sessionUser->rolesArray) || in_array(1, $sessionUser->rolesArray)) &&
+  $userManual != null  &&
+  $userManual->sent &&
+  !$userManual->change_request) &&
+  ((in_array(0, $sessionUser->rolesArray) && !$userManual->project_manager_validated) ||
+  (in_array(1, $sessionUser->rolesArray)) && !$userManual->technical_leader_validated)
+){?>
   <div class="col-md-3">
     <div class="thumbnail text-center">
       <span class="glyphicon glyphicon-question-sign gi" aria-hidden="true"></span>
@@ -171,7 +229,20 @@ $this->breadcrumbs=array(
       </div>
     </div>
   </div>
+<?php }
+if (
+  ((in_array(3, $sessionUser->rolesArray) || in_array(4, $sessionUser->rolesArray)) &&
+  ($softwareDesign === null ||
+  !$softwareDesign->sent ||
+  $softwareDesign->change_request)) ||
 
+  ((in_array(0, $sessionUser->rolesArray) || in_array(1, $sessionUser->rolesArray)) &&
+  $softwareDesign != null  &&
+  $softwareDesign->sent &&
+  !$softwareDesign->change_request) &&
+  ((in_array(0, $sessionUser->rolesArray) && !$softwareDesign->project_manager_validated) ||
+  (in_array(1, $sessionUser->rolesArray)) && !$softwareDesign->technical_leader_validated)
+){?>
   <div class="col-md-3">
     <div class="thumbnail text-center">
       <span class="glyphicon glyphicon-dashboard gi" aria-hidden="true"></span>
@@ -182,7 +253,20 @@ $this->breadcrumbs=array(
       </div>
     </div>
   </div>
+<?php }
+if (
+  ((in_array(3, $sessionUser->rolesArray) || in_array(4, $sessionUser->rolesArray)) &&
+  ($traceabilityRecord === null ||
+  !$traceabilityRecord->sent ||
+  $traceabilityRecord->change_request)) ||
 
+  ((in_array(0, $sessionUser->rolesArray) || in_array(1, $sessionUser->rolesArray)) &&
+  $traceabilityRecord != null  &&
+  $traceabilityRecord->sent &&
+  !$traceabilityRecord->change_request) &&
+  ((in_array(0, $sessionUser->rolesArray) && !$traceabilityRecord->project_manager_validated) ||
+  (in_array(1, $sessionUser->rolesArray)) && !$traceabilityRecord->technical_leader_validated)
+){?>
   <div class="col-md-3">
     <div class="thumbnail text-center">
       <span class="glyphicon glyphicon-stats gi" aria-hidden="true"></span>
@@ -193,7 +277,20 @@ $this->breadcrumbs=array(
       </div>
     </div>
   </div>
+<?php }
+if (
+  (in_array(5, $sessionUser->rolesArray) &&
+  ($operationManual === null ||
+  !$operationManual->sent ||
+  $operationManual->change_request)) ||
 
+  ((in_array(0, $sessionUser->rolesArray) || in_array(1, $sessionUser->rolesArray)) &&
+  $operationManual != null  &&
+  $operationManual->sent &&
+  !$operationManual->change_request) &&
+  ((in_array(0, $sessionUser->rolesArray) && !$operationManual->project_manager_validated) ||
+  (in_array(1, $sessionUser->rolesArray)) && !$operationManual->technical_leader_validated)
+){?>
   <div class="col-md-3">
     <div class="thumbnail text-center">
       <span class="glyphicon glyphicon-info-sign gi" aria-hidden="true"></span>
@@ -204,7 +301,20 @@ $this->breadcrumbs=array(
       </div>
     </div>
   </div>
+<?php }
+if (
+  (in_array(5, $sessionUser->rolesArray) &&
+  ($maintenanceManual === null ||
+  !$maintenanceManual->sent ||
+  $maintenanceManual->change_request)) ||
 
+  ((in_array(0, $sessionUser->rolesArray) || in_array(1, $sessionUser->rolesArray)) &&
+  $maintenanceManual != null  &&
+  $maintenanceManual->sent &&
+  !$maintenanceManual->change_request) &&
+  ((in_array(0, $sessionUser->rolesArray) && !$maintenanceManual->project_manager_validated) ||
+  (in_array(1, $sessionUser->rolesArray)) && !$maintenanceManual->technical_leader_validated)
+){?>
   <div class="col-md-3">
     <div class="thumbnail text-center">
       <span class="glyphicon glyphicon-wrench gi" aria-hidden="true"></span>
@@ -215,18 +325,20 @@ $this->breadcrumbs=array(
       </div>
     </div>
   </div>
-
+<?php }
+if (in_array(5, $sessionUser->rolesArray)){?>
   <div class="col-md-3">
     <div class="thumbnail text-center">
       <span class="glyphicon glyphicon-screenshot gi" aria-hidden="true"></span>
       <div class="caption">
         <h3>Software Component</h3>
         <p>The workstatement is the first step in the ISO-29110 Process execution</p>
-        <p><a href="<?php echo Yii::app()->request->baseUrl . '/processes/softwarecomponent/' . $project->id; ?>" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+        <p><a href="<?php echo Yii::app()->request->baseUrl . '/processes/softwarecomponents/' . $project->id; ?>" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
       </div>
     </div>
   </div>
-
+<?php }
+if (in_array(2, $sessionUser->rolesArray) || in_array(5, $sessionUser->rolesArray)){?>
   <div class="col-md-3">
     <div class="thumbnail text-center">
       <span class="glyphicon glyphicon-console gi" aria-hidden="true"></span>
@@ -237,5 +349,7 @@ $this->breadcrumbs=array(
       </div>
     </div>
   </div>
+<?php }} ?>
 
 </div>
+<?php } ?>

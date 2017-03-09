@@ -16,6 +16,11 @@
  * @property string $interoperability
  * @property string $reuse
  * @property string $legal
+ * @property integer $sent
+ * @property integer $project_manager_validated
+ * @property integer $technical_leader_validated
+ * @property integer $change_request
+ * @property string $change_request_details
  */
 class software_requirements extends CActiveRecord
 {
@@ -36,11 +41,12 @@ class software_requirements extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('process_id', 'required'),
+			array('sent, project_manager_validated, technical_leader_validated, change_request', 'numerical', 'integerOnly'=>true),
 			array('process_id', 'length', 'max'=>10),
-			array('introduction, user_interface, external_interfaces, reliability, efficiency, maintenance, portability, interoperability, reuse, legal', 'safe'),
+			array('introduction, user_interface, external_interfaces, reliability, efficiency, maintenance, portability, interoperability, reuse, legal, change_request_details', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, process_id, introduction, user_interface, external_interfaces, reliability, efficiency, maintenance, portability, interoperability, reuse, legal', 'safe', 'on'=>'search'),
+			array('id, process_id, introduction, user_interface, external_interfaces, reliability, efficiency, maintenance, portability, interoperability, reuse, legal, sent, project_manager_validated, technical_leader_validated, change_request, change_request_details', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -76,6 +82,11 @@ class software_requirements extends CActiveRecord
 			'interoperability' => 'Interoperability',
 			'reuse' => 'Reuse',
 			'legal' => 'Legal',
+			'sent' => 'Sent',
+			'project_manager_validated' => 'Project Manager Validated',
+			'technical_leader_validated' => 'Technical Leader Validated',
+			'change_request' => 'Change Request',
+			'change_request_details' => 'Change Request Details',
 		);
 	}
 
@@ -120,6 +131,16 @@ class software_requirements extends CActiveRecord
 		$criteria->compare('reuse',$this->reuse,true);
 
 		$criteria->compare('legal',$this->legal,true);
+
+		$criteria->compare('sent',$this->sent);
+
+		$criteria->compare('project_manager_validated',$this->project_manager_validated);
+
+		$criteria->compare('technical_leader_validated',$this->technical_leader_validated);
+
+		$criteria->compare('change_request',$this->change_request);
+
+		$criteria->compare('change_request_details',$this->change_request_details,true);
 
 		return new CActiveDataProvider('software_requirements', array(
 			'criteria'=>$criteria,

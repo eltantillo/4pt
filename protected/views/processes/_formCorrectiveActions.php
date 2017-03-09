@@ -10,12 +10,6 @@
 	<?php echo $form->errorSummary($model); ?>
 
 	<div class="form-group">
-		<?php echo $form->labelEx($model,'project_execution_id'); ?>
-		<?php echo $form->textField($model,'project_execution_id', array('class'=>'form-control')); ?>
-		<?php echo $form->error($model,'project_execution_id'); ?>
-	</div>
-
-	<div class="form-group">
 		<?php echo $form->labelEx($model,'problem'); ?>
 		<?php echo $form->textArea($model,'problem',array('rows'=>6, 'cols'=>50, 'class'=>'form-control')); ?>
 		<?php echo $form->error($model,'problem'); ?>
@@ -40,20 +34,24 @@
 	</div>
 
 	<div class="form-group">
+	<div class="row"><div class='col-sm-12'>
 		<?php echo $form->labelEx($model,'open_date'); ?>
-		<?php echo $form->textField($model,'open_date', array('class'=>'form-control')); ?>
+		<?php echo $form->textField($model,'open_date', array('class'=>'form-control', 'id'=>'datetimepicker')); ?>
 		<?php echo $form->error($model,'open_date'); ?>
+	</div></div>
 	</div>
 
 	<div class="form-group">
+	<div class="row"><div class='col-sm-12'>
 		<?php echo $form->labelEx($model,'close_date'); ?>
-		<?php echo $form->textField($model,'close_date', array('class'=>'form-control')); ?>
+		<?php echo $form->textField($model,'close_date', array('class'=>'form-control', 'id'=>'datetimepicker2')); ?>
 		<?php echo $form->error($model,'close_date'); ?>
+	</div></div>
 	</div>
 
 	<div class="form-group">
+		<?php echo $form->checkBox($model,'complete'); ?>
 		<?php echo $form->labelEx($model,'complete'); ?>
-		<?php echo $form->textField($model,'complete', array('class'=>'form-control')); ?>
 		<?php echo $form->error($model,'complete'); ?>
 	</div>
 
@@ -64,3 +62,14 @@
 <?php $this->endWidget(); ?>
 
 </div><!-- form -->
+
+<script type="text/javascript">
+    $(function () {
+        $('#datetimepicker').datetimepicker({
+	        format: 'YYYY-MM-DD HH:mm'
+	    });
+        $('#datetimepicker2').datetimepicker({
+	        format: 'YYYY-MM-DD HH:mm'
+	    });
+    });
+</script>

@@ -1,9 +1,9 @@
 <?php
 
 /**
- * This is the model class for table "progress_report".
+ * This is the model class for table "progress_reports".
  *
- * The followings are the available columns in table 'progress_report':
+ * The followings are the available columns in table 'progress_reports':
  * @property string $id
  * @property string $process_id
  * @property string $task_status
@@ -14,14 +14,14 @@
  * @property string $risks_status
  * @property string $deviations_record
  */
-class progress_report extends CActiveRecord
+class progress_reports extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
 	{
-		return 'progress_report';
+		return 'progress_reports';
 	}
 
 	/**
@@ -49,7 +49,6 @@ class progress_report extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'process' => array(self::BELONGS_TO, 'Processes', 'process_id'),
 		);
 	}
 
@@ -107,14 +106,14 @@ class progress_report extends CActiveRecord
 
 		$criteria->compare('deviations_record',$this->deviations_record,true);
 
-		return new CActiveDataProvider('progress_report', array(
+		return new CActiveDataProvider('progress_reports', array(
 			'criteria'=>$criteria,
 		));
 	}
 
 	/**
 	 * Returns the static model of the specified AR class.
-	 * @return progress_report the static model class
+	 * @return progress_reports the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
