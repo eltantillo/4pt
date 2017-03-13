@@ -5227,3 +5227,1080 @@ Stack trace:
 REQUEST_URI=/4pt/processes/softwarecomponent/1
 HTTP_REFERER=http://localhost/4pt/processes/1
 ---
+2017/03/10 16:09:22 [error] [exception.CException] exception 'CException' with message 'Property "people.name" is not defined.' in C:\wamp64\www\yii\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\wamp64\www\yii\framework\db\ar\CActiveRecord.php(145): CComponent->__get('name')
+#1 C:\wamp64\www\4pt\protected\views\processes\tasks.php(18): CActiveRecord->__get('name')
+#2 C:\wamp64\www\yii\framework\web\CBaseController.php(126): require('C:\\wamp64\\www\\4...')
+#3 C:\wamp64\www\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\wamp64\\www\\4...', Array, true)
+#4 C:\wamp64\www\yii\framework\web\CController.php(869): CBaseController->renderFile('C:\\wamp64\\www\\4...', Array, true)
+#5 C:\wamp64\www\yii\framework\web\CController.php(782): CController->renderPartial('tasks', Array, true)
+#6 C:\wamp64\www\4pt\protected\controllers\ProcessesController.php(208): CController->render('tasks', Array)
+#7 C:\wamp64\www\yii\framework\web\actions\CInlineAction.php(49): ProcessesController->actionTasks()
+#8 C:\wamp64\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#9 C:\wamp64\www\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#10 C:\wamp64\www\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#11 C:\wamp64\www\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#12 C:\wamp64\www\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#13 C:\wamp64\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#14 C:\wamp64\www\yii\framework\web\CController.php(291): CFilterChain->run()
+#15 C:\wamp64\www\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#16 C:\wamp64\www\yii\framework\web\CWebApplication.php(282): CController->run('tasks')
+#17 C:\wamp64\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('processes/tasks')
+#18 C:\wamp64\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#19 C:\wamp64\www\4pt\index.php(13): CApplication->run()
+#20 {main}
+REQUEST_URI=/4pt/processes/tasks/1
+HTTP_REFERER=http://localhost/4pt/processes/taskadmin/1
+---
+2017/03/10 16:12:15 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`4pt`.`tasks`, CONSTRAINT `fk_tasks_people1` FOREIGN KEY (`people_id`) REFERENCES `people` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION). The SQL statement executed was: DELETE FROM `people` WHERE `people`.`id`='1'.
+in C:\wamp64\www\4pt\protected\controllers\PeopleController.php (217)
+in C:\wamp64\www\4pt\index.php (13)
+2017/03/10 16:12:15 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`4pt`.`tasks`, CONSTRAINT `fk_tasks_people1` FOREIGN KEY (`people_id`) REFERENCES `people` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION). The SQL statement executed was: DELETE FROM `people` WHERE `people`.`id`='1'' in C:\wamp64\www\yii\framework\db\CDbCommand.php:358
+Stack trace:
+#0 C:\wamp64\www\yii\framework\db\ar\CActiveRecord.php(1807): CDbCommand->execute()
+#1 C:\wamp64\www\yii\framework\db\ar\CActiveRecord.php(1227): CActiveRecord->deleteByPk('1')
+#2 C:\wamp64\www\4pt\protected\controllers\PeopleController.php(217): CActiveRecord->delete()
+#3 C:\wamp64\www\yii\framework\web\actions\CInlineAction.php(49): peopleController->actionDelete()
+#4 C:\wamp64\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\wamp64\www\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 C:\wamp64\www\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\wamp64\www\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 C:\wamp64\www\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 C:\wamp64\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 C:\wamp64\www\yii\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\wamp64\www\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\wamp64\www\yii\framework\web\CWebApplication.php(282): CController->run('delete')
+#13 C:\wamp64\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('people/delete')
+#14 C:\wamp64\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#15 C:\wamp64\www\4pt\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/4pt/people/delete/1
+HTTP_REFERER=http://localhost/4pt/processes/taskadmin/1?taskID=1
+---
+2017/03/10 16:15:55 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "taskdelete".' in C:\wamp64\www\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp64\www\yii\framework\web\CController.php(270): CController->missingAction('taskdelete')
+#1 C:\wamp64\www\yii\framework\web\CWebApplication.php(282): CController->run('taskdelete')
+#2 C:\wamp64\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('processes/taskd...')
+#3 C:\wamp64\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 C:\wamp64\www\4pt\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/4pt/processes/taskdelete/?taskID=1
+HTTP_REFERER=http://localhost/4pt/processes/taskadmin/1?taskID=1
+---
+2017/03/10 16:16:19 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "taskdelete".' in C:\wamp64\www\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp64\www\yii\framework\web\CController.php(270): CController->missingAction('taskdelete')
+#1 C:\wamp64\www\yii\framework\web\CWebApplication.php(282): CController->run('taskdelete')
+#2 C:\wamp64\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('processes/taskd...')
+#3 C:\wamp64\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 C:\wamp64\www\4pt\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/4pt/processes/taskdelete/?taskID=1
+HTTP_REFERER=http://localhost/4pt/processes/taskadmin/1?taskID=1
+---
+2017/03/10 16:18:21 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[22007]: Invalid datetime format: 1292 Incorrect datetime value: '' for column 'start_date' at row 1. The SQL statement executed was: INSERT INTO `tasks` (`project_plan_id`, `task`, `duration`, `start_date`, `resources`, `people_id`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5).
+in C:\wamp64\www\4pt\protected\controllers\ProcessesController.php (230)
+in C:\wamp64\www\4pt\index.php (13)
+2017/03/10 16:18:21 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[22007]: Invalid datetime format: 1292 Incorrect datetime value: '' for column 'start_date' at row 1. The SQL statement executed was: INSERT INTO `tasks` (`project_plan_id`, `task`, `duration`, `start_date`, `resources`, `people_id`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5)' in C:\wamp64\www\yii\framework\db\CDbCommand.php:358
+Stack trace:
+#0 C:\wamp64\www\yii\framework\db\ar\CActiveRecord.php(1080): CDbCommand->execute()
+#1 C:\wamp64\www\yii\framework\db\ar\CActiveRecord.php(809): CActiveRecord->insert(NULL)
+#2 C:\wamp64\www\4pt\protected\controllers\ProcessesController.php(230): CActiveRecord->save()
+#3 C:\wamp64\www\yii\framework\web\actions\CInlineAction.php(49): ProcessesController->actionTaskAdmin()
+#4 C:\wamp64\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\wamp64\www\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 C:\wamp64\www\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\wamp64\www\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 C:\wamp64\www\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 C:\wamp64\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 C:\wamp64\www\yii\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\wamp64\www\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\wamp64\www\yii\framework\web\CWebApplication.php(282): CController->run('taskadmin')
+#13 C:\wamp64\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('processes/taska...')
+#14 C:\wamp64\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#15 C:\wamp64\www\4pt\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/4pt/processes/taskadmin/1
+HTTP_REFERER=http://localhost/4pt/processes/taskadmin/1
+---
+2017/03/10 16:21:04 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/jquery.min.map".' in C:\wamp64\www\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp64\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('js/jquery.min.m...')
+#1 C:\wamp64\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 C:\wamp64\www\4pt\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/4pt/js/jquery.min.map
+---
+2017/03/10 16:21:33 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/jquery.min.map".' in C:\wamp64\www\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp64\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('js/jquery.min.m...')
+#1 C:\wamp64\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 C:\wamp64\www\4pt\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/4pt/js/jquery.min.map
+---
+2017/03/10 16:21:55 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/jquery.min.map".' in C:\wamp64\www\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp64\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('js/jquery.min.m...')
+#1 C:\wamp64\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 C:\wamp64\www\4pt\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/4pt/js/jquery.min.map
+---
+2017/03/10 16:22:15 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/jquery.min.map".' in C:\wamp64\www\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp64\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('js/jquery.min.m...')
+#1 C:\wamp64\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 C:\wamp64\www\4pt\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/4pt/js/jquery.min.map
+---
+2017/03/10 16:22:23 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/jquery.min.map".' in C:\wamp64\www\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp64\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('js/jquery.min.m...')
+#1 C:\wamp64\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 C:\wamp64\www\4pt\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/4pt/js/jquery.min.map
+---
+2017/03/10 16:22:26 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/jquery.min.map".' in C:\wamp64\www\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp64\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('js/jquery.min.m...')
+#1 C:\wamp64\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 C:\wamp64\www\4pt\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/4pt/js/jquery.min.map
+---
+2017/03/10 16:23:15 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/jquery.min.map".' in C:\wamp64\www\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp64\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('js/jquery.min.m...')
+#1 C:\wamp64\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 C:\wamp64\www\4pt\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/4pt/js/jquery.min.map
+---
+2017/03/10 16:23:30 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/jquery.min.map".' in C:\wamp64\www\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp64\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('js/jquery.min.m...')
+#1 C:\wamp64\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 C:\wamp64\www\4pt\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/4pt/js/jquery.min.map
+---
+2017/03/10 16:24:07 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/jquery.min.map".' in C:\wamp64\www\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp64\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('js/jquery.min.m...')
+#1 C:\wamp64\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 C:\wamp64\www\4pt\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/4pt/js/jquery.min.map
+---
+2017/03/10 16:26:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/jquery.min.map".' in C:\wamp64\www\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp64\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('js/jquery.min.m...')
+#1 C:\wamp64\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 C:\wamp64\www\4pt\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/4pt/js/jquery.min.map
+---
+2017/03/10 16:26:47 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/jquery.min.map".' in C:\wamp64\www\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp64\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('js/jquery.min.m...')
+#1 C:\wamp64\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 C:\wamp64\www\4pt\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/4pt/js/jquery.min.map
+---
+2017/03/10 16:26:57 [error] [php] Trying to get property of non-object (C:\wamp64\www\4pt\protected\views\processes\_formTasks.php:1)
+Stack trace:
+#0 C:\wamp64\www\yii\framework\web\CController.php(869): ProcessesController->renderFile()
+#1 C:\wamp64\www\4pt\protected\views\processes\taskAdmin.php(13): ProcessesController->renderPartial()
+#2 C:\wamp64\www\yii\framework\web\CBaseController.php(126): require()
+#3 C:\wamp64\www\yii\framework\web\CBaseController.php(95): ProcessesController->renderInternal()
+#4 C:\wamp64\www\yii\framework\web\CController.php(869): ProcessesController->renderFile()
+#5 C:\wamp64\www\yii\framework\web\CController.php(782): ProcessesController->renderPartial()
+#6 C:\wamp64\www\4pt\protected\controllers\ProcessesController.php(237): ProcessesController->render()
+#7 C:\wamp64\www\yii\framework\web\actions\CInlineAction.php(49): ProcessesController->actionTaskAdmin()
+#8 C:\wamp64\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#9 C:\wamp64\www\yii\framework\web\filters\CFilterChain.php(133): ProcessesController->runAction()
+#10 C:\wamp64\www\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#11 C:\wamp64\www\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#12 C:\wamp64\www\yii\framework\web\filters\CInlineFilter.php(58): ProcessesController->filterAccessControl()
+#13 C:\wamp64\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#14 C:\wamp64\www\yii\framework\web\CController.php(291): CFilterChain->run()
+#15 C:\wamp64\www\yii\framework\web\CController.php(265): ProcessesController->runActionWithFilters()
+#16 C:\wamp64\www\yii\framework\web\CWebApplication.php(282): ProcessesController->run()
+#17 C:\wamp64\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#18 C:\wamp64\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#19 C:\wamp64\www\4pt\index.php(13): CWebApplication->run()
+REQUEST_URI=/4pt/processes/taskadmin/1?taskID=2
+in C:\wamp64\www\4pt\protected\views\processes\_formTasks.php (1)
+in C:\wamp64\www\4pt\protected\views\processes\taskAdmin.php (13)
+in C:\wamp64\www\4pt\protected\controllers\ProcessesController.php (237)
+2017/03/10 16:27:01 [error] [php] Trying to get property of non-object (C:\wamp64\www\4pt\protected\views\processes\_formTasks.php:1)
+Stack trace:
+#0 C:\wamp64\www\yii\framework\web\CController.php(869): ProcessesController->renderFile()
+#1 C:\wamp64\www\4pt\protected\views\processes\taskAdmin.php(13): ProcessesController->renderPartial()
+#2 C:\wamp64\www\yii\framework\web\CBaseController.php(126): require()
+#3 C:\wamp64\www\yii\framework\web\CBaseController.php(95): ProcessesController->renderInternal()
+#4 C:\wamp64\www\yii\framework\web\CController.php(869): ProcessesController->renderFile()
+#5 C:\wamp64\www\yii\framework\web\CController.php(782): ProcessesController->renderPartial()
+#6 C:\wamp64\www\4pt\protected\controllers\ProcessesController.php(237): ProcessesController->render()
+#7 C:\wamp64\www\yii\framework\web\actions\CInlineAction.php(49): ProcessesController->actionTaskAdmin()
+#8 C:\wamp64\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#9 C:\wamp64\www\yii\framework\web\filters\CFilterChain.php(133): ProcessesController->runAction()
+#10 C:\wamp64\www\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#11 C:\wamp64\www\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#12 C:\wamp64\www\yii\framework\web\filters\CInlineFilter.php(58): ProcessesController->filterAccessControl()
+#13 C:\wamp64\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#14 C:\wamp64\www\yii\framework\web\CController.php(291): CFilterChain->run()
+#15 C:\wamp64\www\yii\framework\web\CController.php(265): ProcessesController->runActionWithFilters()
+#16 C:\wamp64\www\yii\framework\web\CWebApplication.php(282): ProcessesController->run()
+#17 C:\wamp64\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#18 C:\wamp64\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#19 C:\wamp64\www\4pt\index.php(13): CWebApplication->run()
+REQUEST_URI=/4pt/processes/taskadmin/1?taskID=2
+in C:\wamp64\www\4pt\protected\views\processes\_formTasks.php (1)
+in C:\wamp64\www\4pt\protected\views\processes\taskAdmin.php (13)
+in C:\wamp64\www\4pt\protected\controllers\ProcessesController.php (237)
+2017/03/10 16:27:03 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/jquery.min.map".' in C:\wamp64\www\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\wamp64\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('js/jquery.min.m...')
+#1 C:\wamp64\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 C:\wamp64\www\4pt\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/4pt/js/jquery.min.map
+---
+2017/03/10 16:29:27 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[HY000]: General error: 1366 Incorrect integer value: '' for column 'people_id' at row 1. The SQL statement executed was: INSERT INTO `tasks` (`project_plan_id`, `task`, `duration`, `start_date`, `resources`, `people_id`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5).
+in C:\wamp64\www\4pt\protected\controllers\ProcessesController.php (233)
+in C:\wamp64\www\4pt\index.php (13)
+2017/03/10 16:29:27 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[HY000]: General error: 1366 Incorrect integer value: '' for column 'people_id' at row 1. The SQL statement executed was: INSERT INTO `tasks` (`project_plan_id`, `task`, `duration`, `start_date`, `resources`, `people_id`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5)' in C:\wamp64\www\yii\framework\db\CDbCommand.php:358
+Stack trace:
+#0 C:\wamp64\www\yii\framework\db\ar\CActiveRecord.php(1080): CDbCommand->execute()
+#1 C:\wamp64\www\yii\framework\db\ar\CActiveRecord.php(809): CActiveRecord->insert(NULL)
+#2 C:\wamp64\www\4pt\protected\controllers\ProcessesController.php(233): CActiveRecord->save()
+#3 C:\wamp64\www\yii\framework\web\actions\CInlineAction.php(49): ProcessesController->actionTaskAdmin()
+#4 C:\wamp64\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\wamp64\www\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 C:\wamp64\www\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\wamp64\www\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 C:\wamp64\www\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 C:\wamp64\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 C:\wamp64\www\yii\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\wamp64\www\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\wamp64\www\yii\framework\web\CWebApplication.php(282): CController->run('taskadmin')
+#13 C:\wamp64\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('processes/taska...')
+#14 C:\wamp64\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#15 C:\wamp64\www\4pt\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/4pt/processes/taskadmin/1
+HTTP_REFERER=http://localhost/4pt/processes/taskadmin/1
+---
+2017/03/10 16:29:48 [error] [php] Trying to get property of non-object (C:\wamp64\www\4pt\protected\views\processes\tasks.php:18)
+Stack trace:
+#0 C:\wamp64\www\yii\framework\web\CController.php(869): ProcessesController->renderFile()
+#1 C:\wamp64\www\yii\framework\web\CController.php(782): ProcessesController->renderPartial()
+#2 C:\wamp64\www\4pt\protected\controllers\ProcessesController.php(208): ProcessesController->render()
+#3 C:\wamp64\www\yii\framework\web\actions\CInlineAction.php(49): ProcessesController->actionTasks()
+#4 C:\wamp64\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 C:\wamp64\www\yii\framework\web\filters\CFilterChain.php(133): ProcessesController->runAction()
+#6 C:\wamp64\www\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\wamp64\www\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#8 C:\wamp64\www\yii\framework\web\filters\CInlineFilter.php(58): ProcessesController->filterAccessControl()
+#9 C:\wamp64\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#10 C:\wamp64\www\yii\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\wamp64\www\yii\framework\web\CController.php(265): ProcessesController->runActionWithFilters()
+#12 C:\wamp64\www\yii\framework\web\CWebApplication.php(282): ProcessesController->run()
+#13 C:\wamp64\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#14 C:\wamp64\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#15 C:\wamp64\www\4pt\index.php(13): CWebApplication->run()
+REQUEST_URI=/4pt/processes/tasks/1
+in C:\wamp64\www\4pt\protected\views\processes\tasks.php (18)
+in C:\wamp64\www\4pt\protected\controllers\ProcessesController.php (208)
+in C:\wamp64\www\4pt\index.php (13)
+2017/03/10 16:33:44 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\wamp64\www\yii\framework\web\auth\CAccessControlFilter.php:182
+Stack trace:
+#0 C:\wamp64\www\yii\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\wamp64\www\yii\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\wamp64\www\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\wamp64\www\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\wamp64\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\wamp64\www\yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\wamp64\www\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\wamp64\www\yii\framework\web\CWebApplication.php(282): CController->run('minutedelete')
+#8 C:\wamp64\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('processes/minut...')
+#9 C:\wamp64\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#10 C:\wamp64\www\4pt\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/4pt/processes/minutedelete/1?minuteID=1
+HTTP_REFERER=http://localhost/4pt/processes/minuteadmin/1?minuteID=1
+---
+2017/03/10 16:34:15 [error] [php] include(minute.php): failed to open stream: No such file or directory (C:\wamp64\www\yii\framework\YiiBase.php:432)
+Stack trace:
+#0 C:\wamp64\www\4pt\protected\controllers\ProcessesController.php(372): spl_autoload_call()
+#1 C:\wamp64\www\yii\framework\web\actions\CInlineAction.php(49): ProcessesController->actionMinuteDelete()
+#2 C:\wamp64\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#3 C:\wamp64\www\yii\framework\web\filters\CFilterChain.php(133): ProcessesController->runAction()
+#4 C:\wamp64\www\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#5 C:\wamp64\www\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#6 C:\wamp64\www\yii\framework\web\filters\CInlineFilter.php(58): ProcessesController->filterAccessControl()
+#7 C:\wamp64\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#8 C:\wamp64\www\yii\framework\web\CController.php(291): CFilterChain->run()
+#9 C:\wamp64\www\yii\framework\web\CController.php(265): ProcessesController->runActionWithFilters()
+#10 C:\wamp64\www\yii\framework\web\CWebApplication.php(282): ProcessesController->run()
+#11 C:\wamp64\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#12 C:\wamp64\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#13 C:\wamp64\www\4pt\index.php(13): CWebApplication->run()
+REQUEST_URI=/4pt/processes/minutedelete/1?minuteID=1
+in C:\wamp64\www\4pt\protected\controllers\ProcessesController.php (372)
+in C:\wamp64\www\4pt\index.php (13)
+2017/03/10 16:38:36 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[22007]: Invalid datetime format: 1292 Incorrect datetime value: '' for column 'date' at row 1. The SQL statement executed was: INSERT INTO `minutes` (`project_plan_id`, `purpose`, `assistants`, `date`, `place`, `previous_minute_id`, `minutescol`, `issues_raised`, `open_issues`, `agreements`, `next_meeting`, `client_validated`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7, :yp8, :yp9, :yp10, :yp11).
+in C:\wamp64\www\4pt\protected\controllers\ProcessesController.php (358)
+in C:\wamp64\www\4pt\index.php (13)
+2017/03/10 16:38:36 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[22007]: Invalid datetime format: 1292 Incorrect datetime value: '' for column 'date' at row 1. The SQL statement executed was: INSERT INTO `minutes` (`project_plan_id`, `purpose`, `assistants`, `date`, `place`, `previous_minute_id`, `minutescol`, `issues_raised`, `open_issues`, `agreements`, `next_meeting`, `client_validated`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7, :yp8, :yp9, :yp10, :yp11)' in C:\wamp64\www\yii\framework\db\CDbCommand.php:358
+Stack trace:
+#0 C:\wamp64\www\yii\framework\db\ar\CActiveRecord.php(1080): CDbCommand->execute()
+#1 C:\wamp64\www\yii\framework\db\ar\CActiveRecord.php(809): CActiveRecord->insert(NULL)
+#2 C:\wamp64\www\4pt\protected\controllers\ProcessesController.php(358): CActiveRecord->save()
+#3 C:\wamp64\www\yii\framework\web\actions\CInlineAction.php(49): ProcessesController->actionMinuteAdmin()
+#4 C:\wamp64\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\wamp64\www\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 C:\wamp64\www\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\wamp64\www\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 C:\wamp64\www\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 C:\wamp64\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 C:\wamp64\www\yii\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\wamp64\www\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\wamp64\www\yii\framework\web\CWebApplication.php(282): CController->run('minuteadmin')
+#13 C:\wamp64\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('processes/minut...')
+#14 C:\wamp64\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#15 C:\wamp64\www\4pt\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/4pt/processes/minuteadmin/1
+HTTP_REFERER=http://localhost/4pt/processes/minuteadmin/1
+---
+2017/03/10 16:39:37 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[22007]: Invalid datetime format: 1292 Incorrect datetime value: '' for column 'next_meeting' at row 1. The SQL statement executed was: INSERT INTO `minutes` (`project_plan_id`, `purpose`, `assistants`, `date`, `place`, `previous_minute_id`, `minutescol`, `issues_raised`, `open_issues`, `agreements`, `next_meeting`, `client_validated`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7, :yp8, :yp9, :yp10, :yp11).
+in C:\wamp64\www\4pt\protected\controllers\ProcessesController.php (357)
+in C:\wamp64\www\4pt\index.php (13)
+2017/03/10 16:39:37 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[22007]: Invalid datetime format: 1292 Incorrect datetime value: '' for column 'next_meeting' at row 1. The SQL statement executed was: INSERT INTO `minutes` (`project_plan_id`, `purpose`, `assistants`, `date`, `place`, `previous_minute_id`, `minutescol`, `issues_raised`, `open_issues`, `agreements`, `next_meeting`, `client_validated`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7, :yp8, :yp9, :yp10, :yp11)' in C:\wamp64\www\yii\framework\db\CDbCommand.php:358
+Stack trace:
+#0 C:\wamp64\www\yii\framework\db\ar\CActiveRecord.php(1080): CDbCommand->execute()
+#1 C:\wamp64\www\yii\framework\db\ar\CActiveRecord.php(809): CActiveRecord->insert(NULL)
+#2 C:\wamp64\www\4pt\protected\controllers\ProcessesController.php(357): CActiveRecord->save()
+#3 C:\wamp64\www\yii\framework\web\actions\CInlineAction.php(49): ProcessesController->actionMinuteAdmin()
+#4 C:\wamp64\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\wamp64\www\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 C:\wamp64\www\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\wamp64\www\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 C:\wamp64\www\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 C:\wamp64\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 C:\wamp64\www\yii\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\wamp64\www\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\wamp64\www\yii\framework\web\CWebApplication.php(282): CController->run('minuteadmin')
+#13 C:\wamp64\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('processes/minut...')
+#14 C:\wamp64\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#15 C:\wamp64\www\4pt\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/4pt/processes/minuteadmin/1
+HTTP_REFERER=http://localhost/4pt/processes/minuteadmin/1
+---
+2017/03/10 16:45:22 [error] [php] Undefined variable: sessionUser (C:\wamp64\www\4pt\protected\views\processes\_formMinutes.php:1)
+Stack trace:
+#0 C:\wamp64\www\yii\framework\web\CController.php(869): ProcessesController->renderFile()
+#1 C:\wamp64\www\4pt\protected\views\processes\minuteAdmin.php(11): ProcessesController->renderPartial()
+#2 C:\wamp64\www\yii\framework\web\CBaseController.php(126): require()
+#3 C:\wamp64\www\yii\framework\web\CBaseController.php(95): ProcessesController->renderInternal()
+#4 C:\wamp64\www\yii\framework\web\CController.php(869): ProcessesController->renderFile()
+#5 C:\wamp64\www\yii\framework\web\CController.php(782): ProcessesController->renderPartial()
+#6 C:\wamp64\www\4pt\protected\controllers\ProcessesController.php(365): ProcessesController->render()
+#7 C:\wamp64\www\yii\framework\web\actions\CInlineAction.php(49): ProcessesController->actionMinuteAdmin()
+#8 C:\wamp64\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#9 C:\wamp64\www\yii\framework\web\filters\CFilterChain.php(133): ProcessesController->runAction()
+#10 C:\wamp64\www\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#11 C:\wamp64\www\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#12 C:\wamp64\www\yii\framework\web\filters\CInlineFilter.php(58): ProcessesController->filterAccessControl()
+#13 C:\wamp64\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#14 C:\wamp64\www\yii\framework\web\CController.php(291): CFilterChain->run()
+#15 C:\wamp64\www\yii\framework\web\CController.php(265): ProcessesController->runActionWithFilters()
+#16 C:\wamp64\www\yii\framework\web\CWebApplication.php(282): ProcessesController->run()
+#17 C:\wamp64\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#18 C:\wamp64\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#19 C:\wamp64\www\4pt\index.php(13): CWebApplication->run()
+REQUEST_URI=/4pt/processes/minuteadmin/1?minuteID=3
+in C:\wamp64\www\4pt\protected\views\processes\_formMinutes.php (1)
+in C:\wamp64\www\4pt\protected\views\processes\minuteAdmin.php (11)
+in C:\wamp64\www\4pt\protected\controllers\ProcessesController.php (365)
+2017/03/10 16:49:37 [error] [exception.CDbException] exception 'CDbException' with message 'Table "minutes" does not have a column named "project_plan".' in C:\wamp64\www\yii\framework\db\schema\CDbCommandBuilder.php:697
+Stack trace:
+#0 C:\wamp64\www\yii\framework\db\ar\CActiveRecord.php(1540): CDbCommandBuilder->createColumnCriteria(Object(CMysqlTableSchema), Array, Array, Array, '`t`.')
+#1 C:\wamp64\www\4pt\protected\controllers\ProcessesController.php(97): CActiveRecord->findAllByAttributes(Array, Array)
+#2 C:\wamp64\www\yii\framework\web\actions\CInlineAction.php(49): ProcessesController->actionView()
+#3 C:\wamp64\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 C:\wamp64\www\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#5 C:\wamp64\www\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#6 C:\wamp64\www\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#7 C:\wamp64\www\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#8 C:\wamp64\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#9 C:\wamp64\www\yii\framework\web\CController.php(291): CFilterChain->run()
+#10 C:\wamp64\www\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 C:\wamp64\www\yii\framework\web\CWebApplication.php(282): CController->run('view')
+#12 C:\wamp64\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('processes/view')
+#13 C:\wamp64\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#14 C:\wamp64\www\4pt\index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/4pt/processes/1
+HTTP_REFERER=http://localhost/4pt/processes/minutes/1
+---
+2017/03/10 17:29:55 [error] [php] Invalid argument supplied for foreach() (C:\wamp64\www\4pt\protected\views\processes\progressReports.php:15)
+Stack trace:
+#0 C:\wamp64\www\yii\framework\web\CController.php(869): ProcessesController->renderFile()
+#1 C:\wamp64\www\yii\framework\web\CController.php(782): ProcessesController->renderPartial()
+#2 C:\wamp64\www\4pt\protected\controllers\ProcessesController.php(860): ProcessesController->render()
+#3 C:\wamp64\www\yii\framework\web\actions\CInlineAction.php(49): ProcessesController->actionActOfAcceptance()
+#4 C:\wamp64\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 C:\wamp64\www\yii\framework\web\filters\CFilterChain.php(133): ProcessesController->runAction()
+#6 C:\wamp64\www\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\wamp64\www\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#8 C:\wamp64\www\yii\framework\web\filters\CInlineFilter.php(58): ProcessesController->filterAccessControl()
+#9 C:\wamp64\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#10 C:\wamp64\www\yii\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\wamp64\www\yii\framework\web\CController.php(265): ProcessesController->runActionWithFilters()
+#12 C:\wamp64\www\yii\framework\web\CWebApplication.php(282): ProcessesController->run()
+#13 C:\wamp64\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#14 C:\wamp64\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#15 C:\wamp64\www\4pt\index.php(13): CWebApplication->run()
+REQUEST_URI=/4pt/processes/actofacceptance/1
+in C:\wamp64\www\4pt\protected\views\processes\progressReports.php (15)
+in C:\wamp64\www\4pt\protected\controllers\ProcessesController.php (860)
+in C:\wamp64\www\4pt\index.php (13)
+2017/03/10 17:39:12 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[22007]: Invalid datetime format: 1292 Incorrect datetime value: '' for column 'date' at row 1. The SQL statement executed was: INSERT INTO `act_of_acceptance` (`process_id`, `register`, `date`, `delivered_items`, `criteria_verification`, `pending_issues`, `client_validated`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6).
+in C:\wamp64\www\4pt\protected\controllers\ProcessesController.php (865)
+in C:\wamp64\www\4pt\index.php (13)
+2017/03/10 17:39:12 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[22007]: Invalid datetime format: 1292 Incorrect datetime value: '' for column 'date' at row 1. The SQL statement executed was: INSERT INTO `act_of_acceptance` (`process_id`, `register`, `date`, `delivered_items`, `criteria_verification`, `pending_issues`, `client_validated`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6)' in C:\wamp64\www\yii\framework\db\CDbCommand.php:358
+Stack trace:
+#0 C:\wamp64\www\yii\framework\db\ar\CActiveRecord.php(1080): CDbCommand->execute()
+#1 C:\wamp64\www\yii\framework\db\ar\CActiveRecord.php(809): CActiveRecord->insert(NULL)
+#2 C:\wamp64\www\4pt\protected\controllers\ProcessesController.php(865): CActiveRecord->save()
+#3 C:\wamp64\www\yii\framework\web\actions\CInlineAction.php(49): ProcessesController->actionActOfAcceptance()
+#4 C:\wamp64\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#5 C:\wamp64\www\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 C:\wamp64\www\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\wamp64\www\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 C:\wamp64\www\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 C:\wamp64\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 C:\wamp64\www\yii\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\wamp64\www\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 C:\wamp64\www\yii\framework\web\CWebApplication.php(282): CController->run('actofacceptance')
+#13 C:\wamp64\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('processes/actof...')
+#14 C:\wamp64\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#15 C:\wamp64\www\4pt\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/4pt/processes/actofacceptance/1
+HTTP_REFERER=http://localhost/4pt/processes/actofacceptance/1
+---
+2017/03/13 17:42:17 [error] [php] Undefined variable: workStatement (C:\wamp64\www\4pt\protected\controllers\ProcessesController.php:471)
+Stack trace:
+#0 C:\wamp64\www\yii\framework\web\filters\CFilterChain.php(133): ProcessesController->runAction()
+#1 C:\wamp64\www\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#2 C:\wamp64\www\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#3 C:\wamp64\www\yii\framework\web\filters\CInlineFilter.php(58): ProcessesController->filterAccessControl()
+#4 C:\wamp64\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#5 C:\wamp64\www\yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\wamp64\www\yii\framework\web\CController.php(265): ProcessesController->runActionWithFilters()
+#7 C:\wamp64\www\yii\framework\web\CWebApplication.php(282): ProcessesController->run()
+#8 C:\wamp64\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 C:\wamp64\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#10 C:\wamp64\www\4pt\index.php(13): CWebApplication->run()
+REQUEST_URI=/4pt/processes/progressreportadmin/1
+in C:\wamp64\www\4pt\protected\controllers\ProcessesController.php (471)
+in C:\wamp64\www\4pt\index.php (13)
+2017/03/13 17:52:37 [error] [exception.CDbException] exception 'CDbException' with message 'Table "work_statement" does not have a column named "0".' in C:\wamp64\www\yii\framework\db\schema\CDbCommandBuilder.php:697
+Stack trace:
+#0 C:\wamp64\www\yii\framework\db\ar\CActiveRecord.php(1523): CDbCommandBuilder->createColumnCriteria(Object(CMysqlTableSchema), Array, '', Array, '`t`.')
+#1 C:\wamp64\www\4pt\protected\controllers\ProcessesController.php(475): CActiveRecord->findByAttributes(Array)
+#2 C:\wamp64\www\yii\framework\web\actions\CInlineAction.php(49): ProcessesController->actionProgressReportAdmin()
+#3 C:\wamp64\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 C:\wamp64\www\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#5 C:\wamp64\www\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#6 C:\wamp64\www\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#7 C:\wamp64\www\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#8 C:\wamp64\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#9 C:\wamp64\www\yii\framework\web\CController.php(291): CFilterChain->run()
+#10 C:\wamp64\www\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 C:\wamp64\www\yii\framework\web\CWebApplication.php(282): CController->run('progressreporta...')
+#12 C:\wamp64\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('processes/progr...')
+#13 C:\wamp64\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#14 C:\wamp64\www\4pt\index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/4pt/processes/progressreportadmin/1
+HTTP_REFERER=http://localhost/4pt/processes/progressreports/1
+---
+2017/03/13 17:53:29 [error] [exception.CDbException] exception 'CDbException' with message 'Table "processes" does not have a column named "0".' in C:\wamp64\www\yii\framework\db\schema\CDbCommandBuilder.php:697
+Stack trace:
+#0 C:\wamp64\www\yii\framework\db\ar\CActiveRecord.php(1523): CDbCommandBuilder->createColumnCriteria(Object(CMysqlTableSchema), Array, '', Array, '`t`.')
+#1 C:\wamp64\www\4pt\protected\controllers\ProcessesController.php(471): CActiveRecord->findByAttributes(Array)
+#2 C:\wamp64\www\yii\framework\web\actions\CInlineAction.php(49): ProcessesController->actionProgressReportAdmin()
+#3 C:\wamp64\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 C:\wamp64\www\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#5 C:\wamp64\www\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#6 C:\wamp64\www\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#7 C:\wamp64\www\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#8 C:\wamp64\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#9 C:\wamp64\www\yii\framework\web\CController.php(291): CFilterChain->run()
+#10 C:\wamp64\www\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 C:\wamp64\www\yii\framework\web\CWebApplication.php(282): CController->run('progressreporta...')
+#12 C:\wamp64\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('processes/progr...')
+#13 C:\wamp64\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#14 C:\wamp64\www\4pt\index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/4pt/processes/progressreportadmin/1
+HTTP_REFERER=http://localhost/4pt/processes/progressreports/1
+---
+2017/03/13 17:54:22 [error] [exception.CDbException] exception 'CDbException' with message 'Table "delivery_instructions" does not have a column named "process_id".' in C:\wamp64\www\yii\framework\db\schema\CDbCommandBuilder.php:697
+Stack trace:
+#0 C:\wamp64\www\yii\framework\db\ar\CActiveRecord.php(1523): CDbCommandBuilder->createColumnCriteria(Object(CMysqlTableSchema), Array, Array, Array, '`t`.')
+#1 C:\wamp64\www\4pt\protected\controllers\ProcessesController.php(478): CActiveRecord->findByAttributes(Array, Array)
+#2 C:\wamp64\www\yii\framework\web\actions\CInlineAction.php(49): ProcessesController->actionProgressReportAdmin()
+#3 C:\wamp64\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 C:\wamp64\www\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#5 C:\wamp64\www\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#6 C:\wamp64\www\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#7 C:\wamp64\www\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#8 C:\wamp64\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#9 C:\wamp64\www\yii\framework\web\CController.php(291): CFilterChain->run()
+#10 C:\wamp64\www\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 C:\wamp64\www\yii\framework\web\CWebApplication.php(282): CController->run('progressreporta...')
+#12 C:\wamp64\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('processes/progr...')
+#13 C:\wamp64\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#14 C:\wamp64\www\4pt\index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/4pt/processes/progressreportadmin/1
+HTTP_REFERER=http://localhost/4pt/processes/progressreports/1
+---
+2017/03/13 17:56:14 [error] [exception.CDbException] exception 'CDbException' with message 'Table "tasks" does not have a column named "process_id".' in C:\wamp64\www\yii\framework\db\schema\CDbCommandBuilder.php:697
+Stack trace:
+#0 C:\wamp64\www\yii\framework\db\ar\CActiveRecord.php(1540): CDbCommandBuilder->createColumnCriteria(Object(CMysqlTableSchema), Array, '', Array, '`t`.')
+#1 C:\wamp64\www\4pt\protected\controllers\ProcessesController.php(481): CActiveRecord->findAllByAttributes(Array)
+#2 C:\wamp64\www\yii\framework\web\actions\CInlineAction.php(49): ProcessesController->actionProgressReportAdmin()
+#3 C:\wamp64\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 C:\wamp64\www\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#5 C:\wamp64\www\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#6 C:\wamp64\www\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#7 C:\wamp64\www\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#8 C:\wamp64\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#9 C:\wamp64\www\yii\framework\web\CController.php(291): CFilterChain->run()
+#10 C:\wamp64\www\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 C:\wamp64\www\yii\framework\web\CWebApplication.php(282): CController->run('progressreporta...')
+#12 C:\wamp64\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('processes/progr...')
+#13 C:\wamp64\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#14 C:\wamp64\www\4pt\index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/4pt/processes/progressreportadmin/1
+HTTP_REFERER=http://localhost/4pt/processes/progressreports/1
+---
+2017/03/13 17:58:15 [error] [php] Trying to get property of non-object (C:\wamp64\www\4pt\protected\views\processes\progressReportAdmin.php:12)
+Stack trace:
+#0 C:\wamp64\www\yii\framework\web\CController.php(869): ProcessesController->renderFile()
+#1 C:\wamp64\www\yii\framework\web\CController.php(782): ProcessesController->renderPartial()
+#2 C:\wamp64\www\4pt\protected\controllers\ProcessesController.php(510): ProcessesController->render()
+#3 C:\wamp64\www\yii\framework\web\actions\CInlineAction.php(49): ProcessesController->actionProgressReportAdmin()
+#4 C:\wamp64\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 C:\wamp64\www\yii\framework\web\filters\CFilterChain.php(133): ProcessesController->runAction()
+#6 C:\wamp64\www\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\wamp64\www\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#8 C:\wamp64\www\yii\framework\web\filters\CInlineFilter.php(58): ProcessesController->filterAccessControl()
+#9 C:\wamp64\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#10 C:\wamp64\www\yii\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\wamp64\www\yii\framework\web\CController.php(265): ProcessesController->runActionWithFilters()
+#12 C:\wamp64\www\yii\framework\web\CWebApplication.php(282): ProcessesController->run()
+#13 C:\wamp64\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#14 C:\wamp64\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#15 C:\wamp64\www\4pt\index.php(13): CWebApplication->run()
+REQUEST_URI=/4pt/processes/progressreportadmin/1
+in C:\wamp64\www\4pt\protected\views\processes\progressReportAdmin.php (12)
+in C:\wamp64\www\4pt\protected\controllers\ProcessesController.php (510)
+in C:\wamp64\www\4pt\index.php (13)
+2017/03/13 17:59:36 [error] [php] Trying to get property of non-object (C:\wamp64\www\4pt\protected\views\processes\progressReportAdmin.php:12)
+Stack trace:
+#0 C:\wamp64\www\yii\framework\web\CController.php(869): ProcessesController->renderFile()
+#1 C:\wamp64\www\yii\framework\web\CController.php(782): ProcessesController->renderPartial()
+#2 C:\wamp64\www\4pt\protected\controllers\ProcessesController.php(510): ProcessesController->render()
+#3 C:\wamp64\www\yii\framework\web\actions\CInlineAction.php(49): ProcessesController->actionProgressReportAdmin()
+#4 C:\wamp64\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 C:\wamp64\www\yii\framework\web\filters\CFilterChain.php(133): ProcessesController->runAction()
+#6 C:\wamp64\www\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\wamp64\www\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#8 C:\wamp64\www\yii\framework\web\filters\CInlineFilter.php(58): ProcessesController->filterAccessControl()
+#9 C:\wamp64\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#10 C:\wamp64\www\yii\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\wamp64\www\yii\framework\web\CController.php(265): ProcessesController->runActionWithFilters()
+#12 C:\wamp64\www\yii\framework\web\CWebApplication.php(282): ProcessesController->run()
+#13 C:\wamp64\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#14 C:\wamp64\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#15 C:\wamp64\www\4pt\index.php(13): CWebApplication->run()
+REQUEST_URI=/4pt/processes/progressreportadmin/1
+in C:\wamp64\www\4pt\protected\views\processes\progressReportAdmin.php (12)
+in C:\wamp64\www\4pt\protected\controllers\ProcessesController.php (510)
+in C:\wamp64\www\4pt\index.php (13)
+2017/03/13 18:13:22 [error] [exception.CException] exception 'CException' with message 'Property "risks.task" is not defined.' in C:\wamp64\www\yii\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\wamp64\www\yii\framework\db\ar\CActiveRecord.php(145): CComponent->__get('task')
+#1 C:\wamp64\www\4pt\protected\views\processes\progressReportAdmin.php(51): CActiveRecord->__get('task')
+#2 C:\wamp64\www\yii\framework\web\CBaseController.php(126): require('C:\\wamp64\\www\\4...')
+#3 C:\wamp64\www\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\wamp64\\www\\4...', Array, true)
+#4 C:\wamp64\www\yii\framework\web\CController.php(869): CBaseController->renderFile('C:\\wamp64\\www\\4...', Array, true)
+#5 C:\wamp64\www\yii\framework\web\CController.php(782): CController->renderPartial('progressReportA...', Array, true)
+#6 C:\wamp64\www\4pt\protected\controllers\ProcessesController.php(510): CController->render('progressReportA...', Array)
+#7 C:\wamp64\www\yii\framework\web\actions\CInlineAction.php(49): ProcessesController->actionProgressReportAdmin()
+#8 C:\wamp64\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#9 C:\wamp64\www\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#10 C:\wamp64\www\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#11 C:\wamp64\www\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#12 C:\wamp64\www\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#13 C:\wamp64\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#14 C:\wamp64\www\yii\framework\web\CController.php(291): CFilterChain->run()
+#15 C:\wamp64\www\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#16 C:\wamp64\www\yii\framework\web\CWebApplication.php(282): CController->run('progressreporta...')
+#17 C:\wamp64\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('processes/progr...')
+#18 C:\wamp64\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#19 C:\wamp64\www\4pt\index.php(13): CApplication->run()
+#20 {main}
+REQUEST_URI=/4pt/processes/progressreportadmin/1
+HTTP_REFERER=http://localhost/4pt/processes/progressreports/1
+---
+2017/03/13 18:45:25 [error] [php] Undefined variable: workStatement (C:\wamp64\www\4pt\protected\views\processes\projectPlanInput.php:1)
+Stack trace:
+#0 C:\wamp64\www\yii\framework\web\CController.php(869): ProcessesController->renderFile()
+#1 C:\wamp64\www\4pt\protected\views\processes\progressReportAdmin.php(12): ProcessesController->renderPartial()
+#2 C:\wamp64\www\yii\framework\web\CBaseController.php(126): require()
+#3 C:\wamp64\www\yii\framework\web\CBaseController.php(95): ProcessesController->renderInternal()
+#4 C:\wamp64\www\yii\framework\web\CController.php(869): ProcessesController->renderFile()
+#5 C:\wamp64\www\yii\framework\web\CController.php(782): ProcessesController->renderPartial()
+#6 C:\wamp64\www\4pt\protected\controllers\ProcessesController.php(510): ProcessesController->render()
+#7 C:\wamp64\www\yii\framework\web\actions\CInlineAction.php(49): ProcessesController->actionProgressReportAdmin()
+#8 C:\wamp64\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#9 C:\wamp64\www\yii\framework\web\filters\CFilterChain.php(133): ProcessesController->runAction()
+#10 C:\wamp64\www\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#11 C:\wamp64\www\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#12 C:\wamp64\www\yii\framework\web\filters\CInlineFilter.php(58): ProcessesController->filterAccessControl()
+#13 C:\wamp64\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#14 C:\wamp64\www\yii\framework\web\CController.php(291): CFilterChain->run()
+#15 C:\wamp64\www\yii\framework\web\CController.php(265): ProcessesController->runActionWithFilters()
+#16 C:\wamp64\www\yii\framework\web\CWebApplication.php(282): ProcessesController->run()
+#17 C:\wamp64\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#18 C:\wamp64\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#19 C:\wamp64\www\4pt\index.php(13): CWebApplication->run()
+REQUEST_URI=/4pt/processes/progressreportadmin/1
+in C:\wamp64\www\4pt\protected\views\processes\projectPlanInput.php (1)
+in C:\wamp64\www\4pt\protected\views\processes\progressReportAdmin.php (12)
+in C:\wamp64\www\4pt\protected\controllers\ProcessesController.php (510)
+2017/03/13 18:56:51 [error] [php] Undefined variable: workStatement (C:\wamp64\www\4pt\protected\views\processes\softwareRequirements.php:17)
+Stack trace:
+#0 C:\wamp64\www\yii\framework\web\CController.php(869): ProcessesController->renderFile()
+#1 C:\wamp64\www\yii\framework\web\CController.php(782): ProcessesController->renderPartial()
+#2 C:\wamp64\www\4pt\protected\controllers\ProcessesController.php(609): ProcessesController->render()
+#3 C:\wamp64\www\yii\framework\web\actions\CInlineAction.php(49): ProcessesController->actionSoftwareRequirements()
+#4 C:\wamp64\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 C:\wamp64\www\yii\framework\web\filters\CFilterChain.php(133): ProcessesController->runAction()
+#6 C:\wamp64\www\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\wamp64\www\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#8 C:\wamp64\www\yii\framework\web\filters\CInlineFilter.php(58): ProcessesController->filterAccessControl()
+#9 C:\wamp64\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#10 C:\wamp64\www\yii\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\wamp64\www\yii\framework\web\CController.php(265): ProcessesController->runActionWithFilters()
+#12 C:\wamp64\www\yii\framework\web\CWebApplication.php(282): ProcessesController->run()
+#13 C:\wamp64\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#14 C:\wamp64\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#15 C:\wamp64\www\4pt\index.php(13): CWebApplication->run()
+REQUEST_URI=/4pt/processes/softwarerequirements/1
+in C:\wamp64\www\4pt\protected\views\processes\softwareRequirements.php (17)
+in C:\wamp64\www\4pt\protected\controllers\ProcessesController.php (609)
+in C:\wamp64\www\4pt\index.php (13)
+2017/03/13 18:58:01 [error] [php] Undefined variable: projectPlan (C:\wamp64\www\4pt\protected\controllers\ProcessesController.php:577)
+Stack trace:
+#0 C:\wamp64\www\yii\framework\web\filters\CFilterChain.php(133): ProcessesController->runAction()
+#1 C:\wamp64\www\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#2 C:\wamp64\www\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#3 C:\wamp64\www\yii\framework\web\filters\CInlineFilter.php(58): ProcessesController->filterAccessControl()
+#4 C:\wamp64\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#5 C:\wamp64\www\yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\wamp64\www\yii\framework\web\CController.php(265): ProcessesController->runActionWithFilters()
+#7 C:\wamp64\www\yii\framework\web\CWebApplication.php(282): ProcessesController->run()
+#8 C:\wamp64\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 C:\wamp64\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#10 C:\wamp64\www\4pt\index.php(13): CWebApplication->run()
+REQUEST_URI=/4pt/processes/softwarerequirements/1
+in C:\wamp64\www\4pt\protected\controllers\ProcessesController.php (577)
+in C:\wamp64\www\4pt\index.php (13)
+2017/03/13 18:58:33 [error] [php] Undefined variable: process (C:\wamp64\www\4pt\protected\controllers\ProcessesController.php:571)
+Stack trace:
+#0 C:\wamp64\www\yii\framework\web\filters\CFilterChain.php(133): ProcessesController->runAction()
+#1 C:\wamp64\www\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#2 C:\wamp64\www\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#3 C:\wamp64\www\yii\framework\web\filters\CInlineFilter.php(58): ProcessesController->filterAccessControl()
+#4 C:\wamp64\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#5 C:\wamp64\www\yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\wamp64\www\yii\framework\web\CController.php(265): ProcessesController->runActionWithFilters()
+#7 C:\wamp64\www\yii\framework\web\CWebApplication.php(282): ProcessesController->run()
+#8 C:\wamp64\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 C:\wamp64\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#10 C:\wamp64\www\4pt\index.php(13): CWebApplication->run()
+REQUEST_URI=/4pt/processes/softwarerequirements/1
+in C:\wamp64\www\4pt\protected\controllers\ProcessesController.php (571)
+in C:\wamp64\www\4pt\index.php (13)
+2017/03/13 19:13:57 [error] [php] Undefined variable: softwareRequirements (C:\wamp64\www\4pt\protected\views\processes\traceabilityRecord.php:27)
+Stack trace:
+#0 C:\wamp64\www\yii\framework\web\CController.php(869): ProcessesController->renderFile()
+#1 C:\wamp64\www\yii\framework\web\CController.php(782): ProcessesController->renderPartial()
+#2 C:\wamp64\www\4pt\protected\controllers\ProcessesController.php(724): ProcessesController->render()
+#3 C:\wamp64\www\yii\framework\web\actions\CInlineAction.php(49): ProcessesController->actionTraceabilityRecord()
+#4 C:\wamp64\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 C:\wamp64\www\yii\framework\web\filters\CFilterChain.php(133): ProcessesController->runAction()
+#6 C:\wamp64\www\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\wamp64\www\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#8 C:\wamp64\www\yii\framework\web\filters\CInlineFilter.php(58): ProcessesController->filterAccessControl()
+#9 C:\wamp64\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#10 C:\wamp64\www\yii\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\wamp64\www\yii\framework\web\CController.php(265): ProcessesController->runActionWithFilters()
+#12 C:\wamp64\www\yii\framework\web\CWebApplication.php(282): ProcessesController->run()
+#13 C:\wamp64\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#14 C:\wamp64\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#15 C:\wamp64\www\4pt\index.php(13): CWebApplication->run()
+REQUEST_URI=/4pt/processes/traceabilityrecord/1
+in C:\wamp64\www\4pt\protected\views\processes\traceabilityRecord.php (27)
+in C:\wamp64\www\4pt\protected\controllers\ProcessesController.php (724)
+in C:\wamp64\www\4pt\index.php (13)
+2017/03/13 19:14:15 [error] [exception.CException] exception 'CException' with message 'Property "software_requirements.product_description" is not defined.' in C:\wamp64\www\yii\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\wamp64\www\yii\framework\db\ar\CActiveRecord.php(145): CComponent->__get('product_descrip...')
+#1 C:\wamp64\www\4pt\protected\views\processes\traceabilityRecord.php(27): CActiveRecord->__get('product_descrip...')
+#2 C:\wamp64\www\yii\framework\web\CBaseController.php(126): require('C:\\wamp64\\www\\4...')
+#3 C:\wamp64\www\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\wamp64\\www\\4...', Array, true)
+#4 C:\wamp64\www\yii\framework\web\CController.php(869): CBaseController->renderFile('C:\\wamp64\\www\\4...', Array, true)
+#5 C:\wamp64\www\yii\framework\web\CController.php(782): CController->renderPartial('traceabilityRec...', Array, true)
+#6 C:\wamp64\www\4pt\protected\controllers\ProcessesController.php(725): CController->render('traceabilityRec...', Array)
+#7 C:\wamp64\www\yii\framework\web\actions\CInlineAction.php(49): ProcessesController->actionTraceabilityRecord()
+#8 C:\wamp64\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#9 C:\wamp64\www\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#10 C:\wamp64\www\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#11 C:\wamp64\www\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#12 C:\wamp64\www\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#13 C:\wamp64\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#14 C:\wamp64\www\yii\framework\web\CController.php(291): CFilterChain->run()
+#15 C:\wamp64\www\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#16 C:\wamp64\www\yii\framework\web\CWebApplication.php(282): CController->run('traceabilityrec...')
+#17 C:\wamp64\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('processes/trace...')
+#18 C:\wamp64\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#19 C:\wamp64\www\4pt\index.php(13): CApplication->run()
+#20 {main}
+REQUEST_URI=/4pt/processes/traceabilityrecord/1
+HTTP_REFERER=http://localhost/4pt/processes/1
+---
+2017/03/13 19:17:53 [error] [php] Undefined variable: softwareRequirements (C:\wamp64\www\4pt\protected\views\processes\softwareDesign.php:16)
+Stack trace:
+#0 C:\wamp64\www\yii\framework\web\CController.php(869): ProcessesController->renderFile()
+#1 C:\wamp64\www\yii\framework\web\CController.php(782): ProcessesController->renderPartial()
+#2 C:\wamp64\www\4pt\protected\controllers\ProcessesController.php(688): ProcessesController->render()
+#3 C:\wamp64\www\yii\framework\web\actions\CInlineAction.php(49): ProcessesController->actionSoftwareDesign()
+#4 C:\wamp64\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 C:\wamp64\www\yii\framework\web\filters\CFilterChain.php(133): ProcessesController->runAction()
+#6 C:\wamp64\www\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\wamp64\www\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#8 C:\wamp64\www\yii\framework\web\filters\CInlineFilter.php(58): ProcessesController->filterAccessControl()
+#9 C:\wamp64\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#10 C:\wamp64\www\yii\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\wamp64\www\yii\framework\web\CController.php(265): ProcessesController->runActionWithFilters()
+#12 C:\wamp64\www\yii\framework\web\CWebApplication.php(282): ProcessesController->run()
+#13 C:\wamp64\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#14 C:\wamp64\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#15 C:\wamp64\www\4pt\index.php(13): CWebApplication->run()
+REQUEST_URI=/4pt/processes/softwaredesign/1
+in C:\wamp64\www\4pt\protected\views\processes\softwareDesign.php (16)
+in C:\wamp64\www\4pt\protected\controllers\ProcessesController.php (688)
+in C:\wamp64\www\4pt\index.php (13)
+2017/03/13 19:22:41 [error] [php] Undefined variable: softwareDeign (C:\wamp64\www\4pt\protected\views\processes\softwareComponentAdmin.php:12)
+Stack trace:
+#0 C:\wamp64\www\yii\framework\web\CController.php(869): ProcessesController->renderFile()
+#1 C:\wamp64\www\yii\framework\web\CController.php(782): ProcessesController->renderPartial()
+#2 C:\wamp64\www\4pt\protected\controllers\ProcessesController.php(848): ProcessesController->render()
+#3 C:\wamp64\www\yii\framework\web\actions\CInlineAction.php(49): ProcessesController->actionSoftwareComponentAdmin()
+#4 C:\wamp64\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 C:\wamp64\www\yii\framework\web\filters\CFilterChain.php(133): ProcessesController->runAction()
+#6 C:\wamp64\www\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\wamp64\www\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#8 C:\wamp64\www\yii\framework\web\filters\CInlineFilter.php(58): ProcessesController->filterAccessControl()
+#9 C:\wamp64\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#10 C:\wamp64\www\yii\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\wamp64\www\yii\framework\web\CController.php(265): ProcessesController->runActionWithFilters()
+#12 C:\wamp64\www\yii\framework\web\CWebApplication.php(282): ProcessesController->run()
+#13 C:\wamp64\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#14 C:\wamp64\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#15 C:\wamp64\www\4pt\index.php(13): CWebApplication->run()
+REQUEST_URI=/4pt/processes/softwarecomponentadmin/1?softwareComponentID=1
+in C:\wamp64\www\4pt\protected\views\processes\softwareComponentAdmin.php (12)
+in C:\wamp64\www\4pt\protected\controllers\ProcessesController.php (848)
+in C:\wamp64\www\4pt\index.php (13)
+2017/03/13 19:23:03 [error] [exception.CException] exception 'CException' with message 'ProcessesController cannot find the requested view "_softwareDesignInput".' in C:\wamp64\www\yii\framework\web\CController.php:878
+Stack trace:
+#0 C:\wamp64\www\4pt\protected\views\processes\softwareComponentAdmin.php(12): CController->renderPartial('_softwareDesign...', Array)
+#1 C:\wamp64\www\yii\framework\web\CBaseController.php(126): require('C:\\wamp64\\www\\4...')
+#2 C:\wamp64\www\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\wamp64\\www\\4...', Array, true)
+#3 C:\wamp64\www\yii\framework\web\CController.php(869): CBaseController->renderFile('C:\\wamp64\\www\\4...', Array, true)
+#4 C:\wamp64\www\yii\framework\web\CController.php(782): CController->renderPartial('softwareCompone...', Array, true)
+#5 C:\wamp64\www\4pt\protected\controllers\ProcessesController.php(848): CController->render('softwareCompone...', Array)
+#6 C:\wamp64\www\yii\framework\web\actions\CInlineAction.php(49): ProcessesController->actionSoftwareComponentAdmin()
+#7 C:\wamp64\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#8 C:\wamp64\www\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#9 C:\wamp64\www\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#10 C:\wamp64\www\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#11 C:\wamp64\www\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#12 C:\wamp64\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#13 C:\wamp64\www\yii\framework\web\CController.php(291): CFilterChain->run()
+#14 C:\wamp64\www\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#15 C:\wamp64\www\yii\framework\web\CWebApplication.php(282): CController->run('softwarecompone...')
+#16 C:\wamp64\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('processes/softw...')
+#17 C:\wamp64\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#18 C:\wamp64\www\4pt\index.php(13): CApplication->run()
+#19 {main}
+REQUEST_URI=/4pt/processes/softwarecomponentadmin/1?softwareComponentID=1
+HTTP_REFERER=http://localhost/4pt/processes/softwarecomponents/1
+---
+2017/03/13 19:23:45 [error] [php] Trying to get property of non-object (C:\wamp64\www\4pt\protected\views\processes\_softwareDesignInput.php:17)
+Stack trace:
+#0 C:\wamp64\www\yii\framework\web\CController.php(869): ProcessesController->renderFile()
+#1 C:\wamp64\www\4pt\protected\views\processes\softwareComponentAdmin.php(12): ProcessesController->renderPartial()
+#2 C:\wamp64\www\yii\framework\web\CBaseController.php(126): require()
+#3 C:\wamp64\www\yii\framework\web\CBaseController.php(95): ProcessesController->renderInternal()
+#4 C:\wamp64\www\yii\framework\web\CController.php(869): ProcessesController->renderFile()
+#5 C:\wamp64\www\yii\framework\web\CController.php(782): ProcessesController->renderPartial()
+#6 C:\wamp64\www\4pt\protected\controllers\ProcessesController.php(848): ProcessesController->render()
+#7 C:\wamp64\www\yii\framework\web\actions\CInlineAction.php(49): ProcessesController->actionSoftwareComponentAdmin()
+#8 C:\wamp64\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#9 C:\wamp64\www\yii\framework\web\filters\CFilterChain.php(133): ProcessesController->runAction()
+#10 C:\wamp64\www\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#11 C:\wamp64\www\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#12 C:\wamp64\www\yii\framework\web\filters\CInlineFilter.php(58): ProcessesController->filterAccessControl()
+#13 C:\wamp64\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#14 C:\wamp64\www\yii\framework\web\CController.php(291): CFilterChain->run()
+#15 C:\wamp64\www\yii\framework\web\CController.php(265): ProcessesController->runActionWithFilters()
+#16 C:\wamp64\www\yii\framework\web\CWebApplication.php(282): ProcessesController->run()
+#17 C:\wamp64\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#18 C:\wamp64\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#19 C:\wamp64\www\4pt\index.php(13): CWebApplication->run()
+REQUEST_URI=/4pt/processes/softwarecomponentadmin/1?softwareComponentID=1
+in C:\wamp64\www\4pt\protected\views\processes\_softwareDesignInput.php (17)
+in C:\wamp64\www\4pt\protected\views\processes\softwareComponentAdmin.php (12)
+in C:\wamp64\www\4pt\protected\controllers\ProcessesController.php (848)
+2017/03/13 19:25:07 [error] [exception.CException] exception 'CException' with message 'Property "software_design.high_level_design" is not defined.' in C:\wamp64\www\yii\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\wamp64\www\yii\framework\db\ar\CActiveRecord.php(145): CComponent->__get('high_level_desi...')
+#1 C:\wamp64\www\4pt\protected\views\processes\_softwareDesignInput.php(17): CActiveRecord->__get('high_level_desi...')
+#2 C:\wamp64\www\yii\framework\web\CBaseController.php(126): require('C:\\wamp64\\www\\4...')
+#3 C:\wamp64\www\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\wamp64\\www\\4...', Array, true)
+#4 C:\wamp64\www\yii\framework\web\CController.php(869): CBaseController->renderFile('C:\\wamp64\\www\\4...', Array, true)
+#5 C:\wamp64\www\4pt\protected\views\processes\softwareComponentAdmin.php(12): CController->renderPartial('_softwareDesign...', Array)
+#6 C:\wamp64\www\yii\framework\web\CBaseController.php(126): require('C:\\wamp64\\www\\4...')
+#7 C:\wamp64\www\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\wamp64\\www\\4...', Array, true)
+#8 C:\wamp64\www\yii\framework\web\CController.php(869): CBaseController->renderFile('C:\\wamp64\\www\\4...', Array, true)
+#9 C:\wamp64\www\yii\framework\web\CController.php(782): CController->renderPartial('softwareCompone...', Array, true)
+#10 C:\wamp64\www\4pt\protected\controllers\ProcessesController.php(848): CController->render('softwareCompone...', Array)
+#11 C:\wamp64\www\yii\framework\web\actions\CInlineAction.php(49): ProcessesController->actionSoftwareComponentAdmin()
+#12 C:\wamp64\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#13 C:\wamp64\www\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#14 C:\wamp64\www\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#15 C:\wamp64\www\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#16 C:\wamp64\www\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#17 C:\wamp64\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#18 C:\wamp64\www\yii\framework\web\CController.php(291): CFilterChain->run()
+#19 C:\wamp64\www\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#20 C:\wamp64\www\yii\framework\web\CWebApplication.php(282): CController->run('softwarecompone...')
+#21 C:\wamp64\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('processes/softw...')
+#22 C:\wamp64\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#23 C:\wamp64\www\4pt\index.php(13): CApplication->run()
+#24 {main}
+REQUEST_URI=/4pt/processes/softwarecomponentadmin/1?softwareComponentID=1
+HTTP_REFERER=http://localhost/4pt/processes/softwarecomponents/1
+---
+2017/03/13 19:25:32 [error] [exception.CException] exception 'CException' with message 'ProcessesController cannot find the requested view "_traceabilityRecordInput".' in C:\wamp64\www\yii\framework\web\CController.php:878
+Stack trace:
+#0 C:\wamp64\www\4pt\protected\views\processes\softwareComponentAdmin.php(13): CController->renderPartial('_traceabilityRe...', Array)
+#1 C:\wamp64\www\yii\framework\web\CBaseController.php(126): require('C:\\wamp64\\www\\4...')
+#2 C:\wamp64\www\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\wamp64\\www\\4...', Array, true)
+#3 C:\wamp64\www\yii\framework\web\CController.php(869): CBaseController->renderFile('C:\\wamp64\\www\\4...', Array, true)
+#4 C:\wamp64\www\yii\framework\web\CController.php(782): CController->renderPartial('softwareCompone...', Array, true)
+#5 C:\wamp64\www\4pt\protected\controllers\ProcessesController.php(848): CController->render('softwareCompone...', Array)
+#6 C:\wamp64\www\yii\framework\web\actions\CInlineAction.php(49): ProcessesController->actionSoftwareComponentAdmin()
+#7 C:\wamp64\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#8 C:\wamp64\www\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#9 C:\wamp64\www\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#10 C:\wamp64\www\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#11 C:\wamp64\www\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#12 C:\wamp64\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#13 C:\wamp64\www\yii\framework\web\CController.php(291): CFilterChain->run()
+#14 C:\wamp64\www\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#15 C:\wamp64\www\yii\framework\web\CWebApplication.php(282): CController->run('softwarecompone...')
+#16 C:\wamp64\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('processes/softw...')
+#17 C:\wamp64\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#18 C:\wamp64\www\4pt\index.php(13): CApplication->run()
+#19 {main}
+REQUEST_URI=/4pt/processes/softwarecomponentadmin/1?softwareComponentID=1
+HTTP_REFERER=http://localhost/4pt/processes/softwarecomponents/1
+---
+2017/03/13 19:26:16 [error] [php] Trying to get property of non-object (C:\wamp64\www\4pt\protected\views\processes\_traceabilityRecordInput.php:17)
+Stack trace:
+#0 C:\wamp64\www\yii\framework\web\CController.php(869): ProcessesController->renderFile()
+#1 C:\wamp64\www\4pt\protected\views\processes\softwareComponentAdmin.php(13): ProcessesController->renderPartial()
+#2 C:\wamp64\www\yii\framework\web\CBaseController.php(126): require()
+#3 C:\wamp64\www\yii\framework\web\CBaseController.php(95): ProcessesController->renderInternal()
+#4 C:\wamp64\www\yii\framework\web\CController.php(869): ProcessesController->renderFile()
+#5 C:\wamp64\www\yii\framework\web\CController.php(782): ProcessesController->renderPartial()
+#6 C:\wamp64\www\4pt\protected\controllers\ProcessesController.php(848): ProcessesController->render()
+#7 C:\wamp64\www\yii\framework\web\actions\CInlineAction.php(49): ProcessesController->actionSoftwareComponentAdmin()
+#8 C:\wamp64\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#9 C:\wamp64\www\yii\framework\web\filters\CFilterChain.php(133): ProcessesController->runAction()
+#10 C:\wamp64\www\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#11 C:\wamp64\www\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#12 C:\wamp64\www\yii\framework\web\filters\CInlineFilter.php(58): ProcessesController->filterAccessControl()
+#13 C:\wamp64\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#14 C:\wamp64\www\yii\framework\web\CController.php(291): CFilterChain->run()
+#15 C:\wamp64\www\yii\framework\web\CController.php(265): ProcessesController->runActionWithFilters()
+#16 C:\wamp64\www\yii\framework\web\CWebApplication.php(282): ProcessesController->run()
+#17 C:\wamp64\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#18 C:\wamp64\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#19 C:\wamp64\www\4pt\index.php(13): CWebApplication->run()
+REQUEST_URI=/4pt/processes/softwarecomponentadmin/1?softwareComponentID=1
+in C:\wamp64\www\4pt\protected\views\processes\_traceabilityRecordInput.php (17)
+in C:\wamp64\www\4pt\protected\views\processes\softwareComponentAdmin.php (13)
+in C:\wamp64\www\4pt\protected\controllers\ProcessesController.php (848)
+2017/03/13 19:27:03 [error] [php] Trying to get property of non-object (C:\wamp64\www\4pt\protected\views\processes\_traceabilityRecordInput.php:17)
+Stack trace:
+#0 C:\wamp64\www\yii\framework\web\CController.php(869): ProcessesController->renderFile()
+#1 C:\wamp64\www\4pt\protected\views\processes\softwareComponentAdmin.php(13): ProcessesController->renderPartial()
+#2 C:\wamp64\www\yii\framework\web\CBaseController.php(126): require()
+#3 C:\wamp64\www\yii\framework\web\CBaseController.php(95): ProcessesController->renderInternal()
+#4 C:\wamp64\www\yii\framework\web\CController.php(869): ProcessesController->renderFile()
+#5 C:\wamp64\www\yii\framework\web\CController.php(782): ProcessesController->renderPartial()
+#6 C:\wamp64\www\4pt\protected\controllers\ProcessesController.php(848): ProcessesController->render()
+#7 C:\wamp64\www\yii\framework\web\actions\CInlineAction.php(49): ProcessesController->actionSoftwareComponentAdmin()
+#8 C:\wamp64\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#9 C:\wamp64\www\yii\framework\web\filters\CFilterChain.php(133): ProcessesController->runAction()
+#10 C:\wamp64\www\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#11 C:\wamp64\www\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#12 C:\wamp64\www\yii\framework\web\filters\CInlineFilter.php(58): ProcessesController->filterAccessControl()
+#13 C:\wamp64\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#14 C:\wamp64\www\yii\framework\web\CController.php(291): CFilterChain->run()
+#15 C:\wamp64\www\yii\framework\web\CController.php(265): ProcessesController->runActionWithFilters()
+#16 C:\wamp64\www\yii\framework\web\CWebApplication.php(282): ProcessesController->run()
+#17 C:\wamp64\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#18 C:\wamp64\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#19 C:\wamp64\www\4pt\index.php(13): CWebApplication->run()
+REQUEST_URI=/4pt/processes/softwarecomponentadmin/1?softwareComponentID=1
+in C:\wamp64\www\4pt\protected\views\processes\_traceabilityRecordInput.php (17)
+in C:\wamp64\www\4pt\protected\views\processes\softwareComponentAdmin.php (13)
+in C:\wamp64\www\4pt\protected\controllers\ProcessesController.php (848)
+2017/03/13 19:30:44 [error] [php] Undefined variable: softwareRequirements (C:\wamp64\www\4pt\protected\views\processes\operationManual.php:16)
+Stack trace:
+#0 C:\wamp64\www\yii\framework\web\CController.php(869): ProcessesController->renderFile()
+#1 C:\wamp64\www\yii\framework\web\CController.php(782): ProcessesController->renderPartial()
+#2 C:\wamp64\www\4pt\protected\controllers\ProcessesController.php(774): ProcessesController->render()
+#3 C:\wamp64\www\yii\framework\web\actions\CInlineAction.php(49): ProcessesController->actionOperationManual()
+#4 C:\wamp64\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 C:\wamp64\www\yii\framework\web\filters\CFilterChain.php(133): ProcessesController->runAction()
+#6 C:\wamp64\www\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\wamp64\www\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#8 C:\wamp64\www\yii\framework\web\filters\CInlineFilter.php(58): ProcessesController->filterAccessControl()
+#9 C:\wamp64\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#10 C:\wamp64\www\yii\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\wamp64\www\yii\framework\web\CController.php(265): ProcessesController->runActionWithFilters()
+#12 C:\wamp64\www\yii\framework\web\CWebApplication.php(282): ProcessesController->run()
+#13 C:\wamp64\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#14 C:\wamp64\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#15 C:\wamp64\www\4pt\index.php(13): CWebApplication->run()
+REQUEST_URI=/4pt/processes/operationmanual/1
+in C:\wamp64\www\4pt\protected\views\processes\operationManual.php (16)
+in C:\wamp64\www\4pt\protected\controllers\ProcessesController.php (774)
+in C:\wamp64\www\4pt\index.php (13)
+2017/03/13 19:34:34 [error] [php] Undefined variable: softwareRequirements (C:\wamp64\www\4pt\protected\views\processes\maintenanceManual.php:16)
+Stack trace:
+#0 C:\wamp64\www\yii\framework\web\CController.php(869): ProcessesController->renderFile()
+#1 C:\wamp64\www\yii\framework\web\CController.php(782): ProcessesController->renderPartial()
+#2 C:\wamp64\www\4pt\protected\controllers\ProcessesController.php(816): ProcessesController->render()
+#3 C:\wamp64\www\yii\framework\web\actions\CInlineAction.php(49): ProcessesController->actionMaintenanceManual()
+#4 C:\wamp64\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 C:\wamp64\www\yii\framework\web\filters\CFilterChain.php(133): ProcessesController->runAction()
+#6 C:\wamp64\www\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\wamp64\www\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#8 C:\wamp64\www\yii\framework\web\filters\CInlineFilter.php(58): ProcessesController->filterAccessControl()
+#9 C:\wamp64\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#10 C:\wamp64\www\yii\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\wamp64\www\yii\framework\web\CController.php(265): ProcessesController->runActionWithFilters()
+#12 C:\wamp64\www\yii\framework\web\CWebApplication.php(282): ProcessesController->run()
+#13 C:\wamp64\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#14 C:\wamp64\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#15 C:\wamp64\www\4pt\index.php(13): CWebApplication->run()
+REQUEST_URI=/4pt/processes/maintenancemanual/1
+in C:\wamp64\www\4pt\protected\views\processes\maintenanceManual.php (16)
+in C:\wamp64\www\4pt\protected\controllers\ProcessesController.php (816)
+in C:\wamp64\www\4pt\index.php (13)
+2017/03/13 19:38:13 [error] [php] Undefined variable: projectPlan (C:\wamp64\www\4pt\protected\controllers\ProcessesController.php:950)
+Stack trace:
+#0 C:\wamp64\www\yii\framework\web\filters\CFilterChain.php(133): ProcessesController->runAction()
+#1 C:\wamp64\www\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#2 C:\wamp64\www\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#3 C:\wamp64\www\yii\framework\web\filters\CInlineFilter.php(58): ProcessesController->filterAccessControl()
+#4 C:\wamp64\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#5 C:\wamp64\www\yii\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\wamp64\www\yii\framework\web\CController.php(265): ProcessesController->runActionWithFilters()
+#7 C:\wamp64\www\yii\framework\web\CWebApplication.php(282): ProcessesController->run()
+#8 C:\wamp64\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 C:\wamp64\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#10 C:\wamp64\www\4pt\index.php(13): CWebApplication->run()
+REQUEST_URI=/4pt/processes/actofacceptance/1
+in C:\wamp64\www\4pt\protected\controllers\ProcessesController.php (950)
+in C:\wamp64\www\4pt\index.php (13)
+2017/03/13 19:47:52 [error] [php] Undefined variable: traceabilityrecord (C:\wamp64\www\4pt\protected\views\processes\view.php:268)
+Stack trace:
+#0 C:\wamp64\www\yii\framework\web\CController.php(869): ProcessesController->renderFile()
+#1 C:\wamp64\www\yii\framework\web\CController.php(782): ProcessesController->renderPartial()
+#2 C:\wamp64\www\4pt\protected\controllers\ProcessesController.php(122): ProcessesController->render()
+#3 C:\wamp64\www\yii\framework\web\actions\CInlineAction.php(49): ProcessesController->actionView()
+#4 C:\wamp64\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 C:\wamp64\www\yii\framework\web\filters\CFilterChain.php(133): ProcessesController->runAction()
+#6 C:\wamp64\www\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\wamp64\www\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#8 C:\wamp64\www\yii\framework\web\filters\CInlineFilter.php(58): ProcessesController->filterAccessControl()
+#9 C:\wamp64\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#10 C:\wamp64\www\yii\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\wamp64\www\yii\framework\web\CController.php(265): ProcessesController->runActionWithFilters()
+#12 C:\wamp64\www\yii\framework\web\CWebApplication.php(282): ProcessesController->run()
+#13 C:\wamp64\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#14 C:\wamp64\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#15 C:\wamp64\www\4pt\index.php(13): CWebApplication->run()
+REQUEST_URI=/4pt/processes/1
+in C:\wamp64\www\4pt\protected\views\processes\view.php (268)
+in C:\wamp64\www\4pt\protected\controllers\ProcessesController.php (122)
+in C:\wamp64\www\4pt\index.php (13)
+2017/03/13 20:11:15 [error] [php] Undefined variable: actOfAcceptance (C:\wamp64\www\4pt\protected\views\processes\view.php:340)
+Stack trace:
+#0 C:\wamp64\www\yii\framework\web\CController.php(869): ProcessesController->renderFile()
+#1 C:\wamp64\www\yii\framework\web\CController.php(782): ProcessesController->renderPartial()
+#2 C:\wamp64\www\4pt\protected\controllers\ProcessesController.php(122): ProcessesController->render()
+#3 C:\wamp64\www\yii\framework\web\actions\CInlineAction.php(49): ProcessesController->actionView()
+#4 C:\wamp64\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 C:\wamp64\www\yii\framework\web\filters\CFilterChain.php(133): ProcessesController->runAction()
+#6 C:\wamp64\www\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\wamp64\www\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#8 C:\wamp64\www\yii\framework\web\filters\CInlineFilter.php(58): ProcessesController->filterAccessControl()
+#9 C:\wamp64\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#10 C:\wamp64\www\yii\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\wamp64\www\yii\framework\web\CController.php(265): ProcessesController->runActionWithFilters()
+#12 C:\wamp64\www\yii\framework\web\CWebApplication.php(282): ProcessesController->run()
+#13 C:\wamp64\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#14 C:\wamp64\www\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#15 C:\wamp64\www\4pt\index.php(13): CWebApplication->run()
+REQUEST_URI=/4pt/processes/1
+in C:\wamp64\www\4pt\protected\views\processes\view.php (340)
+in C:\wamp64\www\4pt\protected\controllers\ProcessesController.php (122)
+in C:\wamp64\www\4pt\index.php (13)

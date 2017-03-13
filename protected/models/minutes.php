@@ -11,7 +11,6 @@
  * @property string $date
  * @property string $place
  * @property string $previous_minute_id
- * @property string $minutescol
  * @property string $issues_raised
  * @property string $open_issues
  * @property string $agreements
@@ -39,11 +38,10 @@ class minutes extends CActiveRecord
 			array('project_plan_id', 'required'),
 			array('client_validated', 'numerical', 'integerOnly'=>true),
 			array('project_plan_id, previous_minute_id', 'length', 'max'=>10),
-			array('minutescol', 'length', 'max'=>45),
 			array('purpose, assistants, date, place, issues_raised, open_issues, agreements, next_meeting', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, project_plan_id, purpose, assistants, date, place, previous_minute_id, minutescol, issues_raised, open_issues, agreements, next_meeting, client_validated', 'safe', 'on'=>'search'),
+			array('id, project_plan_id, purpose, assistants, date, place, previous_minute_id, issues_raised, open_issues, agreements, next_meeting, client_validated', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -74,7 +72,6 @@ class minutes extends CActiveRecord
 			'date' => 'Date',
 			'place' => 'Place',
 			'previous_minute_id' => 'Previous Minute',
-			'minutescol' => 'Minutescol',
 			'issues_raised' => 'Issues Raised',
 			'open_issues' => 'Open Issues',
 			'agreements' => 'Agreements',
@@ -114,8 +111,6 @@ class minutes extends CActiveRecord
 		$criteria->compare('place',$this->place,true);
 
 		$criteria->compare('previous_minute_id',$this->previous_minute_id,true);
-
-		$criteria->compare('minutescol',$this->minutescol,true);
 
 		$criteria->compare('issues_raised',$this->issues_raised,true);
 

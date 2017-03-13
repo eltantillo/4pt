@@ -5,8 +5,6 @@
 	'enableAjaxValidation'=>false,
 )); ?>
 
-	<?php echo $form->errorSummary($model); ?>
-
 	<div class="form-group">
 		<?php echo $form->labelEx($model,'release_requirements'); ?>
 		<?php echo $form->textArea($model,'release_requirements',array('form-groups'=>6, 'cols'=>50, 'class'=>'form-control')); ?>

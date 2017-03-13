@@ -1,12 +1,11 @@
+<?php if (!$model->isNewRecord) {echo '<form method="POST" action="' . Yii::app()->baseUrl . '/processes/taskdelete/' . $_GET['id'] . '?taskID=' . $model->id . '"><button class="btn btn-danger btn-sm delete" type="submit"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> ' . Language::$delete . '</button></form>';} ?>
+
 <div class="form">
 
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'tasks-form',
 	'enableAjaxValidation'=>false,
 )); ?>
-
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
-
 	<?php echo $form->errorSummary($model); ?>
 
 	<div class="form-group">

@@ -6,58 +6,26 @@ $this->breadcrumbs=array(
 ?>
 
 <h1><?php echo $project->title . ' (' . $project->acronym . ')'; ?></h1>
-<!--
-<h2>Project Plan</h2>
-<?php if (
-  ((in_array(1, $sessionUser->rolesArray)) &&
-  ($workStatement === null ||
-  !$workStatement->sent ||
-  $workStatement->change_request)) ||
 
-  ((in_array(5, $sessionUser->rolesArray) || in_array(7, $sessionUser->rolesArray)) &&
-  $workStatement != null  &&
-  $workStatement->sent &&
-  !$workStatement->change_request) &&
-  ((in_array(5, $sessionUser->rolesArray) && !$workStatement->project_manager_validated) ||
-  (in_array(7, $sessionUser->rolesArray)) && !$workStatement->technical_leader_validated)
-  ){ ?>
-  <a href="<?php echo Yii::app()->request->baseUrl . '/processes/workstatement/' . $project->id; ?>">Work Statement</a><br>
-
-<?php } if (in_array(1, $sessionUser->rolesArray) || in_array(7, $sessionUser->rolesArray)){ ?>
-<a href="<?php echo Yii::app()->request->baseUrl . '/processes/deliveryinstructions/' . $project->id; ?>">Delivery Instructions</a><br>
-
-<?php } if (in_array(5, $sessionUser->rolesArray) || in_array(7, $sessionUser->rolesArray)){ ?>
-<a href="<?php echo Yii::app()->request->baseUrl . '/processes/tasks/' . $project->id; ?>">Tasks</a><br>
-
-<?php } if (in_array(5, $sessionUser->rolesArray) || in_array(7, $sessionUser->rolesArray)){ ?>
-<a href="<?php echo Yii::app()->request->baseUrl . '/processes/risks/' . $project->id; ?>">Risks</a><br>
-
-<?php } if (in_array(5, $sessionUser->rolesArray) || in_array(7, $sessionUser->rolesArray)){ ?>
-<a href="<?php echo Yii::app()->request->baseUrl . '/processes/minutes/' . $project->id; ?>">Minutes</a><br>
-<?php } ?>
-
-<h2>Project Execution</h2>
-<a href="#">Progress Report</a><br>
-<a href="#">Corrective Actions</a><br>
-
-<h2>Software Implementation</h2>
-<a href="<?php echo Yii::app()->request->baseUrl . '/processes/softwarerequirements/' . $project->id; ?>">Software Requirements</a> <br>
-<a href="<?php echo Yii::app()->request->baseUrl . '/processes/usermanual/' . $project->id; ?>">User Manual</a><br>
-<a href="<?php echo Yii::app()->request->baseUrl . '/processes/softwaredesign/' . $project->id; ?>">Software Design</a><br>
-<a href="<?php echo Yii::app()->request->baseUrl . '/processes/traceabilityrecord/' . $project->id; ?>">Traceability Record</a><br>
-<a href="<?php echo Yii::app()->request->baseUrl . '/processes/operationmanual/' . $project->id; ?>">Operation Manual</a><br>
-<a href="<?php echo Yii::app()->request->baseUrl . '/processes/maintenancemanual/' . $project->id; ?>">Maintenance Manual</a><br>
-<a href="<?php echo Yii::app()->request->baseUrl . '/processes/softwarecomponent/' . $project->id; ?>">Software Component</a><br>
-<a href="<?php echo Yii::app()->request->baseUrl . '/processes/testreports/' . $project->id; ?>">Test Report</a><br>
-
-
-<ul class="list-group">
-  <li class="list-group-item">
-    <span class="badge">14</span>
-    Cras justo odio
-  </li>
-</ul>
--->
+<?php if(
+($softwareRequirements === null ||
+(!$softwareRequirements->project_manager_validated ||
+!$softwareRequirements->technical_leader_validated)) ||
+($userManual === null ||
+(!$userManual->project_manager_validated  ||
+!$userManual->technical_leader_validated)) ||
+($softwareDesign === null ||
+(!$softwareDesign->project_manager_validated ||
+!$softwareDesign->technical_leader_validated)) ||
+($traceabilityRecord === null ||
+(!$traceabilityRecord->project_manager_validated ||
+!$traceabilityRecord->technical_leader_validated)) ||
+($operationManual === null ||
+(!$operationManual->project_manager_validated ||
+!$operationManual->technical_leader_validated)) ||
+($maintenanceManual === null ||
+(!$maintenanceManual->project_manager_validated ||
+!$maintenanceManual->technical_leader_validated))){ ?>
 
 <?php if(!$projectPlan->project_manager_validated || !$projectPlan->technical_leader_validated){ ?>
 <h2>Project Plan</h2>
@@ -81,7 +49,7 @@ if (
       <span class="glyphicon glyphicon-book gi" aria-hidden="true"></span>
       <div class="caption">
         <h3>Work Statement</h3>
-        <p>The workstatement is the first step in the ISO-29110 Process execution</p>
+        <p>Descripción del trabajo a ser realizado en relación al desarrollo de software.</p>
         <p><a href="<?php echo Yii::app()->request->baseUrl . '/processes/workstatement/' . $project->id; ?>" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
       </div>
     </div>
@@ -120,18 +88,18 @@ if (
     </div>
   </div>
 
-<?php if(in_array(0, $sessionUser->rolesArray)){ ?>
+<?php }if(in_array(0, $sessionUser->rolesArray) || in_array(2, $sessionUser->rolesArray)){ ?>
   <div class="col-md-3">
     <div class="thumbnail text-center">
       <span class="glyphicon glyphicon-time gi" aria-hidden="true"></span>
       <div class="caption">
         <h3>Minutes</h3>
-        <p>The workstatement is the first step in the ISO-29110 Process execution</p>
+        <p>Registro de los acuerdos establecidos con el Cliente y/o el equipo de trabajo.</p>
         <p><a href="<?php echo Yii::app()->request->baseUrl . '/processes/minutes/' . $project->id; ?>" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
       </div>
     </div>
   </div>
-<?php } ?>
+<?php }if($minutesValidated && $workStatement != null && $workStatement->project_manager_validated && $workStatement->technical_leader_validated && ((in_array(0, $sessionUser->rolesArray) && !$projectPlan->project_manager_validated) || (in_array(1, $sessionUser->rolesArray) && !$projectPlan->technical_leader_validated))){ ?>
 
   <div class="col-md-3">
     <div class="thumbnail text-center">
@@ -155,7 +123,7 @@ if (
       <span class="glyphicon glyphicon-sort-by-attributes gi" aria-hidden="true"></span>
       <div class="caption">
         <h3>Progress Report</h3>
-        <p>The workstatement is the first step in the ISO-29110 Process execution</p>
+        <p>Registra el estado del proyecto contra el plan del proyecto.</p>
         <p><a href="<?php echo Yii::app()->request->baseUrl . '/processes/progressreports/' . $project->id; ?>" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
       </div>
     </div>
@@ -166,7 +134,7 @@ if (
       <span class="glyphicon glyphicon-edit gi" aria-hidden="true"></span>
       <div class="caption">
         <h3>Corrective Actions</h3>
-        <p>The workstatement is the first step in the ISO-29110 Process execution</p>
+        <p>Identifica las actividades establecidas para corregir una desviación o un problema relativo al cumplimiento del plan.</p>
         <p><a href="<?php echo Yii::app()->request->baseUrl . '/processes/correctiveactions/' . $project->id; ?>" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
       </div>
     </div>
@@ -208,6 +176,10 @@ if (
 <?php 
 if (
   (in_array(3, $sessionUser->rolesArray) &&
+
+  $softwareDesign->project_manager_validated &&
+  $softwareDesign->technical_leader_validated &&
+
   ($userManual === null ||
   !$userManual->sent ||
   $userManual->change_request)) ||
@@ -224,7 +196,7 @@ if (
       <span class="glyphicon glyphicon-question-sign gi" aria-hidden="true"></span>
       <div class="caption">
         <h3>User Manual</h3>
-        <p>The workstatement is the first step in the ISO-29110 Process execution</p>
+        <p>Describe la forma de uso del software basado en la interfaz de usuario.</p>
         <p><a href="<?php echo Yii::app()->request->baseUrl . '/processes/usermanual/' . $project->id; ?>" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
       </div>
     </div>
@@ -248,7 +220,7 @@ if (
       <span class="glyphicon glyphicon-dashboard gi" aria-hidden="true"></span>
       <div class="caption">
         <h3>Software Design</h3>
-        <p>The workstatement is the first step in the ISO-29110 Process execution</p>
+        <p>Información textual y gráfica de la estructura del software.</p>
         <p><a href="<?php echo Yii::app()->request->baseUrl . '/processes/softwaredesign/' . $project->id; ?>" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
       </div>
     </div>
@@ -272,7 +244,7 @@ if (
       <span class="glyphicon glyphicon-stats gi" aria-hidden="true"></span>
       <div class="caption">
         <h3>Traceability Record</h3>
-        <p>The workstatement is the first step in the ISO-29110 Process execution</p>
+        <p>Documenta la relación entre los requisitos incluidos en la especificación de requisitos, los elementos del diseño de software, los componentes de software, los casos y los procedimientos de prueba.</p>
         <p><a href="<?php echo Yii::app()->request->baseUrl . '/processes/traceabilityrecord/' . $project->id; ?>" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
       </div>
     </div>
@@ -280,6 +252,10 @@ if (
 <?php }
 if (
   (in_array(5, $sessionUser->rolesArray) &&
+
+  $softwareDesign->project_manager_validated &&
+  $softwareDesign->technical_leader_validated &&
+
   ($operationManual === null ||
   !$operationManual->sent ||
   $operationManual->change_request)) ||
@@ -296,7 +272,7 @@ if (
       <span class="glyphicon glyphicon-info-sign gi" aria-hidden="true"></span>
       <div class="caption">
         <h3>Operation Manual</h3>
-        <p>The workstatement is the first step in the ISO-29110 Process execution</p>
+        <p>Contiene la información necesaria para instalar y gestionar el software.</p>
         <p><a href="<?php echo Yii::app()->request->baseUrl . '/processes/operationmanual/' . $project->id; ?>" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
       </div>
     </div>
@@ -304,6 +280,7 @@ if (
 <?php }
 if (
   (in_array(5, $sessionUser->rolesArray) &&
+
   ($maintenanceManual === null ||
   !$maintenanceManual->sent ||
   $maintenanceManual->change_request)) ||
@@ -320,19 +297,25 @@ if (
       <span class="glyphicon glyphicon-wrench gi" aria-hidden="true"></span>
       <div class="caption">
         <h3>Maintenance Manual</h3>
-        <p>The workstatement is the first step in the ISO-29110 Process execution</p>
+        <p>Describe la configuración del software y el entorno utilizado para el desarrollo y pruebas (compiladores, herramientas de diseño, construcción y pruebas).</p>
         <p><a href="<?php echo Yii::app()->request->baseUrl . '/processes/maintenancemanual/' . $project->id; ?>" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
       </div>
     </div>
   </div>
 <?php }
-if (in_array(5, $sessionUser->rolesArray)){?>
+if (in_array(5, $sessionUser->rolesArray) &&
+
+  $softwareDesign->project_manager_validated &&
+  $softwareDesign->technical_leader_validated &&
+
+  $traceabilityRecord->project_manager_validated &&
+  $traceabilityRecord->technical_leader_validated){?>
   <div class="col-md-3">
     <div class="thumbnail text-center">
       <span class="glyphicon glyphicon-screenshot gi" aria-hidden="true"></span>
       <div class="caption">
         <h3>Software Component</h3>
-        <p>The workstatement is the first step in the ISO-29110 Process execution</p>
+        <p>Un conjunto de unidades de cádigo relacionadas.</p>
         <p><a href="<?php echo Yii::app()->request->baseUrl . '/processes/softwarecomponents/' . $project->id; ?>" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
       </div>
     </div>
@@ -344,12 +327,28 @@ if (in_array(2, $sessionUser->rolesArray) || in_array(5, $sessionUser->rolesArra
       <span class="glyphicon glyphicon-console gi" aria-hidden="true"></span>
       <div class="caption">
         <h3>Test Report</h3>
-        <p>The workstatement is the first step in the ISO-29110 Process execution</p>
+        <p>Documenta la ejecución de las pruebas.</p>
         <p><a href="<?php echo Yii::app()->request->baseUrl . '/processes/testreports/' . $project->id; ?>" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
       </div>
     </div>
   </div>
 <?php }} ?>
 
+</div>
+<?php } ?>
+
+<?php } elseif (in_array(0, $sessionUser->rolesArray) || (in_array(2, $sessionUser->rolesArray) && $actOfAcceptance != null)) {?>
+<h2>Project Closure</h2>
+<div class="row">
+  <div class="col-md-12">
+    <div class="thumbnail text-center">
+      <span class="glyphicon glyphicon-download-alt gi" aria-hidden="true"></span>
+      <div class="caption">
+        <h3>Act of Acceptance</h3>
+        <p>Documentación de la aceptación por parte del cliente de los entregables del proyecto.</p>
+        <p><a href="<?php echo Yii::app()->request->baseUrl . '/processes/actofacceptance/' . $project->id; ?>" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+      </div>
+    </div>
+  </div>
 </div>
 <?php } ?>

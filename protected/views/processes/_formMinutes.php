@@ -1,3 +1,5 @@
+<?php if (in_array(0, $sessionUser->rolesArray) && !$model->isNewRecord) {echo '<form method="POST" action="' . Yii::app()->baseUrl . '/processes/minutedelete/' . $_GET['id'] . '?minuteID=' . $model->id . '"><button class="btn btn-danger btn-sm delete" type="submit"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> ' . Language::$delete . '</button></form>';} ?>
+
 <div class="form">
 
 <?php $form=$this->beginWidget('CActiveForm', array(
@@ -5,10 +7,7 @@
 	'enableAjaxValidation'=>false,
 )); ?>
 
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
-
-	<?php echo $form->errorSummary($model); ?>
-
+<?php if (in_array(0, $sessionUser->rolesArray)){ ?>
 	<div class="form-group">
 		<?php echo $form->labelEx($model,'purpose'); ?>
 		<?php echo $form->textArea($model,'purpose',array('rows'=>6, 'cols'=>50, 'class'=>'form-control')); ?>
@@ -72,13 +71,13 @@
 		<?php echo $form->error($model,'next_meeting'); ?>
 	</div></div>
 	</div>
-
+<?php }else{ ?>
 	<div class="form-group">
+		<?php echo $form->checkbox($model,'client_validated'); ?>
 		<?php echo $form->labelEx($model,'client_validated'); ?>
-		<?php echo $form->textField($model,'client_validated', array('class'=>'form-control')); ?>
 		<?php echo $form->error($model,'client_validated'); ?>
 	</div>
-
+<?php } ?>
 	<div class="form-group buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? Language::$create : Language::$update, array('type'=>'submit', 'class'=>'btn btn-success')); ?>
 	</div>

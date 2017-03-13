@@ -13,7 +13,10 @@ $this->breadcrumbs=array(
 <div class="list-group">
 	<?php
 	foreach ($model as $task) {
-		echo '<a href="' . Yii::app()->request->baseUrl . '/processes/taskadmin/' . $_GET['id'] .'?taskID=' . $task->id .'" class="list-group-item">' . $task->task . '</a>';
+		$responsable = people::model()->findByAttributes(array('id'=>$task->people_id));
+		if ($responsable === null){$responsable = new people;}
+
+		echo '<a href="' . Yii::app()->request->baseUrl . '/processes/taskadmin/' . $_GET['id'] .'?taskID=' . $task->id .'" class="list-group-item"><strong>' . $task->task . '</strong><br>Duration: ' . $task->duration . 'hrs<br>Start date: ' . $task->start_date . '<br>Cost: $' . $task->resources . '<br>Responsable: ' . $responsable->first_name. ' ' . $responsable->middle_name. ' ' . $responsable->last_name. '</a>';
 	}
 	?>
 </div>

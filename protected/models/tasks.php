@@ -30,7 +30,7 @@ class tasks extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('project_plan_id, people_id', 'required'),
+			array('project_plan_id', 'required'),
 			array('duration, resources', 'numerical'),
 			array('project_plan_id, people_id', 'length', 'max'=>10),
 			array('task, start_date', 'safe'),

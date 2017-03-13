@@ -8,8 +8,4 @@ $this->breadcrumbs=array(
 
 <h1>Minutes</h1>
 
-<?php
-if (in_array(0, $sessionUser->rolesArray) || in_array(1, $sessionUser->rolesArray)){
-	echo $this->renderPartial('_formMinutes', array('model'=>$model));
-}
-?>
+<?php echo $this->renderPartial('_formMinutes', array('model'=>$model, 'sessionUser'=>$sessionUser)); ?>

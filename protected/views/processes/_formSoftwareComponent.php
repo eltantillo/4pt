@@ -5,10 +5,6 @@
 	'enableAjaxValidation'=>false,
 )); ?>
 
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
-
-	<?php echo $form->errorSummary($model); ?>
-
 	<div class="form-group">
 		<?php echo $form->labelEx($model,'name'); ?>
 		<?php echo $form->textArea($model,'name',array('rows'=>6, 'cols'=>50, 'class'=>'form-control')); ?>

@@ -36,7 +36,7 @@ class ProcessesController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update','workStatement','deliveryInstructions','tasks','taskadmin','risks','riskadmin','minutes','minuteadmin','projectplanvalidate','progressreports','progressreportadmin','correctiveactions','correctiveactionadmin','softwarerequirements','usermanual','softwaredesign','traceabilityrecord','operationmanual','maintenancemanual','softwarecomponents','softwarecomponentAdmin','testreports','testreportadmin'),
+				'actions'=>array('create','update','workStatement','deliveryInstructions','tasks','taskadmin','taskdelete','risks','riskadmin','riskdelete','minutes','minuteadmin','minutedelete','projectplanvalidate','progressreports','progressreportadmin','correctiveactions','correctiveactionadmin','softwarerequirements','usermanual','softwaredesign','traceabilityrecord','operationmanual','maintenancemanual','softwarecomponents','softwarecomponentAdmin','testreports','testreportadmin','actofacceptance'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -59,6 +59,9 @@ class ProcessesController extends Controller
 		$project = $this->loadModel();
 		$process = processes::model()->findByAttributes(array('project_id'=>$project->id));
 		$projectPlan = project_plan::model()->findByAttributes(array('process_id'=>$process->id));
+		$actOfAcceptance = act_of_acceptance::model()->findByAttributes(
+			array('process_id'=>$process->id)
+			);
 		$workStatement = work_statement::model()->findByAttributes(
 			array('process_id'=>$process->id),
 			array('order'=>'id DESC')
@@ -91,9 +94,25 @@ class ProcessesController extends Controller
 			array('process_id'=>$process->id),
 			array('order'=>'id DESC')
 			);
+		$minutes = minutes::model()->findAllByAttributes(
+			array('project_plan_id'=>$projectPlan->id),
+			array('order'=>'id DESC')
+			);
+		$minutesValidated = false;
+		foreach ($minutes as $minute) {
+			if($minute->client_validated){
+				$minutesValidated = true;
+			}
+			else{
+				$minutesValidated = false;
+				break;
+			}
+		}
+
 		$this->render('view',array(
 			'project'             => $project,
 			'projectPlan'         => $projectPlan,
+			'actOfAcceptance'     => $actOfAcceptance,
 			'workStatement'       => $workStatement,
 			'softwareRequirements'=> $softwareRequirements,
 			'userManual'          => $userManual,
@@ -103,6 +122,7 @@ class ProcessesController extends Controller
 			'maintenanceManual'   => $maintenanceManual,
 			'softwareComponent'   => $softwareComponent,
 			'sessionUser'         => $sessionUser,
+			'minutesValidated'    => $minutesValidated,
 		));
 	}
 
@@ -150,8 +170,12 @@ class ProcessesController extends Controller
 			if (in_array(2, $sessionUser->rolesArray) && $model->sent){
 				$model->change_request_details = null;
 			}
-			if($model->save())
+			if($model->save()){
+				$projectPlan->project_manager_validated = 0;
+				$projectPlan->technical_leader_validated = 0;
+				$projectPlan->save();
 				$this->redirect(array('view','id'=>$project->id));
+			}
 		}
 
 		$this->render('workStatement',array(
@@ -181,8 +205,12 @@ class ProcessesController extends Controller
 		if(isset($_POST['delivery_instructions']))
 		{
 			$model->attributes=$_POST['delivery_instructions'];
-			if($model->save())
+			if($model->save()){
+				$projectPlan->project_manager_validated = 0;
+				$projectPlan->technical_leader_validated = 0;
+				$projectPlan->save();
 				$this->redirect(array('view','id'=>$project->id));
+			}
 		}
 
 		$this->render('deliveryInstructions',array(
@@ -227,14 +255,36 @@ class ProcessesController extends Controller
 		if(isset($_POST['tasks']))
 		{
 			$model->attributes=$_POST['tasks'];
-			if($model->save())
+
+			if($model->start_date == ''){$model->start_date = null;}
+			if($model->people_id == ''){$model->people_id = null;}
+			if($model->save()){
+				$projectPlan->project_manager_validated = 0;
+				$projectPlan->technical_leader_validated = 0;
+				$projectPlan->save();
 				$this->redirect(array('tasks','id'=>$project->id));
+			}
 		}
 
 		$this->render('taskAdmin',array(
 			'model'=>$model,
 			'sessionUser'=>$sessionUser,
 		));
+	}
+
+	public function actionTaskDelete(){
+		if(Yii::app()->request->isPostRequest)
+		{
+			// we only allow deletion via POST request
+			$task = tasks::model()->findByAttributes(array('id'=>$_GET['taskID']));
+			$task->delete();
+
+			// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
+			if(!isset($_GET['ajax']))
+				$this->redirect(array('tasks','id'=>$_GET['id']));
+		}
+		else
+			throw new CHttpException(400,Language::$invalidRequest);
 	}
 
 	public function actionRisks(){
@@ -273,14 +323,33 @@ class ProcessesController extends Controller
 		if(isset($_POST['risks']))
 		{
 			$model->attributes=$_POST['risks'];
-			if($model->save())
+			if($model->save()){
+				$projectPlan->project_manager_validated = 0;
+				$projectPlan->technical_leader_validated = 0;
+				$projectPlan->save();
 				$this->redirect(array('risks','id'=>$project->id));
+			}
 		}
 
 		$this->render('riskAdmin',array(
 			'model'=>$model,
 			'sessionUser'=>$sessionUser,
 		));
+	}
+
+	public function actionRiskDelete(){
+		if(Yii::app()->request->isPostRequest)
+		{
+			// we only allow deletion via POST request
+			$task = risks::model()->findByAttributes(array('id'=>$_GET['riskID']));
+			$task->delete();
+
+			// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
+			if(!isset($_GET['ajax']))
+				$this->redirect(array('risks','id'=>$_GET['id']));
+		}
+		else
+			throw new CHttpException(400,Language::$invalidRequest);
 	}
 
 	public function actionMinutes(){
@@ -319,17 +388,36 @@ class ProcessesController extends Controller
 		if(isset($_POST['minutes']))
 		{
 			$model->attributes=$_POST['minutes'];
-			if ($model->previous_minute_id == ''){
-				$model->previous_minute_id = null;
-			}
-			if($model->save())
+			if ($model->previous_minute_id == ''){$model->previous_minute_id = null;}
+			if($model->date == ''){$model->date = null;}
+			if($model->next_meeting == ''){$model->next_meeting = null;}
+			if($model->save()){
+				$projectPlan->project_manager_validated = 0;
+				$projectPlan->technical_leader_validated = 0;
+				$projectPlan->save();
 				$this->redirect(array('minutes','id'=>$project->id));
+			}
 		}
 
 		$this->render('minuteAdmin',array(
 			'model'=>$model,
 			'sessionUser'=>$sessionUser,
 		));
+	}
+
+	public function actionMinuteDelete(){
+		if(Yii::app()->request->isPostRequest)
+		{
+			// we only allow deletion via POST request
+			$task = minutes::model()->findByAttributes(array('id'=>$_GET['minuteID']));
+			$task->delete();
+
+			// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
+			if(!isset($_GET['ajax']))
+				$this->redirect(array('minutes','id'=>$_GET['id']));
+		}
+		else
+			throw new CHttpException(400,Language::$invalidRequest);
 	}
 
 	public function actionProjectPlanValidate(){
@@ -382,7 +470,23 @@ class ProcessesController extends Controller
 		$sessionUser->rolesArray = explode(',', $sessionUser->roles);
 
 		$project     = $this->loadModel();
-		$process     = processes::model()->findByAttributes(array('project_id'=>$project->id));
+		$process     = processes::model()->findByAttributes(
+			array('project_id'=>$project->id),
+			array('order'=>'id DESC'));
+		$projectPlan = project_plan::model()->findByAttributes(array('process_id'=>$process->id));
+
+		$workStatement = work_statement::model()->findByAttributes(
+			array('process_id'=>$process->id),
+			array('order'=>'id DESC'));
+		$deliveryInstructions = delivery_instructions::model()->findByAttributes(
+			array('project_plan_id'=>$projectPlan->id),
+			array('order'=>'id DESC'));
+		$tasks = tasks::model()->findAllByAttributes(
+			array('project_plan_id'=>$projectPlan->id));
+		$risks = risks::model()->findAllByAttributes(
+			array('project_plan_id'=>$projectPlan->id));
+		$minutes = minutes::model()->findAllByAttributes(
+			array('project_plan_id'=>$projectPlan->id));
 
 		if (isset($_GET['progressReportID'])){
 			$model       = progress_reports::model()->findByAttributes(array('id'=>$_GET['progressReportID']));
@@ -402,6 +506,11 @@ class ProcessesController extends Controller
 		$this->render('progressReportAdmin',array(
 			'model'=>$model,
 			'sessionUser'=>$sessionUser,
+			'workStatement'=>$workStatement,
+			'deliveryInstructions'=>$deliveryInstructions,
+			'tasks'=>$tasks,
+			'risks'=>$risks,
+			'minutes'=>$minutes,
 		));
 	}
 
@@ -464,10 +573,24 @@ class ProcessesController extends Controller
 
 		$project     = $this->loadModel();
 		$process     = processes::model()->findByAttributes(array('project_id'=>$project->id));
+		$projectPlan = project_plan::model()->findByAttributes(array('process_id'=>$process->id));
+
+		$workStatement = work_statement::model()->findByAttributes(
+			array('process_id'=>$process->id),
+			array('order'=>'id DESC'));
+		$deliveryInstructions = delivery_instructions::model()->findByAttributes(
+			array('project_plan_id'=>$projectPlan->id),
+			array('order'=>'id DESC'));
+		$tasks = tasks::model()->findAllByAttributes(
+			array('project_plan_id'=>$projectPlan->id));
+		$risks = risks::model()->findAllByAttributes(
+			array('project_plan_id'=>$projectPlan->id));
+		$minutes = minutes::model()->findAllByAttributes(
+			array('project_plan_id'=>$projectPlan->id));
+
 		$model   = software_requirements::model()->findByAttributes(
 			array('process_id'=>$process->id),
-			array('order'=>'id DESC')
-			);
+			array('order'=>'id DESC'));
 		
 		if ($model === null || $model->change_request){
 			$tempModel         = $model;
@@ -501,6 +624,11 @@ class ProcessesController extends Controller
 		$this->render('softwareRequirements',array(
 			'model'=>$model,
 			'sessionUser'=>$sessionUser,
+			'workStatement'=>$workStatement,
+			'deliveryInstructions'=>$deliveryInstructions,
+			'tasks'=>$tasks,
+			'risks'=>$risks,
+			'minutes'=>$minutes,
 		));
 	}
 
@@ -510,6 +638,16 @@ class ProcessesController extends Controller
 
 		$project     = $this->loadModel();
 		$process     = processes::model()->findByAttributes(array('project_id'=>$project->id));
+
+		$softwareRequirements = software_requirements::model()->findByAttributes(
+			array('process_id'=>$process->id),
+			array('order'=>'id DESC')
+			);
+		$softwareDesign = software_design::model()->findByAttributes(
+			array('process_id'=>$process->id),
+			array('order'=>'id DESC')
+			);
+
 		$model   = user_manual::model()->findByAttributes(
 			array('process_id'=>$process->id),
 			array('order'=>'id DESC')
@@ -531,6 +669,8 @@ class ProcessesController extends Controller
 		$this->render('userManual',array(
 			'model'=>$model,
 			'sessionUser'=>$sessionUser,
+			'softwareRequirements'=>$softwareRequirements,
+			'softwareDesign'=>$softwareDesign,
 		));
 	}
 
@@ -540,6 +680,12 @@ class ProcessesController extends Controller
 
 		$project     = $this->loadModel();
 		$process     = processes::model()->findByAttributes(array('project_id'=>$project->id));
+
+		$softwareRequirements   = software_requirements::model()->findByAttributes(
+			array('process_id'=>$process->id),
+			array('order'=>'id DESC')
+			);
+
 		$model   = software_design::model()->findByAttributes(
 			array('process_id'=>$process->id),
 			array('order'=>'id DESC')
@@ -561,6 +707,7 @@ class ProcessesController extends Controller
 		$this->render('softwareDesign',array(
 			'model'=>$model,
 			'sessionUser'=>$sessionUser,
+			'softwareRequirements'=>$softwareRequirements,
 		));
 	}
 
@@ -570,6 +717,12 @@ class ProcessesController extends Controller
 
 		$project     = $this->loadModel();
 		$process     = processes::model()->findByAttributes(array('project_id'=>$project->id));
+
+		$softwareRequirements   = software_requirements::model()->findByAttributes(
+			array('process_id'=>$process->id),
+			array('order'=>'id DESC')
+			);
+
 		$model   = traceability_record::model()->findByAttributes(
 			array('process_id'=>$process->id),
 			array('order'=>'id DESC')
@@ -591,6 +744,7 @@ class ProcessesController extends Controller
 		$this->render('traceabilityRecord',array(
 			'model'=>$model,
 			'sessionUser'=>$sessionUser,
+			'softwareRequirements'=>$softwareRequirements,
 		));
 	}
 
@@ -600,6 +754,16 @@ class ProcessesController extends Controller
 
 		$project     = $this->loadModel();
 		$process     = processes::model()->findByAttributes(array('project_id'=>$project->id));
+
+		$softwareRequirements = software_requirements::model()->findByAttributes(
+			array('process_id'=>$process->id),
+			array('order'=>'id DESC')
+			);
+		$softwareDesign = software_design::model()->findByAttributes(
+			array('process_id'=>$process->id),
+			array('order'=>'id DESC')
+			);
+
 		$model   = operation_manual::model()->findByAttributes(
 			array('process_id'=>$process->id),
 			array('order'=>'id DESC')
@@ -621,6 +785,8 @@ class ProcessesController extends Controller
 		$this->render('operationManual',array(
 			'model'=>$model,
 			'sessionUser'=>$sessionUser,
+			'softwareRequirements'=>$softwareRequirements,
+			'softwareDesign'=>$softwareDesign,
 		));
 	}
 
@@ -660,6 +826,7 @@ class ProcessesController extends Controller
 
 		$project     = $this->loadModel();
 		$process     = processes::model()->findByAttributes(array('project_id'=>$project->id));
+
 		$model       = software_component::model()->findAllByAttributes(
 			array('process_id'=>$process->id)
 			);
@@ -676,6 +843,15 @@ class ProcessesController extends Controller
 
 		$project     = $this->loadModel();
 		$process     = processes::model()->findByAttributes(array('project_id'=>$project->id));
+
+		$softwareDesign = software_design::model()->findByAttributes(
+			array('process_id'=>$process->id),
+			array('order'=>'id DESC')
+			);
+		$traceabilityRecord = traceability_record::model()->findByAttributes(
+			array('process_id'=>$process->id),
+			array('order'=>'id DESC')
+			);
 
 		if (isset($_GET['softwareComponentID'])){
 			$model       = software_component::model()->findByAttributes(array('id'=>$_GET['softwareComponentID']));
@@ -695,6 +871,8 @@ class ProcessesController extends Controller
 		$this->render('softwareComponentAdmin',array(
 			'model'=>$model,
 			'sessionUser'=>$sessionUser,
+			'softwareDesign'=>$softwareDesign,
+			'traceabilityRecord'=>$traceabilityRecord,
 		));
 	}
 
@@ -759,6 +937,53 @@ class ProcessesController extends Controller
 		$this->render('testReportAdmin',array(
 			'model'=>$model,
 			'sessionUser'=>$sessionUser,
+		));
+	}
+
+	public function actionActOfAcceptance(){
+		$sessionUser = people::model()->findByAttributes(array('id'=>Yii::app()->user->id));
+		$sessionUser->rolesArray = explode(',', $sessionUser->roles);
+
+		$project     = $this->loadModel();
+		$process     = processes::model()->findByAttributes(array('project_id'=>$project->id));
+		$projectPlan = project_plan::model()->findByAttributes(array('process_id'=>$process->id));
+
+		$workStatement = work_statement::model()->findByAttributes(
+			array('process_id'=>$process->id),
+			array('order'=>'id DESC'));
+		$deliveryInstructions = delivery_instructions::model()->findByAttributes(
+			array('project_plan_id'=>$projectPlan->id),
+			array('order'=>'id DESC'));
+		$tasks = tasks::model()->findAllByAttributes(
+			array('project_plan_id'=>$projectPlan->id));
+		$risks = risks::model()->findAllByAttributes(
+			array('project_plan_id'=>$projectPlan->id));
+		$minutes = minutes::model()->findAllByAttributes(
+			array('project_plan_id'=>$projectPlan->id));
+
+		$model       = act_of_acceptance::model()->findByAttributes(array('process_id'=>$process->id));
+
+		if ($model === null){
+			$model             = new act_of_acceptance;
+			$model->process_id = $process->id;
+		}
+
+		if(isset($_POST['act_of_acceptance']))
+		{
+			$model->attributes=$_POST['act_of_acceptance'];
+			if ($model->date == ''){$model->date = null;}
+			if($model->save())
+				$this->redirect(array('view','id'=>$project->id));
+		}
+
+		$this->render('actOfAcceptance',array(
+			'model'=>$model,
+			'sessionUser'=>$sessionUser,
+			'workStatement'=>$workStatement,
+			'deliveryInstructions'=>$deliveryInstructions,
+			'tasks'=>$tasks,
+			'risks'=>$risks,
+			'minutes'=>$minutes,
 		));
 	}
 

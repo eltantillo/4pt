@@ -1,26 +1,26 @@
 <?php
 
 /**
- * This is the model class for table "project_closure".
+ * This is the model class for table "act_of_acceptance".
  *
- * The followings are the available columns in table 'project_closure':
+ * The followings are the available columns in table 'act_of_acceptance':
  * @property string $id
  * @property string $process_id
- * @property string $reception_register
+ * @property string $register
  * @property string $date
- * @property string $delivered_elements
- * @property integer $acceptance_criteria
+ * @property string $delivered_items
+ * @property string $criteria_verification
  * @property string $pending_issues
- * @property string $signature
+ * @property integer $client_validated
  */
-class project_closure extends CActiveRecord
+class act_of_acceptance extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
 	{
-		return 'project_closure';
+		return 'act_of_acceptance';
 	}
 
 	/**
@@ -32,12 +32,12 @@ class project_closure extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('process_id', 'required'),
-			array('acceptance_criteria', 'numerical', 'integerOnly'=>true),
+			array('client_validated', 'numerical', 'integerOnly'=>true),
 			array('process_id', 'length', 'max'=>10),
-			array('reception_register, date, delivered_elements, pending_issues, signature', 'safe'),
+			array('register, date, delivered_items, criteria_verification, pending_issues', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, process_id, reception_register, date, delivered_elements, acceptance_criteria, pending_issues, signature', 'safe', 'on'=>'search'),
+			array('id, process_id, register, date, delivered_items, criteria_verification, pending_issues, client_validated', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -49,7 +49,6 @@ class project_closure extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'process' => array(self::BELONGS_TO, 'Processes', 'process_id'),
 		);
 	}
 
@@ -61,12 +60,12 @@ class project_closure extends CActiveRecord
 		return array(
 			'id' => 'Id',
 			'process_id' => 'Process',
-			'reception_register' => 'Reception Register',
+			'register' => 'Register',
 			'date' => 'Date',
-			'delivered_elements' => 'Delivered Elements',
-			'acceptance_criteria' => 'Acceptance Criteria',
+			'delivered_items' => 'Delivered Items',
+			'criteria_verification' => 'Criteria Verification',
 			'pending_issues' => 'Pending Issues',
-			'signature' => 'Signature',
+			'client_validated' => 'Client Validated',
 		);
 	}
 
@@ -92,26 +91,26 @@ class project_closure extends CActiveRecord
 
 		$criteria->compare('process_id',$this->process_id,true);
 
-		$criteria->compare('reception_register',$this->reception_register,true);
+		$criteria->compare('register',$this->register,true);
 
 		$criteria->compare('date',$this->date,true);
 
-		$criteria->compare('delivered_elements',$this->delivered_elements,true);
+		$criteria->compare('delivered_items',$this->delivered_items,true);
 
-		$criteria->compare('acceptance_criteria',$this->acceptance_criteria);
+		$criteria->compare('criteria_verification',$this->criteria_verification,true);
 
 		$criteria->compare('pending_issues',$this->pending_issues,true);
 
-		$criteria->compare('signature',$this->signature,true);
+		$criteria->compare('client_validated',$this->client_validated);
 
-		return new CActiveDataProvider('project_closure', array(
+		return new CActiveDataProvider('act_of_acceptance', array(
 			'criteria'=>$criteria,
 		));
 	}
 
 	/**
 	 * Returns the static model of the specified AR class.
-	 * @return project_closure the static model class
+	 * @return act_of_acceptance the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{

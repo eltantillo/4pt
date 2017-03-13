@@ -4,8 +4,6 @@
 	'id'=>'traceability-record-form',
 	'enableAjaxValidation'=>false,
 )); ?>
-
-	<?php echo $form->errorSummary($model); ?>
 	
 	<?php
 		if ($model->change_request_details != null){

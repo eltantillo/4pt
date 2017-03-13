@@ -214,7 +214,7 @@ CREATE TABLE IF NOT EXISTS `4pt`.`tasks` (
   `duration` DOUBLE NULL DEFAULT NULL,
   `start_date` DATETIME NULL DEFAULT NULL,
   `resources` DOUBLE NULL DEFAULT NULL,
-  `people_id` INT UNSIGNED NOT NULL,
+  `people_id` INT UNSIGNED NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_tasks_project_plan1_idx` (`project_plan_id` ASC),
   INDEX `fk_tasks_people1_idx` (`people_id` ASC),
@@ -244,7 +244,6 @@ CREATE TABLE IF NOT EXISTS `4pt`.`minutes` (
   `date` DATETIME NULL DEFAULT NULL,
   `place` TEXT NULL DEFAULT NULL,
   `previous_minute_id` INT UNSIGNED NULL,
-  `minutescol` VARCHAR(45) NULL DEFAULT NULL,
   `issues_raised` TEXT NULL DEFAULT NULL,
   `open_issues` TEXT NULL DEFAULT NULL,
   `agreements` TEXT NULL DEFAULT NULL,
@@ -315,30 +314,6 @@ CREATE TABLE IF NOT EXISTS `4pt`.`corrective_actions` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_corrective_actions_processes1`
-    FOREIGN KEY (`process_id`)
-    REFERENCES `4pt`.`processes` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `4pt`.`project_closure`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `4pt`.`project_closure` ;
-
-CREATE TABLE IF NOT EXISTS `4pt`.`project_closure` (
-  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
-  `process_id` INT UNSIGNED NOT NULL,
-  `reception_register` TEXT NULL DEFAULT NULL,
-  `date` DATETIME NULL DEFAULT NULL,
-  `delivered_elements` TEXT NULL DEFAULT NULL,
-  `acceptance_criteria` TINYINT(1) NULL DEFAULT NULL,
-  `pending_issues` TEXT NULL DEFAULT NULL,
-  `signature` TEXT NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  INDEX `fk_project_closure_processes1_idx` (`process_id` ASC),
-  CONSTRAINT `fk_project_closure_processes1`
     FOREIGN KEY (`process_id`)
     REFERENCES `4pt`.`processes` (`id`)
     ON DELETE NO ACTION
@@ -630,6 +605,29 @@ CREATE TABLE IF NOT EXISTS `4pt`.`user_manual` (
   PRIMARY KEY (`id`),
   INDEX `fk_user_manual_processes1_idx` (`process_id` ASC),
   CONSTRAINT `fk_user_manual_processes1`
+    FOREIGN KEY (`process_id`)
+    REFERENCES `4pt`.`processes` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+-- -----------------------------------------------------
+-- Table `4pt`.`act_of_acceptance`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `4pt`.`act_of_acceptance` ;
+
+CREATE TABLE IF NOT EXISTS `4pt`.`act_of_acceptance` (
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `process_id` INT UNSIGNED NOT NULL,
+  `register` TEXT NULL DEFAULT NULL,
+  `date` DATETIME NULL DEFAULT NULL,
+  `delivered_items` TEXT NULL DEFAULT NULL,
+  `criteria_verification` TEXT NULL DEFAULT NULL,
+  `pending_issues` TEXT NULL DEFAULT NULL,
+  `client_validated` TINYINT(1) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_act_of_acceptance_process1_idx` (`process_id` ASC),
+  CONSTRAINT `fk_act_of_acceptance_process1`
     FOREIGN KEY (`process_id`)
     REFERENCES `4pt`.`processes` (`id`)
     ON DELETE NO ACTION
