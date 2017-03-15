@@ -6,7 +6,9 @@ $this->breadcrumbs=array(
 );
 ?>
 
-<h1>Test Reports</h1>
+<div class="page-header">
+	<h1>Test Reports</h1>
+</div>
 
 <?php
 	echo $this->renderPartial('_formTestReport', array('model'=>$model));

@@ -71,6 +71,7 @@ class companiesController extends Controller
 			$model->attributes=$_POST['companies'];
 			$user->attributes = $_POST['people'];
 			$user->first_name = $model->name;
+			$user->roles      = '0,1,2,3,4,5';
 			$user->password   = md5($user->password);
 			$user->password2  = md5($user->password2);
 

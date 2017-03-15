@@ -6,11 +6,13 @@ $this->breadcrumbs=array(
 );
 ?>
 
-<h1>Maintenance Manual</h1>
+<div class="page-header">
+	<h1>Maintenance Manual</h1>
+</div>
 
 <?php
 if (in_array(0, $sessionUser->rolesArray) || in_array(1, $sessionUser->rolesArray)){
-	echo $this->renderPartial('_formWorkStatementValidate', array('model'=>$model, 'sessionUser'=>$sessionUser));
+	echo $this->renderPartial('_formMaintenanceManualValidate', array('model'=>$model, 'sessionUser'=>$sessionUser));
 }
 else{
 	echo $this->renderPartial('_formMaintenanceManual', array('model'=>$model));

@@ -6,7 +6,9 @@ $this->breadcrumbs=array(
 );
 ?>
 
-<h1>Corrective Actions</h1>
+<div class="page-header">
+	<h1>Corrective Actions</h1>
+</div>
 
 <?php
 	echo $this->renderPartial('_formCorrectiveActions', array('model'=>$model));

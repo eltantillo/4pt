@@ -6,6 +6,8 @@ $this->breadcrumbs=array(
 );
 ?>
 
-<h1>Delivery Instructions</h1>
+<div class="page-header">
+	<h1>Delivery Instructions</h1>
+</div>
 
 <?php echo $this->renderPartial('_formDeliveryInstructions', array('model'=>$model)); ?>

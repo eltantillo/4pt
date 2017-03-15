@@ -6,7 +6,9 @@ $this->breadcrumbs=array(
 );
 ?>
 
-<h1>Software Component</h1>
+<div class="page-header">
+	<h1>Software Component</h1>
+</div>
 
 <?php
 	echo $this->renderPartial('_softwareDesignInput', array('softwareDesign'=>$softwareDesign,));

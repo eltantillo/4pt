@@ -6,7 +6,9 @@ $this->breadcrumbs=array(
 );
 ?>
 
-<h1>Act of Acceptance</h1>
+<div class="page-header">
+	<h1>Act of Acceptance</h1>
+</div>
 
 <?php 
 echo $this->renderPartial('_projectPlanInput', array(
@@ -15,6 +17,6 @@ echo $this->renderPartial('_projectPlanInput', array(
   'tasks'=>$tasks,
   'risks'=>$risks,
   'minutes'=>$minutes,
-)) . '<br><br>';
+));
 echo $this->renderPartial('_formActOfAcceptance', array('model'=>$model,'sessionUser'=>$sessionUser));
 ?>

@@ -10,7 +10,17 @@
 			echo '<div class="alert alert-warning">' . $model->change_request_details . '</div>';
 		}
 	?>
-	
+
+<?php 
+echo '<h3>Product Description</h3>';
+echo '<p>' . $model->product_description . '</p>';
+echo '<h3>Scope</h3>';
+echo '<p>' .$model->scope . '</p>';
+echo '<h3>Objectives</h3>';
+echo '<p>' .$model->objectives . '</p>';
+echo '<h3>deliverables</h3>';
+echo '<p>' .$model->deliverables . '</p>';
+ ?><br>
 
 	<?php if (in_array(0, $sessionUser->rolesArray)){ ?>
 	<div class="form-group">
@@ -31,12 +41,13 @@
 		<?php echo $form->checkBox($model,'change_request'); ?>
 		<?php echo $form->labelEx($model,'change_request'); ?>
 		<?php echo $form->error($model,'change_request'); ?>
-	</div>
 
-	<div class="form-group">
+	<br><br>
+	<div class="form-group lool">
 		<?php echo $form->labelEx($model,'change_request_details'); ?>
 		<?php echo $form->textArea($model,'change_request_details',array('rows'=>6, 'cols'=>50, 'class'=>'form-control')); ?>
 		<?php echo $form->error($model,'change_request_details'); ?>
+	</div>
 	</div>
 
 	<div class="form-group buttons">

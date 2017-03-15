@@ -6,7 +6,9 @@ $this->breadcrumbs=array(
 );
 ?>
 
-<h1>Progress Report</h1>
+<div class="page-header">
+	<h1>Progress Report</h1>
+</div>
 
 <?php
   echo $this->renderPartial('_projectPlanInput', array(

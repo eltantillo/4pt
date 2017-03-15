@@ -6,7 +6,9 @@ $this->breadcrumbs=array(
 );
 ?>
 
-<h1>Risks</h1>
+<div class="page-header">
+	<h1>Risks</h1>
+</div>
 
 <?php
 if (in_array(0, $sessionUser->rolesArray) || in_array(1, $sessionUser->rolesArray)){

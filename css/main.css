@@ -19,3 +19,12 @@ span.required {
     font-size: 50px;
     padding-top: 25px;
 }
+
+.lool {
+  display: none;
+}
+
+
+input[type=checkbox]:checked ~ div.lool {
+  display:block;
+}

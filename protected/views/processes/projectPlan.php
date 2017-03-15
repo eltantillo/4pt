@@ -5,9 +5,17 @@ $this->breadcrumbs=array(
 	'Project Plan Validation',
 );
 ?>
-
-<h1>Project Plan Validation</h1>
+<div class="page-header">
+	<h1>Project Plan Validation</h1>
+</div>
 
 <?php
-	echo $this->renderPartial('_formProjectPlan', array('model'=>$model, 'sessionUser'=>$sessionUser));
+	echo $this->renderPartial('_formProjectPlan', array(
+		'model'=>$model,
+		'sessionUser'=>$sessionUser,
+     	'workStatement'=>$workStatement,
+     	'deliveryInstructions'=>$deliveryInstructions,
+     	'tasks'=>$tasks,
+    	'risks'=>$risks,
+    	'minutes'=>$minutes,));
 ?>

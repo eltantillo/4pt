@@ -4,7 +4,9 @@ $this->breadcrumbs=array(
 );
 ?>
 
-<h1>Processes</h1>
+<div class="page-header">
+	<h1>Processes</h1>
+</div>
 
 <?php 
 foreach ($projects as $project) {

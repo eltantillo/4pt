@@ -92,7 +92,7 @@ class projectsController extends Controller
 		if(isset($_POST['projects']))
 		{
 			foreach($_POST['projects'] as $role_id){
-				for ($i=0; $i < 8 ; $i++) { 
+				for ($i=0; $i < 6 ; $i++) { 
 					if ($role_id[$i] == null){
 						$role_id[$i] = 0;
 					}
@@ -106,8 +106,8 @@ class projectsController extends Controller
 		}
 
 		$model->rolesArray = explode(',', $model->roles);
-		if (sizeof($model->rolesArray) < 8){
-			$model->rolesArray = array_fill(0,8,null);
+		if (sizeof($model->rolesArray) < 6){
+			$model->rolesArray = array_fill(0,6,null);
 		}
 
 		$this->render('roles',array(

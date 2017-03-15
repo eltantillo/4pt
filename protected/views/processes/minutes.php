@@ -6,7 +6,9 @@ $this->breadcrumbs=array(
 );
 ?>
 
-<h1>Minutes</h1>
+<div class="page-header">
+	<h1>Minutes</h1>
+</div>
 <?php if (in_array(0, $sessionUser->rolesArray)){ ?>
 <a class="btn btn-primary btn-sm" href="<?php echo Yii::app()->request->baseUrl . '/processes/minuteadmin/' . $_GET['id']; ?>" role="button"><span class="glyphicon glyphicon-book" aria-hidden="true"></span> Create minute</a><br><br>
 <?php } ?>

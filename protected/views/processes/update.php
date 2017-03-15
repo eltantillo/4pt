@@ -14,6 +14,8 @@ $this->menu=array(
 );
 ?>
 
-<h1>Update processes <?php echo $model->id; ?></h1>
+<div class="page-header">
+	<h1>Update processes <?php echo $model->id; ?></h1>
+</div>
 
 <?php echo $this->renderPartial('_form', array('model'=>$model)); ?>

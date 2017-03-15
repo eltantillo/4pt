@@ -6,7 +6,9 @@ $this->breadcrumbs=array(
 );
 ?>
 
-<h1>Software Component</h1>
+<div class="page-header">
+	<h1>Software Component</h1>
+</div>
 
 <a class="btn btn-primary btn-sm" href="<?php echo Yii::app()->request->baseUrl . '/processes/softwarecomponentadmin/' . $_GET['id']; ?>" role="button"><span class="glyphicon glyphicon-book" aria-hidden="true"></span> Create Software Component</a><br><br>
 

@@ -13,9 +13,11 @@
 	</div>
 
 	<div class="form-group">
+	<div class="row"><div class='col-sm-12'>
 		<?php echo $form->labelEx($model,'date'); ?>
-		<?php echo $form->textField($model,'date',array('form-groups'=>6, 'cols'=>50, 'class'=>'form-control')); ?>
+		<?php echo $form->textField($model,'date', array('class'=>'form-control', 'id'=>'datetimepicker')); ?>
 		<?php echo $form->error($model,'date'); ?>
+	</div></div>
 	</div>
 
 	<div class="form-group">
@@ -35,7 +37,18 @@
 		<?php echo $form->textArea($model,'pending_issues',array('form-groups'=>6, 'cols'=>50, 'class'=>'form-control')); ?>
 		<?php echo $form->error($model,'pending_issues'); ?>
 	</div>
-<?php } else {?>
+<?php } else {
+	echo '<h3>register</h3>';
+	echo '<p>' . $model->register . '</p>';
+	echo '<h3>date</h3>';
+	echo '<p>' . $model->date . '</p>';
+	echo '<h3>delivered_items</h3>';
+	echo '<p>' . $model->delivered_items . '</p>';
+	echo '<h3>criteria_verification</h3>';
+	echo '<p>' . $model->criteria_verification . '</p>';
+	echo '<h3>pending_issues</h3>';
+	echo '<p>' . $model->pending_issues . '</p>';
+?>
 	<div class="form-group">
 		<?php echo $form->checkbox($model,'client_validated'); ?>
 		<?php echo $form->labelEx($model,'client_validated'); ?>
@@ -49,3 +62,11 @@
 <?php $this->endWidget(); ?>
 
 </div><!-- form -->
+
+<script type="text/javascript">
+    $(function () {
+        $('#datetimepicker').datetimepicker({
+	        format: 'YYYY-MM-DD HH:mm'
+	    });
+    });
+</script>

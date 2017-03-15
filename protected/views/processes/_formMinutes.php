@@ -41,12 +41,6 @@
 	</div>
 
 	<div class="form-group">
-		<?php echo $form->labelEx($model,'minutescol'); ?>
-		<?php echo $form->textField($model,'minutescol',array('size'=>45,'maxlength'=>45, 'class'=>'form-control')); ?>
-		<?php echo $form->error($model,'minutescol'); ?>
-	</div>
-
-	<div class="form-group">
 		<?php echo $form->labelEx($model,'issues_raised'); ?>
 		<?php echo $form->textArea($model,'issues_raised',array('rows'=>6, 'cols'=>50, 'class'=>'form-control')); ?>
 		<?php echo $form->error($model,'issues_raised'); ?>
@@ -71,7 +65,25 @@
 		<?php echo $form->error($model,'next_meeting'); ?>
 	</div></div>
 	</div>
-<?php }else{ ?>
+<?php }else{
+
+echo '<h3>Purpose</h3>';
+echo '<p>' . $model->purpose . '</p>';
+echo '<h3>Date</h3>';
+echo '<p>' . $model->date . '</p>';
+echo '<h3>Place</h3>';
+echo '<p>' . $model->place . '</p>';
+echo '<h3>Issues Raised</h3>';
+echo '<p>' . $model->issues_raised . '</p>';
+echo '<h3>Open Issues</h3>';
+echo '<p>' . $model->open_issues . '</p>';
+echo '<h3>Agreements</h3>';
+echo '<p>' . $model->agreements . '</p>';
+echo '<h3>Next Meeting</h3>';
+echo '<p>' . $model->next_meeting . '</p>';
+
+?>
+
 	<div class="form-group">
 		<?php echo $form->checkbox($model,'client_validated'); ?>
 		<?php echo $form->labelEx($model,'client_validated'); ?>

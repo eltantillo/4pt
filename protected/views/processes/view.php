@@ -5,7 +5,9 @@ $this->breadcrumbs=array(
 );
 ?>
 
-<h1><?php echo $project->title . ' (' . $project->acronym . ')'; ?></h1>
+<div class="page-header">
+	<h1><?php echo $project->title . ' (' . $project->acronym . ')'; ?></h1>
+</div>
 
 <?php if(
 ($softwareRequirements === null ||
@@ -177,8 +179,9 @@ if (
 if (
   (in_array(3, $sessionUser->rolesArray) &&
 
+  ($softwareDesign != null &&
   $softwareDesign->project_manager_validated &&
-  $softwareDesign->technical_leader_validated &&
+  $softwareDesign->technical_leader_validated) &&
 
   ($userManual === null ||
   !$userManual->sent ||

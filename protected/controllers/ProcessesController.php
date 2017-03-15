@@ -145,6 +145,8 @@ class ProcessesController extends Controller
 
 		$project = $this->loadModel();
 		$process = processes::model()->findByAttributes(array('project_id'=>$project->id));
+		$projectPlan = project_plan::model()->findByAttributes(array('process_id'=>$process->id));
+		
 		$model   = work_statement::model()->findByAttributes(
 			array('process_id'=>$process->id),
 			array('order'=>'id DESC')
@@ -171,7 +173,7 @@ class ProcessesController extends Controller
 				$model->change_request_details = null;
 			}
 			if($model->save()){
-				$projectPlan->project_manager_validated = 0;
+				$projectPlan->project_manager_validated  = 0;
 				$projectPlan->technical_leader_validated = 0;
 				$projectPlan->save();
 				$this->redirect(array('view','id'=>$project->id));
@@ -428,6 +430,19 @@ class ProcessesController extends Controller
 		$process     = processes::model()->findByAttributes(array('project_id'=>$project->id));
 		$projectPlan = project_plan::model()->findByAttributes(array('process_id'=>$process->id));
 
+		$workStatement = work_statement::model()->findByAttributes(
+			array('process_id'=>$process->id),
+			array('order'=>'id DESC'));
+		$deliveryInstructions = delivery_instructions::model()->findByAttributes(
+			array('project_plan_id'=>$projectPlan->id),
+			array('order'=>'id DESC'));
+		$tasks = tasks::model()->findAllByAttributes(
+			array('project_plan_id'=>$projectPlan->id));
+		$risks = risks::model()->findAllByAttributes(
+			array('project_plan_id'=>$projectPlan->id));
+		$minutes = minutes::model()->findAllByAttributes(
+			array('project_plan_id'=>$projectPlan->id));
+
 		if (isset($_GET['minuteID'])){
 			$model       = minutes::model()->findByAttributes(array('id'=>$_GET['minuteID']));
 		}
@@ -446,6 +461,11 @@ class ProcessesController extends Controller
 		$this->render('projectPlan',array(
 			'model'=>$projectPlan,
 			'sessionUser'=>$sessionUser,
+			'workStatement'=>$workStatement,
+			'deliveryInstructions'=>$deliveryInstructions,
+			'tasks'=>$tasks,
+			'risks'=>$risks,
+			'minutes'=>$minutes,
 		));
 	}
 
@@ -972,8 +992,12 @@ class ProcessesController extends Controller
 		{
 			$model->attributes=$_POST['act_of_acceptance'];
 			if ($model->date == ''){$model->date = null;}
-			if($model->save())
-				$this->redirect(array('view','id'=>$project->id));
+			if($model->save()){
+				if ($model->client_validated)
+					$this->redirect(array('index'));
+				else
+					$this->redirect(array('view','id'=>$project->id));
+			}
 		}
 
 		$this->render('actOfAcceptance',array(
