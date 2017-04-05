@@ -92,9 +92,9 @@ class projectsController extends Controller
 		if(isset($_POST['projects']))
 		{
 			foreach($_POST['projects'] as $role_id){
-				for ($i=0; $i < 6 ; $i++) { 
-					if ($role_id[$i] == null){
-						$role_id[$i] = 0;
+				for ($i=0; $i < 6 ; $i++) {
+					if ($role_id[$i] == null || !ctype_digit($role_id[$i]) || (int)$role_id[$i] < 1){
+						$role_id[$i] = 1;
 					}
 				}
 				$roles = implode(',', $role_id);

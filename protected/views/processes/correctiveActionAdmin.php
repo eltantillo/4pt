@@ -11,5 +11,5 @@ $this->breadcrumbs=array(
 </div>
 
 <?php
-	echo $this->renderPartial('_formCorrectiveActions', array('model'=>$model));
+	echo $this->renderPartial('_formCorrectiveActions', array('model'=>$model,'project'=>$project));
 ?>

@@ -5,7 +5,6 @@
 	'enableAjaxValidation'=>false,
 ));
 ?>
-
 	<p class="note"><?php echo Language::$enterRolesNumbers; ?></p>
 
 	<div class="form-group">

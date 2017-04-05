@@ -1,6 +1,21 @@
 <div class="form">
 
-<?php $form=$this->beginWidget('CActiveForm', array(
+<?php
+$people = explode(',', $project->people);
+$roles = explode(',', $project->roles);
+
+$peopleAndRoles = array();
+
+$j = 0;
+foreach ($roles as $role) {
+	for ($i = 0; $i < $role; $i++) {
+		$id = $people[$j];
+		$peopleAndRoles[$id] = Functions::personFormat($id) . ' (' . Language::$rolesArray[$role] . ')';
+		$j++;
+	}
+}
+
+$form=$this->beginWidget('CActiveForm', array(
 	'id'=>'corrective-actions-form',
 	'enableAjaxValidation'=>false,
 )); ?>
@@ -25,7 +40,7 @@
 
 	<div class="form-group">
 		<?php echo $form->labelEx($model,'responsible_id'); ?>
-		<?php echo $form->textField($model,'responsible_id',array('size'=>10,'maxlength'=>10, 'class'=>'form-control')); ?>
+		<?php echo $form->dropDownList($model,'responsible_id', $peopleAndRoles, array('class'=>'form-control')); ?>
 		<?php echo $form->error($model,'responsible_id'); ?>
 	</div>
 

@@ -29,6 +29,7 @@
 		<?php echo $form->error($model,'affected_functions'); ?>
 	</div>
 
+	<?php if ($model->isNewRecord){ ?>
 	<div class="form-group">
 	<div class="row"><div class='col-sm-12'>
 		<?php echo $form->labelEx($model,'origin_date'); ?>
@@ -37,6 +38,8 @@
 	</div></div>
 	</div>
 
+	<?php }else{ ?>
+
 	<div class="form-group">
 	<div class="row"><div class='col-sm-12'>
 		<?php echo $form->labelEx($model,'resolution_date'); ?>
@@ -44,6 +47,8 @@
 		<?php echo $form->error($model,'resolution_date'); ?>
 	</div></div>
 	</div>
+
+	<?php } ?>
 
 	<div class="form-group buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? Language::$create : Language::$update, array('type'=>'submit', 'class'=>'btn btn-success')); ?>
