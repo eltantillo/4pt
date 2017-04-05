@@ -126,7 +126,6 @@ class peopleController extends Controller
 			}
 			
 			$model->capabilities = $capabilities;
-			echo $model->capabilities;
 			if($model->save())
 				$this->redirect(array('Roles','userId'=>$model->id));
 		}
@@ -149,11 +148,13 @@ class peopleController extends Controller
 			foreach($_POST['people'] as $checkbox_id){
 				if ($checkbox_id != null){
 					$roles = implode(',', $checkbox_id);
+					if ($roles === ""){
+						$roles = null;
+					}
 				}
 			}
 			
 			$model->roles = $roles;
-			echo $model->roles;
 			if($model->save()){
 				$this->redirect(array(
 					'view',

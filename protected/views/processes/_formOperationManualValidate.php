@@ -12,21 +12,21 @@
 	?>
 
 	<?php 
-	echo '<h3>operation_criteria</h3>';
+	echo '<h3>' . Language::$operationCriteria . '</h3>';
 	echo '<p>' . $model->operation_criteria . '</p>';
-	echo '<h3>operative_enviroment</h3>';
+	echo '<h3>' . Language::$operativeEnviroment . '</h3>';
 	echo '<p>' . $model->operative_enviroment . '</p>';
-	echo '<h3>security_alerts</h3>';
+	echo '<h3>' . Language::$securityAlerts . '</h3>';
 	echo '<p>' . $model->security_alerts . '</p>';
-	echo '<h3>deployment_sequence</h3>';
+	echo '<h3>' . Language::$deploymentSequence . '</h3>';
 	echo '<p>' . $model->deployment_sequence . '</p>';
-	echo '<h3>faq</h3>';
+	echo '<h3>' . Language::$faq . '</h3>';
 	echo '<p>' . $model->faq . '</p>';
-	echo '<h3>aditional_sources</h3>';
+	echo '<h3>' . Language::$aditionalSources . '</h3>';
 	echo '<p>' . $model->aditional_sources . '</p>';
-	echo '<h3>security_certification</h3>';
+	echo '<h3>' . Language::$securityCertification . '</h3>';
 	echo '<p>' . $model->security_certification . '</p>';
-	echo '<h3>guaranty</h3>';
+	echo '<h3>' . Language::$guaranty . '</h3>';
 	echo '<p>' . $model->guaranty . '</p>';
 	?>
 	

@@ -18,7 +18,7 @@
 	?>
 
 		<div class="form-group">
-			<?php echo $form->labelEx($model, Language::$rolesArray[$i]); ?>
+			<?php echo $form->labelEx($model, htmlentities(Language::$rolesArray[$i])); ?>
 			<?php echo $form->textField($model,'roles[' . $i . ']',array('size'=>32, 'maxlength'=>32, 'class'=>'form-control', 'value'=>$model->rolesArray[$i])); ?>
 		</div>
 

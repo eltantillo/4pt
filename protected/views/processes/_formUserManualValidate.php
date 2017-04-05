@@ -12,21 +12,21 @@
 	?>
 
 	<?php 
-	echo '<h3>user_procedure</h3>';
+	echo '<h3>' . Language::$userProcedure . '</h3>';
 	echo '<p>' . $model->user_procedure . '</p>';
-	echo '<h3>installation_procedure</h3>';
+	echo '<h3>' . Language::$installationProcedure . '</h3>';
 	echo '<p>' . $model->installation_procedure . '</p>';
-	echo '<h3>product_description</h3>';
+	echo '<h3>' . Language::$productDescription . '</h3>';
 	echo '<p>' . $model->product_description . '</p>';
-	echo '<h3>provided_resources</h3>';
+	echo '<h3>' . Language::$providedResources . '</h3>';
 	echo '<p>' . $model->provided_resources . '</p>';
-	echo '<h3>required_enviroment</h3>';
+	echo '<h3>' . Language::$requiredEnviroment . '</h3>';
 	echo '<p>' . $model->required_enviroment . '</p>';
-	echo '<h3>problems_report</h3>';
+	echo '<h3>' . Language::$problemsReport . '</h3>';
 	echo '<p>' . $model->problems_report . '</p>';
-	echo '<h3>enter_procedure</h3>';
+	echo '<h3>' . Language::$enterProcedure . '</h3>';
 	echo '<p>' . $model->enter_procedure . '</p>';
-	echo '<h3>messages</h3>';
+	echo '<h3>' . Language::$messages . '</h3>';
 	echo '<p>' . $model->messages . '</p>';
 	?>
 	

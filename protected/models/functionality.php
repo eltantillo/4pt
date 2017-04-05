@@ -54,8 +54,8 @@ class functionality extends CActiveRecord
 	{
 		return array(
 			'id' => 'Id',
-			'software_requirements_id' => 'Software Requirements',
-			'description' => 'Description',
+			'software_requirements_id' => Language::$softwareRequirements,
+			'description' => Language::$description,
 		);
 	}
 

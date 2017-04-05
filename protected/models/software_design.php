@@ -62,13 +62,13 @@ class software_design extends CActiveRecord
 		return array(
 			'id' => 'Id',
 			'process_id' => 'Process',
-			'high_lvl_design' => 'High Lvl Design',
-			'low_lvl_design' => 'Low Lvl Design',
-			'sent' => 'Sent',
-			'project_manager_validated' => 'Project Manager Validated',
-			'technical_leader_validated' => 'Technical Leader Validated',
-			'change_request' => 'Change Request',
-			'change_request_details' => 'Change Request Details',
+			'high_lvl_design' => Language::$highLevelDesign,
+			'low_lvl_design' => Language::$lowLevelDesign,
+			'sent' => Language::$send,
+			'project_manager_validated' => Language::$validate,
+			'technical_leader_validated' => Language::$validate,
+			'change_request' => Language::$changeRequest,
+			'change_request_details' => Language::$changeRequestDetails,
 		);
 	}
 

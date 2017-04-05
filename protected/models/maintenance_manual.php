@@ -61,12 +61,12 @@ class maintenance_manual extends CActiveRecord
 		return array(
 			'id' => 'Id',
 			'process_id' => 'Process',
-			'enviroment' => 'Enviroment',
-			'sent' => 'Sent',
-			'project_manager_validated' => 'Project Manager Validated',
-			'technical_leader_validated' => 'Technical Leader Validated',
-			'change_request' => 'Change Request',
-			'change_request_details' => 'Change Request Details',
+			'enviroment' => Language::$enviroment,
+			'sent' => Language::$send,
+			'project_manager_validated' => Language::$validate,
+			'technical_leader_validated' => Language::$validate,
+			'change_request' => Language::$changeRequest,
+			'change_request_details' => Language::$changeRequestDetails,
 		);
 	}
 

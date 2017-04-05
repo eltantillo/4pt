@@ -45,11 +45,11 @@
 	</div></div>
 	</div>
 
-	<div class="form-group">
+	<!--<div class="form-group">
 		<?php echo $form->checkBox($model,'complete'); ?>
 		<?php echo $form->labelEx($model,'complete'); ?>
 		<?php echo $form->error($model,'complete'); ?>
-	</div>
+	</div>-->
 
 	<div class="form-group buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? Language::$create : Language::$update, array('type'=>'submit', 'class'=>'btn btn-success')); ?>

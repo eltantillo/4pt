@@ -38,15 +38,15 @@
 		<?php echo $form->error($model,'pending_issues'); ?>
 	</div>
 <?php } else {
-	echo '<h3>register</h3>';
+	echo '<h3>' . Language::$deliveryRegister . '</h3>';
 	echo '<p>' . $model->register . '</p>';
-	echo '<h3>date</h3>';
+	echo '<h3>' . Language::$date . '</h3>';
 	echo '<p>' . $model->date . '</p>';
-	echo '<h3>delivered_items</h3>';
+	echo '<h3>' . Language::$deliveredItems . '</h3>';
 	echo '<p>' . $model->delivered_items . '</p>';
-	echo '<h3>criteria_verification</h3>';
+	echo '<h3>' . Language::$criteriaVerification . '</h3>';
 	echo '<p>' . $model->criteria_verification . '</p>';
-	echo '<h3>pending_issues</h3>';
+	echo '<h3>' . Language::$pendingIssues . '</h3>';
 	echo '<p>' . $model->pending_issues . '</p>';
 ?>
 	<div class="form-group">

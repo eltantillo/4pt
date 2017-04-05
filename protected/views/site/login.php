@@ -28,13 +28,13 @@ $this->breadcrumbs=array(
 	</div>
 
 	<div class="form-group">
-		<?php echo $form->labelEx($model,Language::$email); ?>
+		<?php echo $form->labelEx($model, htmlentities(Language::$email)); ?>
 		<?php echo $form->textField($model,'username', array('class'=>'form-control')); ?>
 		<?php //echo $form->error($model,'username', array('class'=>'alert alert-danger')); ?>
 	</div>
 
 	<div class="form-group">
-		<?php echo $form->labelEx($model,Language::$password); ?>
+		<?php echo $form->labelEx($model, htmlentities(Language::$password)); ?>
 		<?php echo $form->passwordField($model,'password', array('class'=>'form-control')); ?>
 		<?php //echo $form->error($model,'password', array('class'=>'alert alert-danger')); ?>
 	</div>
@@ -43,7 +43,7 @@ $this->breadcrumbs=array(
 		<div class="row">
 		<div class="col-xs-6">
 		<?php echo $form->checkBox($model,'rememberMe'); ?>
-		<?php echo $form->label($model,Language::$rememberMe); ?>
+		<?php echo $form->label($model, htmlentities(Language::$rememberMe)); ?>
 		</div>
 		<div class="col-xs-6 text-right"><a href="<?php echo Yii::app()->baseUrl . '/site/recover/' ?>"><?php echo Language::$forgotPass; ?></a></div>
 		</div>

@@ -60,13 +60,13 @@ class progress_reports extends CActiveRecord
 		return array(
 			'id' => 'Id',
 			'process_id' => 'Process',
-			'task_status' => 'Task Status',
-			'results_status' => 'Results Status',
-			'resources_status' => 'Resources Status',
-			'costs_status' => 'Costs Status',
-			'calendar_status' => 'Calendar Status',
-			'risks_status' => 'Risks Status',
-			'deviations_record' => 'Deviations Record',
+			'task_status' => Language::$taskStatus,
+			'results_status' => Language::$resultsStatus,
+			'resources_status' => Language::$resourcesStatus,
+			'costs_status' => Language::$costsStatus,
+			'calendar_status' => Language::$calendarStatus,
+			'risks_status' => Language::$risksStatus,
+			'deviations_record' => Language::$deviationsRecord,
 		);
 	}
 

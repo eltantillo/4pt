@@ -1,13 +1,13 @@
 <?php
 $this->breadcrumbs=array(
-	'Processes'=>array('index'),
-	'Project'=>array($_GET['id']),
-	'Act of Acceptance',
+	Language::$processes=>array('index'),
+	$project->title=>array($_GET['id']),
+	Language::$actOfAcceptance,
 );
 ?>
 
 <div class="page-header">
-	<h1>Act of Acceptance</h1>
+	<h1><?php echo Language::$actOfAcceptance; ?></h1>
 </div>
 
 <?php 

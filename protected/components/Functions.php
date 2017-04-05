@@ -45,22 +45,35 @@ class Functions{
 	}
 	
 	public static function rolesFormat($rolesString){
-		$numbers    = array();
-		$roles      = array();
-		$rolesArray = explode(',', $rolesString);
+		$numbers        = array();
+		$roles          = array();
 		$rolesPreString = array();
+		$rolesArray     = explode(',', $rolesString);
 
 		$count = 0;
 		foreach ($rolesArray as $key) {
-			if ($key > 0){
+			if ($key != null && $key >= 0){
 				array_push($numbers, '/\b' . $count . '\b/i');
-				array_push($roles, ' ' . Language::$rolesArray[$count]);
+				array_push($roles, ' ' . Language::$rolesArray[$key]);
 				array_push($rolesPreString, $count);
 			}
 			$count++;
 		}
 		$rolesString = implode(',', $rolesPreString);
 		return preg_replace($numbers, $roles, $rolesString);
+	}
+	
+	public static function rolesAmountFormat($rolesString){
+		$numbers = explode(',', $rolesString);
+		$string = '';
+
+		$count = 0;
+		foreach ($numbers as $key) {
+			$string .= Language::$rolesArray[$count] . ' (x' . $key . '), ';
+			$count++;
+		}
+
+		return $string;
 	}
 	
 	public static function levelFormat($level){
@@ -118,8 +131,10 @@ class Functions{
 				array_push($numbers, '/\b' . $position . '\b/i');
 				array_push($peoplePreString, $position);
 				foreach ($people as $person) {
+					if (array_key_exists($position,$peopleArray)){
 					if ($person->id == $peopleArray[$position]){
 						array_push($peopleNameAndRole, ' ' . $person->first_name . ' ' . $person->middle_name . ' ' . $person->last_name . ' (' . Language::$rolesArray[$rolePosition]  . ')');
+					}
 					}
 				}
 				$position++;
@@ -132,6 +147,12 @@ class Functions{
 
 		$peopleString = implode(',', $peoplePreString);
 		return preg_replace($numbers, $peopleNameAndRole, $peopleString);
+	}
+	
+	public static function personFormat($id){
+		$user   = people::model()->findByAttributes(array('id'=>$id));
+
+		return $user->first_name . " " . $user->middle_name . " " . $user->last_name;
 	}
 }
 ?>

@@ -63,13 +63,13 @@ class corrective_actions extends CActiveRecord
 		return array(
 			'id' => 'Id',
 			'process_id' => 'Process',
-			'problem' => 'Problem',
-			'solution' => 'Solution',
-			'corrective_actions' => 'Corrective Actions',
-			'responsible_id' => 'Responsible',
-			'open_date' => 'Open Date',
-			'close_date' => 'Close Date',
-			'complete' => 'Complete',
+			'problem' => Language::$problem,
+			'solution' => Language::$solution,
+			'corrective_actions' => Language::$correctiveActions,
+			'responsible_id' => Language::$responsible,
+			'open_date' => Language::$openDate,
+			'close_date' => Language::$closeDate,
+			'complete' => Language::$send,
 		);
 	}
 

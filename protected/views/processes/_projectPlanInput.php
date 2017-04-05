@@ -1,7 +1,7 @@
 <?php if ($workStatement != null){ ?>
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#workStatementModal">
-Work Statement
+<?php echo Language::$workStatement; ?>
 </button>
 
 <!-- Modal -->
@@ -10,17 +10,17 @@ Work Statement
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Work Statement</h4>
+        <h4 class="modal-title" id="myModalLabel"><?php echo Language::$workStatement; ?></h4>
       </div>
       <div class="modal-body">
 <?php 
-	echo '<h3>Product Description</h3>';
+	echo '<h3>' . Language::$productDescription . '</h3>';
 	echo '<p>' . $workStatement->product_description . '</p>';
-	echo '<h3>Scope</h3>';
+	echo '<h3>' . Language::$scope . '</h3>';
 	echo $workStatement->scope;
-	echo '<h3>Objectives</h3>';
+	echo '<h3>' . Language::$objectives . '</h3>';
 	echo $workStatement->objectives;
-	echo '<h3>deliverables</h3>';
+	echo '<h3>' . Language::$deliverables . '</h3>';
 	echo $workStatement->deliverables;
 ?>
       </div>
@@ -35,7 +35,7 @@ Work Statement
 <?php if ($deliveryInstructions != null){ ?>
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#deliveryInstructionsModal">
-Delivery Instructions
+<?php echo Language::$deliveryInstructions; ?>
 </button>
 
 <!-- Modal -->
@@ -44,13 +44,13 @@ Delivery Instructions
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Delivery Instructions</h4>
+        <h4 class="modal-title" id="myModalLabel"><?php echo Language::$deliveryInstructions; ?></h4>
       </div>
       <div class="modal-body">
 <?php
-	echo '<h3>Release Requirements</h3>';
+	echo '<h3>' . Language::$releaseRequirements . '</h3>';
 	echo $deliveryInstructions->release_requirements;
-	echo '<h3>Delivery Requirements</h3>';
+	echo '<h3>' . Language::$deliveryRequirements . '</h3>';
 	echo $deliveryInstructions->delivery_requirements;
 ?>
       </div>
@@ -65,7 +65,7 @@ Delivery Instructions
 <?php if ($tasks != null){ ?>
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#tasksModal">
-Tasks
+<?php echo Language::$tasks; ?>
 </button>
 
 <!-- Modal -->
@@ -74,28 +74,28 @@ Tasks
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Tasks</h4>
+        <h4 class="modal-title" id="myModalLabel"><?php echo Language::$tasks; ?></h4>
       </div>
       <div class="modal-body">
       	<div class="table-responsive">
       	<table class="table table-hover">
       	  <tr>
-      	    <th>Task Description</th>
-      	    <th>Duration</th>
-      	    <th>Start Date</th>
-      	    <th>Resources</th>
-      	    <th>People</th>
+      	    <th><?php echo Language::$taskDescription; ?></th>
+      	    <th><?php echo Language::$duration; ?></th>
+      	    <th><?php echo Language::$startDate; ?></th>
+      	    <th><?php echo Language::$resources; ?></th>
+      	    <th><?php echo Language::$person; ?></th>
       	  </tr>
-      	  <tr>
 			<?php
 			foreach ($tasks as $task) {
+        echo '<tr>';
 				echo '<td>' . $task->task . '</td>';
 				echo '<td>' . $task->duration . '</td>';
 				echo '<td>' . $task->start_date . '</td>';
 				echo '<td>' . $task->resources . '</td>';
 				echo '<td>' . $task->people_id . '</td>';
+        echo '</tr>';
 			}?>
-      	  </tr>
 		</table>
 		</div>
       </div>
@@ -110,7 +110,7 @@ Tasks
 <?php if ($risks != null){ ?>
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#risksModal">
-Risks
+<?php echo Language::$risks; ?>
 </button>
 
 <!-- Modal -->
@@ -119,22 +119,22 @@ Risks
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Risks</h4>
+        <h4 class="modal-title" id="myModalLabel"><?php echo Language::$risks; ?></h4>
       </div>
       <div class="modal-body">
       	<div class="table-responsive">
       	<table class="table table-hover">
       	  <tr>
-      	    <th>Risk Description</th>
-      	    <th>Cost</th>
+      	    <th><?php echo Language::$riskDescription; ?></th>
+      	    <th><?php echo Language::$cost; ?></th>
       	  </tr>
-      	  <tr>
 			<?php
 			foreach ($risks as $risk) {
+        echo '<tr>';
 				echo '<td>' . $risk->risk . '</td>';
 				echo '<td>$ ' . $risk->cost . '</td>';
+        echo '</tr>';
 			}?>
-      	  </tr>
 		</table>
 		</div>
       </div>
@@ -149,7 +149,7 @@ Risks
 <?php if ($minutes != null){ ?>
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#minutesModal">
-Minutes
+<?php echo Language::$minutes; ?>
 </button>
 
 <!-- Modal -->
@@ -158,32 +158,34 @@ Minutes
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Minutes</h4>
+        <h4 class="modal-title" id="myModalLabel"><?php echo Language::$minutes; ?></h4>
       </div>
       <div class="modal-body">
       	<div class="table-responsive">
       	<table class="table table-hover">
       	  <tr>
-      	    <th>Purpose</th>
-      	    <th>Date</th>
-      	    <th>Place</th>
-      	    <th>Issues Raised</th>
-      	    <th>Open Issues</th>
-      	    <th>Agreements</th>
-      	    <th>Next Meeting</th>
+      	    <th><?php echo Language::$purpose; ?></th>
+            <th><?php echo Language::$assistants; ?></th>
+      	    <th><?php echo Language::$date; ?></th>
+      	    <th><?php echo Language::$place; ?></th>
+      	    <th><?php echo Language::$issuesRaised; ?></th>
+      	    <th><?php echo Language::$openIssues; ?></th>
+      	    <th><?php echo Language::$agreements; ?></th>
+      	    <th><?php echo Language::$nextMeeting; ?></th>
       	  </tr>
-      	  <tr>
 			<?php
 			foreach ($minutes as $minute) {
-				echo '<td>' . $minute->purpose . '</td>';
+        echo '<tr>';
+        echo '<td>' . $minute->purpose . '</td>';
+        echo '<td>' . $minute->assistants . '</td>';
 				echo '<td>' . $minute->date . '</td>';
 				echo '<td>' . $minute->place . '</td>';
 				echo '<td>' . $minute->issues_raised . '</td>';
 				echo '<td>' . $minute->open_issues . '</td>';
 				echo '<td>' . $minute->agreements . '</td>';
 				echo '<td>' . $minute->next_meeting . '</td>';
+        echo '</tr>';
 			}?>
-      	  </tr>
 		</table>
 		</div>
       </div>

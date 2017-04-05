@@ -7,7 +7,25 @@
 
 $user   = people::model()->findByAttributes(array('id'=>Yii::app()->user->id));
 $people = people::model()->findAll('company_id=' . $user->company_id);
+foreach ($people as $person) {
+	$person->rolesArray = explode(',', $person->roles);
+}
+$enoughPeople = true;
 
+$count = 0;
+foreach ($model->rolesArray as $role) {
+	if ($role > 0){
+		$e = false;
+		foreach ($people as $person) {
+			if (in_array($count, $person->rolesArray)){
+				$e = true;
+			}
+		}
+		$enoughPeople = $e;
+	}
+	$count++;
+}
+if ($enoughPeople){
 ?>
 
 	<div class="form-group">
@@ -35,7 +53,7 @@ $people = people::model()->findAll('company_id=' . $user->company_id);
 	?>
 
 				<div class="form-group">
-					<?php echo $form->labelEx($model,Language::$rolesArray[$j] . ' ' . ($i + 1)); ?>
+					<?php echo $form->labelEx($model, htmlentities(Language::$rolesArray[$j]) . ' ' . ($i + 1)); ?>
 					<?php
 					echo $form->dropDownList($model,'people[' . $k  . ']', $peopleRoles, array('class'=>'form-control'));
 					$k++;
@@ -54,6 +72,13 @@ $people = people::model()->findAll('company_id=' . $user->company_id);
 		<?php echo CHtml::htmlButton(Language::$finish, array('type'=>'submit', 'class'=>'btn btn-success')); ?>
 	</div>
 
+<?php }else{ ?>
+<div class="jumbotron">
+  <h1><?php echo Language::$peopleMissing; ?></h1> 
+  <p><?php echo Language::$peopleMissingDesc; ?></p> 
+  <p><a class="btn btn-primary btn-lg" href="<?php echo Yii::app()->baseUrl; ?>/people" role="button"><?php echo Language::$people; ?></a></p>
+</div>
+<?php } ?>
 <?php $this->endWidget(); ?>
 
 </div><!-- form -->

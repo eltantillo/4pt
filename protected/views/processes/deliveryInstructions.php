@@ -1,13 +1,13 @@
 <?php
 $this->breadcrumbs=array(
-	'Processes'=>array('index'),
-	'Project'=>array($_GET['id']),
-	'Delivery Instructions',
+	Language::$processes=>array('index'),
+	$project->title=>array($_GET['id']),
+	Language::$deliveryInstructions,
 );
 ?>
 
 <div class="page-header">
-	<h1>Delivery Instructions</h1>
+	<h1><?php echo Language::$deliveryInstructions; ?></h1>
 </div>
 
 <?php echo $this->renderPartial('_formDeliveryInstructions', array('model'=>$model)); ?>

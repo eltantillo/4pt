@@ -65,11 +65,11 @@ class traceability_record extends CActiveRecord
 			'process_id' => 'Process',
 			'traceability_recordcol' => 'Traceability Recordcol',
 			'traceability_recordcol1' => 'Traceability Recordcol1',
-			'sent' => 'Sent',
-			'project_manager_validated' => 'Project Manager Validated',
-			'technical_leader_validated' => 'Technical Leader Validated',
-			'change_request' => 'Change Request',
-			'change_request_details' => 'Change Request Details',
+			'sent' => Language::$send,
+			'project_manager_validated' => Language::$validate,
+			'technical_leader_validated' => Language::$validate,
+			'change_request' => Language::$changeRequest,
+			'change_request_details' => Language::$changeRequestDetails,
 		);
 	}
 

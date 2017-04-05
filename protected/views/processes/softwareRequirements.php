@@ -1,13 +1,13 @@
 <?php
 $this->breadcrumbs=array(
-	'Processes'=>array('index'),
-	'Project'=>array($_GET['id']),
-	'Software Requirements',
+	Language::$processes=>array('index'),
+	$project->title=>array($_GET['id']),
+	Language::$softwareRequirements,
 );
 ?>
 
 <div class="page-header">
-	<h1>Software Requirements</h1>
+	<h1><?php echo Language::$softwareRequirements; ?></h1>
 </div>
 
 <?php

@@ -64,15 +64,15 @@ class work_statement extends CActiveRecord
 		return array(
 			'id' => 'Id',
 			'process_id' => 'Process',
-			'product_description' => 'Product Description',
-			'scope' => 'Scope',
-			'objectives' => 'Objectives',
-			'deliverables' => 'Deliverables',
-			'sent' => 'Sent',
-			'project_manager_validated' => 'Project Manager Validated',
-			'technical_leader_validated' => 'Technical Leader Validated',
-			'change_request' => 'Change Request',
-			'change_request_details' => 'Change Request Details',
+			'product_description' => Language::$productDescription,
+			'scope' => Language::$scope,
+			'objectives' => Language::$objectives,
+			'deliverables' => Language::$deliverables,
+			'sent' => Language::$send,
+			'project_manager_validated' => Language::$validate,
+			'technical_leader_validated' => Language::$validate,
+			'change_request' => Language::$changeRequest,
+			'change_request_details' => Language::$changeRequestDetails,
 		);
 	}
 

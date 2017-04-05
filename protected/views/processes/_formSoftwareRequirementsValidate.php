@@ -12,25 +12,25 @@
 	?>
 
 	<?php 
-	echo '<h3>introduction</h3>';
+	echo '<h3>' . Language::$introduction .'</h3>';
 	echo '<p>' . $model->introduction . '</p>';
-	echo '<h3>user_interface</h3>';
+	echo '<h3>' . Language::$userInterface .'</h3>';
 	echo '<p>' . $model->user_interface . '</p>';
-	echo '<h3>external_interfaces</h3>';
+	echo '<h3>' . Language::$externalInterfaces .'</h3>';
 	echo '<p>' . $model->external_interfaces . '</p>';
-	echo '<h3>reliability</h3>';
+	echo '<h3>' . Language::$reliability .'</h3>';
 	echo '<p>' . $model->reliability . '</p>';
-	echo '<h3>efficiency</h3>';
+	echo '<h3>' . Language::$efficiency .'</h3>';
 	echo '<p>' . $model->efficiency . '</p>';
-	echo '<h3>maintenance</h3>';
+	echo '<h3>' . Language::$maintenance .'</h3>';
 	echo '<p>' . $model->maintenance . '</p>';
-	echo '<h3>portability</h3>';
+	echo '<h3>' . Language::$portability .'</h3>';
 	echo '<p>' . $model->portability . '</p>';
-	echo '<h3>interoperability</h3>';
+	echo '<h3>' . Language::$interoperability .'</h3>';
 	echo '<p>' . $model->interoperability . '</p>';
-	echo '<h3>reuse</h3>';
+	echo '<h3>' . Language::$reuse .'</h3>';
 	echo '<p>' . $model->reuse . '</p>';
-	echo '<h3>legal</h3>';
+	echo '<h3>' . Language::$legal .'</h3>';
 	echo '<p>' . $model->legal . '</p>';
 	?>
 	

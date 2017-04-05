@@ -1,13 +1,13 @@
 <?php
 $this->breadcrumbs=array(
-	'Processes'=>array('index'),
-	'Project'=>array($_GET['id']),
-	'Test Reports',
+	Language::$processes=>array('index'),
+	$project->title=>array($_GET['id']),
+	Language::$testReport,
 );
 ?>
 
 <div class="page-header">
-	<h1>Test Reports</h1>
+	<h1><?php echo Language::$testReport; ?></h1>
 </div>
 
 <?php

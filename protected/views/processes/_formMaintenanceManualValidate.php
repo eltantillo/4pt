@@ -12,7 +12,7 @@
 	?>
 
 	<?php 
-	echo '<h3>Enviroment</h3>';
+	echo '<h3>' . Language::$enviroment . '</h3>';
 	echo '<p>' . $model->enviroment . '</p>';
 	?>
 

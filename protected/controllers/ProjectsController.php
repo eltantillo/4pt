@@ -115,7 +115,7 @@ class projectsController extends Controller
 		));
 	}
 
-	public function actionpeople()
+	public function actionPeople()
 	{
 		$model  = projects::model()->findByAttributes(array('id'=>$_GET['ProjectId']));
 		$people = array();
@@ -173,7 +173,98 @@ class projectsController extends Controller
 		if(Yii::app()->request->isPostRequest)
 		{
 			// we only allow deletion via POST request
-			$this->loadModel()->delete();
+			$project = $this->loadModel();
+			$process = processes::model()->findByAttributes(array('project_id'=>$project->id));
+			$projectPlan = project_plan::model()->findByAttributes(array('process_id'=>$process->id));
+			$actOfAcceptance = act_of_acceptance::model()->findByAttributes(
+				array('process_id'=>$process->id));
+			$workStatement = work_statement::model()->findAllByAttributes(
+				array('process_id'=>$process->id));
+			$deliveryInstructions = delivery_instructions::model()->findAllByAttributes(
+				array('project_plan_id'=>$projectPlan->id));
+			$softwareRequirements = software_requirements::model()->findAllByAttributes(
+				array('process_id'=>$process->id));
+			$userManual = user_manual::model()->findAllByAttributes(
+				array('process_id'=>$process->id));
+			$softwareDesign = software_design::model()->findAllByAttributes(
+				array('process_id'=>$process->id));
+			$traceabilityRecord = traceability_record::model()->findAllByAttributes(
+				array('process_id'=>$process->id));
+			$operationManual = operation_manual::model()->findAllByAttributes(
+				array('process_id'=>$process->id));
+			$maintenanceManual = maintenance_manual::model()->findAllByAttributes(
+				array('process_id'=>$process->id));
+			$softwareComponent = software_component::model()->findAllByAttributes(
+				array('process_id'=>$process->id));
+			$minutes = minutes::model()->findAllByAttributes(
+				array('project_plan_id'=>$projectPlan->id));
+			$risks = risks::model()->findAllByAttributes(
+				array('project_plan_id'=>$projectPlan->id));
+			$tasks = tasks::model()->findAllByAttributes(
+				array('project_plan_id'=>$projectPlan->id));
+
+			$progressReports = progress_reports::model()->findAllByAttributes(
+				array('process_id'=>$process->id));
+			$correctiveActions = corrective_actions::model()->findAllByAttributes(
+				array('process_id'=>$process->id));
+
+			$testReports = test_report::model()->findAllByAttributes(
+				array('process_id'=>$process->id));
+
+			foreach ($workStatement as $key) {
+				$key->delete();
+			}
+			foreach ($deliveryInstructions as $key) {
+				$key->delete();
+			}
+			foreach ($tasks as $key) {
+				$key->delete();
+			}
+			foreach ($risks as $key) {
+				$key->delete();
+			}
+			foreach ($minutes as $key) {
+				$key->delete();
+			}
+
+			foreach ($progressReports as $key) {
+				$key->delete();
+			}
+			foreach ($correctiveActions as $key) {
+				$key->delete();
+			}
+
+			foreach ($softwareRequirements as $key) {
+				$key->delete();
+			}
+			foreach ($userManual as $key) {
+				$key->delete();
+			}
+			foreach ($softwareDesign as $key) {
+				$key->delete();
+			}
+			foreach ($traceabilityRecord as $key) {
+				$key->delete();
+			}
+			foreach ($operationManual as $key) {
+				$key->delete();
+			}
+			foreach ($maintenanceManual as $key) {
+				$key->delete();
+			}
+			foreach ($softwareComponent as $key) {
+				$key->delete();
+			}
+			foreach ($testReports as $key) {
+				$key->delete();
+			}
+
+			if ($actOfAcceptance != null)
+				$actOfAcceptance->delete();
+
+			$projectPlan->delete();
+			$process->delete();
+			$project->delete();
 
 			// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 			if(!isset($_GET['ajax']))
@@ -188,7 +279,14 @@ class projectsController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('projects');
+		/*$user  = people::model()->findByAttributes(array('id'=>Yii::app()->user->id));
+		$dataProvider = projects::model()->findAllByAttributes(array('company_id'=>$user->company_id));*/
+
+		$user  = people::model()->findByAttributes(array('id'=>Yii::app()->user->id));
+
+		$criteria = new CDbCriteria;
+		$criteria->compare('company_id',$user->company_id);
+		$dataProvider = new CActiveDataProvider('projects', array('criteria'=>$criteria,));
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));

@@ -67,16 +67,16 @@ class minutes extends CActiveRecord
 		return array(
 			'id' => 'Id',
 			'project_plan_id' => 'Project Plan',
-			'purpose' => 'Purpose',
-			'assistants' => 'Assistants',
-			'date' => 'Date',
-			'place' => 'Place',
+			'purpose' => Language::$purpose,
+			'assistants' => Language::$assistants,
+			'date' => Language::$date,
+			'place' => Language::$place,
 			'previous_minute_id' => 'Previous Minute',
-			'issues_raised' => 'Issues Raised',
-			'open_issues' => 'Open Issues',
-			'agreements' => 'Agreements',
-			'next_meeting' => 'Next Meeting',
-			'client_validated' => 'Client Validated',
+			'issues_raised' => Language::$issuesRaised,
+			'open_issues' => Language::$openIssues,
+			'agreements' => Language::$agreements,
+			'next_meeting' => Language::$nextMeeting,
+			'client_validated' => Language::$validate,
 		);
 	}
 

@@ -60,12 +60,12 @@ class act_of_acceptance extends CActiveRecord
 		return array(
 			'id' => 'Id',
 			'process_id' => 'Process',
-			'register' => 'Register',
-			'date' => 'Date',
-			'delivered_items' => 'Delivered Items',
-			'criteria_verification' => 'Criteria Verification',
-			'pending_issues' => 'Pending Issues',
-			'client_validated' => 'Client Validated',
+			'register' => Language::$deliveryRegister,
+			'date' => Language::$date,
+			'delivered_items' => Language::$deliveredItems,
+			'criteria_verification' => Language::$criteriaVerification,
+			'pending_issues' => Language::$pendingIssues,
+			'client_validated' => Language::$validate,
 		);
 	}
 

@@ -30,14 +30,8 @@
 
 	<div class="form-group">
 		<?php echo $form->labelEx($model,'place'); ?>
-		<?php echo $form->textArea($model,'place',array('rows'=>6, 'cols'=>50, 'class'=>'form-control')); ?>
+		<?php echo $form->textField($model,'place',array('rows'=>6, 'cols'=>50, 'class'=>'form-control')); ?>
 		<?php echo $form->error($model,'place'); ?>
-	</div>
-
-	<div class="form-group">
-		<?php echo $form->labelEx($model,'previous_minute_id'); ?>
-		<?php echo $form->textField($model,'previous_minute_id', array('class'=>'form-control')); ?>
-		<?php echo $form->error($model,'previous_minute_id'); ?>
 	</div>
 
 	<div class="form-group">
@@ -67,19 +61,21 @@
 	</div>
 <?php }else{
 
-echo '<h3>Purpose</h3>';
+echo '<h3>' . Language::$purpose .'</h3>';
 echo '<p>' . $model->purpose . '</p>';
-echo '<h3>Date</h3>';
+echo '<h3>' . Language::$assistants .'</h3>';
+echo '<p>' . $model->assistants . '</p>';
+echo '<h3>' . Language::$date .'</h3>';
 echo '<p>' . $model->date . '</p>';
-echo '<h3>Place</h3>';
+echo '<h3>' . Language::$place .'</h3>';
 echo '<p>' . $model->place . '</p>';
-echo '<h3>Issues Raised</h3>';
+echo '<h3>' . Language::$issuesRaised .'</h3>';
 echo '<p>' . $model->issues_raised . '</p>';
-echo '<h3>Open Issues</h3>';
+echo '<h3>' . Language::$openIssues .'</h3>';
 echo '<p>' . $model->open_issues . '</p>';
-echo '<h3>Agreements</h3>';
+echo '<h3>' . Language::$agreements .'</h3>';
 echo '<p>' . $model->agreements . '</p>';
-echo '<h3>Next Meeting</h3>';
+echo '<h3>' . Language::$nextMeeting .'</h3>';
 echo '<p>' . $model->next_meeting . '</p>';
 
 ?>
@@ -107,4 +103,11 @@ echo '<p>' . $model->next_meeting . '</p>';
 	        format: 'YYYY-MM-DD HH:mm'
 	    });
     });
+	/*$(document).ready(function() {
+		$("#minutes_purpose").Editor();
+		$("#minutes_assistants").Editor();
+		$("#minutes_issues_raised").Editor();
+		$("#minutes_open_issues").Editor();
+		$("#minutes_agreements").Editor();
+	});*/
 </script>

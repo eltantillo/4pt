@@ -5,7 +5,7 @@
 	'enableAjaxValidation'=>false,
 ));
 $templatesArray = array();
-$templatesArray[0] = Language::$templates;
+$templatesArray[0] = Language::$none;
 
 $user  = people::model()->findByAttributes(array('id'=>Yii::app()->user->id));
 $templates = templates::model()->findAll('company_id=' . $user->company_id);

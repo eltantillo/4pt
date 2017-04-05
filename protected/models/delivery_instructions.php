@@ -56,8 +56,8 @@ class delivery_instructions extends CActiveRecord
 		return array(
 			'id' => 'Id',
 			'project_plan_id' => 'Project Plan',
-			'release_requirements' => 'Release Requirements',
-			'delivery_requirements' => 'Delivery Requirements',
+			'release_requirements' => Language::$releaseRequirements,
+			'delivery_requirements' => Language::$deliveryRequirements,
 		);
 	}
 

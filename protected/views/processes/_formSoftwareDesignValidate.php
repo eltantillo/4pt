@@ -12,9 +12,9 @@
 	?>
 
 	<?php 
-	echo '<h3>high_lvl_design</h3>';
+	echo '<h3>' . Language::$highLevelDesign . '</h3>';
 	echo '<p>' . $model->high_lvl_design . '</p>';
-	echo '<h3>low_lvl_design</h3>';
+	echo '<h3>' . Language::$lowLevelDesign . '</h3>';
 	echo '<p>' . $model->low_lvl_design . '</p>';
 	?>
 	

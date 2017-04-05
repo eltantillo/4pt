@@ -61,11 +61,11 @@ class tasks extends CActiveRecord
 		return array(
 			'id' => 'Id',
 			'project_plan_id' => 'Project Plan',
-			'task' => 'Task',
-			'duration' => 'Duration',
-			'start_date' => 'Start Date',
-			'resources' => 'Resources',
-			'people_id' => 'People',
+			'task' => Language::$taskDescription,
+			'duration' => Language::$duration,
+			'start_date' => Language::$startDate,
+			'resources' => Language::$resources,
+			'people_id' => Language::$person,
 		);
 	}
 

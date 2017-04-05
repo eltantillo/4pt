@@ -135,6 +135,7 @@ class ProcessesController extends Controller
 		$projects = projects::model()->findAllbyAttributes(array('company_id'=>$sessionUser->company_id));
 
 		$this->render('index',array(
+			'sessionUser'=>$sessionUser,
 			'projects'=>$projects,
 		));
 	}
@@ -183,6 +184,7 @@ class ProcessesController extends Controller
 		$this->render('workStatement',array(
 			'model'=>$model,
 			'sessionUser'=>$sessionUser,
+			'project'=>$project,
 		));
 	}
 
@@ -218,6 +220,7 @@ class ProcessesController extends Controller
 		$this->render('deliveryInstructions',array(
 			'model'=>$model,
 			'sessionUser'=>$sessionUser,
+			'project'=>$project,
 		));
 	}
 
@@ -235,6 +238,7 @@ class ProcessesController extends Controller
 		$this->render('tasks',array(
 			'model'=>$model,
 			'sessionUser'=>$sessionUser,
+			'project'=>$project,
 		));
 	}
 
@@ -271,6 +275,7 @@ class ProcessesController extends Controller
 		$this->render('taskAdmin',array(
 			'model'=>$model,
 			'sessionUser'=>$sessionUser,
+			'project'=>$project,
 		));
 	}
 
@@ -303,6 +308,7 @@ class ProcessesController extends Controller
 		$this->render('risks',array(
 			'model'=>$model,
 			'sessionUser'=>$sessionUser,
+			'project'=>$project,
 		));
 	}
 
@@ -336,6 +342,7 @@ class ProcessesController extends Controller
 		$this->render('riskAdmin',array(
 			'model'=>$model,
 			'sessionUser'=>$sessionUser,
+			'project'=>$project,
 		));
 	}
 
@@ -368,6 +375,7 @@ class ProcessesController extends Controller
 		$this->render('minutes',array(
 			'model'=>$model,
 			'sessionUser'=>$sessionUser,
+			'project'=>$project,
 		));
 	}
 
@@ -378,6 +386,10 @@ class ProcessesController extends Controller
 		$project     = $this->loadModel();
 		$process     = processes::model()->findByAttributes(array('project_id'=>$project->id));
 		$projectPlan = project_plan::model()->findByAttributes(array('process_id'=>$process->id));
+
+		$lastMinute = minutes::model()->findByAttributes(
+			array('project_plan_id'=>$projectPlan->id),
+			array('order'=>'id DESC'));
 
 		if (isset($_GET['minuteID'])){
 			$model       = minutes::model()->findByAttributes(array('id'=>$_GET['minuteID']));
@@ -390,7 +402,13 @@ class ProcessesController extends Controller
 		if(isset($_POST['minutes']))
 		{
 			$model->attributes=$_POST['minutes'];
-			if ($model->previous_minute_id == ''){$model->previous_minute_id = null;}
+			if ($lastMinute != null){
+				$model->previous_minute_id = $lastMinute->id;
+			}
+			else{
+				$model->previous_minute_id = null;
+			}
+
 			if($model->date == ''){$model->date = null;}
 			if($model->next_meeting == ''){$model->next_meeting = null;}
 			if($model->save()){
@@ -404,6 +422,7 @@ class ProcessesController extends Controller
 		$this->render('minuteAdmin',array(
 			'model'=>$model,
 			'sessionUser'=>$sessionUser,
+			'project'=>$project,
 		));
 	}
 
@@ -466,6 +485,7 @@ class ProcessesController extends Controller
 			'tasks'=>$tasks,
 			'risks'=>$risks,
 			'minutes'=>$minutes,
+			'project'=>$project,
 		));
 	}
 
@@ -482,6 +502,7 @@ class ProcessesController extends Controller
 		$this->render('progressReports',array(
 			'model'=>$model,
 			'sessionUser'=>$sessionUser,
+			'project'=>$project,
 		));
 	}
 
@@ -531,6 +552,7 @@ class ProcessesController extends Controller
 			'tasks'=>$tasks,
 			'risks'=>$risks,
 			'minutes'=>$minutes,
+			'project'=>$project,
 		));
 	}
 
@@ -547,6 +569,7 @@ class ProcessesController extends Controller
 		$this->render('correctiveActions',array(
 			'model'=>$model,
 			'sessionUser'=>$sessionUser,
+			'project'=>$project,
 		));
 	}
 
@@ -584,6 +607,7 @@ class ProcessesController extends Controller
 		$this->render('correctiveActionAdmin',array(
 			'model'=>$model,
 			'sessionUser'=>$sessionUser,
+			'project'=>$project,
 		));
 	}
 
@@ -649,6 +673,7 @@ class ProcessesController extends Controller
 			'tasks'=>$tasks,
 			'risks'=>$risks,
 			'minutes'=>$minutes,
+			'project'=>$project,
 		));
 	}
 
@@ -691,6 +716,7 @@ class ProcessesController extends Controller
 			'sessionUser'=>$sessionUser,
 			'softwareRequirements'=>$softwareRequirements,
 			'softwareDesign'=>$softwareDesign,
+			'project'=>$project,
 		));
 	}
 
@@ -728,6 +754,7 @@ class ProcessesController extends Controller
 			'model'=>$model,
 			'sessionUser'=>$sessionUser,
 			'softwareRequirements'=>$softwareRequirements,
+			'project'=>$project,
 		));
 	}
 
@@ -765,6 +792,7 @@ class ProcessesController extends Controller
 			'model'=>$model,
 			'sessionUser'=>$sessionUser,
 			'softwareRequirements'=>$softwareRequirements,
+			'project'=>$project,
 		));
 	}
 
@@ -807,6 +835,7 @@ class ProcessesController extends Controller
 			'sessionUser'=>$sessionUser,
 			'softwareRequirements'=>$softwareRequirements,
 			'softwareDesign'=>$softwareDesign,
+			'project'=>$project,
 		));
 	}
 
@@ -837,6 +866,7 @@ class ProcessesController extends Controller
 		$this->render('maintenanceManual',array(
 			'model'=>$model,
 			'sessionUser'=>$sessionUser,
+			'project'=>$project,
 		));
 	}
 
@@ -854,6 +884,7 @@ class ProcessesController extends Controller
 		$this->render('softwareComponents',array(
 			'model'=>$model,
 			'sessionUser'=>$sessionUser,
+			'project'=>$project,
 		));
 	}
 
@@ -893,6 +924,7 @@ class ProcessesController extends Controller
 			'sessionUser'=>$sessionUser,
 			'softwareDesign'=>$softwareDesign,
 			'traceabilityRecord'=>$traceabilityRecord,
+			'project'=>$project,
 		));
 	}
 
@@ -909,6 +941,7 @@ class ProcessesController extends Controller
 		$this->render('testReports',array(
 			'model'=>$model,
 			'sessionUser'=>$sessionUser,
+			'project'=>$project,
 		));
 	}
 
@@ -957,6 +990,7 @@ class ProcessesController extends Controller
 		$this->render('testReportAdmin',array(
 			'model'=>$model,
 			'sessionUser'=>$sessionUser,
+			'project'=>$project,
 		));
 	}
 
@@ -1008,6 +1042,7 @@ class ProcessesController extends Controller
 			'tasks'=>$tasks,
 			'risks'=>$risks,
 			'minutes'=>$minutes,
+			'project'=>$project,
 		));
 	}
 

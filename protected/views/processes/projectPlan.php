@@ -1,12 +1,12 @@
 <?php
 $this->breadcrumbs=array(
-	'Processes'=>array('index'),
-	'Project'=>array($_GET['id']),
-	'Project Plan Validation',
+	Language::$processes=>array('index'),
+	$project->title=>array($_GET['id']),
+	Language::$validation,
 );
 ?>
 <div class="page-header">
-	<h1>Project Plan Validation</h1>
+	<h1><?php echo Language::$validation; ?></h1>
 </div>
 
 <?php

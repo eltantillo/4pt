@@ -1,4 +1,20 @@
-<?php if (!$model->isNewRecord) {echo '<form method="POST" action="' . Yii::app()->baseUrl . '/processes/taskdelete/' . $_GET['id'] . '?taskID=' . $model->id . '"><button class="btn btn-danger btn-sm delete" type="submit"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> ' . Language::$delete . '</button></form>';} ?>
+<?php
+$people = explode(',', $project->people);
+$roles = explode(',', $project->roles);
+
+$peopleAndRoles = array();
+
+$j = 0;
+foreach ($roles as $role) {
+	for ($i = 0; $i < $role; $i++) {
+		$id = $people[$j];
+		$peopleAndRoles[$id] = Functions::personFormat($id) . ' (' . Language::$rolesArray[$role] . ')';
+		$j++;
+	}
+}
+
+if (!$model->isNewRecord) {echo '<form method="POST" action="' . Yii::app()->baseUrl . '/processes/taskdelete/' . $_GET['id'] . '?taskID=' . $model->id . '"><button class="btn btn-danger btn-sm delete" type="submit"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> ' . Language::$delete . '</button></form>';}
+?>
 
 <div class="form">
 
@@ -35,7 +51,7 @@
 
 	<div class="form-group">
 		<?php echo $form->labelEx($model,'people_id'); ?>
-		<?php echo $form->textField($model,'people_id',array('size'=>10,'maxlength'=>10, 'class'=>'form-control')); ?>
+		<?php echo $form->dropDownList($model,'people_id', $peopleAndRoles, array('class'=>'form-control')); ?>
 		<?php echo $form->error($model,'people_id'); ?>
 	</div>
 
@@ -43,6 +59,7 @@
 		<?php echo CHtml::submitButton($model->isNewRecord ? Language::$create : Language::$update, array('type'=>'submit', 'class'=>'btn btn-success')); ?>
 	</div>
 
+	
 <?php $this->endWidget(); ?>
 
 </div><!-- form -->

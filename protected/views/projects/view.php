@@ -56,7 +56,7 @@ $this->menu=array(
 		),
 		array(
 			'label'=>Language::$roles,
-			'value'=>Functions::rolesFormat($model->roles),
+			'value'=>Functions::rolesAmountFormat($model->roles),
 		),
 		array(
 			'label'=>Language::$people,

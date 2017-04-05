@@ -60,8 +60,8 @@ class project_plan extends CActiveRecord
 		return array(
 			'id' => 'Id',
 			'process_id' => 'Process',
-			'project_manager_validated' => 'Project Manager Validated',
-			'technical_leader_validated' => 'Technical Leader Validated',
+			'project_manager_validated' => Language::$validate,
+			'technical_leader_validated' => Language::$validate,
 		);
 	}
 

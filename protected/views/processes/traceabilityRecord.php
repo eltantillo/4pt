@@ -1,7 +1,7 @@
 <?php
 $this->breadcrumbs=array(
-	'Processes'=>array('index'),
-	'Project'=>array($_GET['id']),
+	Language::$processes=>array('index'),
+	$project->title=>array($_GET['id']),
 	'Traceability Record',
 );
 ?>

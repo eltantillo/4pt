@@ -57,8 +57,8 @@ class risks extends CActiveRecord
 		return array(
 			'id' => 'Id',
 			'project_plan_id' => 'Project Plan',
-			'risk' => 'Risk',
-			'cost' => 'Cost',
+			'risk' => Language::$riskDescription,
+			'cost' => Language::$cost,
 		);
 	}
 

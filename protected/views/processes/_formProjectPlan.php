@@ -6,31 +6,31 @@
 )); ?>
 
 <?php
-	echo '<h2>Work Statement</h2>';
-	echo '<h3>Product Description</h3>';
+	echo '<h2>' . Language::$workStatement . '</h2>';
+	echo '<h3>' . Language::$productDescription . '</h3>';
 	echo '<p>' . $workStatement->product_description . '</p>';
-	echo '<h3>Scope</h3>';
+	echo '<h3>' . Language::$scope . '</h3>';
 	echo '<p>' . $workStatement->scope . '</p>';
-	echo '<h3>Objectives</h3>';
+	echo '<h3>' . Language::$objectives . '</h3>';
 	echo '<p>' . $workStatement->objectives . '</p>';
-	echo '<h3>deliverables</h3>';
+	echo '<h3>' . Language::$deliverables . '</h3>';
 	echo '<p>' . $workStatement->deliverables . '</p>';
 
-	echo '<h2>Delivery Instructions</h2>';
-	echo '<h3>Release Requirements</h3>';
+	echo '<h2>' . Language::$deliveryInstructions . '</h2>';
+	echo '<h3>' . Language::$releaseRequirements . '</h3>';
 	echo $deliveryInstructions->release_requirements;
-	echo '<h3>Delivery Requirements</h3>';
+	echo '<h3>' . Language::$deliveryRequirements . '</h3>';
 	echo $deliveryInstructions->delivery_requirements;
 ?>
 
-<h2>Tasks</h2>
+<h2><?php echo Language::$tasks; ?></h2>
 <table class="table table-hover">
 	<tr>
-	    <th>Task Description</th>
-	    <th>Duration</th>
-	    <th>Start Date</th>
-	    <th>Resources</th>
-	    <th>People</th>
+	    <th><?php echo Language::$taskDescription; ?></th>
+	    <th><?php echo Language::$duration; ?></th>
+	    <th><?php echo Language::$startDate; ?></th>
+	    <th><?php echo Language::$resources; ?></th>
+	    <th><?php echo Language::$people; ?></th>
 	</tr>
 	<tr>
 	<?php
@@ -44,11 +44,11 @@
 	</tr>
 </table>
 
-<h2>Risks</h2>
+<h2><?php echo Language::$risks; ?></h2>
 <table class="table table-hover">
 	<tr>
-	    <th>Risk Description</th>
-	    <th>Cost</th>
+	    <th><?php echo Language::$riskDescription; ?></th>
+	    <th><?php echo Language::$cost; ?></th>
 	</tr>
 	<tr>
 	<?php
@@ -59,16 +59,16 @@
 	</tr>
 </table>
 
-<h2>Minutes</h2>
+<h2><?php echo Language::$minutes; ?></h2>
 <table class="table table-hover">
 	<tr>
-	    <th>Purpose</th>
-	    <th>Date</th>
-	    <th>Place</th>
-	    <th>Issues Raised</th>
-	    <th>Open Issues</th>
-	    <th>Agreements</th>
-	    <th>Next Meeting</th>
+	    <th><?php echo Language::$purpose; ?></th>
+	    <th><?php echo Language::$date; ?></th>
+	    <th><?php echo Language::$place; ?></th>
+	    <th><?php echo Language::$issuesRaised; ?></th>
+	    <th><?php echo Language::$openIssues; ?></th>
+	    <th><?php echo Language::$agreements; ?></th>
+	    <th><?php echo Language::$nextMeeting; ?></th>
 	</tr>
 	<tr>
 	<?php

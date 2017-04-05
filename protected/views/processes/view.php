@@ -1,6 +1,6 @@
 <?php
 $this->breadcrumbs=array(
-	'Processes'=>array('index'),
+	Language::$processes=>array('index'),
 	$project->title,
 );
 ?>
@@ -19,9 +19,9 @@ $this->breadcrumbs=array(
 ($softwareDesign === null ||
 (!$softwareDesign->project_manager_validated ||
 !$softwareDesign->technical_leader_validated)) ||
-($traceabilityRecord === null ||
+/*($traceabilityRecord === null ||
 (!$traceabilityRecord->project_manager_validated ||
-!$traceabilityRecord->technical_leader_validated)) ||
+!$traceabilityRecord->technical_leader_validated)) ||*/
 ($operationManual === null ||
 (!$operationManual->project_manager_validated ||
 !$operationManual->technical_leader_validated)) ||
@@ -30,7 +30,7 @@ $this->breadcrumbs=array(
 !$maintenanceManual->technical_leader_validated))){ ?>
 
 <?php if(!$projectPlan->project_manager_validated || !$projectPlan->technical_leader_validated){ ?>
-<h2>Project Plan</h2>
+<h2><?php echo Language::$projectPlan; ?></h2>
 <div class="row">
 <?php 
 if (
@@ -50,9 +50,9 @@ if (
     <div class="thumbnail text-center">
       <span class="glyphicon glyphicon-book gi" aria-hidden="true"></span>
       <div class="caption">
-        <h3>Work Statement</h3>
+        <h3><?php echo Language::$workStatement; ?></h3>
         <p>Descripción del trabajo a ser realizado en relación al desarrollo de software.</p>
-        <p><a href="<?php echo Yii::app()->request->baseUrl . '/processes/workstatement/' . $project->id; ?>" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+        <p><a href="<?php echo Yii::app()->request->baseUrl . '/processes/workstatement/' . $project->id; ?>" class="btn btn-primary" role="button"><?php echo Language::$view; ?></a>
       </div>
     </div>
   </div>
@@ -61,9 +61,9 @@ if (
     <div class="thumbnail text-center">
       <span class="glyphicon glyphicon-list-alt gi" aria-hidden="true"></span>
       <div class="caption">
-        <h3>Delivery Instructions</h3>
+        <h3><?php echo Language::$deliveryInstructions; ?></h3>
         <p>The workstatement is the first step in the ISO-29110 Process execution</p>
-        <p><a href="<?php echo Yii::app()->request->baseUrl . '/processes/deliveryinstructions/' . $project->id; ?>" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+        <p><a href="<?php echo Yii::app()->request->baseUrl . '/processes/deliveryinstructions/' . $project->id; ?>" class="btn btn-primary" role="button"><?php echo Language::$view; ?></a>
       </div>
     </div>
   </div>
@@ -72,9 +72,9 @@ if (
     <div class="thumbnail text-center">
       <span class="glyphicon glyphicon-check gi" aria-hidden="true"></span>
       <div class="caption">
-        <h3>Tasks <span class="badge">14</span></h3>
+        <h3><?php echo Language::$tasks; ?></h3>
         <p>The workstatement is the first step in the ISO-29110 Process execution</p>
-        <p><a href="<?php echo Yii::app()->request->baseUrl . '/processes/tasks/' . $project->id; ?>" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+        <p><a href="<?php echo Yii::app()->request->baseUrl . '/processes/tasks/' . $project->id; ?>" class="btn btn-primary" role="button"><?php echo Language::$view; ?></a>
       </div>
     </div>
   </div>
@@ -83,9 +83,9 @@ if (
     <div class="thumbnail text-center">
       <span class="glyphicon glyphicon-alert gi" aria-hidden="true"></span>
       <div class="caption">
-        <h3>Risks</h3>
+        <h3><?php echo Language::$risks; ?></h3>
         <p>The workstatement is the first step in the ISO-29110 Process execution</p>
-        <p><a href="<?php echo Yii::app()->request->baseUrl . '/processes/risks/' . $project->id; ?>" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+        <p><a href="<?php echo Yii::app()->request->baseUrl . '/processes/risks/' . $project->id; ?>" class="btn btn-primary" role="button"><?php echo Language::$view; ?></a>
       </div>
     </div>
   </div>
@@ -95,9 +95,9 @@ if (
     <div class="thumbnail text-center">
       <span class="glyphicon glyphicon-time gi" aria-hidden="true"></span>
       <div class="caption">
-        <h3>Minutes</h3>
+        <h3><?php echo Language::$minutes; ?></h3>
         <p>Registro de los acuerdos establecidos con el Cliente y/o el equipo de trabajo.</p>
-        <p><a href="<?php echo Yii::app()->request->baseUrl . '/processes/minutes/' . $project->id; ?>" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+        <p><a href="<?php echo Yii::app()->request->baseUrl . '/processes/minutes/' . $project->id; ?>" class="btn btn-primary" role="button"><?php echo Language::$view; ?></a>
       </div>
     </div>
   </div>
@@ -107,9 +107,9 @@ if (
     <div class="thumbnail text-center">
       <span class="glyphicon glyphicon-ok gi" aria-hidden="true"></span>
       <div class="caption">
-        <h3>Validation</h3>
+        <h3><?php echo Language::$validation; ?></h3>
         <p>The workstatement is the first step in the ISO-29110 Process execution</p>
-        <p><a href="<?php echo Yii::app()->request->baseUrl . '/processes/projectplanvalidate/' . $project->id; ?>" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+        <p><a href="<?php echo Yii::app()->request->baseUrl . '/processes/projectplanvalidate/' . $project->id; ?>" class="btn btn-primary" role="button"><?php echo Language::$view; ?></a>
       </div>
     </div>
   </div>
@@ -117,16 +117,16 @@ if (
 </div>
 
 <?php }else{ ?>
-<h2>Project Execution</h2>
+<h2><?php echo Language::$projectExecution; ?></h2>
 <div class="row">
 
   <div class="col-md-3">
     <div class="thumbnail text-center">
       <span class="glyphicon glyphicon-sort-by-attributes gi" aria-hidden="true"></span>
       <div class="caption">
-        <h3>Progress Report</h3>
+        <h3><?php echo Language::$progressReport; ?></h3>
         <p>Registra el estado del proyecto contra el plan del proyecto.</p>
-        <p><a href="<?php echo Yii::app()->request->baseUrl . '/processes/progressreports/' . $project->id; ?>" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+        <p><a href="<?php echo Yii::app()->request->baseUrl . '/processes/progressreports/' . $project->id; ?>" class="btn btn-primary" role="button"><?php echo Language::$view; ?></a>
       </div>
     </div>
   </div>
@@ -135,9 +135,9 @@ if (
     <div class="thumbnail text-center">
       <span class="glyphicon glyphicon-edit gi" aria-hidden="true"></span>
       <div class="caption">
-        <h3>Corrective Actions</h3>
+        <h3><?php echo Language::$correctiveActions; ?></h3>
         <p>Identifica las actividades establecidas para corregir una desviación o un problema relativo al cumplimiento del plan.</p>
-        <p><a href="<?php echo Yii::app()->request->baseUrl . '/processes/correctiveactions/' . $project->id; ?>" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+        <p><a href="<?php echo Yii::app()->request->baseUrl . '/processes/correctiveactions/' . $project->id; ?>" class="btn btn-primary" role="button"><?php echo Language::$view; ?></a>
       </div>
     </div>
   </div>
@@ -145,7 +145,7 @@ if (
 </div>
 
 
-<h2>Software Implementation</h2>
+<h2><?php echo Language::$softwareImplementation; ?></h2>
 <div class="row">
 
 <?php 
@@ -166,9 +166,9 @@ if (
     <div class="thumbnail text-center">
       <span class="glyphicon glyphicon-list gi" aria-hidden="true"></span>
       <div class="caption">
-        <h3>Requirements</h3>
+        <h3><?php echo Language::$softwareRequirements; ?></h3>
         <p>The workstatement is the first step in the ISO-29110 Process execution</p>
-        <p><a href="<?php echo Yii::app()->request->baseUrl . '/processes/softwarerequirements/' . $project->id; ?>" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+        <p><a href="<?php echo Yii::app()->request->baseUrl . '/processes/softwarerequirements/' . $project->id; ?>" class="btn btn-primary" role="button"><?php echo Language::$view; ?></a>
       </div>
     </div>
   </div>
@@ -198,9 +198,9 @@ if (
     <div class="thumbnail text-center">
       <span class="glyphicon glyphicon-question-sign gi" aria-hidden="true"></span>
       <div class="caption">
-        <h3>User Manual</h3>
+        <h3><?php echo Language::$userManual; ?></h3>
         <p>Describe la forma de uso del software basado en la interfaz de usuario.</p>
-        <p><a href="<?php echo Yii::app()->request->baseUrl . '/processes/usermanual/' . $project->id; ?>" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+        <p><a href="<?php echo Yii::app()->request->baseUrl . '/processes/usermanual/' . $project->id; ?>" class="btn btn-primary" role="button"><?php echo Language::$view; ?></a>
       </div>
     </div>
   </div>
@@ -222,14 +222,14 @@ if (
     <div class="thumbnail text-center">
       <span class="glyphicon glyphicon-dashboard gi" aria-hidden="true"></span>
       <div class="caption">
-        <h3>Software Design</h3>
+        <h3><?php echo Language::$softwareDesign; ?></h3>
         <p>Información textual y gráfica de la estructura del software.</p>
-        <p><a href="<?php echo Yii::app()->request->baseUrl . '/processes/softwaredesign/' . $project->id; ?>" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+        <p><a href="<?php echo Yii::app()->request->baseUrl . '/processes/softwaredesign/' . $project->id; ?>" class="btn btn-primary" role="button"><?php echo Language::$view; ?></a>
       </div>
     </div>
   </div>
 <?php }
-if (
+/*if (
   ((in_array(3, $sessionUser->rolesArray) || in_array(4, $sessionUser->rolesArray)) &&
   ($traceabilityRecord === null ||
   !$traceabilityRecord->sent ||
@@ -248,11 +248,11 @@ if (
       <div class="caption">
         <h3>Traceability Record</h3>
         <p>Documenta la relación entre los requisitos incluidos en la especificación de requisitos, los elementos del diseño de software, los componentes de software, los casos y los procedimientos de prueba.</p>
-        <p><a href="<?php echo Yii::app()->request->baseUrl . '/processes/traceabilityrecord/' . $project->id; ?>" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+        <p><a href="<?php echo Yii::app()->request->baseUrl . '/processes/traceabilityrecord/' . $project->id; ?>" class="btn btn-primary" role="button"><?php echo Language::$view; ?></a>
       </div>
     </div>
   </div>
-<?php }
+<?php }*/
 if (
   (in_array(5, $sessionUser->rolesArray) &&
 
@@ -274,9 +274,9 @@ if (
     <div class="thumbnail text-center">
       <span class="glyphicon glyphicon-info-sign gi" aria-hidden="true"></span>
       <div class="caption">
-        <h3>Operation Manual</h3>
+        <h3><?php echo Language::$operationManual; ?></h3>
         <p>Contiene la información necesaria para instalar y gestionar el software.</p>
-        <p><a href="<?php echo Yii::app()->request->baseUrl . '/processes/operationmanual/' . $project->id; ?>" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+        <p><a href="<?php echo Yii::app()->request->baseUrl . '/processes/operationmanual/' . $project->id; ?>" class="btn btn-primary" role="button"><?php echo Language::$view; ?></a>
       </div>
     </div>
   </div>
@@ -299,9 +299,9 @@ if (
     <div class="thumbnail text-center">
       <span class="glyphicon glyphicon-wrench gi" aria-hidden="true"></span>
       <div class="caption">
-        <h3>Maintenance Manual</h3>
+        <h3><?php echo Language::$maintenanceManual; ?></h3>
         <p>Describe la configuración del software y el entorno utilizado para el desarrollo y pruebas (compiladores, herramientas de diseño, construcción y pruebas).</p>
-        <p><a href="<?php echo Yii::app()->request->baseUrl . '/processes/maintenancemanual/' . $project->id; ?>" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+        <p><a href="<?php echo Yii::app()->request->baseUrl . '/processes/maintenancemanual/' . $project->id; ?>" class="btn btn-primary" role="button"><?php echo Language::$view; ?></a>
       </div>
     </div>
   </div>
@@ -309,17 +309,17 @@ if (
 if (in_array(5, $sessionUser->rolesArray) &&
 
   $softwareDesign->project_manager_validated &&
-  $softwareDesign->technical_leader_validated &&
+  $softwareDesign->technical_leader_validated /*&&
 
   $traceabilityRecord->project_manager_validated &&
-  $traceabilityRecord->technical_leader_validated){?>
+  $traceabilityRecord->technical_leader_validated*/){?>
   <div class="col-md-3">
     <div class="thumbnail text-center">
       <span class="glyphicon glyphicon-screenshot gi" aria-hidden="true"></span>
       <div class="caption">
-        <h3>Software Component</h3>
+        <h3><?php echo Language::$softwareComponents; ?></h3>
         <p>Un conjunto de unidades de cádigo relacionadas.</p>
-        <p><a href="<?php echo Yii::app()->request->baseUrl . '/processes/softwarecomponents/' . $project->id; ?>" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+        <p><a href="<?php echo Yii::app()->request->baseUrl . '/processes/softwarecomponents/' . $project->id; ?>" class="btn btn-primary" role="button"><?php echo Language::$view; ?></a>
       </div>
     </div>
   </div>
@@ -329,9 +329,9 @@ if (in_array(2, $sessionUser->rolesArray) || in_array(5, $sessionUser->rolesArra
     <div class="thumbnail text-center">
       <span class="glyphicon glyphicon-console gi" aria-hidden="true"></span>
       <div class="caption">
-        <h3>Test Report</h3>
+        <h3><?php echo Language::$testReport; ?></h3>
         <p>Documenta la ejecución de las pruebas.</p>
-        <p><a href="<?php echo Yii::app()->request->baseUrl . '/processes/testreports/' . $project->id; ?>" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+        <p><a href="<?php echo Yii::app()->request->baseUrl . '/processes/testreports/' . $project->id; ?>" class="btn btn-primary" role="button"><?php echo Language::$view; ?></a>
       </div>
     </div>
   </div>
@@ -347,9 +347,9 @@ if (in_array(2, $sessionUser->rolesArray) || in_array(5, $sessionUser->rolesArra
     <div class="thumbnail text-center">
       <span class="glyphicon glyphicon-download-alt gi" aria-hidden="true"></span>
       <div class="caption">
-        <h3>Act of Acceptance</h3>
+        <h3><?php echo Language::$actOfAcceptance; ?></h3>
         <p>Documentación de la aceptación por parte del cliente de los entregables del proyecto.</p>
-        <p><a href="<?php echo Yii::app()->request->baseUrl . '/processes/actofacceptance/' . $project->id; ?>" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+        <p><a href="<?php echo Yii::app()->request->baseUrl . '/processes/actofacceptance/' . $project->id; ?>" class="btn btn-primary" role="button"><?php echo Language::$view; ?></a>
       </div>
     </div>
   </div>
