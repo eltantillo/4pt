@@ -154,5 +154,103 @@ class Functions{
 
 		return $user->first_name . " " . $user->middle_name . " " . $user->last_name;
 	}
+
+	public static function accessArray($sessionUser, $template, $projectPlan, $workStatement, $minutesValidated, $softwareRequirements, $userManual, $softwareDesign, $operationManual, $maintenanceManual, $actOfAcceptance){
+		$projectPlanValue = !$projectPlan->project_manager_validated || !$projectPlan->technical_leader_validated;
+
+		$projectExecutionValue = !$projectPlanValue;
+
+		$softwareImplementationValue = !$projectPlanValue;
+
+		$projectClosureValue = !(($softwareRequirements === null || (!$softwareRequirements->project_manager_validated || !$softwareRequirements->technical_leader_validated)) || ($userManual === null || (!$userManual->project_manager_validated  || !$userManual->technical_leader_validated)) || ($softwareDesign === null || (!$softwareDesign->project_manager_validated || !$softwareDesign->technical_leader_validated)) || ($operationManual === null || (!$operationManual->project_manager_validated || !$operationManual->technical_leader_validated)) || ($maintenanceManual === null || (!$maintenanceManual->project_manager_validated || !$maintenanceManual->technical_leader_validated))) && (in_array(0, $sessionUser->rolesArray) || (in_array(2, $sessionUser->rolesArray) && $actOfAcceptance != null));
+
+
+		$workStatementValue = (in_array(2, $sessionUser->rolesArray) && ($workStatement === null || !$workStatement->sent || $workStatement->change_request)) || ((in_array(0, $sessionUser->rolesArray) || in_array(1, $sessionUser->rolesArray)) && $workStatement != null && $workStatement->sent && !$workStatement->change_request) && ((in_array(0, $sessionUser->rolesArray) && !$workStatement->project_manager_validated) || (in_array(1, $sessionUser->rolesArray)) && !$workStatement->technical_leader_validated);
+
+		$deliveryInstructionsValue = $workStatement != null && $workStatement->project_manager_validated && $workStatement->technical_leader_validated && ((in_array(0, $sessionUser->rolesArray) && !$projectPlan->project_manager_validated) || (in_array(1, $sessionUser->rolesArray) && !$projectPlan->technical_leader_validated));
+
+		$tasksValue = $workStatement != null && $workStatement->project_manager_validated && $workStatement->technical_leader_validated && ((in_array(0, $sessionUser->rolesArray) && !$projectPlan->project_manager_validated) || (in_array(1, $sessionUser->rolesArray) && !$projectPlan->technical_leader_validated));
+
+		$risksValue = $workStatement != null && $workStatement->project_manager_validated && $workStatement->technical_leader_validated && ((in_array(0, $sessionUser->rolesArray) && !$projectPlan->project_manager_validated) || (in_array(1, $sessionUser->rolesArray) && !$projectPlan->technical_leader_validated));
+
+		$minutesValue = $workStatement != null && $workStatement->project_manager_validated && $workStatement->technical_leader_validated && ((in_array(0, $sessionUser->rolesArray) && !$projectPlan->project_manager_validated) || (in_array(1, $sessionUser->rolesArray) && !$projectPlan->technical_leader_validated));
+
+		$validationValue = $minutesValidated && $workStatement != null && $workStatement->project_manager_validated && $workStatement->technical_leader_validated && ((in_array(0, $sessionUser->rolesArray) && !$projectPlan->project_manager_validated) || (in_array(1, $sessionUser->rolesArray) && !$projectPlan->technical_leader_validated));
+
+		$progressReportValue = !in_array(2, $sessionUser->rolesArray);
+
+		$correctiveActionsValue = !in_array(2, $sessionUser->rolesArray);
+
+		$softwareRequirementsValue = ((in_array(2, $sessionUser->rolesArray) || in_array(3, $sessionUser->rolesArray)) && ($softwareRequirements === null || !$softwareRequirements->sent || $softwareRequirements->change_request)) || ((in_array(0, $sessionUser->rolesArray) || in_array(1, $sessionUser->rolesArray)) && $softwareRequirements != null  && $softwareRequirements->sent && !$softwareRequirements->change_request) && ((in_array(0, $sessionUser->rolesArray) && !$softwareRequirements->project_manager_validated) || (in_array(1, $sessionUser->rolesArray)) && !$softwareRequirements->technical_leader_validated);
+
+		$userManualValue = (in_array(3, $sessionUser->rolesArray) && ($softwareDesign != null && $softwareDesign->project_manager_validated && $softwareDesign->technical_leader_validated) && ($userManual === null || !$userManual->sent || $userManual->change_request)) || ((in_array(0, $sessionUser->rolesArray) || in_array(1, $sessionUser->rolesArray)) && $userManual != null  && $userManual->sent && !$userManual->change_request) && ((in_array(0, $sessionUser->rolesArray) && !$userManual->project_manager_validated) || (in_array(1, $sessionUser->rolesArray)) && !$userManual->technical_leader_validated);
+
+		$softwareDesignValue = ((in_array(3, $sessionUser->rolesArray) || in_array(4, $sessionUser->rolesArray)) && ($softwareDesign === null || !$softwareDesign->sent || $softwareDesign->change_request)) || ((in_array(0, $sessionUser->rolesArray) || in_array(1, $sessionUser->rolesArray)) && $softwareDesign != null  && $softwareDesign->sent && !$softwareDesign->change_request) && ((in_array(0, $sessionUser->rolesArray) && !$softwareDesign->project_manager_validated) || (in_array(1, $sessionUser->rolesArray)) && !$softwareDesign->technical_leader_validated);
+
+		$operationManualValue = (in_array(5, $sessionUser->rolesArray) && $softwareDesign != null && $softwareDesign->project_manager_validated && $softwareDesign->technical_leader_validated && ($operationManual === null || !$operationManual->sent || $operationManual->change_request)) || ((in_array(0, $sessionUser->rolesArray) || in_array(1, $sessionUser->rolesArray)) && $operationManual != null  && $operationManual->sent && !$operationManual->change_request) && ((in_array(0, $sessionUser->rolesArray) && !$operationManual->project_manager_validated) || (in_array(1, $sessionUser->rolesArray)) && !$operationManual->technical_leader_validated);
+
+		$maintenanceManualValue = (in_array(5, $sessionUser->rolesArray) && ($maintenanceManual === null || !$maintenanceManual->sent || $maintenanceManual->change_request)) || ((in_array(0, $sessionUser->rolesArray) || in_array(1, $sessionUser->rolesArray)) && $maintenanceManual != null  && $maintenanceManual->sent && !$maintenanceManual->change_request) && ((in_array(0, $sessionUser->rolesArray) && !$maintenanceManual->project_manager_validated) || (in_array(1, $sessionUser->rolesArray)) && !$maintenanceManual->technical_leader_validated);
+
+		$softwareComponentsValue = in_array(5, $sessionUser->rolesArray) && $softwareDesign != null && $softwareDesign->project_manager_validated && $softwareDesign->technical_leader_validated;
+
+		$actOfAcceptanceValue = $projectClosureValue;
+
+		if ($template != null){
+			$workStatementValue = $template->work_statement && ((in_array(2, $sessionUser->rolesArray) && ($workStatement === null || !$workStatement->sent || $workStatement->change_request)) || ((in_array(0, $sessionUser->rolesArray) || in_array(1, $sessionUser->rolesArray)) && $workStatement != null && $workStatement->sent && !$workStatement->change_request) && ((in_array(0, $sessionUser->rolesArray) && !$workStatement->project_manager_validated) || (in_array(1, $sessionUser->rolesArray)) && !$workStatement->technical_leader_validated));
+
+			$deliveryInstructionsValue = $template->delivery_instructions && (in_array(0, $sessionUser->rolesArray) || in_array(1, $sessionUser->rolesArray));
+			$tasksValue = $template->tasks && (in_array(0, $sessionUser->rolesArray) || in_array(1, $sessionUser->rolesArray));
+			$risksValue = $template->risks && (in_array(0, $sessionUser->rolesArray) || in_array(1, $sessionUser->rolesArray));
+			$minutesValue = $template->minutes && (in_array(0, $sessionUser->rolesArray) || in_array(1, $sessionUser->rolesArray));
+			$validationValue = false;
+
+			$progressReportValue = $template->progress_report && !in_array(2, $sessionUser->rolesArray);
+			$correctiveActionsValue = $template->corrective_actions && !in_array(2, $sessionUser->rolesArray);
+
+			$softwareRequirementsValue = $template->software_requirements && (((in_array(2, $sessionUser->rolesArray) || in_array(3, $sessionUser->rolesArray)) && ($softwareRequirements === null || !$softwareRequirements->sent || $softwareRequirements->change_request)) || ((in_array(0, $sessionUser->rolesArray) || in_array(1, $sessionUser->rolesArray)) && $softwareRequirements != null  && $softwareRequirements->sent && !$softwareRequirements->change_request) && ((in_array(0, $sessionUser->rolesArray) && !$softwareRequirements->project_manager_validated) || (in_array(1, $sessionUser->rolesArray)) && !$softwareRequirements->technical_leader_validated));
+
+			$userManualValue = $template->user_manual && ((in_array(3, $sessionUser->rolesArray) && ($userManual === null || !$userManual->sent || $userManual->change_request)) || ((in_array(0, $sessionUser->rolesArray) || in_array(1, $sessionUser->rolesArray)) && $userManual != null  && $userManual->sent && !$userManual->change_request) && ((in_array(0, $sessionUser->rolesArray) && !$userManual->project_manager_validated) || (in_array(1, $sessionUser->rolesArray)) && !$userManual->technical_leader_validated));
+
+			$softwareDesignValue = $template->software_design && (((in_array(3, $sessionUser->rolesArray) || in_array(4, $sessionUser->rolesArray)) && ($softwareDesign === null || !$softwareDesign->sent || $softwareDesign->change_request)) || ((in_array(0, $sessionUser->rolesArray) || in_array(1, $sessionUser->rolesArray)) && $softwareDesign != null  && $softwareDesign->sent && !$softwareDesign->change_request) && ((in_array(0, $sessionUser->rolesArray) && !$softwareDesign->project_manager_validated) || (in_array(1, $sessionUser->rolesArray)) && !$softwareDesign->technical_leader_validated));
+
+			$operationManualValue = $template->operation_manual && ((in_array(5, $sessionUser->rolesArray) && ($operationManual === null || !$operationManual->sent || $operationManual->change_request)) || ((in_array(0, $sessionUser->rolesArray) || in_array(1, $sessionUser->rolesArray)) && $operationManual != null  && $operationManual->sent && !$operationManual->change_request) && ((in_array(0, $sessionUser->rolesArray) && !$operationManual->project_manager_validated) || (in_array(1, $sessionUser->rolesArray)) && !$operationManual->technical_leader_validated));
+
+			$maintenanceManualValue = $template->maintenance_manual && ((in_array(5, $sessionUser->rolesArray) && ($maintenanceManual === null || !$maintenanceManual->sent || $maintenanceManual->change_request)) || ((in_array(0, $sessionUser->rolesArray) || in_array(1, $sessionUser->rolesArray)) && $maintenanceManual != null  && $maintenanceManual->sent && !$maintenanceManual->change_request) && ((in_array(0, $sessionUser->rolesArray) && !$maintenanceManual->project_manager_validated) || (in_array(1, $sessionUser->rolesArray)) && !$maintenanceManual->technical_leader_validated));
+
+			$softwareComponentsValue = $template->software_components && in_array(5, $sessionUser->rolesArray);
+			$actOfAcceptanceValue = $template->act_of_acceptance && (in_array(0, $sessionUser->rolesArray) || (in_array(2, $sessionUser->rolesArray) && $actOfAcceptance != null));
+
+			$projectPlanValue = $workStatementValue || $deliveryInstructionsValue || $tasksValue || $risksValue || $minutesValue || $validationValue;
+			$projectExecutionValue = $progressReportValue || $correctiveActionsValue;
+			$softwareImplementationValue = $softwareRequirementsValue || $userManualValue || $softwareDesignValue || $operationManualValue || $maintenanceManualValue || $softwareComponentsValue;
+			$projectClosureValue = $actOfAcceptanceValue;
+		}
+
+		$results = array(
+			'workStatement'        => $workStatementValue,
+			'deliveryInstructions' => $deliveryInstructionsValue,
+			'tasks'                => $tasksValue,
+			'risks'                => $risksValue,
+			'minutes'              => $minutesValue,
+			'validation'           => $validationValue,
+
+			'progressReport'    => $progressReportValue,
+			'correctiveActions' => $correctiveActionsValue,
+
+			'softwareRequirements' => $softwareRequirementsValue,
+			'userManual'           => $userManualValue,
+			'softwareDesign'       => $softwareDesignValue,
+			'operationManual'      => $operationManualValue,
+			'maintenanceManual'    => $maintenanceManualValue,
+			'softwareComponents'   => $softwareComponentsValue,
+			'actOfAcceptance'      => $actOfAcceptanceValue,
+
+			'projectPlan'            => $projectPlanValue,
+			'projectExecution'       => $projectExecutionValue,
+			'softwareImplementation' => $softwareImplementationValue,
+			'projectClosure'         => $projectClosureValue,
+		);
+		return $results;
+	}
 }
 ?>

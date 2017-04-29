@@ -8,9 +8,9 @@ $j = 0;
 foreach ($roles as $role) {
 	for ($i = 0; $i < $role; $i++) {
 		$id = $people[$j];
-		$peopleAndRoles[$id] = Functions::personFormat($id) . ' (' . Language::$rolesArray[$role] . ')';
-		$j++;
+		$peopleAndRoles[$id] = Functions::personFormat($id) . ' (' . Language::$rolesArray[$j] . ')';
 	}
+	$j++;
 }
 
 if (!$model->isNewRecord) {echo '<form method="POST" action="' . Yii::app()->baseUrl . '/processes/taskdelete/' . $_GET['id'] . '?taskID=' . $model->id . '"><button class="btn btn-danger btn-sm delete" type="submit"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> ' . Language::$delete . '</button></form>';}
@@ -26,33 +26,33 @@ if (!$model->isNewRecord) {echo '<form method="POST" action="' . Yii::app()->bas
 	<div class="form-group">
 		<?php echo $form->labelEx($model,'task'); ?>
 		<?php echo $form->textArea($model,'task',array('rows'=>6, 'cols'=>50, 'class'=>'form-control')); ?>
-		<?php echo $form->error($model,'task'); ?>
+		<?php echo $form->error($model,'task',array('class'=>'alert alert-danger')); ?>
 	</div>
 
 	<div class="form-group">
 		<?php echo $form->labelEx($model,'duration'); ?>
 		<?php echo $form->textField($model,'duration', array('class'=>'form-control')); ?>
-		<?php echo $form->error($model,'duration'); ?>
+		<?php echo $form->error($model,'duration',array('class'=>'alert alert-danger')); ?>
 	</div>
 
 	<div class="form-group">
     <div class="row"><div class='col-sm-12'>
 		<?php echo $form->labelEx($model,'start_date'); ?>
-		<?php echo $form->textField($model,'start_date', array('class'=>'form-control', 'id'=>'datetimepicker')); ?>
-		<?php echo $form->error($model,'start_date'); ?>
+		<?php echo $form->textField($model,'start_date', array('class'=>'form-control', 'readonly'=>true, 'id'=>'datetimepicker')); ?>
+		<?php echo $form->error($model,'start_date',array('class'=>'alert alert-danger')); ?>
 	</div></div>
 	</div>
 
 	<div class="form-group">
 		<?php echo $form->labelEx($model,'resources'); ?>
 		<?php echo $form->textField($model,'resources', array('class'=>'form-control')); ?>
-		<?php echo $form->error($model,'resources'); ?>
+		<?php echo $form->error($model,'resources',array('class'=>'alert alert-danger')); ?>
 	</div>
 
 	<div class="form-group">
 		<?php echo $form->labelEx($model,'people_id'); ?>
 		<?php echo $form->dropDownList($model,'people_id', $peopleAndRoles, array('class'=>'form-control')); ?>
-		<?php echo $form->error($model,'people_id'); ?>
+		<?php echo $form->error($model,'people_id',array('class'=>'alert alert-danger')); ?>
 	</div>
 
 	<div class="form-group buttons">
@@ -67,7 +67,8 @@ if (!$model->isNewRecord) {echo '<form method="POST" action="' . Yii::app()->bas
 <script type="text/javascript">
     $(function () {
         $('#datetimepicker').datetimepicker({
-        format: 'YYYY-MM-DD HH:mm'
-    });
+        	ignoreReadonly: true,
+          format: 'YYYY-MM-DD HH:mm'
+    	});
     });
 </script>

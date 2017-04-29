@@ -63,6 +63,9 @@ class ProductsController extends Controller
 			array('process_id'=>$process->id),
 			array('order'=>'id DESC')
 			);
+		$deliveryInstructions = delivery_instructions::model()->findByAttributes(
+			array('project_plan_id'=>$projectPlan->id)
+			);
 		$tasks = tasks::model()->findAllByAttributes(
 			array('project_plan_id'=>$projectPlan->id),
 			array('order'=>'id DESC')
@@ -123,6 +126,7 @@ class ProductsController extends Controller
 			'project'              => $project,
 			'projectPlan'          => $projectPlan,
 			'workStatement'        => $workStatement,
+			'deliveryInstructions'        => $deliveryInstructions,
 			'tasks'                => $tasks,
 			'risks'                => $risks,
 			'minutes'              => $minutes,

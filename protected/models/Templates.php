@@ -8,20 +8,21 @@
  * @property string $company_id
  * @property string $used_times
  * @property string $name
- * @property integer $scope
- * @property integer $communication_plan
- * @property integer $general_purpose
- * @property integer $specific_objectives
- * @property integer $justification
- * @property integer $tool
- * @property integer $communication_type
- * @property integer $roles
- * @property integer $risk
- * @property integer $impact
- * @property integer $answer
- * @property integer $testing
- * @property integer $people
- * @property integer $timetable
+ * @property integer $work_statement
+ * @property integer $delivery_instructions
+ * @property integer $tasks
+ * @property integer $risks
+ * @property integer $minutes
+ * @property integer $progress_report
+ * @property integer $corrective_actions
+ * @property integer $software_requirements
+ * @property integer $user_manual
+ * @property integer $software_design
+ * @property integer $operation_manual
+ * @property integer $maintenance_manual
+ * @property integer $software_components
+ * @property integer $test_reports
+ * @property integer $act_of_acceptance
  */
 class templates extends CActiveRecord
 {
@@ -41,13 +42,12 @@ class templates extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('company_id, name', 'required', 'message' => Language::$emptyValue),
-			array('scope, communication_plan, general_purpose, specific_objectives, justification, tool, communication_type, roles, risk, impact, answer, testing, people, timetable', 'numerical', 'integerOnly'=>true),
+			array('company_id, name', 'required'),
+			array('work_statement, delivery_instructions, tasks, risks, minutes, progress_report, corrective_actions, software_requirements, user_manual, software_design, operation_manual, maintenance_manual, software_components, test_reports, act_of_acceptance', 'numerical', 'integerOnly'=>true),
 			array('company_id, used_times', 'length', 'max'=>10),
-			array('name', 'length', 'max'=>64),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, company_id, used_times, name, scope, communication_plan, general_purpose, specific_objectives, justification, tool, communication_type, roles, risk, impact, answer, testing, people, timetable', 'safe', 'on'=>'search'),
+			array('id, company_id, used_times, name, work_statement, delivery_instructions, tasks, risks, minutes, progress_report, corrective_actions, software_requirements, user_manual, software_design, operation_manual, maintenance_manual, software_components, test_reports, act_of_acceptance', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -59,7 +59,7 @@ class templates extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'company' => array(self::BELONGS_TO, 'companies', 'company_id'),
+			'company' => array(self::BELONGS_TO, 'Companies', 'company_id'),
 		);
 	}
 
@@ -70,23 +70,24 @@ class templates extends CActiveRecord
 	{
 		return array(
 			'id' => 'Id',
-			'company_id'          => Language::$company,
-			'used_times'          => Language::$usedTimes,
-			'name'               => Language::$name,
-			'scope'               => Language::$scope,
-			'communication_plan'  => Language::$communicationPlan ,
-			'general_purpose'     => Language::$generalPurpose,
-			'specific_objectives' => Language::$specificObjectives,
-			'justification'       => Language::$justification,
-			'tool'                => Language::$tools,
-			'communication_type'  => Language::$communicationType,
-			'roles'               => Language::$roles,
-			'risk'                => Language::$risk,
-			'impact'              => Language::$impact,
-			'answer'              => Language::$answer,
-			'testing'             => Language::$testing,
-			'people'              => Language::$people,
-			'timetable'           => Language::$timetable,
+			'company_id' => 'Company',
+			'used_times' => 'Used Times',
+			'name' => 'Name',
+			'work_statement' => 'Work Statement',
+			'delivery_instructions' => 'Delivery Instructions',
+			'tasks' => 'Tasks',
+			'risks' => 'Risks',
+			'minutes' => 'Minutes',
+			'progress_report' => 'Progress Report',
+			'corrective_actions' => 'Corrective Actions',
+			'software_requirements' => 'Software Requirements',
+			'user_manual' => 'User Manual',
+			'software_design' => 'Software Design',
+			'operation_manual' => 'Operation Manual',
+			'maintenance_manual' => 'Maintenance Manual',
+			'software_components' => 'Software Components',
+			'test_reports' => 'Test Reports',
+			'act_of_acceptance' => 'Act Of Acceptance',
 		);
 	}
 
@@ -116,33 +117,35 @@ class templates extends CActiveRecord
 
 		$criteria->compare('name',$this->name,true);
 
-		$criteria->compare('scope',$this->scope);
+		$criteria->compare('work_statement',$this->work_statement);
 
-		$criteria->compare('communication_plan',$this->communication_plan);
+		$criteria->compare('delivery_instructions',$this->delivery_instructions);
 
-		$criteria->compare('general_purpose',$this->general_purpose);
+		$criteria->compare('tasks',$this->tasks);
 
-		$criteria->compare('specific_objectives',$this->specific_objectives);
+		$criteria->compare('risks',$this->risks);
 
-		$criteria->compare('justification',$this->justification);
+		$criteria->compare('minutes',$this->minutes);
 
-		$criteria->compare('tool',$this->tool);
+		$criteria->compare('progress_report',$this->progress_report);
 
-		$criteria->compare('communication_type',$this->communication_type);
+		$criteria->compare('corrective_actions',$this->corrective_actions);
 
-		$criteria->compare('roles',$this->roles);
+		$criteria->compare('software_requirements',$this->software_requirements);
 
-		$criteria->compare('risk',$this->risk);
+		$criteria->compare('user_manual',$this->user_manual);
 
-		$criteria->compare('impact',$this->impact);
+		$criteria->compare('software_design',$this->software_design);
 
-		$criteria->compare('answer',$this->answer);
+		$criteria->compare('operation_manual',$this->operation_manual);
 
-		$criteria->compare('testing',$this->testing);
+		$criteria->compare('maintenance_manual',$this->maintenance_manual);
 
-		$criteria->compare('people',$this->people);
+		$criteria->compare('software_components',$this->software_components);
 
-		$criteria->compare('timetable',$this->timetable);
+		$criteria->compare('test_reports',$this->test_reports);
+
+		$criteria->compare('act_of_acceptance',$this->act_of_acceptance);
 
 		return new CActiveDataProvider('templates', array(
 			'criteria'=>$criteria,

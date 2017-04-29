@@ -21,46 +21,38 @@ array_push($templatesArray, 'Ninguna');
 	</div>
 
 	<div class="form-group">
-		<?php echo $form->checkBox($model, 'scope'); ?>
-		<?php echo $form->labelEx($model,'scope') . '<br>'; ?>
+		<?php echo $form->checkBox($model, 'work_statement'); ?>
+		<?php echo $form->labelEx($model,'work_statement') . '<br>'; ?>
+		<?php echo $form->checkBox($model, 'delivery_instructions'); ?>
+		<?php echo $form->labelEx($model,'delivery_instructions') . '<br>'; ?>
+		<?php echo $form->checkBox($model, 'tasks'); ?>
+		<?php echo $form->labelEx($model,'tasks') . '<br>'; ?>
+		<?php echo $form->checkBox($model, 'risks'); ?>
+		<?php echo $form->labelEx($model,'risks') . '<br>'; ?>
+		<?php echo $form->checkBox($model, 'minutes'); ?>
+		<?php echo $form->labelEx($model,'minutes') . '<br>'; ?>
 
-		<?php echo $form->checkBox($model, 'communication_plan'); ?>
-		<?php echo $form->labelEx($model,'communication_plan') . '<br>'; ?>
+		<?php echo $form->checkBox($model, 'progress_report'); ?>
+		<?php echo $form->labelEx($model,'progress_report') . '<br>'; ?>
+		<?php echo $form->checkBox($model, 'corrective_actions'); ?>
+		<?php echo $form->labelEx($model,'corrective_actions') . '<br>'; ?>
 
-		<?php echo $form->checkBox($model, 'general_purpose'); ?>
-		<?php echo $form->labelEx($model,'general_purpose') . '<br>'; ?>
-
-		<?php echo $form->checkBox($model, 'specific_objectives'); ?>
-		<?php echo $form->labelEx($model,'specific_objectives') . '<br>'; ?>
-
-		<?php echo $form->checkBox($model, 'justification'); ?>
-		<?php echo $form->labelEx($model,'justification') . '<br>'; ?>
-
-		<?php echo $form->checkBox($model, 'tool'); ?>
-		<?php echo $form->labelEx($model,'tool') . '<br>'; ?>
-
-		<?php echo $form->checkBox($model, 'communication_type'); ?>
-		<?php echo $form->labelEx($model,'communication_type') . '<br>'; ?>
-
-		<?php echo $form->checkBox($model, 'roles'); ?>
-		<?php echo $form->labelEx($model,'roles') . '<br>'; ?>
-
-		<?php echo $form->checkBox($model, 'risk'); ?>
-		<?php echo $form->labelEx($model,'risk') . '<br>'; ?>
-		<?php echo $form->checkBox($model, 'impact'); ?>
-		<?php echo $form->labelEx($model,'impact') . '<br>'; ?>
-
-		<?php echo $form->checkBox($model, 'answer'); ?>
-		<?php echo $form->labelEx($model,'answer') . '<br>'; ?>
-
-		<?php echo $form->checkBox($model, 'testing'); ?>
-		<?php echo $form->labelEx($model,'testing') . '<br>'; ?>
-
-		<?php echo $form->checkBox($model, 'people'); ?>
-		<?php echo $form->labelEx($model,'people') . '<br>'; ?>
-		
-		<?php echo $form->checkBox($model, 'timetable'); ?>
-		<?php echo $form->labelEx($model,'timetable') . '<br>'; ?>
+		<?php echo $form->checkBox($model, 'software_requirements'); ?>
+		<?php echo $form->labelEx($model,'software_requirements') . '<br>'; ?>
+		<?php echo $form->checkBox($model, 'user_manual'); ?>
+		<?php echo $form->labelEx($model,'user_manual') . '<br>'; ?>
+		<?php echo $form->checkBox($model, 'software_design'); ?>
+		<?php echo $form->labelEx($model,'software_design') . '<br>'; ?>
+		<?php echo $form->checkBox($model, 'operation_manual'); ?>
+		<?php echo $form->labelEx($model,'operation_manual') . '<br>'; ?>
+		<?php echo $form->checkBox($model, 'maintenance_manual'); ?>
+		<?php echo $form->labelEx($model,'maintenance_manual') . '<br>'; ?>
+		<?php echo $form->checkBox($model, 'software_components'); ?>
+		<?php echo $form->labelEx($model,'software_components') . '<br>'; ?>
+		<?php echo $form->checkBox($model, 'test_reports'); ?>
+		<?php echo $form->labelEx($model,'test_reports') . '<br>'; ?>
+		<?php echo $form->checkBox($model, 'act_of_acceptance'); ?>
+		<?php echo $form->labelEx($model,'act_of_acceptance') . '<br>'; ?>
 	</div>
 
 	<div class="form-group buttons">

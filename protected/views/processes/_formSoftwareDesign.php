@@ -14,13 +14,13 @@
 	<div class="form-group">
 		<?php echo $form->labelEx($model,'high_lvl_design'); ?>
 		<?php echo $form->textArea($model,'high_lvl_design',array('rows'=>6, 'cols'=>50, 'class'=>'form-control')); ?>
-		<?php echo $form->error($model,'high_lvl_design'); ?>
+		<?php echo $form->error($model,'high_lvl_design',array('class'=>'alert alert-danger')); ?>
 	</div>
 
 	<div class="form-group">
 		<?php echo $form->labelEx($model,'low_lvl_design'); ?>
 		<?php echo $form->textArea($model,'low_lvl_design',array('rows'=>6, 'cols'=>50, 'class'=>'form-control')); ?>
-		<?php echo $form->error($model,'low_lvl_design'); ?>
+		<?php echo $form->error($model,'low_lvl_design',array('class'=>'alert alert-danger')); ?>
 	</div>
 
 	<div class="form-group">

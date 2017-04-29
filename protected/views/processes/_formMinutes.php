@@ -11,52 +11,52 @@
 	<div class="form-group">
 		<?php echo $form->labelEx($model,'purpose'); ?>
 		<?php echo $form->textArea($model,'purpose',array('rows'=>6, 'cols'=>50, 'class'=>'form-control')); ?>
-		<?php echo $form->error($model,'purpose'); ?>
+		<?php echo $form->error($model,'purpose',array('class'=>'alert alert-danger')); ?>
 	</div>
 
 	<div class="form-group">
 		<?php echo $form->labelEx($model,'assistants'); ?>
 		<?php echo $form->textArea($model,'assistants',array('rows'=>6, 'cols'=>50, 'class'=>'form-control')); ?>
-		<?php echo $form->error($model,'assistants'); ?>
+		<?php echo $form->error($model,'assistants',array('class'=>'alert alert-danger')); ?>
 	</div>
 
 	<div class="form-group">
 	<div class="row"><div class='col-sm-12'>
 		<?php echo $form->labelEx($model,'date'); ?>
-		<?php echo $form->textField($model,'date', array('class'=>'form-control', 'id'=>'datetimepicker')); ?>
-		<?php echo $form->error($model,'date'); ?>
+		<?php echo $form->textField($model,'date', array('class'=>'form-control', 'readonly'=>true, 'id'=>'datetimepicker')); ?>
+		<?php echo $form->error($model,'date',array('class'=>'alert alert-danger')); ?>
 	</div></div>
 	</div>
 
 	<div class="form-group">
 		<?php echo $form->labelEx($model,'place'); ?>
 		<?php echo $form->textField($model,'place',array('rows'=>6, 'cols'=>50, 'class'=>'form-control')); ?>
-		<?php echo $form->error($model,'place'); ?>
+		<?php echo $form->error($model,'place',array('class'=>'alert alert-danger')); ?>
 	</div>
 
 	<div class="form-group">
 		<?php echo $form->labelEx($model,'issues_raised'); ?>
 		<?php echo $form->textArea($model,'issues_raised',array('rows'=>6, 'cols'=>50, 'class'=>'form-control')); ?>
-		<?php echo $form->error($model,'issues_raised'); ?>
+		<?php echo $form->error($model,'issues_raised',array('class'=>'alert alert-danger')); ?>
 	</div>
 
 	<div class="form-group">
 		<?php echo $form->labelEx($model,'open_issues'); ?>
 		<?php echo $form->textArea($model,'open_issues',array('rows'=>6, 'cols'=>50, 'class'=>'form-control')); ?>
-		<?php echo $form->error($model,'open_issues'); ?>
+		<?php echo $form->error($model,'open_issues',array('class'=>'alert alert-danger')); ?>
 	</div>
 
 	<div class="form-group">
 		<?php echo $form->labelEx($model,'agreements'); ?>
 		<?php echo $form->textArea($model,'agreements',array('rows'=>6, 'cols'=>50, 'class'=>'form-control')); ?>
-		<?php echo $form->error($model,'agreements'); ?>
+		<?php echo $form->error($model,'agreements',array('class'=>'alert alert-danger')); ?>
 	</div>
 
 	<div class="form-group">
 	<div class="row"><div class='col-sm-12'>
 		<?php echo $form->labelEx($model,'next_meeting'); ?>
-		<?php echo $form->textField($model,'next_meeting', array('class'=>'form-control', 'id'=>'datetimepicker2')); ?>
-		<?php echo $form->error($model,'next_meeting'); ?>
+		<?php echo $form->textField($model,'next_meeting', array('class'=>'form-control', 'readonly'=>true, 'id'=>'datetimepicker2')); ?>
+		<?php echo $form->error($model,'next_meeting',array('class'=>'alert alert-danger')); ?>
 	</div></div>
 	</div>
 <?php }else{
@@ -83,7 +83,7 @@ echo '<p>' . $model->next_meeting . '</p>';
 	<div class="form-group">
 		<?php echo $form->checkbox($model,'client_validated'); ?>
 		<?php echo $form->labelEx($model,'client_validated'); ?>
-		<?php echo $form->error($model,'client_validated'); ?>
+		<?php echo $form->error($model,'client_validated',array('class'=>'alert alert-danger')); ?>
 	</div>
 <?php } ?>
 	<div class="form-group buttons">
@@ -97,10 +97,12 @@ echo '<p>' . $model->next_meeting . '</p>';
 <script type="text/javascript">
     $(function () {
         $('#datetimepicker').datetimepicker({
-	        format: 'YYYY-MM-DD HH:mm'
+	        ignoreReadonly: true,
+          format: 'YYYY-MM-DD HH:mm'
 	    });
         $('#datetimepicker2').datetimepicker({
-	        format: 'YYYY-MM-DD HH:mm'
+	        ignoreReadonly: true,
+          format: 'YYYY-MM-DD HH:mm'
 	    });
     });
 	/*$(document).ready(function() {

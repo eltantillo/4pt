@@ -23,6 +23,9 @@ span.required {
 .lool {
   display: none;
 }
+.processBox{
+	min-height: 350px;
+}
 
 
 input[type=checkbox]:checked ~ div.lool {

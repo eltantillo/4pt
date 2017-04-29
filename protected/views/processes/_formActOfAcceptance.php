@@ -9,33 +9,33 @@
 	<div class="form-group">
 		<?php echo $form->labelEx($model,'register'); ?>
 		<?php echo $form->textArea($model,'register',array('form-groups'=>6, 'cols'=>50, 'class'=>'form-control')); ?>
-		<?php echo $form->error($model,'register'); ?>
+		<?php echo $form->error($model,'register',array('class'=>'alert alert-danger')); ?>
 	</div>
 
 	<div class="form-group">
 	<div class="row"><div class='col-sm-12'>
 		<?php echo $form->labelEx($model,'date'); ?>
-		<?php echo $form->textField($model,'date', array('class'=>'form-control', 'id'=>'datetimepicker')); ?>
-		<?php echo $form->error($model,'date'); ?>
+		<?php echo $form->textField($model,'date', array('class'=>'form-control', 'readonly'=>true, 'id'=>'datetimepicker')); ?>
+		<?php echo $form->error($model,'date',array('class'=>'alert alert-danger')); ?>
 	</div></div>
 	</div>
 
 	<div class="form-group">
 		<?php echo $form->labelEx($model,'delivered_items'); ?>
 		<?php echo $form->textArea($model,'delivered_items',array('form-groups'=>6, 'cols'=>50, 'class'=>'form-control')); ?>
-		<?php echo $form->error($model,'delivered_items'); ?>
+		<?php echo $form->error($model,'delivered_items',array('class'=>'alert alert-danger')); ?>
 	</div>
 
 	<div class="form-group">
 		<?php echo $form->labelEx($model,'criteria_verification'); ?>
 		<?php echo $form->textArea($model,'criteria_verification',array('form-groups'=>6, 'cols'=>50, 'class'=>'form-control')); ?>
-		<?php echo $form->error($model,'criteria_verification'); ?>
+		<?php echo $form->error($model,'criteria_verification',array('class'=>'alert alert-danger')); ?>
 	</div>
 
 	<div class="form-group">
 		<?php echo $form->labelEx($model,'pending_issues'); ?>
 		<?php echo $form->textArea($model,'pending_issues',array('form-groups'=>6, 'cols'=>50, 'class'=>'form-control')); ?>
-		<?php echo $form->error($model,'pending_issues'); ?>
+		<?php echo $form->error($model,'pending_issues',array('class'=>'alert alert-danger')); ?>
 	</div>
 <?php } else {
 	echo '<h3>' . Language::$deliveryRegister . '</h3>';
@@ -52,7 +52,7 @@
 	<div class="form-group">
 		<?php echo $form->checkbox($model,'client_validated'); ?>
 		<?php echo $form->labelEx($model,'client_validated'); ?>
-		<?php echo $form->error($model,'client_validated'); ?>
+		<?php echo $form->error($model,'client_validated',array('class'=>'alert alert-danger')); ?>
 	</div>
 <?php } ?>
 	<div class="form-group buttons">
@@ -66,7 +66,8 @@
 <script type="text/javascript">
     $(function () {
         $('#datetimepicker').datetimepicker({
-	        format: 'YYYY-MM-DD HH:mm'
+	        ignoreReadonly: true,
+          format: 'YYYY-MM-DD HH:mm'
 	    });
     });
 </script>

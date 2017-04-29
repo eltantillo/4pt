@@ -20,27 +20,27 @@
 	<div class="form-group">
 		<?php echo $form->checkBox($model,'project_manager_validated'); ?>
 		<?php echo $form->labelEx($model,'project_manager_validated'); ?>
-		<?php echo $form->error($model,'project_manager_validated'); ?>
+		<?php echo $form->error($model,'project_manager_validated',array('class'=>'alert alert-danger')); ?>
 	</div>
 	<?php } elseif (in_array(1, $sessionUser->rolesArray)) { ?>
 
 	<div class="form-group">
 		<?php echo $form->checkBox($model,'technical_leader_validated'); ?>
 		<?php echo $form->labelEx($model,'technical_leader_validated'); ?>
-		<?php echo $form->error($model,'technical_leader_validated'); ?>
+		<?php echo $form->error($model,'technical_leader_validated',array('class'=>'alert alert-danger')); ?>
 	</div>
 	<?php } ?>
 
 	<div class="form-group">
 		<?php echo $form->checkBox($model,'change_request'); ?>
 		<?php echo $form->labelEx($model,'change_request'); ?>
-		<?php echo $form->error($model,'change_request'); ?>
+		<?php echo $form->error($model,'change_request',array('class'=>'alert alert-danger')); ?>
 
 	<br><br>
 	<div class="form-group lool">
 		<?php echo $form->labelEx($model,'change_request_details'); ?>
 		<?php echo $form->textArea($model,'change_request_details',array('rows'=>6, 'cols'=>50, 'class'=>'form-control')); ?>
-		<?php echo $form->error($model,'change_request_details'); ?>
+		<?php echo $form->error($model,'change_request_details',array('class'=>'alert alert-danger')); ?>
 	</div>
 	</div>
 

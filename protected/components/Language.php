@@ -195,7 +195,25 @@ class Language extends Controller{
 		$validate,
 		$changeRequest,
 		$changeRequestDetails,
-		$assistants
+		$assistants,
+
+		$workStatementDescription,
+		$deliveryInstructionsDescription,
+		$tasksDescription,
+		$risksDescription,
+		$minutesDescription,
+		$validationDescription,
+		$progressReportDescription,
+		$correctiveActionsDescription,
+		$softwareRequirementsDescription,
+		$userManualDescription,
+		$softwareDesignDescription,
+		$operationManualDescription,
+		$maintenanceManualDescription,
+		$softwareComponentsDescription,
+		$testReportsDescription,
+		$actOfAcceptanceDescription,
+		$projectClosure
 
 		;
 }

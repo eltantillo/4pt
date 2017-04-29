@@ -57,6 +57,10 @@ class ProcessesController extends Controller
 		$sessionUser = people::model()->findByAttributes(array('id'=>Yii::app()->user->id));
 		$sessionUser->rolesArray = explode(',', $sessionUser->roles);
 		$project = $this->loadModel();
+		$template = null;
+		if ($project->template > 0){
+			$template = templates::model()->findByAttributes(array('id'=>$project->template));
+		}
 		$process = processes::model()->findByAttributes(array('project_id'=>$project->id));
 		$projectPlan = project_plan::model()->findByAttributes(array('process_id'=>$process->id));
 		$actOfAcceptance = act_of_acceptance::model()->findByAttributes(
@@ -111,6 +115,7 @@ class ProcessesController extends Controller
 
 		$this->render('view',array(
 			'project'             => $project,
+			'template'            => $template,
 			'projectPlan'         => $projectPlan,
 			'actOfAcceptance'     => $actOfAcceptance,
 			'workStatement'       => $workStatement,

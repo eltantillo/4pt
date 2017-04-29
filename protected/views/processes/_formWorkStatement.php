@@ -15,25 +15,25 @@
 	<div class="form-group">
 		<?php echo $form->labelEx($model,'product_description'); ?>
 		<?php echo $form->textArea($model,'product_description',array('rows'=>6, 'cols'=>50, 'class'=>'form-control')); ?>
-		<?php echo $form->error($model,'product_description'); ?>
+		<?php echo $form->error($model,'product_description',array('class'=>'alert alert-danger')); ?>
 	</div>
 
 	<div class="form-group">
 		<?php echo $form->labelEx($model,'scope'); ?>
 		<?php echo $form->textArea($model,'scope',array('rows'=>6, 'cols'=>50, 'class'=>'form-control')); ?>
-		<?php echo $form->error($model,'scope'); ?>
+		<?php echo $form->error($model,'scope',array('class'=>'alert alert-danger')); ?>
 	</div>
 
 	<div class="form-group">
 		<?php echo $form->labelEx($model,'objectives'); ?>
 		<?php echo $form->textArea($model,'objectives',array('rows'=>6, 'cols'=>50, 'class'=>'form-control')); ?>
-		<?php echo $form->error($model,'objectives'); ?>
+		<?php echo $form->error($model,'objectives',array('class'=>'alert alert-danger')); ?>
 	</div>
 
 	<div class="form-group">
 		<?php echo $form->labelEx($model,'deliverables'); ?>
 		<?php echo $form->textArea($model,'deliverables',array('rows'=>6, 'cols'=>50, 'class'=>'form-control')); ?>
-		<?php echo $form->error($model,'deliverables'); ?>
+		<?php echo $form->error($model,'deliverables',array('class'=>'alert alert-danger')); ?>
 	</div>
 
 	<div class="form-group">

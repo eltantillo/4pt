@@ -14,7 +14,7 @@
 	<div class="form-group">
 		<?php echo $form->labelEx($model,'enviroment'); ?>
 		<?php echo $form->textArea($model,'enviroment',array('rows'=>6, 'cols'=>50, 'class'=>'form-control')); ?>
-		<?php echo $form->error($model,'enviroment'); ?>
+		<?php echo $form->error($model,'enviroment',array('class'=>'alert alert-danger')); ?>
 	</div>
 
 	<div class="form-group">

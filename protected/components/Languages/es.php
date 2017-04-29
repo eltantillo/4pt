@@ -197,6 +197,24 @@ Language::$changeRequest = 'Generar solicitud de cambio';
 Language::$changeRequestDetails = 'Detalles de la solicitud de cambio';
 Language::$assistants = 'Asistentes';
 
+Language::$workStatementDescription = 'Descripción del trabajo a ser realizado en relación al desarrollo de Software';
+Language::$deliveryInstructionsDescription = 'Instrucciones de entrega para cada uno de los entregables especificados en el Enunciado de Trabajo.';
+Language::$tasksDescription = 'Definición de las tareas y costo de a cuerdo a lo especificado en el Enunciado de Trabajo.';
+Language::$risksDescription = 'Identificación de los riesgos que pudieran afectar a la ejecución y viabilidad del proyecto.';
+Language::$minutesDescription = 'Registro de los acuerdos establecidos con el Cliente y/o el equipo de trabajo.';
+Language::$validationDescription = 'Revisión final del plan de proyecto antes de proceder a la siguiente fase.';
+Language::$progressReportDescription = 'Registra el estado del proyecto contra el plan del proyecto.';
+Language::$correctiveActionsDescription = 'Identifica las actividades establecidas para corregir una desviación o un problema relativo al cumplimiento del plan.';
+Language::$softwareRequirementsDescription = 'Descripción completa del comportamiento del sistema que se va a desarrollar.';
+Language::$userManualDescription = 'Describe la forma de uso del software basado en la interfaz de usuario.';
+Language::$softwareDesignDescription = 'Información textual y gráfica de la estructura del software.';
+Language::$operationManualDescription = 'Contiene la información necesaria para instalar y gestionar el software.';
+Language::$maintenanceManualDescription = 'Describe la configuración del software y el entorno utilizado para el desarrollo y pruebas (compiladores, herramientas de diseño, construcción y pruebas).';
+Language::$softwareComponentsDescription = 'Un conjunto de unidades de cádigo relacionadas.';
+Language::$testReportsDescription = 'Documenta la ejecución de las pruebas.';
+Language::$actOfAcceptanceDescription = 'Documentación de la aceptación por parte del cliente de los entregables del proyecto.';
+Language::$projectClosure = 'Cierre del proyecto';
+
 // Producto
 Language::$product  = 'Producto';
 Language::$products = 'Productos';

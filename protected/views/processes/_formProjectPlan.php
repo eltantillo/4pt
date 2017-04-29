@@ -88,14 +88,14 @@
 	<div class="form-group">
 		<?php echo $form->checkbox($model,'project_manager_validated'); ?>
 		<?php echo $form->labelEx($model,'project_manager_validated'); ?>
-		<?php echo $form->error($model,'project_manager_validated'); ?>
+		<?php echo $form->error($model,'project_manager_validated',array('class'=>'alert alert-danger')); ?>
 	</div>
 
 	<?php } elseif (in_array(1, $sessionUser->rolesArray)) { ?>
 	<div class="form-group">
 		<?php echo $form->checkbox($model,'technical_leader_validated'); ?>
 		<?php echo $form->labelEx($model,'technical_leader_validated'); ?>
-		<?php echo $form->error($model,'technical_leader_validated'); ?>
+		<?php echo $form->error($model,'technical_leader_validated',array('class'=>'alert alert-danger')); ?>
 	</div>
 	<?php } ?>
 
