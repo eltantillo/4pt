@@ -3,7 +3,7 @@
 /* @var $model LoginForm */
 /* @var $form CActiveForm  */
 
-$this->pageTitle=Yii::app()->name . ' - Login';
+$this->pageTitle=Yii::app()->name . ' - ' . Language::$login;
 $this->breadcrumbs=array(
 	Language::$login,
 );
@@ -28,13 +28,13 @@ $this->breadcrumbs=array(
 	</div>
 
 	<div class="form-group">
-		<?php echo $form->labelEx($model, htmlentities(Language::$email)); ?>
+		<?php echo $form->labelEx($model, 'username'); ?>
 		<?php echo $form->textField($model,'username', array('class'=>'form-control')); ?>
 		<?php //echo $form->error($model,'username', array('class'=>'alert alert-danger')); ?>
 	</div>
 
 	<div class="form-group">
-		<?php echo $form->labelEx($model, htmlentities(Language::$password)); ?>
+		<?php echo $form->labelEx($model, 'password'); ?>
 		<?php echo $form->passwordField($model,'password', array('class'=>'form-control')); ?>
 		<?php //echo $form->error($model,'password', array('class'=>'alert alert-danger')); ?>
 	</div>
@@ -42,8 +42,9 @@ $this->breadcrumbs=array(
 	<div class="form-group">
 		<div class="row">
 		<div class="col-xs-6">
+
 		<?php echo $form->checkBox($model,'rememberMe'); ?>
-		<?php echo $form->label($model, htmlentities(Language::$rememberMe)); ?>
+		<?php echo $form->labelEx($model, 'rememberMe'); ?>
 		</div>
 		<div class="col-xs-6 text-right"><a href="<?php echo Yii::app()->baseUrl . '/site/recover/' ?>"><?php echo Language::$forgotPass; ?></a></div>
 		</div>

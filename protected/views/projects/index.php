@@ -32,6 +32,8 @@ $this->menu=array(
 	?>
 	</div><!-- sidebar -->
 </div>
+<hr>
+<h2>Proyectos actuales</h2>
 
 <?php $this->widget('zii.widgets.CListView', array(
 	'dataProvider'=>$dataProvider,

@@ -32,7 +32,8 @@ $this->menu=array(
 	?>
 	</div><!-- sidebar -->
 </div>
-
+<hr>
+<h2>Personas registradas</h2>
 <?php $this->widget('zii.widgets.CListView', array(
 	'dataProvider'=>$dataProvider,
 	'itemView'=>'_view',

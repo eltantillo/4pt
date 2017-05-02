@@ -8,5 +8,6 @@ $this->breadcrumbs=array(
 ?>
 
 <h1><?php echo Language::$capabilities; ?></h1>
+<p>Seleccione las capacidades que correspondan a la persona</p>
 
 <?php echo $this->renderPartial('_capabilities', array('model'=>$model)); ?>

@@ -12,6 +12,8 @@ Language::$email           = 'Correo electrónico';
 Language::$habilities      = 'Habilidades';
 Language::$capabilities    = 'Capacidades';
 Language::$roles           = 'Roles';
+Language::$updatePerson    = 'Editar información';
+Language::$deletePerson    = 'Eliminar Persona';
 //Habilidades
 Language::$habilitiesArray = array(
 	0  => 'Análisis',
@@ -245,6 +247,7 @@ Language::$noResults  = 'No se encontraron resultados.';
 Language::$login      = 'Iniciar sesión';
 Language::$logout     = 'Cerrar sesión';
 Language::$contact    = 'Contacto';
+Language::$error      = 'error';
 Language::$home       = 'Inicio';
 Language::$about      = 'Acerca de';
 Language::$templates  = 'Plantillas';

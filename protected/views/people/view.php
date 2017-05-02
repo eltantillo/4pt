@@ -1,4 +1,4 @@
-Compa<?php
+<?php
 $this->pageTitle=Yii::app()->name . ' - ' . Language::$view . ' ' . $model->email;
 $this->breadcrumbs=array(
 	Language::$people=>array('index'),
@@ -12,13 +12,13 @@ $this->breadcrumbs=array(
 $this->menu=array(
 	array(
 		'encodeLabel'=>false,
-		'label' => '<a class="btn btn-primary btn-sm" href="' . Yii::app()->baseUrl . '/people/update/' . $model->id  . '" role="button"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> ' . Language::$update . '</a>',
+		'label' => '<a class="btn btn-primary btn-sm" href="' . Yii::app()->baseUrl . '/people/update/' . $model->id  . '" role="button"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> ' . Language::$updatePerson . '</a>',
 	),
 	array(
 		'url'=>Yii::app()->baseUrl . '/people/delete/' . $model->id,
 		'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>Yii::t('zii',Language::$deleteConfirm)),
 		'encodeLabel'=>false,
-		'label' => '<form method="POST" action="' . Yii::app()->baseUrl . '/people/delete/' . $model->id . '"><button class="btn btn-danger btn-sm delete" type="submit"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> ' . Language::$delete . '</button></form>',
+		'label' => '<form method="POST" action="' . Yii::app()->baseUrl . '/people/delete/' . $model->id . '"><button class="btn btn-danger btn-sm delete" type="submit"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> ' . Language::$deletePerson . '</button></form>',
 	),
 );
 ?>

@@ -43,6 +43,7 @@ class Language extends Controller{
 		$login,
 		$logout,
 		$contact,
+		$error,
 		$home,
 		$about,
 		$templates,
@@ -213,7 +214,10 @@ class Language extends Controller{
 		$softwareComponentsDescription,
 		$testReportsDescription,
 		$actOfAcceptanceDescription,
-		$projectClosure
+		$projectClosure,
+
+		$updatePerson,
+		$deletePerson
 
 		;
 }

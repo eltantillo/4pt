@@ -11345,3 +11345,287 @@ REQUEST_URI=/4pt/products/2
 in C:\wamp64\www\4pt\protected\views\products\view.php (541)
 in C:\wamp64\www\4pt\protected\controllers\ProductsController.php (144)
 in C:\wamp64\www\4pt\index.php (13)
+2017/04/29 04:54:27 [error] [exception.CException] exception 'CException' with message 'La propiedad "LoginForm"."client_validated" no se encuentra definida.' in C:\xampp\htdocs\yii\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\helpers\CHtml.php(2729): CComponent->__get('client_validate...')
+#1 C:\xampp\htdocs\yii\framework\web\helpers\CHtml.php(1923): CHtml::resolveValue(Object(LoginForm), 'client_validate...')
+#2 C:\xampp\htdocs\yii\framework\web\widgets\CActiveForm.php(898): CHtml::activeCheckBox(Object(LoginForm), 'client_validate...', Array)
+#3 C:\xampp\htdocs\4pt\protected\views\site\login.php(45): CActiveForm->checkBox(Object(LoginForm), 'client_validate...')
+#4 C:\xampp\htdocs\yii\framework\web\CBaseController.php(126): require('C:\\xampp\\htdocs...')
+#5 C:\xampp\htdocs\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
+#6 C:\xampp\htdocs\yii\framework\web\CController.php(869): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
+#7 C:\xampp\htdocs\yii\framework\web\CController.php(782): CController->renderPartial('login', Array, true)
+#8 C:\xampp\htdocs\4pt\protected\controllers\SiteController.php(98): CController->render('login', Array)
+#9 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionLogin()
+#10 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#11 C:\xampp\htdocs\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#12 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('login')
+#14 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/login')
+#15 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#16 C:\xampp\htdocs\4pt\index.php(13): CApplication->run()
+#17 {main}
+REQUEST_URI=/4pt/site/login
+HTTP_REFERER=http://localhost/4pt/
+---
+2017/04/29 05:03:53 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "about".' in C:\xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('about')
+#1 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\4pt\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/4pt/about
+---
+2017/04/29 05:19:52 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/jquery.min.map".' in C:\xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('js/jquery.min.m...')
+#1 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\4pt\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/4pt/js/jquery.min.map
+---
+2017/04/29 05:25:10 [error] [php] Undefined variable: id (C:\xampp\htdocs\4pt\protected\controllers\SiteController.php:109)
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CController.php(286): SiteController->runAction()
+#1 C:\xampp\htdocs\yii\framework\web\CController.php(265): SiteController->runActionWithFilters()
+#2 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): SiteController->run()
+#3 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#4 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#5 C:\xampp\htdocs\4pt\index.php(13): CWebApplication->run()
+REQUEST_URI=/4pt/site/recover/?email=asdalsd
+in C:\xampp\htdocs\4pt\protected\controllers\SiteController.php (109)
+in C:\xampp\htdocs\4pt\index.php (13)
+2017/04/29 05:25:16 [error] [php] Undefined variable: id (C:\xampp\htdocs\4pt\protected\controllers\SiteController.php:109)
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CController.php(286): SiteController->runAction()
+#1 C:\xampp\htdocs\yii\framework\web\CController.php(265): SiteController->runActionWithFilters()
+#2 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): SiteController->run()
+#3 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#4 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#5 C:\xampp\htdocs\4pt\index.php(13): CWebApplication->run()
+REQUEST_URI=/4pt/site/recover/?email=asdalsd
+in C:\xampp\htdocs\4pt\protected\controllers\SiteController.php (109)
+in C:\xampp\htdocs\4pt\index.php (13)
+2017/04/29 05:26:16 [error] [php] Undefined variable: id (C:\xampp\htdocs\4pt\protected\controllers\SiteController.php:109)
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CController.php(286): SiteController->runAction()
+#1 C:\xampp\htdocs\yii\framework\web\CController.php(265): SiteController->runActionWithFilters()
+#2 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): SiteController->run()
+#3 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#4 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#5 C:\xampp\htdocs\4pt\index.php(13): CWebApplication->run()
+REQUEST_URI=/4pt/site/recover/?email=asdalsd
+in C:\xampp\htdocs\4pt\protected\controllers\SiteController.php (109)
+in C:\xampp\htdocs\4pt\index.php (13)
+2017/04/29 05:26:26 [error] [php] Undefined variable: id (C:\xampp\htdocs\4pt\protected\controllers\SiteController.php:109)
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CController.php(286): SiteController->runAction()
+#1 C:\xampp\htdocs\yii\framework\web\CController.php(265): SiteController->runActionWithFilters()
+#2 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): SiteController->run()
+#3 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#4 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#5 C:\xampp\htdocs\4pt\index.php(13): CWebApplication->run()
+REQUEST_URI=/4pt/site/recover/?email=asdalsd
+in C:\xampp\htdocs\4pt\protected\controllers\SiteController.php (109)
+in C:\xampp\htdocs\4pt\index.php (13)
+2017/04/29 05:26:35 [error] [php] Trying to get property of non-object (C:\xampp\htdocs\4pt\protected\controllers\SiteController.php:121)
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CController.php(286): SiteController->runAction()
+#1 C:\xampp\htdocs\yii\framework\web\CController.php(265): SiteController->runActionWithFilters()
+#2 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): SiteController->run()
+#3 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#4 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#5 C:\xampp\htdocs\4pt\index.php(13): CWebApplication->run()
+REQUEST_URI=/4pt/site/recover/?email=asdalsd
+in C:\xampp\htdocs\4pt\protected\controllers\SiteController.php (121)
+in C:\xampp\htdocs\4pt\index.php (13)
+2017/04/29 05:40:24 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "images".' in C:\xampp\htdocs\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CController.php(270): CController->missingAction('images')
+#1 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('images')
+#2 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/images/4Pp...')
+#3 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\4pt\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/4pt/site/images/4Pprincipal.png
+HTTP_REFERER=http://localhost/4pt/site/index
+---
+2017/04/29 05:40:24 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "images".' in C:\xampp\htdocs\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CController.php(270): CController->missingAction('images')
+#1 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('images')
+#2 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/images/4Pp...')
+#3 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\4pt\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/4pt/site/images/4Pprincipal.png
+HTTP_REFERER=http://localhost/4pt/site/index
+---
+2017/04/29 05:40:32 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "images".' in C:\xampp\htdocs\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CController.php(270): CController->missingAction('images')
+#1 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('images')
+#2 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/images/4Pp...')
+#3 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\4pt\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/4pt/site/images/4Pprincipal.png
+---
+2017/04/29 05:40:52 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "images".' in C:\xampp\htdocs\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CController.php(270): CController->missingAction('images')
+#1 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('images')
+#2 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/images/4Pp...')
+#3 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\4pt\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/4pt/site/images/4Pprincipal.png
+HTTP_REFERER=http://localhost/4pt/site/
+---
+2017/04/29 05:40:53 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "images".' in C:\xampp\htdocs\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CController.php(270): CController->missingAction('images')
+#1 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('images')
+#2 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/images/4Pp...')
+#3 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\4pt\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/4pt/site/images/4Pprincipal.png
+HTTP_REFERER=http://localhost/4pt/site/
+---
+2017/04/29 05:41:00 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "images".' in C:\xampp\htdocs\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CController.php(270): CController->missingAction('images')
+#1 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('images')
+#2 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/images/4Pp...')
+#3 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\4pt\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/4pt/site/images/4Pprincipal.png
+HTTP_REFERER=http://localhost/4pt/site/
+---
+2017/04/29 05:41:09 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "images".' in C:\xampp\htdocs\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CController.php(270): CController->missingAction('images')
+#1 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('images')
+#2 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/images/4Pp...')
+#3 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\4pt\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/4pt/site/images/4Pprincipal.png
+HTTP_REFERER=http://localhost/4pt/site/index
+---
+2017/04/29 05:41:10 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "images".' in C:\xampp\htdocs\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CController.php(270): CController->missingAction('images')
+#1 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('images')
+#2 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/images/4Pp...')
+#3 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\4pt\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/4pt/site/images/4Pprincipal.png
+HTTP_REFERER=http://localhost/4pt/site/index
+---
+2017/04/29 05:41:21 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "index".' in C:\xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('index')
+#1 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\4pt\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/4pt/index
+---
+2017/04/29 06:05:51 [error] [php] Undefined variable: company (C:\xampp\htdocs\4pt\protected\controllers\SiteController.php:139)
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CController.php(286): SiteController->runAction()
+#1 C:\xampp\htdocs\yii\framework\web\CController.php(265): SiteController->runActionWithFilters()
+#2 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): SiteController->run()
+#3 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#4 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#5 C:\xampp\htdocs\4pt\index.php(13): CWebApplication->run()
+REQUEST_URI=/4pt/site/recover/?email=eltantillo%40gmail.com
+in C:\xampp\htdocs\4pt\protected\controllers\SiteController.php (139)
+in C:\xampp\htdocs\4pt\index.php (13)
+2017/04/29 06:06:50 [error] [php] Undefined index: email (C:\xampp\htdocs\4pt\protected\controllers\SiteController.php:107)
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CController.php(286): SiteController->runAction()
+#1 C:\xampp\htdocs\yii\framework\web\CController.php(265): SiteController->runActionWithFilters()
+#2 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): SiteController->run()
+#3 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#4 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#5 C:\xampp\htdocs\4pt\index.php(13): CWebApplication->run()
+REQUEST_URI=/4pt/site/recover/
+in C:\xampp\htdocs\4pt\protected\controllers\SiteController.php (107)
+in C:\xampp\htdocs\4pt\index.php (13)
+2017/04/29 06:07:38 [error] [php] Undefined variable: company (C:\xampp\htdocs\4pt\protected\controllers\SiteController.php:142)
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CController.php(286): SiteController->runAction()
+#1 C:\xampp\htdocs\yii\framework\web\CController.php(265): SiteController->runActionWithFilters()
+#2 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): SiteController->run()
+#3 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#4 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#5 C:\xampp\htdocs\4pt\index.php(13): CWebApplication->run()
+REQUEST_URI=/4pt/site/recover/
+in C:\xampp\htdocs\4pt\protected\controllers\SiteController.php (142)
+in C:\xampp\htdocs\4pt\index.php (13)
+2017/04/29 06:08:27 [error] [php] Undefined variable: company_email (C:\xampp\htdocs\4pt\protected\controllers\SiteController.php:143)
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CController.php(286): SiteController->runAction()
+#1 C:\xampp\htdocs\yii\framework\web\CController.php(265): SiteController->runActionWithFilters()
+#2 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): SiteController->run()
+#3 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#4 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#5 C:\xampp\htdocs\4pt\index.php(13): CWebApplication->run()
+REQUEST_URI=/4pt/site/recover/
+in C:\xampp\htdocs\4pt\protected\controllers\SiteController.php (143)
+in C:\xampp\htdocs\4pt\index.php (13)
+2017/04/29 06:08:52 [error] [php] mail(): Failed to connect to mailserver at &quot;localhost&quot; port 25, verify your &quot;SMTP&quot; and &quot;smtp_port&quot; setting in php.ini or use ini_set() (C:\xampp\htdocs\4pt\protected\controllers\SiteController.php:145)
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#1 C:\xampp\htdocs\yii\framework\web\CController.php(286): SiteController->runAction()
+#2 C:\xampp\htdocs\yii\framework\web\CController.php(265): SiteController->runActionWithFilters()
+#3 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): SiteController->run()
+#4 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#5 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#6 C:\xampp\htdocs\4pt\index.php(13): CWebApplication->run()
+REQUEST_URI=/4pt/site/recover/
+in C:\xampp\htdocs\4pt\protected\controllers\SiteController.php (145)
+in C:\xampp\htdocs\4pt\index.php (13)
+2017/04/29 06:13:10 [error] [php] mail(): Failed to connect to mailserver at &quot;localhost&quot; port 25, verify your &quot;SMTP&quot; and &quot;smtp_port&quot; setting in php.ini or use ini_set() (C:\xampp\htdocs\4pt\protected\controllers\SiteController.php:146)
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#1 C:\xampp\htdocs\yii\framework\web\CController.php(286): SiteController->runAction()
+#2 C:\xampp\htdocs\yii\framework\web\CController.php(265): SiteController->runActionWithFilters()
+#3 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): SiteController->run()
+#4 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#5 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#6 C:\xampp\htdocs\4pt\index.php(13): CWebApplication->run()
+REQUEST_URI=/4pt/site/recover/
+in C:\xampp\htdocs\4pt\protected\controllers\SiteController.php (146)
+in C:\xampp\htdocs\4pt\index.php (13)
+2017/04/29 06:19:37 [error] [exception.CException] exception 'CException' with message 'CWebApplication and its behaviors do not have a method or closure named "baseUrl".' in C:\xampp\htdocs\yii\framework\base\CComponent.php:266
+Stack trace:
+#0 C:\xampp\htdocs\4pt\protected\controllers\SiteController.php(146): CComponent->__call('baseUrl', Array)
+#1 C:\xampp\htdocs\4pt\protected\controllers\SiteController.php(146): CWebApplication->baseUrl(true)
+#2 C:\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionRecover()
+#3 C:\xampp\htdocs\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 C:\xampp\htdocs\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#5 C:\xampp\htdocs\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): CController->run('recover')
+#7 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/recover')
+#8 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#9 C:\xampp\htdocs\4pt\index.php(13): CApplication->run()
+#10 {main}
+REQUEST_URI=/4pt/site/recover/
+HTTP_REFERER=http://localhost/4pt/site/recover/
+---
+2017/04/29 06:20:01 [error] [php] Trying to get property of non-object (C:\xampp\htdocs\4pt\protected\controllers\SiteController.php:115)
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CController.php(286): SiteController->runAction()
+#1 C:\xampp\htdocs\yii\framework\web\CController.php(265): SiteController->runActionWithFilters()
+#2 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(282): SiteController->run()
+#3 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#4 C:\xampp\htdocs\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#5 C:\xampp\htdocs\4pt\index.php(13): CWebApplication->run()
+REQUEST_URI=/4pt/site/recover/?email=eltantillo@gmail.com&token=7815696ecbf1c96e6894b779456d330e
+in C:\xampp\htdocs\4pt\protected\controllers\SiteController.php (115)
+in C:\xampp\htdocs\4pt\index.php (13)

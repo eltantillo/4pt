@@ -8,5 +8,6 @@ $this->breadcrumbs=array(
 ?>
 
 <h1><?php echo Language::$roles; ?></h1>
+<p>Seleccione los roles que puede desempeñar la persona</p>
 
 <?php echo $this->renderPartial('_roles', array('model'=>$model)); ?>

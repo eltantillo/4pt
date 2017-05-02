@@ -104,23 +104,55 @@ class SiteController extends Controller
 	public function actionRecover()
 	{
 		$model = new people;
-		$id    = Yii::app()->request->getQuery('id');
+		$email = Yii::app()->request->getQuery('email');
+		if (isset($_POST['email'])){
+			$email = $_POST['email'];
+		}
 		$token = Yii::app()->request->getQuery('token');
-		$user  = people::model()->findByAttributes(array('id' => $id));
+		$user  = people::model()->findByAttributes(array('email' => $email));
 
 		if(isset($token)){
 			if($token == $user->password){
-				$this->render('message', array('message' => 'Ingrese su nueva contraseña'));
+				//set new password
+				if(isset($_POST['password'])){
+					if ($_POST['password'] == $_POST['password2']){
+						$user->password = md5($_POST['password']);
+						$user->update();
+						$this->redirect(array('/site/login'));
+					}
+					else{
+						$this->render('message', array('message' => 5));
+					}
+				}
+				else{
+					$this->render('message', array('message' => 0));
+				}
+				
 			}
 			else{
-				$this->render('message', array('message' => 'Este enlace no es válido.'));
+				//invalid token
+				$this->redirect(array('/'));
 			}
 		}
-		else if (isset($id)){
-			$this->redirect(array('recover', 'id' => $id, 'token' => $user->password));
+		else if (isset($email)){
+			//send mail
+			//phpinfo();
+			if ($user != null){
+				$headers = "MIME-Version: 1.0\r\n"; 
+		        $headers .= "Content-type: text/html; charset=utf-8\r\n"; 
+		        $headers .= 'From: 4P+T <admin@4PT.com>' . "\r\n";
+		        $headers .= 'Reply-To: admin@4PT.com\r\n';
+		        $headers .= 'X-Mailer: PHP/' . phpversion();
+		        mail($email,  'Recuperar contrasena', 'utilice el siguiente enlace para recuperar su contrasena: <br> ' .  Yii::app()->getBaseUrl(true) . '/site/recover/?email=' . $email . '&token=' . $user->password, $headers);
+
+				$this->render('message', array('message' => 2, 'email' => $email));
+			}
+			else{
+				$this->render('message', array('message' => 4));
+			}
 		}
 		else{
-			$this->render('message',array('message' => 'ingrese su correo electronico.'));
+			$this->render('message', array('message' => 3));
 		}
 	}
 

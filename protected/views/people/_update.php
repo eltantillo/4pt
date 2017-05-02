@@ -41,7 +41,7 @@
 	</div>
 
 	<div class="form-group">
-		<?php echo CHtml::htmlButton($model->isNewRecord ? Language::$next : Language::$update, array('type'=>'submit', 'class'=>'btn btn-success')); ?>
+		<?php echo CHtml::htmlButton($model->isNewRecord ? Language::$next : Language::$next, array('type'=>'submit', 'class'=>'btn btn-success')); ?>
 	</div>
 
 <?php $this->endWidget(); ?>
