@@ -14,4 +14,7 @@ $this->breadcrumbs=array(
 if (in_array(0, $sessionUser->rolesArray) || in_array(1, $sessionUser->rolesArray)){
 	echo $this->renderPartial('_formRisks', array('model'=>$model));
 }
+else{
+	$this->redirect(array('view','id'=>$project->id));
+}
 ?>

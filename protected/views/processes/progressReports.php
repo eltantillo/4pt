@@ -10,7 +10,7 @@ $this->breadcrumbs=array(
 	<h1><?php echo Language::$progressReport; ?></h1>
 </div>
 
-<a class="btn btn-primary btn-sm" href="<?php echo Yii::app()->request->baseUrl . '/processes/progressreportadmin/' . $_GET['id']; ?>" role="button"><span class="glyphicon glyphicon-book" aria-hidden="true"></span> Create Progress Report</a><br><br>
+<a class="btn btn-primary btn-sm" href="<?php echo Yii::app()->request->baseUrl . '/processes/progressreportadmin/' . $_GET['id']; ?>" role="button"><span class="glyphicon glyphicon-book" aria-hidden="true"></span> Crear Reporte de avance</a><br><br>
 
 <div class="list-group">
 	<?php

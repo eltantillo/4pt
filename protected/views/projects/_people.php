@@ -21,7 +21,11 @@ foreach ($model->rolesArray as $role) {
 				$e = true;
 			}
 		}
-		$enoughPeople = $e;
+		if (!$e){
+			$enoughPeople = false;
+			break;
+		}
+		
 	}
 	$count++;
 }
@@ -53,7 +57,13 @@ if ($enoughPeople){
 	?>
 
 				<div class="form-group">
-					<?php echo $form->labelEx($model, htmlentities(Language::$rolesArray[$j]) . ' ' . ($i + 1)); ?>
+					<?php
+						$subStr = "";
+						if ($i > 0){
+							$subStr = $i + 1;
+						}
+						echo $form->labelEx($model, htmlentities(Language::$rolesArray[$j]) . ' ' . $subStr);
+					?>
 					<?php
 					echo $form->dropDownList($model,'people[' . $k  . ']', $peopleRoles, array('class'=>'form-control'));
 					$k++;

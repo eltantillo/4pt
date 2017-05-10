@@ -17,4 +17,7 @@ if (in_array(0, $sessionUser->rolesArray) || in_array(1, $sessionUser->rolesArra
 		'project'=>$project
 	));
 }
+else{
+	$this->redirect(array('view','id'=>$project->id));
+}
 ?>

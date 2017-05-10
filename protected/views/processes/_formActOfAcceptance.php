@@ -8,7 +8,7 @@
 <?php if (in_array(0, $sessionUser->rolesArray)){ ?>
 	<div class="form-group">
 		<?php echo $form->labelEx($model,'register'); ?>
-		<?php echo $form->textArea($model,'register',array('form-groups'=>6, 'cols'=>50, 'class'=>'form-control')); ?>
+		<?php echo $form->textArea($model,'register',array('rows'=>6, 'cols'=>50, 'class'=>'form-control', 'placeholder'=>'')); ?>
 		<?php echo $form->error($model,'register',array('class'=>'alert alert-danger')); ?>
 	</div>
 
@@ -22,19 +22,19 @@
 
 	<div class="form-group">
 		<?php echo $form->labelEx($model,'delivered_items'); ?>
-		<?php echo $form->textArea($model,'delivered_items',array('form-groups'=>6, 'cols'=>50, 'class'=>'form-control')); ?>
+		<?php echo $form->textArea($model,'delivered_items',array('rows'=>6, 'cols'=>50, 'class'=>'form-control', 'placeholder'=>'')); ?>
 		<?php echo $form->error($model,'delivered_items',array('class'=>'alert alert-danger')); ?>
 	</div>
 
 	<div class="form-group">
 		<?php echo $form->labelEx($model,'criteria_verification'); ?>
-		<?php echo $form->textArea($model,'criteria_verification',array('form-groups'=>6, 'cols'=>50, 'class'=>'form-control')); ?>
+		<?php echo $form->textArea($model,'criteria_verification',array('rows'=>6, 'cols'=>50, 'class'=>'form-control', 'placeholder'=>'')); ?>
 		<?php echo $form->error($model,'criteria_verification',array('class'=>'alert alert-danger')); ?>
 	</div>
 
 	<div class="form-group">
 		<?php echo $form->labelEx($model,'pending_issues'); ?>
-		<?php echo $form->textArea($model,'pending_issues',array('form-groups'=>6, 'cols'=>50, 'class'=>'form-control')); ?>
+		<?php echo $form->textArea($model,'pending_issues',array('rows'=>6, 'cols'=>50, 'class'=>'form-control', 'placeholder'=>'')); ?>
 		<?php echo $form->error($model,'pending_issues',array('class'=>'alert alert-danger')); ?>
 	</div>
 <?php } else {
@@ -56,7 +56,7 @@
 	</div>
 <?php } ?>
 	<div class="form-group buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? Language::$create : Language::$update, array('type'=>'submit', 'class'=>'btn btn-success')); ?>
+		<?php echo CHtml::submitButton($model->isNewRecord ? Language::$finish : Language::$update, array('type'=>'submit', 'class'=>'btn btn-success')); ?>
 	</div>
 
 <?php $this->endWidget(); ?>

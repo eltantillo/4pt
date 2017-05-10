@@ -28,7 +28,7 @@ class companies extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('name, address, phone, language', 'required', 'message'=>'Por favor ingrese un valor en {attribute}.'),
+			array('name, address, phone', 'required', 'message'=>'Por favor ingrese un valor en {attribute}.'),
 			array('name', 'length', 'max'=>64),
 			array('address', 'length', 'max'=>128),
 			array('phone', 'length', 'max'=>16),

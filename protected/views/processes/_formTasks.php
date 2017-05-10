@@ -12,8 +12,6 @@ foreach ($roles as $role) {
 	}
 	$j++;
 }
-
-if (!$model->isNewRecord) {echo '<form method="POST" action="' . Yii::app()->baseUrl . '/processes/taskdelete/' . $_GET['id'] . '?taskID=' . $model->id . '"><button class="btn btn-danger btn-sm delete" type="submit"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> ' . Language::$delete . '</button></form>';}
 ?>
 
 <div class="form">
@@ -24,14 +22,20 @@ if (!$model->isNewRecord) {echo '<form method="POST" action="' . Yii::app()->bas
 )); ?>
 
 	<div class="form-group">
+		<?php echo $form->labelEx($model,'title'); ?>
+		<?php echo $form->textField($model,'title', array('class'=>'form-control', 'placeholder'=>'')); ?>
+		<?php echo $form->error($model,'title',array('class'=>'alert alert-danger')); ?>
+	</div>
+
+	<div class="form-group">
 		<?php echo $form->labelEx($model,'task'); ?>
-		<?php echo $form->textArea($model,'task',array('rows'=>6, 'cols'=>50, 'class'=>'form-control')); ?>
+		<?php echo $form->textArea($model,'task',array('rows'=>6, 'cols'=>50, 'class'=>'form-control', 'placeholder'=>'')); ?>
 		<?php echo $form->error($model,'task',array('class'=>'alert alert-danger')); ?>
 	</div>
 
 	<div class="form-group">
 		<?php echo $form->labelEx($model,'duration'); ?>
-		<?php echo $form->textField($model,'duration', array('class'=>'form-control')); ?>
+		<?php echo $form->textField($model,'duration', array('class'=>'form-control', 'placeholder'=>'')); ?>
 		<?php echo $form->error($model,'duration',array('class'=>'alert alert-danger')); ?>
 	</div>
 
@@ -45,18 +49,19 @@ if (!$model->isNewRecord) {echo '<form method="POST" action="' . Yii::app()->bas
 
 	<div class="form-group">
 		<?php echo $form->labelEx($model,'resources'); ?>
-		<?php echo $form->textField($model,'resources', array('class'=>'form-control')); ?>
+		<?php echo $form->textField($model,'resources', array('class'=>'form-control', 'placeholder'=>'MXN')); ?>
 		<?php echo $form->error($model,'resources',array('class'=>'alert alert-danger')); ?>
 	</div>
 
 	<div class="form-group">
 		<?php echo $form->labelEx($model,'people_id'); ?>
-		<?php echo $form->dropDownList($model,'people_id', $peopleAndRoles, array('class'=>'form-control')); ?>
+		<?php echo $form->dropDownList($model,'people_id', $peopleAndRoles, array('class'=>'form-control', 'placeholder'=>'')); ?>
 		<?php echo $form->error($model,'people_id',array('class'=>'alert alert-danger')); ?>
 	</div>
 
 	<div class="form-group buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? Language::$create : Language::$update, array('type'=>'submit', 'class'=>'btn btn-success')); ?>
+		<?php echo CHtml::submitButton($model->isNewRecord ? Language::$finish : Language::$update, array('type'=>'submit', 'class'=>'btn btn-success')); ?>
+		<?php if (!$model->isNewRecord) {echo '<form method="POST" action="' . Yii::app()->baseUrl . '/processes/taskdelete/' . $_GET['id'] . '?taskID=' . $model->id . '"><button class="btn btn-danger delete" type="submit"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Eliminar</button></form>';} ?>
 	</div>
 
 	

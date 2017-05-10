@@ -30,7 +30,8 @@ class software_component extends CActiveRecord
 		return array(
 			array('process_id', 'required'),
 			array('process_id', 'length', 'max'=>10),
-			array('name, description, file', 'safe'),
+			array('name, description', 'safe'),
+			array('file', 'file', 'safe' => false, 'allowEmpty'=>true),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('id, process_id, name, description, file', 'safe', 'on'=>'search'),
@@ -57,9 +58,9 @@ class software_component extends CActiveRecord
 		return array(
 			'id' => 'Id',
 			'process_id' => 'Process',
-			'name' => 'Name',
-			'description' => 'Description',
-			'file' => 'File',
+			'name' => Language::$name,
+			'description' => Language::$description,
+			'file' => Language::$file,
 		);
 	}
 

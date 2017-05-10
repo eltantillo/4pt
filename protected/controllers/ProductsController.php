@@ -54,8 +54,8 @@ class ProductsController extends Controller
 	 */
 	public function actionView()
 	{
-		/*$sessionUser = people::model()->findAllByAttributes(array('id'=>Yii::app()->user->id));
-		$sessionUser->rolesArray = explode(',', $sessionUser->roles);*/
+		$sessionUser = people::model()->findByAttributes(array('id'=>Yii::app()->user->id));
+		/*$sessionUser->rolesArray = explode(',', $sessionUser->roles);*/
 		$project = $this->loadModel();
 		$process = processes::model()->findByAttributes(array('project_id'=>$project->id));
 		$projectPlan = project_plan::model()->findByAttributes(array('process_id'=>$process->id));
@@ -123,10 +123,11 @@ class ProductsController extends Controller
 			);
 
 		$this->render('view',array(
+			'user'                 => $sessionUser,
 			'project'              => $project,
 			'projectPlan'          => $projectPlan,
 			'workStatement'        => $workStatement,
-			'deliveryInstructions'        => $deliveryInstructions,
+			'deliveryInstructions' => $deliveryInstructions,
 			'tasks'                => $tasks,
 			'risks'                => $risks,
 			'minutes'              => $minutes,

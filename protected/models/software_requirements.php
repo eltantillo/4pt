@@ -7,15 +7,28 @@
  * @property string $id
  * @property string $process_id
  * @property string $introduction
+ * @property string $functionality
+ * @property string $functionality_file
  * @property string $user_interface
+ * @property string $user_interface_file
  * @property string $external_interfaces
+ * @property string $external_interfaces_file
  * @property string $reliability
+ * @property string $reliability_file
  * @property string $efficiency
+ * @property string $efficiency_file
  * @property string $maintenance
+ * @property string $maintenance_file
  * @property string $portability
+ * @property string $portability_file
+ * @property string $limitations
+ * @property string $limitations_file
  * @property string $interoperability
+ * @property string $interoperability_file
  * @property string $reuse
+ * @property string $reuse_file
  * @property string $legal
+ * @property string $legal_file
  * @property integer $sent
  * @property integer $project_manager_validated
  * @property integer $technical_leader_validated
@@ -43,7 +56,8 @@ class software_requirements extends CActiveRecord
 			array('process_id', 'required'),
 			array('sent, project_manager_validated, technical_leader_validated, change_request', 'numerical', 'integerOnly'=>true),
 			array('process_id', 'length', 'max'=>10),
-			array('introduction, user_interface, external_interfaces, reliability, efficiency, maintenance, portability, interoperability, reuse, legal, change_request_details', 'safe'),
+			array('introduction, functionality, user_interface, external_interfaces, reliability, efficiency, maintenance, portability, limitations, interoperability, reuse, legal, change_request_details', 'safe'),
+			array('functionality_file, user_interface_file, external_interfaces_file, reliability_file, efficiency_file, maintenance_file, portability_file, limitations_file, interoperability_file, reuse_file, legal_file', 'file', /*'types'=>'jpg, gif, png, txt',*/ 'safe' => false, 'allowEmpty'=>true),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('id, process_id, introduction, user_interface, external_interfaces, reliability, efficiency, maintenance, portability, interoperability, reuse, legal, sent, project_manager_validated, technical_leader_validated, change_request, change_request_details', 'safe', 'on'=>'search'),
@@ -73,12 +87,14 @@ class software_requirements extends CActiveRecord
 			'id' => 'Id',
 			'process_id' => 'Process',
 			'introduction' => Language::$introduction,
+			'functionality' => 'Funcionalidad',
 			'user_interface' => Language::$userInterface,
 			'external_interfaces' => Language::$externalInterfaces,
 			'reliability' => Language::$reliability,
 			'efficiency' => Language::$efficiency,
 			'maintenance' => Language::$maintenance,
 			'portability' => Language::$portability,
+			'limitations' => 'Limitaciones/restricciones del diseño y construcción',
 			'interoperability' => Language::$interoperability,
 			'reuse' => Language::$reuse,
 			'legal' => Language::$legal,
@@ -114,6 +130,8 @@ class software_requirements extends CActiveRecord
 
 		$criteria->compare('introduction',$this->introduction,true);
 
+		$criteria->compare('functionality',$this->functionality,true);
+
 		$criteria->compare('user_interface',$this->user_interface,true);
 
 		$criteria->compare('external_interfaces',$this->external_interfaces,true);
@@ -125,6 +143,8 @@ class software_requirements extends CActiveRecord
 		$criteria->compare('maintenance',$this->maintenance,true);
 
 		$criteria->compare('portability',$this->portability,true);
+
+		$criteria->compare('limitations',$this->limitations,true);
 
 		$criteria->compare('interoperability',$this->interoperability,true);
 

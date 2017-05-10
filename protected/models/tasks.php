@@ -6,6 +6,7 @@
  * The followings are the available columns in table 'tasks':
  * @property string $id
  * @property string $project_plan_id
+ * @property string $title
  * @property string $task
  * @property double $duration
  * @property string $start_date
@@ -33,7 +34,7 @@ class tasks extends CActiveRecord
 			array('project_plan_id', 'required'),
 			array('duration, resources', 'numerical'),
 			array('project_plan_id, people_id', 'length', 'max'=>10),
-			array('task, start_date', 'safe'),
+			array('title, task, start_date', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('id, project_plan_id, task, duration, start_date, resources, people_id', 'safe', 'on'=>'search'),
@@ -61,6 +62,7 @@ class tasks extends CActiveRecord
 		return array(
 			'id' => 'Id',
 			'project_plan_id' => 'Project Plan',
+			'title' => 'Título de la tarea',
 			'task' => Language::$taskDescription,
 			'duration' => Language::$duration,
 			'start_date' => Language::$startDate,

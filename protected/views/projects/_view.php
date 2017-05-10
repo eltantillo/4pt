@@ -13,10 +13,6 @@
 	<?php echo CHtml::encode(Functions::levelFormat($data->level)); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('product_type')); ?>:</b>
-	<?php echo CHtml::encode(Functions::productFormat($data->product_type)); ?>
-	<br />
-
 	<b><?php echo CHtml::encode($data->getAttributeLabel('template')); ?>:</b>
 	<?php echo CHtml::encode(Functions::templateFormat($data->template)); ?>
 	<br />

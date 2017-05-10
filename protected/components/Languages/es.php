@@ -212,7 +212,7 @@ Language::$userManualDescription = 'Describe la forma de uso del software basado
 Language::$softwareDesignDescription = 'Información textual y gráfica de la estructura del software.';
 Language::$operationManualDescription = 'Contiene la información necesaria para instalar y gestionar el software.';
 Language::$maintenanceManualDescription = 'Describe la configuración del software y el entorno utilizado para el desarrollo y pruebas (compiladores, herramientas de diseño, construcción y pruebas).';
-Language::$softwareComponentsDescription = 'Un conjunto de unidades de cádigo relacionadas.';
+Language::$softwareComponentsDescription = 'Un conjunto de unidades de código relacionadas.';
 Language::$testReportsDescription = 'Documenta la ejecución de las pruebas.';
 Language::$actOfAcceptanceDescription = 'Documentación de la aceptación por parte del cliente de los entregables del proyecto.';
 Language::$projectClosure = 'Cierre del proyecto';
@@ -226,6 +226,7 @@ Language::$tool  = 'Herramienta';
 Language::$tools = 'Herramientas';
 
 // General
+Language::$file       = 'Archivo';
 Language::$finish     = 'Finalizar';
 Language::$view       = 'Ver';
 Language::$none       = 'Ninguna';

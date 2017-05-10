@@ -69,6 +69,7 @@ class companiesController extends Controller
 		if(isset($_POST['companies']) && isset($_POST['people']))
 		{
 			$model->attributes=$_POST['companies'];
+			$model->language='es';
 			$user->attributes = $_POST['people'];
 			$user->first_name = $model->name;
 			$user->roles      = '0,1,3,4,5';
@@ -89,6 +90,7 @@ class companiesController extends Controller
 				$user->company_id = $model->id;
 				$user->save(false);
 				$this->redirect(array('people/index'));
+				mkdir('files/' . $model->id);
 			}
 		}
 

@@ -12,6 +12,7 @@
  * @property string $deployment_sequence
  * @property string $faq
  * @property string $aditional_sources
+ * @property string $aditional_sources_file
  * @property string $security_certification
  * @property string $guaranty
  * @property integer $sent
@@ -42,6 +43,7 @@ class operation_manual extends CActiveRecord
 			array('sent, project_manager_validated, technical_leader_validated, change_request', 'numerical', 'integerOnly'=>true),
 			array('process_id', 'length', 'max'=>10),
 			array('operation_criteria, operative_enviroment, security_alerts, deployment_sequence, faq, aditional_sources, security_certification, guaranty, change_request_details', 'safe'),
+			array('aditional_sources_file', 'file', 'safe' => false, 'allowEmpty'=>true),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('id, process_id, operation_criteria, operative_enviroment, security_alerts, deployment_sequence, faq, aditional_sources, security_certification, guaranty, sent, project_manager_validated, technical_leader_validated, change_request, change_request_details', 'safe', 'on'=>'search'),

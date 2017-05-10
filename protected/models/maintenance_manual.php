@@ -7,6 +7,7 @@
  * @property string $id
  * @property string $process_id
  * @property string $enviroment
+ * @property string $enviroment_file
  * @property integer $sent
  * @property integer $project_manager_validated
  * @property integer $technical_leader_validated
@@ -35,6 +36,7 @@ class maintenance_manual extends CActiveRecord
 			array('sent, project_manager_validated, technical_leader_validated, change_request', 'numerical', 'integerOnly'=>true),
 			array('process_id', 'length', 'max'=>10),
 			array('enviroment, change_request_details', 'safe'),
+			array('enviroment_file', 'file', 'safe' => false, 'allowEmpty'=>true),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('id, process_id, enviroment, sent, project_manager_validated, technical_leader_validated, change_request, change_request_details', 'safe', 'on'=>'search'),

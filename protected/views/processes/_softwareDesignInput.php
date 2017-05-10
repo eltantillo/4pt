@@ -15,12 +15,14 @@
 <?php 
   echo '<h3>' . Language::$highLevelDesign . '</h3>';
   echo $softwareDesign->high_lvl_design;
+  echo ($softwareDesign->high_lvl_design_file != null ? '<a href="' . Yii::app()->request->baseUrl . '/' . $softwareDesign->high_lvl_design_file . '" target="_blank">Archivo adjunto</a>' : '');
   echo '<h3>' . Language::$lowLevelDesign . '</h3>';
   echo $softwareDesign->low_lvl_design;
+  echo ($softwareDesign->low_lvl_design_file != null ? '<a href="' . Yii::app()->request->baseUrl . '/' . $softwareDesign->low_lvl_design_file . '" target="_blank">Archivo adjunto</a>' : '');
 ?>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
       </div>
     </div>
   </div>
