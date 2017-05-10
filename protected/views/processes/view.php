@@ -23,7 +23,7 @@ $accessArray = Functions::accessArray(
 	<h1><?php echo $project->title . ' (' . $project->acronym . ')'; ?></h1>
 </div>
 
-<?php if (!$accessArray['projectPlan'] && !$accessArray['projectExecution'] && !$accessArray['softwareImplementation']){
+<?php if (!$accessArray['projectPlan'] && !$accessArray['projectExecution'] && !$accessArray['softwareImplementation'] && !$accessArray['actOfAcceptance']){
   echo '<p>Por el momento no tiene actividades por desarrollar en este proyecto</p>';
   } ?>
 
@@ -103,7 +103,7 @@ $accessArray = Functions::accessArray(
       <div class="caption">
         <h3><?php echo Language::$validation; ?></h3>
         <p><?php echo Language::$validationDescription; ?></p>
-        <p><a href="<?php echo Yii::app()->request->baseUrl . '/processes/projectplanvalidate/' . $project->id; ?>" class="btn btn-primary" role="button">Validar</a>
+        <p><a href="<?php echo Yii::app()->request->baseUrl . '/processes/projectplanvalidate/' . $project->id; ?>" class="btn btn-primary" role="button">Ver</a>
       </div>
     </div>
   </div>

@@ -7,7 +7,9 @@
  * @property string $id
  * @property string $process_id
  * @property string $high_lvl_design
+ * @property string $high_lvl_design_file
  * @property string $low_lvl_design
+ * @property string $low_lvl_design_file
  * @property integer $sent
  * @property integer $project_manager_validated
  * @property integer $technical_leader_validated
@@ -36,6 +38,7 @@ class software_design extends CActiveRecord
 			array('sent, project_manager_validated, technical_leader_validated, change_request', 'numerical', 'integerOnly'=>true),
 			array('process_id', 'length', 'max'=>10),
 			array('high_lvl_design, low_lvl_design, change_request_details', 'safe'),
+			array('high_lvl_design_file, low_lvl_design_file', 'file', 'safe' => false, 'allowEmpty'=>true),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('id, process_id, high_lvl_design, low_lvl_design, sent, project_manager_validated, technical_leader_validated, change_request, change_request_details', 'safe', 'on'=>'search'),

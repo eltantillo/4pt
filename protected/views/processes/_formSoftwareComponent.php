@@ -3,6 +3,7 @@
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'software-component-form',
 	'enableAjaxValidation'=>false,
+	'htmlOptions' => array('enctype' => 'multipart/form-data'),
 )); ?>
 
 	<div class="form-group">
@@ -19,7 +20,7 @@
 
 	<div class="form-group">
 		<?php echo $form->labelEx($model,'file'); ?>
-		<?php echo $form->textArea($model,'file',array('rows'=>6, 'cols'=>50, 'class'=>'form-control', 'placeholder'=>'')); ?>
+		<?php echo $form->fileField($model, 'file'); ?>
 		<?php echo $form->error($model,'file',array('class'=>'alert alert-danger')); ?>
 	</div>
 

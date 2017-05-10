@@ -3,6 +3,7 @@
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'software-design-form',
 	'enableAjaxValidation'=>false,
+	'htmlOptions' => array('enctype' => 'multipart/form-data'),
 )); ?>
 	
 	<?php
@@ -20,6 +21,8 @@
 •	Manejo de errores y atributos  de recuperación 
 ')); ?>
 		<?php echo $form->error($model,'high_lvl_design',array('class'=>'alert alert-danger')); ?>
+		<?php echo $form->fileField($model, 'high_lvl_design_file'); ?>
+		<?php echo $form->error($model,'high_lvl_design_file',array('class'=>'alert alert-danger')); ?>
 	</div>
 
 	<div class="form-group">
@@ -35,6 +38,8 @@
 •	Los estados utilizados son: verificado, en línea base y actualizado
 ')); ?>
 		<?php echo $form->error($model,'low_lvl_design',array('class'=>'alert alert-danger')); ?>
+		<?php echo $form->fileField($model, 'low_lvl_design_file'); ?>
+		<?php echo $form->error($model,'low_lvl_design_file',array('class'=>'alert alert-danger')); ?>
 	</div>
 
 	<div class="form-group">

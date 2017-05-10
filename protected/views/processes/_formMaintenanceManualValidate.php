@@ -14,6 +14,7 @@
 	<?php 
 	echo '<h3>' . Language::$enviroment . '</h3>';
 	echo '<p>' . $model->enviroment . '</p>';
+	echo ($model->enviroment_file != null ? '<a href="' . Yii::app()->request->baseUrl . '/' . $model->enviroment_file . '" target="_blank">Archivo adjunto</a>' : '');
 	?>
 
 	<?php if (in_array(0, $sessionUser->rolesArray)){ ?>

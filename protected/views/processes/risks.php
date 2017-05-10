@@ -15,7 +15,7 @@ $this->breadcrumbs=array(
 <div class="list-group">
 	<?php
 	foreach ($model as $risk) {
-		echo '<a href="' . Yii::app()->request->baseUrl . '/processes/riskadmin/' . $_GET['id'] .'?riskID=' . $risk->id .'" class="list-group-item"><strong>' . $risk->risk . '</strong><br>' . Language::$cost . ': $' . $risk->cost .'</a>';
+		echo '<a href="' . Yii::app()->request->baseUrl . '/processes/riskadmin/' . $_GET['id'] .'?riskID=' . $risk->id .'" class="list-group-item"><strong>' . $risk->title . '</strong><br>' . $risk->risk . '<br>' . Language::$cost . ': $' . $risk->cost .'</a>';
 	}
 	?>
 </div>

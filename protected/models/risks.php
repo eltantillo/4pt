@@ -6,6 +6,7 @@
  * The followings are the available columns in table 'risks':
  * @property string $id
  * @property string $project_plan_id
+ * @property string $title
  * @property string $risk
  * @property double $cost
  */
@@ -30,7 +31,7 @@ class risks extends CActiveRecord
 			array('project_plan_id', 'required'),
 			array('cost', 'numerical'),
 			array('project_plan_id', 'length', 'max'=>10),
-			array('risk', 'safe'),
+			array('risk, title', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('id, project_plan_id, risk, cost', 'safe', 'on'=>'search'),
@@ -57,6 +58,7 @@ class risks extends CActiveRecord
 		return array(
 			'id' => 'Id',
 			'project_plan_id' => 'Project Plan',
+			'title' => 'Título del riesgo',
 			'risk' => Language::$riskDescription,
 			'cost' => Language::$cost,
 		);

@@ -11,7 +11,6 @@
 		}
 	?>
 	
-
 	<div class="form-group">
 		<?php echo $form->labelEx($model,'product_description'); ?>
 		<?php echo $form->textArea($model,'product_description',array('rows'=>6, 'cols'=>50, 'class'=>'form-control', 'placeholder'=>'Propósito y requisitos generales del cliente.')); ?>

@@ -89,6 +89,7 @@ class companiesController extends Controller
 				$model->save(false);
 				$user->company_id = $model->id;
 				$user->save(false);
+				mkdir('files/' . $model->id);
 				$this->redirect(array('people/index'));
 			}
 		}

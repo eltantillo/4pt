@@ -1,5 +1,3 @@
-<?php if (in_array(0, $sessionUser->rolesArray) && !$model->isNewRecord) {echo '<form method="POST" action="' . Yii::app()->baseUrl . '/processes/minutedelete/' . $_GET['id'] . '?minuteID=' . $model->id . '"><button class="btn btn-danger btn-sm delete" type="submit"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> ' . Language::$delete . '</button></form>';} ?>
-
 <div class="form">
 
 <?php $form=$this->beginWidget('CActiveForm', array(
@@ -88,6 +86,7 @@ echo '<p>' . $model->next_meeting . '</p>';
 <?php } ?>
 	<div class="form-group buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? Language::$finish : Language::$update, array('type'=>'submit', 'class'=>'btn btn-success')); ?>
+		<?php if (in_array(0, $sessionUser->rolesArray) && !$model->isNewRecord) {echo '<form method="POST" action="' . Yii::app()->baseUrl . '/processes/minutedelete/' . $_GET['id'] . '?minuteID=' . $model->id . '"><button class="btn btn-danger delete" type="submit"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Eliminar</button></form>';} ?>
 	</div>
 
 <?php $this->endWidget(); ?>

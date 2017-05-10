@@ -681,25 +681,139 @@ class ProcessesController extends Controller
 			if ($tempModel != null){
 				$model->change_request_details = $tempModel->change_request_details;
 				$model->introduction           = $tempModel->introduction;
+				$model->functionality          = $tempModel->functionality;
 				$model->user_interface         = $tempModel->user_interface;
 				$model->external_interfaces    = $tempModel->external_interfaces;
 				$model->reliability            = $tempModel->reliability;
 				$model->efficiency             = $tempModel->efficiency;
 				$model->maintenance            = $tempModel->maintenance;
 				$model->portability            = $tempModel->portability;
+				$model->limitations            = $tempModel->limitations;
 				$model->interoperability       = $tempModel->interoperability;
 				$model->reuse                  = $tempModel->reuse;
+				$model->legal                  = $tempModel->legal;
+
+				$model->functionality_file       = $tempModel->functionality_file;
+				$model->user_interface_file      = $tempModel->user_interface_file;
+				$model->external_interfaces_file = $tempModel->external_interfaces_file;
+				$model->reliability_file         = $tempModel->reliability_file;
+				$model->efficiency_file          = $tempModel->efficiency_file;
+				$model->maintenance_file         = $tempModel->maintenance_file;
+				$model->portability_file         = $tempModel->portability_file;
+				$model->limitations_file         = $tempModel->limitations_file;
+				$model->interoperability_file    = $tempModel->interoperability_file;
+				$model->reuse_file               = $tempModel->reuse_file;
+				$model->legal_file               = $tempModel->legal_file;
 			}
 		}
 
 		if(isset($_POST['software_requirements']))
 		{
-			$model->attributes=$_POST['software_requirements'];
+			$model->attributes = $_POST['software_requirements'];
+
+			$functionality_file       = CUploadedFile::getInstance($model,'functionality_file');
+			$user_interface_file      = CUploadedFile::getInstance($model,'user_interface_file');
+			$external_interfaces_file = CUploadedFile::getInstance($model,'external_interfaces_file');
+			$reliability_file         = CUploadedFile::getInstance($model,'reliability_file');
+			$efficiency_file          = CUploadedFile::getInstance($model,'efficiency_file');
+			$maintenance_file         = CUploadedFile::getInstance($model,'maintenance_file');
+			$portability_file         = CUploadedFile::getInstance($model,'portability_file');
+			$limitations_file         = CUploadedFile::getInstance($model,'limitations_file');
+			$interoperability_file    = CUploadedFile::getInstance($model,'interoperability_file');
+			$reuse_file               = CUploadedFile::getInstance($model,'reuse_file');
+			$legal_file               = CUploadedFile::getInstance($model,'legal_file');
+
 			if ((in_array(2, $sessionUser->rolesArray) || in_array(3, $sessionUser->rolesArray)) && $model->sent){
 				$model->change_request_details = null;
 			}
-			if($model->save())
+			
+			if($model->save()){
+				$path = 'files/' . $sessionUser->company_id . '/' . $project->id . '/softwareRequirements/'. $model->id . '/';
+
+				if (!file_exists($path)){
+					mkdir($path);
+				}
+
+				if ($functionality_file != null){
+					$ext = explode('.' , $functionality_file)[1];
+					$file = $path . 'functionality_file.' . $ext;
+	            	$functionality_file->saveAs($file);
+	            	$model->functionality_file = $file;
+				}
+
+				if ($user_interface_file != null){
+					$ext = explode('.' , $user_interface_file)[1];
+					$file = $path . 'user_interface_file.' . $ext;
+	            	$user_interface_file->saveAs($file);
+	            	$model->user_interface_file = $file;
+				}
+
+				if ($external_interfaces_file != null){
+					$ext = explode('.' , $external_interfaces_file)[1];
+					$file = $path . 'external_interfaces_file.' . $ext;
+	            	$external_interfaces_file->saveAs($file);
+	            	$model->external_interfaces_file = $file;
+				}
+
+				if ($reliability_file != null){
+					$ext = explode('.' , $reliability_file)[1];
+					$file = $path . 'reliability_file.' . $ext;
+	            	$reliability_file->saveAs($file);
+	            	$model->reliability_file = $file;
+				}
+
+				if ($efficiency_file != null){
+					$ext = explode('.' , $efficiency_file)[1];
+					$file = $path . 'efficiency_file.' . $ext;
+	            	$efficiency_file->saveAs($file);
+	            	$model->efficiency_file = $file;
+				}
+
+				if ($maintenance_file != null){
+					$ext = explode('.' , $maintenance_file)[1];
+					$file = $path . 'maintenance_file.' . $ext;
+	            	$maintenance_file->saveAs($file);
+	            	$model->maintenance_file = $file;
+				}
+
+				if ($portability_file != null){
+					$ext = explode('.' , $portability_file)[1];
+					$file = $path . 'portability_file.' . $ext;
+	            	$portability_file->saveAs($file);
+	            	$model->portability_file = $file;
+				}
+
+				if ($limitations_file != null){
+					$ext = explode('.' , $limitations_file)[1];
+					$file = $path . 'limitations_file.' . $ext;
+	            	$limitations_file->saveAs($file);
+	            	$model->limitations_file = $file;
+				}
+
+				if ($interoperability_file != null){
+					$ext = explode('.' , $interoperability_file)[1];
+					$file = $path . 'interoperability_file.' . $ext;
+	            	$interoperability_file->saveAs($file);
+	            	$model->interoperability_file = $file;
+				}
+
+				if ($reuse_file != null){
+					$ext = explode('.' , $reuse_file)[1];
+					$file = $path . 'reuse_file.' . $ext;
+	            	$reuse_file->saveAs($file);
+	            	$model->reuse_file = $file;
+				}
+
+				if ($legal_file != null){
+					$ext = explode('.' , $legal_file)[1];
+					$file = $path . 'legal_file.' . $ext;
+	            	$legal_file->saveAs($file);
+	            	$model->legal_file = $file;
+				}
+
+				$model->update();
 				$this->redirect(array('view','id'=>$project->id));
+			}
 		}
 
 		$this->render('softwareRequirements',array(
@@ -783,8 +897,34 @@ class ProcessesController extends Controller
 		if(isset($_POST['software_design']))
 		{
 			$model->attributes=$_POST['software_design'];
-			if($model->save())
+
+			$high_lvl_design_file = CUploadedFile::getInstance($model,'high_lvl_design_file');
+			$low_lvl_design_file  = CUploadedFile::getInstance($model,'low_lvl_design_file');
+
+			if($model->save()){
+				$path = 'files/' . $sessionUser->company_id . '/' . $project->id . '/softwareDesign/'. $model->id . '/';
+
+				if (!file_exists($path)){
+					mkdir($path);
+				}
+
+				if ($high_lvl_design_file != null){
+					$ext = explode('.' , $high_lvl_design_file)[1];
+					$file = $path . 'high_lvl_design_file.' . $ext;
+	            	$high_lvl_design_file->saveAs($file);
+	            	$model->high_lvl_design_file = $file;
+				}
+
+				if ($low_lvl_design_file != null){
+					$ext = explode('.' , $low_lvl_design_file)[1];
+					$file = $path . 'low_lvl_design_file.' . $ext;
+	            	$low_lvl_design_file->saveAs($file);
+	            	$model->low_lvl_design_file = $file;
+				}
+
+				$model->update();
 				$this->redirect(array('view','id'=>$project->id));
+			}
 		}
 
 		$this->render('softwareDesign',array(
@@ -863,8 +1003,26 @@ class ProcessesController extends Controller
 		if(isset($_POST['operation_manual']))
 		{
 			$model->attributes=$_POST['operation_manual'];
-			if($model->save())
+
+			$aditional_sources_file = CUploadedFile::getInstance($model,'aditional_sources_file');
+
+			if($model->save()){
+				$path = 'files/' . $sessionUser->company_id . '/' . $project->id . '/operationManual/'. $model->id . '/';
+
+				if (!file_exists($path)){
+					mkdir($path);
+				}
+
+				if ($aditional_sources_file != null){
+					$ext = explode('.' , $aditional_sources_file)[1];
+					$file = $path . 'aditional_sources_file.' . $ext;
+	            	$aditional_sources_file->saveAs($file);
+	            	$model->aditional_sources_file = $file;
+				}
+
+				$model->update();
 				$this->redirect(array('view','id'=>$project->id));
+			}
 		}
 
 		$this->render('operationManual',array(
@@ -896,8 +1054,26 @@ class ProcessesController extends Controller
 		if(isset($_POST['maintenance_manual']))
 		{
 			$model->attributes=$_POST['maintenance_manual'];
-			if($model->save())
+
+			$enviroment_file = CUploadedFile::getInstance($model,'enviroment_file');
+
+			if($model->save()){
+				$path = 'files/' . $sessionUser->company_id . '/' . $project->id . '/maintenanceManual/'. $model->id . '/';
+
+				if (!file_exists($path)){
+					mkdir($path);
+				}
+
+				if ($enviroment_file != null){
+					$ext = explode('.' , $enviroment_file)[1];
+					$file = $path . 'enviroment_file.' . $ext;
+	            	$enviroment_file->saveAs($file);
+	            	$model->enviroment_file = $file;
+				}
+
+				$model->update();
 				$this->redirect(array('view','id'=>$project->id));
+			}
 		}
 
 		$this->render('maintenanceManual',array(
@@ -952,8 +1128,25 @@ class ProcessesController extends Controller
 		if(isset($_POST['software_component']))
 		{
 			$model->attributes=$_POST['software_component'];
-			if($model->save())
+
+			$component_file = CUploadedFile::getInstance($model,'file');
+
+			if($model->save()){$path = 'files/' . $sessionUser->company_id . '/' . $project->id . '/softwareComponents/'. $model->id . '/';
+
+				if (!file_exists($path)){
+					mkdir($path);
+				}
+
+				if ($component_file != null){
+					$ext = explode('.' , $component_file)[1];
+					$file = $path . 'component_file.' . $ext;
+	            	$component_file->saveAs($file);
+	            	$model->file = $file;
+				}
+
+				$model->update();
 				$this->redirect(array('softwarecomponents','id'=>$project->id));
+			}
 		}
 
 		$this->render('softwareComponentAdmin',array(

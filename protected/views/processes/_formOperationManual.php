@@ -3,6 +3,7 @@
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'operation-manual-form',
 	'enableAjaxValidation'=>false,
+	'htmlOptions' => array('enctype' => 'multipart/form-data'),
 )); ?>
 	
 	<?php
@@ -45,6 +46,8 @@
 		<?php echo $form->labelEx($model,'aditional_sources'); ?>
 		<?php echo $form->textArea($model,'aditional_sources',array('rows'=>6, 'cols'=>50, 'class'=>'form-control', 'placeholder'=>'')); ?>
 		<?php echo $form->error($model,'aditional_sources',array('class'=>'alert alert-danger')); ?>
+		<?php echo $form->fileField($model, 'aditional_sources_file'); ?>
+		<?php echo $form->error($model,'aditional_sources_file',array('class'=>'alert alert-danger')); ?>
 	</div>
 
 	<div class="form-group">

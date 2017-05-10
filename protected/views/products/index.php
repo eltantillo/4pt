@@ -9,7 +9,12 @@ $this->breadcrumbs=array(
 </div>
 
 <div class="list-group">
-<?php 
+<?php
+
+if(count($projects) == 0){
+	echo '<p>Por el momento no hay productos para mostrar.</p>';
+}
+
 foreach ($projects as $project) {
 	$process = processes::model()->findByAttributes(array('project_id'=>$project->id));
 	echo '

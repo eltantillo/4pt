@@ -70,14 +70,24 @@ class projectsController extends Controller
 			if ($model->template == 0){
 				$model->template = null;
 			}
-			if($model->save())
+			if($model->save()){
 				$process = new processes;
 				$process->project_id = $model->id;
 				$process->save();
 				$project = new project_plan;
 				$project->process_id = $process->id;
 				$project->save();
+
+				$path = 'files/' . $user->company_id . '/' . $model->id . '/';
+				mkdir($path);
+				mkdir($path . 'maintenanceManual');
+				mkdir($path . 'operationManual');
+				mkdir($path . 'softwareComponents');
+				mkdir($path . 'softwareDesign');
+				mkdir($path . 'softwareRequirements');
+				
 				$this->redirect(array('Roles','ProjectId'=>$model->id));
+			}
 		}
 
 		$this->render('create',array(

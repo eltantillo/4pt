@@ -24,6 +24,7 @@
 	echo '<p>' . $model->faq . '</p>';
 	echo '<h3>' . Language::$aditionalSources . '</h3>';
 	echo '<p>' . $model->aditional_sources . '</p>';
+	echo ($model->aditional_sources_file != null ? '<a href="' . Yii::app()->request->baseUrl . '/' . $model->aditional_sources_file . '" target="_blank">Archivo adjunto</a>' : '');
 	echo '<h3>' . Language::$securityCertification . '</h3>';
 	echo '<p>' . $model->security_certification . '</p>';
 	echo '<h3>' . Language::$guaranty . '</h3>';

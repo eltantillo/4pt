@@ -11,10 +11,13 @@ $this->breadcrumbs=array(
 </div>
 
 <?php
-if (in_array(0, $sessionUser->rolesArray) || in_array(1, $sessionUser->rolesArray)){
+if ((in_array(0, $sessionUser->rolesArray) && !$model->project_manager_validated) || (in_array(1, $sessionUser->rolesArray) && !$model->technical_leader_validated)){
 	echo $this->renderPartial('_formWorkStatementValidate', array('model'=>$model, 'sessionUser'=>$sessionUser));
 }
 elseif (in_array(2, $sessionUser->rolesArray)){
 	echo $this->renderPartial('_formWorkStatement', array('model'=>$model));
+}
+else{
+	$this->redirect(array('view','id'=>$project->id));
 }
 ?>

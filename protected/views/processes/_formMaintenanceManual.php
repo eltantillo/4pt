@@ -3,6 +3,7 @@
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'maintenance-manual-form',
 	'enableAjaxValidation'=>false,
+	'htmlOptions' => array('enctype' => 'multipart/form-data'),
 )); ?>
 	
 	<?php
@@ -15,6 +16,8 @@
 		<?php echo $form->labelEx($model,'enviroment'); ?>
 		<?php echo $form->textArea($model,'enviroment',array('rows'=>6, 'cols'=>50, 'class'=>'form-control', 'placeholder'=>'Compiladores, herramientas de diseño, construcción y pruebas')); ?>
 		<?php echo $form->error($model,'enviroment',array('class'=>'alert alert-danger')); ?>
+		<?php echo $form->fileField($model, 'enviroment_file'); ?>
+		<?php echo $form->error($model,'enviroment_file',array('class'=>'alert alert-danger')); ?>
 	</div>
 
 	<div class="form-group">

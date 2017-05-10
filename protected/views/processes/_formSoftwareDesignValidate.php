@@ -13,9 +13,11 @@
 
 	<?php 
 	echo '<h3>' . Language::$highLevelDesign . '</h3>';
-	echo '<p>' . $model->high_lvl_design . '</p>';
+	echo $model->high_lvl_design;
+	echo ($model->high_lvl_design_file != null ? '<a href="' . Yii::app()->request->baseUrl . '/' . $model->high_lvl_design_file . '" target="_blank">Archivo adjunto</a>' : '');
 	echo '<h3>' . Language::$lowLevelDesign . '</h3>';
-	echo '<p>' . $model->low_lvl_design . '</p>';
+	echo $model->low_lvl_design;
+	echo ($model->low_lvl_design_file != null ? '<a href="' . Yii::app()->request->baseUrl . '/' . $model->low_lvl_design_file . '" target="_blank">Archivo adjunto</a>' : '');
 	?>
 	
 

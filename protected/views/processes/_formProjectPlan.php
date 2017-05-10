@@ -100,7 +100,7 @@
 	<?php } ?>
 
 	<div class="form-group buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? Language::$finish : Language::$update, array('type'=>'submit', 'class'=>'btn btn-success')); ?>
+		<?php echo CHtml::submitButton($model->isNewRecord ? Language::$finish : Language::$finish, array('type'=>'submit', 'class'=>'btn btn-success')); ?>
 	</div>
 
 <?php $this->endWidget(); ?>
