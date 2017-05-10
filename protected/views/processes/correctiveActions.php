@@ -10,7 +10,7 @@ $this->breadcrumbs=array(
 	<h1><?php echo Language::$correctiveActions; ?></h1>
 </div>
 
-<a class="btn btn-primary btn-sm" href="<?php echo Yii::app()->request->baseUrl . '/processes/correctiveactionadmin/' . $_GET['id']; ?>" role="button"><span class="glyphicon glyphicon-book" aria-hidden="true"></span> Create Corrective Action</a><br><br>
+<a class="btn btn-primary btn-sm" href="<?php echo Yii::app()->request->baseUrl . '/processes/correctiveactionadmin/' . $_GET['id']; ?>" role="button"><span class="glyphicon glyphicon-book" aria-hidden="true"></span> Crear acción correctiva</a><br><br>
 
 <div class="list-group">
 	<?php

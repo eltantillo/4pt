@@ -31,7 +31,7 @@ class projectsController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index', 'view', 'admin', 'delete', 'create', 'update', 'createTemplate', 'roles', 'people'),
+				'actions'=>array('index', 'view', 'admin', 'delete', 'create', 'update', 'createTemplate', 'editTemplate', 'roles', 'people'),
 				'users'=>array('@'),
 			),
 			array('deny',  // deny all users
@@ -66,6 +66,7 @@ class projectsController extends Controller
 		{
 			$model->attributes = $_POST['projects'];
 			$model->company_id = $user->company_id;
+			$model->product_type = 1;
 			if ($model->template == 0){
 				$model->template = null;
 			}
@@ -147,7 +148,7 @@ class projectsController extends Controller
 	 */
 	public function actionUpdate()
 	{
-		$model=$this->loadModel();
+		$model = $this->loadModel();
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
@@ -283,12 +284,14 @@ class projectsController extends Controller
 		$dataProvider = projects::model()->findAllByAttributes(array('company_id'=>$user->company_id));*/
 
 		$user  = people::model()->findByAttributes(array('id'=>Yii::app()->user->id));
+		$templates  = templates::model()->findAllByAttributes(array('company_id'=>$user->company_id));
 
 		$criteria = new CDbCriteria;
 		$criteria->compare('company_id',$user->company_id);
 		$dataProvider = new CActiveDataProvider('projects', array('criteria'=>$criteria,));
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
+			'templates'=>$templates,
 		));
 	}
 
@@ -313,8 +316,32 @@ class projectsController extends Controller
 	 */
 	public function actionCreateTemplate()
 	{
-		$model=new templates;
+		$model = new templates;
 		$user  = people::model()->findByAttributes(array('id'=>Yii::app()->user->id));
+
+		// Uncomment the following line if AJAX validation is needed
+		// $this->performAjaxValidation($model);
+
+		if(isset($_POST['templates']))
+		{
+			$model->attributes=$_POST['templates'];
+			$model->company_id = $user->company_id;
+			if($model->save())
+				$this->redirect(array('index'));
+		}
+
+		$this->render('template',array(
+			'model'=>$model,
+		));
+	}
+
+	public function actionEditTemplate()
+	{
+		$model = new templates;
+		if(isset($_GET['id']))
+			$model=templates::model()->findbyPk($_GET['id']);
+
+		$user = people::model()->findByAttributes(array('id'=>Yii::app()->user->id));
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);

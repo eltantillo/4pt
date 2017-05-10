@@ -32,10 +32,10 @@ foreach ($templates as $key) {
 		<?php echo $form->textField($model,'acronym',array('size'=>16,'maxlength'=>16, 'class'=>'form-control')); ?>
 	</div>
 
-	<div class="form-group">
+	<!--<div class="form-group">
 		<?php echo $form->labelEx($model,'product_type') . '<br>'; ?>
 		<?php echo $form->radioButtonList($model,'product_type',array(1 => Language::$product, 2 => Language::$service)); ?>
-	</div>
+	</div>-->
 
 	<div class="form-group">
 		<?php echo $form->labelEx($model,'level'); ?>

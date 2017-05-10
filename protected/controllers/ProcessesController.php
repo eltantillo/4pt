@@ -70,6 +70,10 @@ class ProcessesController extends Controller
 			array('process_id'=>$process->id),
 			array('order'=>'id DESC')
 			);
+		$deliveryInstructions = delivery_instructions::model()->findByAttributes(
+			array('project_plan_id'=>$projectPlan->id),
+			array('order'=>'id DESC')
+			);
 		$softwareRequirements = software_requirements::model()->findByAttributes(
 			array('process_id'=>$process->id),
 			array('order'=>'id DESC')
@@ -102,6 +106,27 @@ class ProcessesController extends Controller
 			array('project_plan_id'=>$projectPlan->id),
 			array('order'=>'id DESC')
 			);
+		$tasks = tasks::model()->findAllByAttributes(
+			array('project_plan_id'=>$projectPlan->id),
+			array('order'=>'id DESC')
+			);
+		$risks = risks::model()->findAllByAttributes(
+			array('project_plan_id'=>$projectPlan->id),
+			array('order'=>'id DESC')
+			);
+		$progressReports = progress_reports::model()->findAllByAttributes(
+			array('process_id'=>$process->id),
+			array('order'=>'id DESC')
+			);
+		$correctiveActions = corrective_actions::model()->findAllByAttributes(
+			array('process_id'=>$process->id),
+			array('order'=>'id DESC')
+			);
+		$softwareComponents = software_component::model()->findAllByAttributes(
+			array('process_id'=>$process->id),
+			array('order'=>'id DESC')
+			);
+
 		$minutesValidated = false;
 		foreach ($minutes as $minute) {
 			if($minute->client_validated){
@@ -114,20 +139,27 @@ class ProcessesController extends Controller
 		}
 
 		$this->render('view',array(
-			'project'             => $project,
-			'template'            => $template,
-			'projectPlan'         => $projectPlan,
-			'actOfAcceptance'     => $actOfAcceptance,
-			'workStatement'       => $workStatement,
-			'softwareRequirements'=> $softwareRequirements,
-			'userManual'          => $userManual,
-			'softwareDesign'      => $softwareDesign,
-			'traceabilityRecord'  => $traceabilityRecord,
-			'operationManual'     => $operationManual,
-			'maintenanceManual'   => $maintenanceManual,
-			'softwareComponent'   => $softwareComponent,
-			'sessionUser'         => $sessionUser,
-			'minutesValidated'    => $minutesValidated,
+			'project'              => $project,
+			'template'             => $template,
+			'projectPlan'          => $projectPlan,
+			'actOfAcceptance'      => $actOfAcceptance,
+			'workStatement'        => $workStatement,
+			'deliveryInstructions' => $deliveryInstructions,
+			'tasks'                => $tasks,
+			'minutes'              => $minutes,
+			'risks'                => $risks,
+			'progressReports'      => $progressReports,
+			'correctiveActions'    => $correctiveActions,
+			'softwareComponents'   => $softwareComponents,
+			'softwareRequirements' => $softwareRequirements,
+			'userManual'           => $userManual,
+			'softwareDesign'       => $softwareDesign,
+			'traceabilityRecord'   => $traceabilityRecord,
+			'operationManual'      => $operationManual,
+			'maintenanceManual'    => $maintenanceManual,
+			'softwareComponent'    => $softwareComponent,
+			'sessionUser'          => $sessionUser,
+			'minutesValidated'     => $minutesValidated,
 		));
 	}
 

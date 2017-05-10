@@ -14,6 +14,7 @@
 
 	<?php 
 	for ($i = 0; $i < 6; $i++) {
+		if ($i !=0 && $i != 2){
 	?>
 
 		<div class="form-group">
@@ -22,6 +23,10 @@
 		</div>
 
 	<?php
+		}
+		else{
+			echo $form->hiddenField($model,'roles[' . $i . ']',array('type'=>"hidden",'size'=>32,'maxlength'=>32, 'value'=>1));
+		}
 	}
 	?>
 

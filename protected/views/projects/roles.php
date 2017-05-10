@@ -6,6 +6,6 @@ $this->breadcrumbs=array(
 );
 ?>
 
-<h1><?php echo Language::$assignRoles; ?></h1>
+<h1>Asignar No. de Personas con Respecto al Rol</h1>
 
 <?php echo $this->renderPartial('_roles', array('model'=>$model)); ?>

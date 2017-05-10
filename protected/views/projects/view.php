@@ -8,13 +8,13 @@ $this->breadcrumbs=array(
 $this->menu=array(
 	array(
 		'encodeLabel'=>false,
-		'label' => '<a class="btn btn-primary btn-sm" href="' . Yii::app()->baseUrl . '/projects/update/' . $model->id  . '" role="button"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> ' . Language::$update . '</a>',
+		'label' => '<a class="btn btn-primary btn-sm" href="' . Yii::app()->baseUrl . '/projects/update/' . $model->id  . '" role="button"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Actualizar proyecto</a>',
 	),
 	array(
 		'url'=>Yii::app()->baseUrl . '/projects/delete/' . $model->id,
 		'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>Yii::t('zii',Language::$deleteConfirm)),
 		'encodeLabel'=>false,
-		'label' => '<form method="POST" action="' . Yii::app()->baseUrl . '/projects/delete/' . $model->id . '"><button class="btn btn-danger btn-sm delete" type="submit"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> ' . Language::$delete . '</button></form>',
+		'label' => '<form method="POST" action="' . Yii::app()->baseUrl . '/projects/delete/' . $model->id . '"><button class="btn btn-danger btn-sm delete" type="submit"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Borrar proyecto</button></form>',
 	),
 );
 ?>
@@ -42,10 +42,10 @@ $this->menu=array(
 	'attributes'=>array(
 		'title',
 		'acronym',
-		array(
+		/*array(
 			'label'=>Language::$ProjectType,
 			'value'=>Functions::productFormat($model->product_type),
-		),
+		),*/
 		array(
 			'label'=>Language::$level,
 			'value'=>Functions::levelFormat($model->level),

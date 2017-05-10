@@ -23,8 +23,13 @@ $accessArray = Functions::accessArray(
 	<h1><?php echo $project->title . ' (' . $project->acronym . ')'; ?></h1>
 </div>
 
+<?php if (!$accessArray['projectPlan'] && !$accessArray['projectExecution'] && !$accessArray['softwareImplementation']){
+  echo '<p>Por el momento no tiene actividades por desarrollar en este proyecto</p>';
+  } ?>
+
 <?php if ($accessArray['projectPlan']){ ?>
 <h2><?php echo Language::$projectPlan; ?></h2>
+<p>Complete todas las actividades para poder validar el plan de proyecto</p>
 <div class="row">
   <?php if($accessArray['workStatement']){ ?>
   <div class="col-md-3">
@@ -33,7 +38,7 @@ $accessArray = Functions::accessArray(
       <div class="caption">
         <h3><?php echo Language::$workStatement; ?></h3>
         <p>Descripción del trabajo a ser realizado en relación al desarrollo de software.</p>
-        <p><a href="<?php echo Yii::app()->request->baseUrl . '/processes/workstatement/' . $project->id; ?>" class="btn btn-primary" role="button"><?php echo Language::$view; ?></a>
+        <p><a href="<?php echo Yii::app()->request->baseUrl . '/processes/workstatement/' . $project->id; ?>" class="btn btn-primary" role="button"><?php echo $workStatement != null ? Language::$view : Language::$create; ?></a>
       </div>
     </div>
   </div>
@@ -46,7 +51,7 @@ $accessArray = Functions::accessArray(
       <div class="caption">
         <h3><?php echo Language::$deliveryInstructions; ?></h3>
         <p><?php echo Language::$workStatementDescription; ?></p>
-        <p><a href="<?php echo Yii::app()->request->baseUrl . '/processes/deliveryinstructions/' . $project->id; ?>" class="btn btn-primary" role="button"><?php echo Language::$view; ?></a>
+        <p><a href="<?php echo Yii::app()->request->baseUrl . '/processes/deliveryinstructions/' . $project->id; ?>" class="btn btn-primary" role="button"><?php echo $deliveryInstructions != null ? Language::$view : Language::$create; ?></a>
       </div>
     </div>
   </div>
@@ -59,7 +64,7 @@ $accessArray = Functions::accessArray(
       <div class="caption">
         <h3><?php echo Language::$tasks; ?></h3>
         <p><?php echo Language::$tasksDescription; ?></p>
-        <p><a href="<?php echo Yii::app()->request->baseUrl . '/processes/tasks/' . $project->id; ?>" class="btn btn-primary" role="button"><?php echo Language::$view; ?></a>
+        <p><a href="<?php echo Yii::app()->request->baseUrl . '/processes/tasks/' . $project->id; ?>" class="btn btn-primary" role="button"><?php echo count($tasks) > 0 ? Language::$view : Language::$create; ?></a>
       </div>
     </div>
   </div>
@@ -72,7 +77,7 @@ $accessArray = Functions::accessArray(
       <div class="caption">
         <h3><?php echo Language::$risks; ?></h3>
         <p><?php echo Language::$risksDescription; ?></p>
-        <p><a href="<?php echo Yii::app()->request->baseUrl . '/processes/risks/' . $project->id; ?>" class="btn btn-primary" role="button"><?php echo Language::$view; ?></a>
+        <p><a href="<?php echo Yii::app()->request->baseUrl . '/processes/risks/' . $project->id; ?>" class="btn btn-primary" role="button"><?php echo count($risks) > 0 ? Language::$view : Language::$create; ?></a>
       </div>
     </div>
   </div>
@@ -85,7 +90,7 @@ $accessArray = Functions::accessArray(
       <div class="caption">
         <h3><?php echo Language::$minutes; ?></h3>
         <p><?php echo Language::$minutesDescription; ?></p>
-        <p><a href="<?php echo Yii::app()->request->baseUrl . '/processes/minutes/' . $project->id; ?>" class="btn btn-primary" role="button"><?php echo Language::$view; ?></a>
+        <p><a href="<?php echo Yii::app()->request->baseUrl . '/processes/minutes/' . $project->id; ?>" class="btn btn-primary" role="button"><?php echo count($minutes) > 0 ? Language::$view : Language::$create; ?></a>
       </div>
     </div>
   </div>
@@ -98,12 +103,13 @@ $accessArray = Functions::accessArray(
       <div class="caption">
         <h3><?php echo Language::$validation; ?></h3>
         <p><?php echo Language::$validationDescription; ?></p>
-        <p><a href="<?php echo Yii::app()->request->baseUrl . '/processes/projectplanvalidate/' . $project->id; ?>" class="btn btn-primary" role="button"><?php echo Language::$view; ?></a>
+        <p><a href="<?php echo Yii::app()->request->baseUrl . '/processes/projectplanvalidate/' . $project->id; ?>" class="btn btn-primary" role="button">Validar</a>
       </div>
     </div>
   </div>
   <?php } ?>
 </div>
+<hr>
 <?php } ?>
 
 <?php if($accessArray['projectExecution']){ ?>
@@ -117,7 +123,7 @@ $accessArray = Functions::accessArray(
       <div class="caption">
         <h3><?php echo Language::$progressReport; ?></h3>
         <p><?php echo Language::$progressReportDescription; ?></p>
-        <p><a href="<?php echo Yii::app()->request->baseUrl . '/processes/progressreports/' . $project->id; ?>" class="btn btn-primary" role="button"><?php echo Language::$view; ?></a>
+        <p><a href="<?php echo Yii::app()->request->baseUrl . '/processes/progressreports/' . $project->id; ?>" class="btn btn-primary" role="button"><?php echo count($progressReports) > 0 ? Language::$view : Language::$create; ?></a>
       </div>
     </div>
   </div>
@@ -130,12 +136,13 @@ $accessArray = Functions::accessArray(
       <div class="caption">
         <h3><?php echo Language::$correctiveActions; ?></h3>
         <p><?php echo Language::$correctiveActionsDescription; ?></p>
-        <p><a href="<?php echo Yii::app()->request->baseUrl . '/processes/correctiveactions/' . $project->id; ?>" class="btn btn-primary" role="button"><?php echo Language::$view; ?></a>
+        <p><a href="<?php echo Yii::app()->request->baseUrl . '/processes/correctiveactions/' . $project->id; ?>" class="btn btn-primary" role="button"><?php echo count($correctiveActions) > 0 ? Language::$view : Language::$create; ?></a>
       </div>
     </div>
   </div>
   <?php } ?>
 </div>
+<hr>
 <?php } ?>
 
 <?php if($accessArray['softwareImplementation']){ ?>
@@ -149,7 +156,7 @@ $accessArray = Functions::accessArray(
       <div class="caption">
         <h3><?php echo Language::$softwareRequirements; ?></h3>
         <p><?php echo Language::$softwareRequirementsDescription; ?></p>
-        <p><a href="<?php echo Yii::app()->request->baseUrl . '/processes/softwarerequirements/' . $project->id; ?>" class="btn btn-primary" role="button"><?php echo Language::$view; ?></a>
+        <p><a href="<?php echo Yii::app()->request->baseUrl . '/processes/softwarerequirements/' . $project->id; ?>" class="btn btn-primary" role="button"><?php echo $softwareRequirements != null ? Language::$view : Language::$create; ?></a>
       </div>
     </div>
   </div>
@@ -162,7 +169,7 @@ $accessArray = Functions::accessArray(
       <div class="caption">
         <h3><?php echo Language::$userManual; ?></h3>
         <p><?php echo Language::$userManualDescription; ?></p>
-        <p><a href="<?php echo Yii::app()->request->baseUrl . '/processes/usermanual/' . $project->id; ?>" class="btn btn-primary" role="button"><?php echo Language::$view; ?></a>
+        <p><a href="<?php echo Yii::app()->request->baseUrl . '/processes/usermanual/' . $project->id; ?>" class="btn btn-primary" role="button"><?php echo $userManual != null ? Language::$view : Language::$create; ?></a>
       </div>
     </div>
   </div>
@@ -175,7 +182,7 @@ $accessArray = Functions::accessArray(
       <div class="caption">
         <h3><?php echo Language::$softwareDesign; ?></h3>
         <p><?php echo Language::$softwareDesignDescription; ?></p>
-        <p><a href="<?php echo Yii::app()->request->baseUrl . '/processes/softwaredesign/' . $project->id; ?>" class="btn btn-primary" role="button"><?php echo Language::$view; ?></a>
+        <p><a href="<?php echo Yii::app()->request->baseUrl . '/processes/softwaredesign/' . $project->id; ?>" class="btn btn-primary" role="button"><?php echo $softwareDesign != null ? Language::$view : Language::$create; ?></a>
       </div>
     </div>
   </div>
@@ -188,7 +195,7 @@ $accessArray = Functions::accessArray(
       <div class="caption">
         <h3><?php echo Language::$operationManual; ?></h3>
         <p><?php echo Language::$operationManualDescription; ?></p>
-        <p><a href="<?php echo Yii::app()->request->baseUrl . '/processes/operationmanual/' . $project->id; ?>" class="btn btn-primary" role="button"><?php echo Language::$view; ?></a>
+        <p><a href="<?php echo Yii::app()->request->baseUrl . '/processes/operationmanual/' . $project->id; ?>" class="btn btn-primary" role="button"><?php echo $operationManual != null ? Language::$view : Language::$create; ?></a>
       </div>
     </div>
   </div>
@@ -201,7 +208,7 @@ $accessArray = Functions::accessArray(
       <div class="caption">
         <h3><?php echo Language::$maintenanceManual; ?></h3>
         <p><?php echo Language::$maintenanceManualDescription; ?></p>
-        <p><a href="<?php echo Yii::app()->request->baseUrl . '/processes/maintenancemanual/' . $project->id; ?>" class="btn btn-primary" role="button"><?php echo Language::$view; ?></a>
+        <p><a href="<?php echo Yii::app()->request->baseUrl . '/processes/maintenancemanual/' . $project->id; ?>" class="btn btn-primary" role="button"><?php echo $maintenanceManual != null ? Language::$view : Language::$create; ?></a>
       </div>
     </div>
   </div>
@@ -214,12 +221,13 @@ $accessArray = Functions::accessArray(
       <div class="caption">
         <h3><?php echo Language::$softwareComponents; ?></h3>
         <p><?php echo Language::$softwareComponentsDescription; ?></p>
-        <p><a href="<?php echo Yii::app()->request->baseUrl . '/processes/softwarecomponents/' . $project->id; ?>" class="btn btn-primary" role="button"><?php echo Language::$view; ?></a>
+        <p><a href="<?php echo Yii::app()->request->baseUrl . '/processes/softwarecomponents/' . $project->id; ?>" class="btn btn-primary" role="button"><?php echo $softwareComponents != null ? Language::$view : Language::$create; ?></a>
       </div>
     </div>
   </div>
   <?php } ?>
 </div>
+<hr>
 <?php } ?>
 
 <?php if($accessArray['projectClosure']){ ?>
@@ -232,7 +240,7 @@ $accessArray = Functions::accessArray(
       <div class="caption">
         <h3><?php echo Language::$actOfAcceptance; ?></h3>
         <p><?php echo Language::$actOfAcceptanceDescription; ?></p>
-        <p><a href="<?php echo Yii::app()->request->baseUrl . '/processes/actofacceptance/' . $project->id; ?>" class="btn btn-primary" role="button"><?php echo Language::$view; ?></a>
+        <p><a href="<?php echo Yii::app()->request->baseUrl . '/processes/actofacceptance/' . $project->id; ?>" class="btn btn-primary" role="button"><?php echo $actOfAcceptance != null ? Language::$view : Language::$create; ?></a>
       </div>
     </div>
   </div>

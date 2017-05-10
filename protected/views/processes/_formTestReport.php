@@ -7,25 +7,25 @@
 
 	<div class="form-group">
 		<?php echo $form->labelEx($model,'resume'); ?>
-		<?php echo $form->textArea($model,'resume',array('rows'=>6, 'cols'=>50, 'class'=>'form-control')); ?>
+		<?php echo $form->textArea($model,'resume',array('rows'=>6, 'cols'=>50, 'class'=>'form-control', 'placeholder'=>'')); ?>
 		<?php echo $form->error($model,'resume',array('class'=>'alert alert-danger')); ?>
 	</div>
 
 	<div class="form-group">
 		<?php echo $form->labelEx($model,'test_case'); ?>
-		<?php echo $form->textArea($model,'test_case',array('rows'=>6, 'cols'=>50, 'class'=>'form-control')); ?>
+		<?php echo $form->textArea($model,'test_case',array('rows'=>6, 'cols'=>50, 'class'=>'form-control', 'placeholder'=>'')); ?>
 		<?php echo $form->error($model,'test_case',array('class'=>'alert alert-danger')); ?>
 	</div>
 
 	<div class="form-group">
 		<?php echo $form->labelEx($model,'defect_level'); ?>
-		<?php echo $form->textArea($model,'defect_level',array('rows'=>6, 'cols'=>50, 'class'=>'form-control')); ?>
+		<?php echo $form->textArea($model,'defect_level',array('rows'=>6, 'cols'=>50, 'class'=>'form-control', 'placeholder'=>'')); ?>
 		<?php echo $form->error($model,'defect_level',array('class'=>'alert alert-danger')); ?>
 	</div>
 
 	<div class="form-group">
 		<?php echo $form->labelEx($model,'affected_functions'); ?>
-		<?php echo $form->textArea($model,'affected_functions',array('rows'=>6, 'cols'=>50, 'class'=>'form-control')); ?>
+		<?php echo $form->textArea($model,'affected_functions',array('rows'=>6, 'cols'=>50, 'class'=>'form-control', 'placeholder'=>'')); ?>
 		<?php echo $form->error($model,'affected_functions',array('class'=>'alert alert-danger')); ?>
 	</div>
 
@@ -51,7 +51,7 @@
 	<?php } ?>
 
 	<div class="form-group buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? Language::$create : Language::$update, array('type'=>'submit', 'class'=>'btn btn-success')); ?>
+		<?php echo CHtml::submitButton($model->isNewRecord ? Language::$finish : Language::$update, array('type'=>'submit', 'class'=>'btn btn-success')); ?>
 	</div>
 
 <?php $this->endWidget(); ?>

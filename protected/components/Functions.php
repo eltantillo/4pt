@@ -156,12 +156,6 @@ class Functions{
 	}
 
 	public static function accessArray($sessionUser, $template, $projectPlan, $workStatement, $minutesValidated, $softwareRequirements, $userManual, $softwareDesign, $operationManual, $maintenanceManual, $actOfAcceptance){
-		$projectPlanValue = !$projectPlan->project_manager_validated || !$projectPlan->technical_leader_validated;
-
-		$projectExecutionValue = !$projectPlanValue;
-
-		$softwareImplementationValue = !$projectPlanValue;
-
 		$projectClosureValue = !(($softwareRequirements === null || (!$softwareRequirements->project_manager_validated || !$softwareRequirements->technical_leader_validated)) || ($userManual === null || (!$userManual->project_manager_validated  || !$userManual->technical_leader_validated)) || ($softwareDesign === null || (!$softwareDesign->project_manager_validated || !$softwareDesign->technical_leader_validated)) || ($operationManual === null || (!$operationManual->project_manager_validated || !$operationManual->technical_leader_validated)) || ($maintenanceManual === null || (!$maintenanceManual->project_manager_validated || !$maintenanceManual->technical_leader_validated))) && (in_array(0, $sessionUser->rolesArray) || (in_array(2, $sessionUser->rolesArray) && $actOfAcceptance != null));
 
 
@@ -185,7 +179,7 @@ class Functions{
 
 		$userManualValue = (in_array(3, $sessionUser->rolesArray) && ($softwareDesign != null && $softwareDesign->project_manager_validated && $softwareDesign->technical_leader_validated) && ($userManual === null || !$userManual->sent || $userManual->change_request)) || ((in_array(0, $sessionUser->rolesArray) || in_array(1, $sessionUser->rolesArray)) && $userManual != null  && $userManual->sent && !$userManual->change_request) && ((in_array(0, $sessionUser->rolesArray) && !$userManual->project_manager_validated) || (in_array(1, $sessionUser->rolesArray)) && !$userManual->technical_leader_validated);
 
-		$softwareDesignValue = ((in_array(3, $sessionUser->rolesArray) || in_array(4, $sessionUser->rolesArray)) && ($softwareDesign === null || !$softwareDesign->sent || $softwareDesign->change_request)) || ((in_array(0, $sessionUser->rolesArray) || in_array(1, $sessionUser->rolesArray)) && $softwareDesign != null  && $softwareDesign->sent && !$softwareDesign->change_request) && ((in_array(0, $sessionUser->rolesArray) && !$softwareDesign->project_manager_validated) || (in_array(1, $sessionUser->rolesArray)) && !$softwareDesign->technical_leader_validated);
+		$softwareDesignValue = $softwareRequirements != null && $softwareRequirements->project_manager_validated && $softwareRequirements->technical_leader_validated && ((in_array(3, $sessionUser->rolesArray) || in_array(4, $sessionUser->rolesArray)) && ($softwareDesign === null || !$softwareDesign->sent || $softwareDesign->change_request)) || ((in_array(0, $sessionUser->rolesArray) || in_array(1, $sessionUser->rolesArray)) && $softwareDesign != null  && $softwareDesign->sent && !$softwareDesign->change_request) && ((in_array(0, $sessionUser->rolesArray) && !$softwareDesign->project_manager_validated) || (in_array(1, $sessionUser->rolesArray)) && !$softwareDesign->technical_leader_validated);
 
 		$operationManualValue = (in_array(5, $sessionUser->rolesArray) && $softwareDesign != null && $softwareDesign->project_manager_validated && $softwareDesign->technical_leader_validated && ($operationManual === null || !$operationManual->sent || $operationManual->change_request)) || ((in_array(0, $sessionUser->rolesArray) || in_array(1, $sessionUser->rolesArray)) && $operationManual != null  && $operationManual->sent && !$operationManual->change_request) && ((in_array(0, $sessionUser->rolesArray) && !$operationManual->project_manager_validated) || (in_array(1, $sessionUser->rolesArray)) && !$operationManual->technical_leader_validated);
 
@@ -194,6 +188,11 @@ class Functions{
 		$softwareComponentsValue = in_array(5, $sessionUser->rolesArray) && $softwareDesign != null && $softwareDesign->project_manager_validated && $softwareDesign->technical_leader_validated;
 
 		$actOfAcceptanceValue = $projectClosureValue;
+
+
+		$projectPlanValue = $workStatementValue || $deliveryInstructionsValue || $tasksValue || $risksValue || $minutesValue || $validationValue;
+		$projectExecutionValue = $projectPlan->project_manager_validated && $projectPlan->technical_leader_validated && ($progressReportValue || $correctiveActionsValue);
+		$softwareImplementationValue = $projectPlan->project_manager_validated && $projectPlan->technical_leader_validated && ($softwareRequirementsValue || $userManualValue || $softwareDesignValue || $operationManualValue || $maintenanceManualValue || $softwareComponentsValue);
 
 		if ($template != null){
 			$workStatementValue = $template->work_statement && ((in_array(2, $sessionUser->rolesArray) && ($workStatement === null || !$workStatement->sent || $workStatement->change_request)) || ((in_array(0, $sessionUser->rolesArray) || in_array(1, $sessionUser->rolesArray)) && $workStatement != null && $workStatement->sent && !$workStatement->change_request) && ((in_array(0, $sessionUser->rolesArray) && !$workStatement->project_manager_validated) || (in_array(1, $sessionUser->rolesArray)) && !$workStatement->technical_leader_validated));

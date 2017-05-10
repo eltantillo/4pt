@@ -108,7 +108,7 @@ $projectClosureValue         = $actOfAcceptanceValue;
                 <p>' . $model->deliverables . '</p>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
               </div>
             </div>
           </div>
@@ -309,7 +309,7 @@ $projectClosureValue         = $actOfAcceptanceValue;
                 <p>' . $model->legal . '</p>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
               </div>
             </div>
           </div>
@@ -368,7 +368,7 @@ $projectClosureValue         = $actOfAcceptanceValue;
                 <p>' . $model->messages . '</p>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
               </div>
             </div>
           </div>
@@ -413,7 +413,7 @@ $projectClosureValue         = $actOfAcceptanceValue;
                 <p>' . $model->low_lvl_design . '</p>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
               </div>
             </div>
           </div>
@@ -464,7 +464,7 @@ $projectClosureValue         = $actOfAcceptanceValue;
                 <p>' . $model->guaranty . '</p>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
               </div>
             </div>
           </div>
@@ -507,7 +507,7 @@ $projectClosureValue         = $actOfAcceptanceValue;
                 <p>' . $model->enviroment . '</p>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
               </div>
             </div>
           </div>

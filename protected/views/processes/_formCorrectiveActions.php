@@ -22,25 +22,25 @@ $form=$this->beginWidget('CActiveForm', array(
 
 	<div class="form-group">
 		<?php echo $form->labelEx($model,'problem'); ?>
-		<?php echo $form->textArea($model,'problem',array('rows'=>6, 'cols'=>50, 'class'=>'form-control')); ?>
+		<?php echo $form->textArea($model,'problem',array('rows'=>6, 'cols'=>50, 'class'=>'form-control', 'placeholder'=>'')); ?>
 		<?php echo $form->error($model,'problem',array('class'=>'alert alert-danger')); ?>
 	</div>
 
 	<div class="form-group">
 		<?php echo $form->labelEx($model,'solution'); ?>
-		<?php echo $form->textArea($model,'solution',array('rows'=>6, 'cols'=>50, 'class'=>'form-control')); ?>
+		<?php echo $form->textArea($model,'solution',array('rows'=>6, 'cols'=>50, 'class'=>'form-control', 'placeholder'=>'')); ?>
 		<?php echo $form->error($model,'solution',array('class'=>'alert alert-danger')); ?>
 	</div>
 
 	<div class="form-group">
 		<?php echo $form->labelEx($model,'corrective_actions'); ?>
-		<?php echo $form->textArea($model,'corrective_actions',array('rows'=>6, 'cols'=>50, 'class'=>'form-control')); ?>
+		<?php echo $form->textArea($model,'corrective_actions',array('rows'=>6, 'cols'=>50, 'class'=>'form-control', 'placeholder'=>'')); ?>
 		<?php echo $form->error($model,'corrective_actions',array('class'=>'alert alert-danger')); ?>
 	</div>
 
 	<div class="form-group">
 		<?php echo $form->labelEx($model,'responsible_id'); ?>
-		<?php echo $form->dropDownList($model,'responsible_id', $peopleAndRoles, array('class'=>'form-control')); ?>
+		<?php echo $form->dropDownList($model,'responsible_id', $peopleAndRoles, array('class'=>'form-control', 'placeholder'=>'')); ?>
 		<?php echo $form->error($model,'responsible_id',array('class'=>'alert alert-danger')); ?>
 	</div>
 
@@ -67,7 +67,7 @@ $form=$this->beginWidget('CActiveForm', array(
 	</div>-->
 
 	<div class="form-group buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? Language::$create : Language::$update, array('type'=>'submit', 'class'=>'btn btn-success')); ?>
+		<?php echo CHtml::submitButton($model->isNewRecord ? Language::$finish : Language::$update, array('type'=>'submit', 'class'=>'btn btn-success')); ?>
 	</div>
 
 <?php $this->endWidget(); ?>
